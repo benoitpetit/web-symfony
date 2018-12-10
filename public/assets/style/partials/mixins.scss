@@ -1,0 +1,56 @@
+// -------- Mixins fonts -------------- //
+
+@mixin Rob-regular {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+@mixin Rob-regular-upper {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+@mixin Rob-medium {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+@mixin Rob-medium-upper {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+@mixin Rob-light {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+@mixin Rob-light-upper {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+@mixin Rob-bold {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+@mixin Rob-bold-upper {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+@mixin Rob-black {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+}
+
+@mixin Rob-black-upper {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+}
