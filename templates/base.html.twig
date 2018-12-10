@@ -15,11 +15,11 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% extends 'partials/header.html.twig' %}
+        {% include 'partials/header.html.twig' %}
 
         {% block body %}{% endblock %}
 
-        {% extends 'partials/footer.html.twig' %}
+        {% include 'partials/footer.html.twig' %}
         <!-- Liens vers les .JS -->
         <script src="../public/assets/vendor/script/jquery-3.3.1.min.js"></script>
         <script src="../public/assets/vendor/script/popper.min.js"></script>
