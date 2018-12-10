@@ -1,12 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}DEV my Shirts{% endblock %}</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="descripion" content="Boutique e-commerce en ligne de t-shirts originaux basés sur les langages de programmation et de développement.">
+        <meta name="author" content="DEV my Shirts">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" media="screen" href="../public/assets/vendor/style/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="../public/assets/style/style.min.css" />
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
+
+
+        <!-- Liens vers les .JS -->
+        <script src="../public/assets/vendor/script/jquery-3.3.1.min.js"></script>
+        <script src="../public/assets/vendor/script/popper.min.js"></script>
+        <script src="../public/assets/vendor/script/bootstrap.min.js"></script>
+        <script src="../public/assets/script/script.js"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
+
+    
+    
