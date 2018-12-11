@@ -1,0 +1,99 @@
+/* NEWSLETTER ---------------------------------- */
+
+.newsletter{
+    background-color: #145a6b;
+    
+    .newsletter-text{
+        color: #ffffff;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 22px;
+        padding: 20px 0;
+
+        strong {
+            color: #ffffff;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 22px;
+        }
+    }
+
+    .col-sm-5{
+        margin: auto;
+
+        .form-inline{
+            width: 100%;
+            
+            .email, .btn {
+                border-radius: 0;
+            }
+            
+            .form-control {
+                width: 100%;
+                padding-right: 0;
+            }
+            
+            .col-sm-3{
+                padding-left: 0;
+                padding-right: 0;
+                
+                .btn-outline-success {
+                    color: #ffffff;
+                    background-color: transparent;
+                    border-color: #0ddee2;
+                }
+                
+                .btn {
+                    display: inline-block;
+                    font-weight: 600;
+                    text-align: center;
+                    vertical-align: middle;
+                    border: 2px solid  #0ddee2;
+                }
+                
+                .btn-outline-success:hover {
+                    color: #fff;
+                    background-color: #0ddee2;
+                    border-color: #0ddee2;
+                }
+            }
+        }
+    }
+}
+
+/* LIENS FOOTER ---------------------------- */
+
+.footer {
+    padding: 30px 15px;
+    width: 70%;
+}
+
+span {
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    color:  #414042;
+}
+
+ul {
+    padding-top: 30px;
+    list-style: none;
+    font-size: 14px;
+    padding: 0;
+    margin-top: 20px;
+    color: #7a7c7f;
+}
+
+.icons, .copyright{
+    padding: 20px 0;
+    text-align: center;
+}
+
+.icons img {
+    margin: 0 5px;
+}
+
+.copyright{
+    font-size: 13px;
+    color: #7a7c7f;
+}

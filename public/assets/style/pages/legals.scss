@@ -1,0 +1,32 @@
+.ariane{
+    font-size: 13px;
+}
+
+.legal-text {
+    padding: 30px 5px;
+
+    .ligne {
+        height: 3px;
+        width: 230px;
+        background-color: #00a2a5;
+    }
+
+    .text{
+        margin-top: 50px;
+    }
+
+    h1 {
+        @include Rob-regular-upper;
+        margin: 40px 0 10px 0;
+        color: $anthracite;
+        font-size: 36px;
+
+         span{
+            @include Rob-regular-upper;
+            color:$blue;
+            font-size: 36px;
+        }
+    
+    }
+}
+
