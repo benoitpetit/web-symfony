@@ -14,7 +14,7 @@ class TshirtService {
     private $image;
 
     // générer le t-shirt homme
-    public function tshirtHomme( string $color)
+    public function menTshirt( string $color)
     {
         // Va me permettre de gérer nos images
         $manager = new ImageManager();
@@ -28,7 +28,7 @@ class TshirtService {
     }
 
     // générer le t-shirt Femme
-    public function tshirtFemme( string $color)
+    public function womenTshirt( string $color)
     {
         // Va me permettre de gérer nos images
         $manager = new ImageManager();
