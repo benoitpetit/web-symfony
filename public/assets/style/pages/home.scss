@@ -1,11 +1,11 @@
 // ---- BTN général ---- //
 a.btn-decouvrir{
-    background: linear-gradient(to right,  $bleu 50%, $ocean 50%); 
+    background: linear-gradient(to right,  $blue 50%, $ocean 50%); 
     background-size: 200% 100%; 
     background-position:left bottom; 
     transition:all 200ms linear;
     font-size: 0.9rem;
-    color: $blanc;
+    color: $white;
     @include Rob-light-upper;
     text-decoration: none;
     display: inline-block;
