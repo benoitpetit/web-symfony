@@ -75,18 +75,16 @@ nav.bg-ocean{
         .nav-link:hover {
             background-color: $blue;
             color: $white;
-        }
 
-        .promo{
-            color: $sky;
-
-            &:hover{
+            &.promo:hover{
+                background-color: #9e100c;
                 color: $white;
             }
         }
     }
+    
+    .gr_sociaux {
+        max-height: 40px;
+    }
 
-    // .gr_sociaux {
-    //     max-height: 40px;
-    // }
 }
