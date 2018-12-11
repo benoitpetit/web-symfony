@@ -65,6 +65,11 @@ nav.bg-ocean{
         .nav-link{
             color: $white;
 
+            &.promo{
+                background-color: #aa201b;
+                color: $white;
+            }
+
             &.active {
                 background-color: $blue;
                 color: $white;

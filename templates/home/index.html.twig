@@ -6,8 +6,8 @@
 
 <!-- //////////////////////// SLIDE PRINCIPALE ////////////////////////// -->
 <div class="container-fluid position-relative slide_container px-0">
-    
-    
+
+
     <div id="carouselcontroller" class="carousel slide" data-ride="carousel">
         <!-- Les indicateurs de slide -->
         <ol class="carousel-indicators">
@@ -47,7 +47,7 @@
                     <img class="d-block slide_visuel" src="{{ asset( 'assets/images/slides/slide_home.jpg' ) }}" alt="Image du slide t-shirt originaux">
                 </div>
             </div>
-            
+
         </div>
         <!-- Les controllers -->
         <a class="carousel-control-prev" href="#carouselcontroller" role="button" data-slide="prev">
@@ -72,8 +72,112 @@
         </h1>
         <p>
             Démarquez-vous avec des t-shirts aux motifs innovants.
-        </p>   
+        </p>
     </div>
 </section>
+
+<!-- //////////////////////// GALLERIE NOUVEAUTES PRODUITS ////////////////////////// -->
+<section class="container-fluid px-0 produit_gallery pb-3">
+    <div class="container text-center pt-5 pb-2 position-relative">
+
+        <!-- Titre de la section -->
+        <div class="row mb-5">
+            <div class="col-12 pb-2">
+                <h2>
+                    Les dernières <span class="text-bleu">nouveautés</span>
+                </h2>
+            </div>
+            <div class="col-12">
+                <div class="separator mx-auto"></div>
+            </div>
+        </div>
+
+        <!-- Gallerie -->
+        <section class="row mb-4">
+            <!-- Produit 01 -->
+            <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                <a href="{{ path('mengallery') }}" class="produit_link position-relative">
+                    <!-- Visuel Produit -->
+                    <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
+                    <div class="overlay">
+                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
+                    </div>
+                </a>
+                <!-- Infos produit -->
+                <div class="card-body">
+                    <h3 class="title_produit_gallery">Game Hover</h3>
+                    <h5 class="price_gallery pt-2">25,00€</h5>
+                </div>
+            </div>
+
+            <!-- Produit 02 -->
+            <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                <a href="{{ path('mengallery') }}" class="produit_link position-relative">
+                    <!-- Visuel Produit -->
+                    <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
+                    <div class="overlay">
+                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
+                    </div>
+                </a>
+                <!-- Infos produit -->
+                <div class="card-body">
+                    <h3 class="title_produit_gallery">Game Hover</h3>
+                    <h5 class="price_gallery pt-2">25,00€</h5>
+                </div>
+            </div>
+
+            <!-- Produit 03 -->
+            <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                <a href="{{ path('womengallery') }}" class="produit_link position-relative">
+                    <!-- Visuel Produit -->
+                    <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
+                    <div class="overlay">
+                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
+                    </div>
+                </a>
+                <!-- Infos produit -->
+                <div class="card-body">
+                    <h3 class="title_produit_gallery">Game Hover</h3>
+                    <h5 class="price_gallery pt-2">25,00€</h5>
+                </div>
+            </div>
+
+            <!-- Produit 04 -->
+            <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                <a href="{{ path('womengallery') }}" class="produit_link position-relative">
+                    <!-- Visuel Produit -->
+                    <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
+                    <div class="overlay">
+                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
+                    </div>
+                </a>
+                <!-- Infos produit -->
+                <div class="card-body">
+                    <h3 class="title_produit_gallery">Game Hover</h3>
+                    <h5 class="price_gallery pt-2">25,00€</h5>
+                </div>
+            </div>
+        </section>
+
+        <!-- btn -->
+        <div class="row position-absolute btn_motifs d-block text-center w-100">
+            <a href="{{ path('mengallery') }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
+                < Nouveautés Homme
+            </a>
+            <a href="{{ path('womengallery') }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
+                Nouveautés Femme >
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- //////////////////////// SECTION CONCEPT ////////////////////////// -->
+
+<section class="container-fluid concept_content">
+    <div class="container">
+
+    </div>
+</section>
+
 
 {% endblock %}
