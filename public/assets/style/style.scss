@@ -1,10 +1,10 @@
 // -------- IMPORTS PARTIALS -------------- //
 
-@import "partials/colors.scss";
-@import "partials/mixins.scss";
-@import "partials/fonts.scss";
-@import "partials/header.scss";
-@import "partials/footer.scss";
+@import "./partials/colors.scss";
+@import "./partials/mixins.scss";
+@import "./partials/fonts.scss";
+@import "./partials/header.scss";
+@import "./partials/footer.scss";
 
 // -------- GENERIQUES ----------- //
 
@@ -20,7 +20,7 @@ body {
 
     // ---- IMPORTS PAGES ---- //
 
-    @import "pages/home.scss";
-    @import "pages/contact.scss";
+    @import "./pages/home.scss";
+    @import "./pages/contact.scss";
 
 }

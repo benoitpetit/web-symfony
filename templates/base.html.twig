@@ -9,9 +9,9 @@
         <meta name="descripion" content="Boutique e-commerce en ligne de t-shirts originaux basés sur les langages de programmation et de développement.">
         <meta name="author" content="DEV my Shirts">
          <!-- Styles -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" media="screen" href="../public/assets/vendor/style/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" media="screen" href="../public/assets/style/style.min.css" />
+        <link rel="stylesheet" href="{{ asset( 'https://use.fontawesome.com/releases/v5.5.0/css/all.css' ) }}">
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset( 'assets/vendor/style/bootstrap.min.css' ) }}" />
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset( 'assets/style/style.min.css' ) }}" />
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -21,10 +21,11 @@
 
         {% include 'partials/footer.html.twig' %}
         <!-- Liens vers les .JS -->
-        <script src="../public/assets/vendor/script/jquery-3.3.1.min.js"></script>
-        <script src="../public/assets/vendor/script/popper.min.js"></script>
-        <script src="../public/assets/vendor/script/bootstrap.min.js"></script>
-        <script src="../public/assets/script/script.js"></script>
+        <script src="{{ asset( 'assets/vendor/script/jquery-3.3.1.min.js' ) }}"></script>
+        <script src="{{ asset( 'assets/vendor/script/popper.min.js' ) }}"></script>
+        <script src="{{ asset( 'assets/vendor/script/bootstrap.min.js' ) }}"></script>
+        <script src="{{ asset( 'assets/script/script.js' ) }}"></script>
+        
         {% block javascripts %}{% endblock %}
     </body>
 </html>
