@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+
+use App\Service\TshirtService;
 
 class TshirtController extends AbstractController
 {
@@ -51,9 +54,27 @@ class TshirtController extends AbstractController
     {
         return $this->render('tshirt/men_single_tshirt.html.twig', [
             // a modifier avec le nom du model quand il seront creer sur la BDD
-            'controller_name' => 'Tshirt homme',
+            'controller_name' => 'Détail Tshirt homme',
         ]);
     }
+
+    
+    /**
+     * @Route("gallerie/homme/visuel", name="visuelHomme")
+     */
+    public function tshirHomme( TshirtService $tshirtService, $color='#5ea822' )
+    {
+        return new Response( $tshirtService->tshirtHomme($color), 200, array( 'Content-Type' => 'image/jpeg' ) );
+    }
+
+    /**
+     * @Route("gallerie/femme/visuel", name="visuelFemme")
+     */
+    public function tshirFemme( TshirtService $tshirtService, $color='#e52424' )
+    {
+        return new Response( $tshirtService->tshirtFemme($color), 200, array( 'Content-Type' => 'image/jpeg' ) );
+    }
+
 
     /**
      * Affichage detail d'un tshirt femme
