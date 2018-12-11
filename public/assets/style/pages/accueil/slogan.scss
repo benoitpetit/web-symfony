@@ -1,0 +1,16 @@
+.baseline_content {
+    @include Rob-light;
+    font-size: 1.2rem;
+    color: $metal;
+    background-color: $grey;
+
+    .text-regular {
+    @include Rob-regular;
+    font-size: 1.8rem;
+    color: $anthracite;
+
+        .text-bleu{
+            color: $blue;
+        }
+    }
+}
