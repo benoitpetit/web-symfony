@@ -64,7 +64,7 @@ class TshirtController extends AbstractController
      */
     public function menVisuel( TshirtService $tshirtService, $color='#5ea822' )
     {
-        return new Response( $tshirtService->menVisuel($color), 200, array( 'Content-Type' => 'image/jpeg' ) );
+        return new Response( $tshirtService->menTshirt($color), 200, array( 'Content-Type' => 'image/jpeg' ) );
     }
 
     /**
@@ -72,7 +72,7 @@ class TshirtController extends AbstractController
      */
     public function womenVisuel( TshirtService $tshirtService, $color='#e52424' )
     {
-        return new Response( $tshirtService->womenVisuel($color), 200, array( 'Content-Type' => 'image/jpeg' ) );
+        return new Response( $tshirtService->womenTshirt($color), 200, array( 'Content-Type' => 'image/jpeg' ) );
     }
 
 
@@ -89,6 +89,21 @@ class TshirtController extends AbstractController
         return $this->render('tshirt/women_single_tshirt.html.twig', [
             // a modifier avec le nom du model quand il seront creer sur la BDD
             'controller_name' => 'Tshirt femme',
+        ]);
+    }
+
+    /**
+     * Promo
+     * 
+     * @Route("/gallerie/promo", name="promo")
+     * 
+     * @return render
+     * 
+     */
+    public function promo()
+    {
+        return $this->render('tshirt/promo.html.twig', [
+            'controller_name' => 'Promos de Noël',
         ]);
     }
 }

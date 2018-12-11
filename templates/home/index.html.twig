@@ -1,16 +1,79 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ controller_name }} | {{ parent() }} {% endblock %}
+{% block title %} {{ parent() }} | Développeurs de style {% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1> {{ controller_name }}! ✅</h1>
+<!-- //////////////////////// SLIDE PRINCIPALE ////////////////////////// -->
+<div class="container-fluid position-relative slide_container px-0">
+    
+    
+    <div id="carouselcontroller" class="carousel slide" data-ride="carousel">
+        <!-- Les indicateurs de slide -->
+        <ol class="carousel-indicators">
+            <li data-target="#carouselcontroller" data-slide-to="0" class="active rounded-circle"></li>
+            <li data-target="#carouselcontroller" data-slide-to="1" class="rounded-circle"></li>
+        </ol>
+        <!-- Les slides -->
+        <div class="carousel-inner">
 
+            <!-- slide 01 -->
+            <div class="carousel-item active">
+                <div class="d-flex justify-content-center">
+                    <div class="carousel-caption d-none d-md-block carousel_content">
+                        <p class="title_slide">Développe un <span>style unique</span></p>
+                        <h5>Porte un T-shirt <span class="slogan_slide d-block">Original</span></h5>
+                        <!-- BTN Découvrir -->
+                        <a href="{{ path('mengallery') }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                    </div>
+                    <!-- Shadow -->
+                    <div class="container-fluid position-absolute h-100 w-100 shadow_content"></div>
+                    <!-- Image du slide -->
+                    <img class="d-block slide_visuel" src="{{ asset( 'assets/images/slides/slide_home.jpg' ) }}" alt="Image du slide t-shirt originaux">
+                </div>
+            </div>
+            <!-- slide 02 -->
+            <div class="carousel-item">
+                <div class="d-flex justify-content-center">
+                    <div class="carousel-caption d-none d-md-block carousel_content">
+                        <p class="title_slide">Développe un <span>style unique</span></p>
+                        <h5>Porte un T-shirt <span class="slogan_slide d-block">Original</span></h5>
+                        <!-- BTN Découvrir -->
+                        <a href="{{ path('mengallery') }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                    </div>
+                    <!-- Shadow -->
+                    <div class="container-fluid position-absolute h-100 w-100 shadow_content"></div>
+                    <!-- Image du slide -->
+                    <img class="d-block slide_visuel" src="{{ asset( 'assets/images/slides/slide_home.jpg' ) }}" alt="Image du slide t-shirt originaux">
+                </div>
+            </div>
+            
+        </div>
+        <!-- Les controllers -->
+        <a class="carousel-control-prev" href="#carouselcontroller" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon prev" aria-hidden="true"></span>
+            <div id="triangle-right"></div>
+            <span class="sr-only">Précédent</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselcontroller" role="button" data-slide="next">
+            <span class="carousel-control-next-icon next" aria-hidden="true"></span>
+            <div id="triangle-left"></div>
+            <span class="sr-only">Suivant</span>
+        </a>
+    </div>
 
 </div>
+
+<!-- //////////////////////// SLOGAN ////////////////////////// -->
+<section class="container-fluid baseline_content">
+    <div class="container text-center py-5">
+        <h1 class="text-regular m-0">
+            Les motifs de demain sont <span class="text-bleu">développés</span> aujourd'hui !
+        </h1>
+        <p>
+            Démarquez-vous avec des t-shirts aux motifs innovants.
+        </p>   
+    </div>
+</section>
+
 {% endblock %}

@@ -1,3 +1,5 @@
+
+
 // ---- BTN général ---- //
 a.btn-decouvrir{
     background: linear-gradient(to right,  $blue 50%, $ocean 50%); 
@@ -9,8 +11,11 @@ a.btn-decouvrir{
     @include Rob-light-upper;
     text-decoration: none;
     display: inline-block;
-
+    
     &:hover{
         background-position:right bottom; 
     }
 }
+
+
+@import "./accueil/slide.scss";
