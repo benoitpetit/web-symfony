@@ -5,16 +5,6 @@
 .legal-text {
     padding: 30px 5px;
 
-    .ligne {
-        height: 3px;
-        width: 230px;
-        background-color: #00a2a5;
-    }
-
-    .text{
-        margin-top: 50px;
-    }
-
     h1 {
         @include Rob-regular-upper;
         margin: 40px 0 10px 0;
@@ -26,7 +16,17 @@
             color:$blue;
             font-size: 36px;
         }
-    
     }
+
+    .ligne {
+        height: 3px;
+        width: 230px;
+        background-color:$blue;
+    }
+
+    .text{
+        margin-top: 50px;
+    }
+
 }
 
