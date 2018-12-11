@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}
+{% endblock %}
+
+{% block displayArray %}
+{{ dump(form) }}
+    <br /><br />
+    <h4>{{ title }}</h4>
+
+    {# Formulaire de connexion #}
+    
+    {{ form_start ( form ) }}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                {{ form_row ( form.username ) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ form_row ( form.password ) }}
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-6">
+                <button type="submit">Connecter</button>
+            </div>
+        </div>
+    </div>
+    {{ form_end ( form ) }}
+    
+{% endblock %}
