@@ -11,6 +11,8 @@ class HomeController extends AbstractController
      * Page d'accueil du site
      * 
      * @Route("/", name="home")
+     * 
+     * @return render
      */
     public function index()
     {
@@ -19,15 +21,16 @@ class HomeController extends AbstractController
         ]);
     }
 
-
-    // dans le homeController ou dans un nouveau controller ?
-    // (ca fait beaucoup ^^)
-    // - A propos de nous
-    // - Nos designers
-    // - Modes de livraison
-    // - Modes de paiement
-    // - Garantie Satisfaction
-    // - Protection des données
-    // - CGV
-    // - Mentions légales
+    /**
+     * Page a propos de nous & nos designer
+     *
+     * @Route("/about", name="about")
+     * 
+     * @return render
+     */
+    public function about(){
+        return $this->render('home/about.html.twig', [
+            'controller_name' => 'A propos',
+        ]);
+    }
 }
