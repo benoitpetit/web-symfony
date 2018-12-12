@@ -1,0 +1,85 @@
+
+.produit_link{
+    text-decoration: none;
+    
+    
+    .card-img-top-principale {
+        z-index:100;
+    }
+    
+    
+    &:hover .overlay {
+        opacity: 1;
+    }
+}
+
+.title_produit_gallery {
+    @include Rob-regular-upper;
+    font-size: 22px;
+    color: $metal;
+}
+
+.text-back{
+    color: rgba(173, 171, 171, 0.5)!important;
+}
+
+.price_gallery {
+    @include Rob-bold-upper;
+    font-size: 20px;
+    color: $blue;
+}
+
+.produit_gallery h2 {
+    @include Rob-light-upper;
+    font-size: 36px;
+    color: $anthracite;
+
+    .text-bleu {
+        @include Rob-regular-upper;
+        color: $blue;
+    }
+
+}
+
+.separator {
+    padding-top: 2px;
+    width: 20%;
+    margin-bottom: 15px;
+    background-color: $blue;
+}
+
+.separator_gallery {
+    padding-top: 2px;
+    width: 20%;
+    margin-bottom: 30px;
+    background-color: $blue;
+}
+
+.btn_motifs {
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+// ---- Effet de Overlay ---- //
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .4s ease-out;
+}
+
+// ---- les critères de sélection de la gallery ---- //
+
+.filter_bandeau {
+    height:70px;
+    background-color: $grey;
+}
+
+

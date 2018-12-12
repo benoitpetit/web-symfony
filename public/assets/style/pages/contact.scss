@@ -6,7 +6,7 @@
 /* CONTACT ---------------------------------- */
 
 .contact {
-    padding: 30px 5px;
+    padding: 20px 5px;
 
     h1 {
         @include Rob-regular-upper;
@@ -54,6 +54,12 @@
         border-radius: 0;
         display: block;
         margin : 50px auto;
+    }
+
+    .btn_motifs{
+        left:0;
+        bottom:0;
+        transform: translateX(0)!important;
     }
 
 

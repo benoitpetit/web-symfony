@@ -1,0 +1,100 @@
+.slide_container {
+    background-color: $grey;
+    
+    .shadow_content{
+        box-shadow: inset 0px 11px 8px -10px rgba(19, 19, 19, 0.493), 
+                    inset 0px -11px 8px -10px rgba(19, 19, 19, 0.493);
+        z-index: 10;
+    }
+
+    .rounded-circle {
+        height: 15px;
+        width: 15px;
+    }
+
+    .carousel-indicators li .rounded-circle {
+        background-color: #21252936;
+    }
+
+    .carousel_content {
+        right: 0;
+        left: 0;
+        top: 25%;
+        text-align: left;
+        padding: 0 0 0 20%;
+        @include Rob-regular-upper;
+        font-size: 0.9rem;
+        color: $metal;
+        z-index: 100;
+
+        .title_slide {
+            border: 3px solid #fff;
+            padding: 10px;
+            display: inline-block;
+
+            span{
+                color: $blue;
+                @include Rob-medium-upper;
+            }
+        }
+
+        h5 {
+            @include Rob-bold;
+            color: $metal;
+            font-size: 1.7rem;
+            line-height: 2rem;
+            
+            .slogan_slide{
+                font-family: 'Edo SZ', sans-serif;
+                font-weight: 400;
+                font-size: 5rem;
+                color: $blue;
+                line-height: 5rem;
+            }
+        }
+
+    }
+    
+    .slide_visuel{
+        min-height: 300px;
+        width: auto;
+    }
+}
+
+.carousel-control-prev{
+    width: 40px!important;
+
+    .carousel-control-prev-icon{
+        z-index: 5;
+    }
+
+    #triangle-right {
+        position: absolute;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-top: 40px solid transparent;
+        border-left: 50px solid $metal;
+        border-bottom: 40px solid transparent;
+    }
+
+}
+
+.carousel-control-next{
+    width: 40px!important;
+
+    .carousel-control-next-icon{
+        z-index: 5;
+    }
+
+    #triangle-left {
+        position: absolute;
+        right: 0;
+        width: 0;
+        height: 0;
+        border-top: 40px solid transparent;
+        border-right: 50px solid #7a7c7f;
+        border-bottom: 40px solid transparent;
+    }
+
+}
