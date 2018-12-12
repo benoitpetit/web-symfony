@@ -1,0 +1,95 @@
+
+// -------- Style du Header -------------- //
+
+.logo_icone {
+    width: 100%;
+    max-width: 200px;
+    display: block;
+}
+
+.dev_style {
+    font-family: 'Honey Script', sans-serif;
+    font-size: 2rem;
+    color: $blue;
+}
+
+a.text-midium-metal-upper {
+    @include Rob-regular-upper;
+    font-size: 0.9rem;
+    color: #a8a8a8;
+    text-decoration: none;
+
+    &:hover{
+        color: $metal;
+    }
+}
+
+.user_elements {
+    height: 50px;
+}
+
+.counter {
+    position: absolute;
+    top: 65%;
+    left: 45%;
+    transform: translate(-50%,-50%);
+    @include Rob-bold;
+    font-size: 0.9rem;
+    color: $blue;
+}
+
+.panier_mobile {
+    width: 25px;
+}
+
+// -------- Navigation du Header -------------- //
+
+nav.bg-ocean{
+    background-color: $ocean;
+    border-bottom: 2px solid $sky;
+    
+    .text-sky {
+        @include Rob-medium-upper;
+        color: $white!important;
+    }
+
+    .light-text{
+        @include Rob-light;
+        color: $sky!important;
+    }
+
+    .text-navbar {
+        @include Rob-regular-upper;
+        font-size: 0.9rem!important;
+
+        .nav-link{
+            color: $white;
+
+            &.promo{
+                background-color: #aa201b;
+                color: $white;
+            }
+
+            &.active {
+                background-color: $blue;
+                color: $white;
+            }
+
+        }
+        
+        .nav-link:hover {
+            background-color: $blue;
+            color: $white;
+
+            &.promo:hover{
+                background-color: #9e100c;
+                color: $white;
+            }
+        }
+    }
+    
+    .gr_sociaux {
+        max-height: 40px;
+    }
+
+}

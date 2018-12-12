@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+
+use App\Service\TshirtService;
 
 class TshirtController extends AbstractController
 {
@@ -20,7 +23,7 @@ class TshirtController extends AbstractController
     public function menGallery()
     {
         return $this->render('tshirt/men_gallery.html.twig', [
-            'controller_name' => 'Gallerie homme',
+            'controller_name' => 'homme',
         ]);
     }
 
@@ -35,7 +38,7 @@ class TshirtController extends AbstractController
     public function womenGallery()
     {
         return $this->render('tshirt/women_gallery.html.twig', [
-            'controller_name' => 'Gallerie femme',
+            'controller_name' => 'femme',
         ]);
     }
 
@@ -55,6 +58,24 @@ class TshirtController extends AbstractController
         ]);
     }
 
+    
+    /**
+     * @Route("gallerie/homme/visuel", name="menvisuel")
+     */
+    public function menVisuel( TshirtService $tshirtService, $color='#5ea822' )
+    {
+        return new Response( $tshirtService->menTshirt($color), 200, array( 'Content-Type' => 'image/jpeg' ) );
+    }
+
+    /**
+     * @Route("gallerie/femme/visuel", name="womenvisuel")
+     */
+    public function womenVisuel( TshirtService $tshirtService, $color='#e52424' )
+    {
+        return new Response( $tshirtService->womenTshirt($color), 200, array( 'Content-Type' => 'image/jpeg' ) );
+    }
+
+
     /**
      * Affichage detail d'un tshirt femme
      * 
@@ -68,6 +89,22 @@ class TshirtController extends AbstractController
         return $this->render('tshirt/women_single_tshirt.html.twig', [
             // a modifier avec le nom du model quand il seront creer sur la BDD
             'controller_name' => 'Tshirt',
+        ]);
+    }
+
+    /**
+     * Promo
+     * 
+     * @Route("/gallerie/promo", name="promos")
+     * 
+     * @return render
+     * 
+     */
+    public function promos()
+    {
+        return $this->render('tshirt/promos.html.twig', [
+            'controller_name' => 'Promos',
+            'evenement' => 'Noël',
         ]);
     }
 }

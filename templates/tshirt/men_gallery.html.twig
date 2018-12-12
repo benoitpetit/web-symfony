@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}T-shirts {{ controller_name }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+{# <img src="{{ path('menvisuel') }}"> #}
+
+<!-- //////////////////////// CONTENU DE LA PAGE ////////////////////////// -->
+<section class="container-fluid px-0 produit_gallery pb-3">
+    <!-- Filtres de sélection -->
+    <section class="row filter_bandeau">
+    </section>
+
+    <!-- Titre de la page -->
+    <div class="container text-center pt-5 pb-2 position-relative">
+        <div class="row d-flex justify-content-between">
+            <!-- Titre -->
+            <div class="col-8 pb-4">
+                <div class="col-12 pb-2 text-left">                   
+                    <h2>
+                        T-shirts <span class="text-bleu">{{ controller_name }}</span>
+                    </h2>
+                </div>
+                <div class="col-12">                                    
+                    <div class="separator_gallery"></div>
+                </div>
+            </div>
+
+            <!-- controllers -->
+            <div class="col-4">   
+                <nav aria-label="controller-produit py-0">
+                    <ul class="pagination d-flex justify-content-end">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Précédent</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Suivant</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>   
+                
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

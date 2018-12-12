@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }} de Noël | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+<!-- //////////////////////// CONTENU DE LA PAGE ////////////////////////// -->
+<section class="container-fluid px-0 produit_gallery pb-3">
+
+    <!-- Encart visuel -->
+    <section class="row slide_promo">
+    </section>
+
+    <!-- Titre de la page -->
+    <div class="container text-center pt-5 pb-2 position-relative">
+        <div class="row d-flex justify-content-between">
+            <!-- Titre -->
+            <div class="col-8 pb-4">
+                <div class="col-12 pb-2 text-left">                   
+                    <h2>
+                        {{ controller_name }} de <span class="text-bleu">{{ evenement }}</span>
+                    </h2>
+                </div>
+                <div class="col-12">                                    
+                    <div class="separator_gallery"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
