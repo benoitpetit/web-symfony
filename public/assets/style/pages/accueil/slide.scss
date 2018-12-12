@@ -32,10 +32,20 @@
             padding: 10px;
             display: inline-block;
 
+            
             span{
                 color: $blue;
                 @include Rob-medium-upper;
+
+                &.noel{
+                    color: #c90c0c!important;
+                }
             }
+
+            &.slogan-noel {
+                color: #3a8e06;
+            }
+
         }
 
         h5 {
@@ -50,7 +60,16 @@
                 font-size: 5rem;
                 color: $blue;
                 line-height: 5rem;
+
+                &.noel_span{
+                    color: #c90c0c;
+                }
             }
+
+            &.slogan-noel {
+                color: #3a8e06;
+            }
+
         }
 
     }
@@ -60,6 +79,21 @@
         width: auto;
     }
 }
+
+a.btn-noel {
+    background: linear-gradient(to right, #3a8e06 50%, #275f04 50%);
+    background-size: 200% 100%;
+    background-position: left bottom;
+    transition: all 200ms linear;
+    font-size: .9rem;
+    color: #fff;
+    font-family: "Roboto",sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+}
+
 
 .carousel-control-prev{
     width: 40px!important;

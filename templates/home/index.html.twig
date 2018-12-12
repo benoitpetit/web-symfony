@@ -19,19 +19,23 @@
 
             <!-- slide 01 -->
             <div class="carousel-item active">
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center ">
+                    <!-- effet de neige -->
+                    <div class="snow"></div>
+
                     <div class="carousel-caption d-none d-md-block carousel_content">
-                        <p class="title_slide">Développe un <span>style unique</span></p>
-                        <h5>Porte un T-shirt <span class="slogan_slide d-block">Original</span></h5>
+                        <p class="title_slide noel">Optez pour un look <span class="noel">original</span> pour les fêtes</p>
+                        <h5 class="slogan-noel">Notre sélection <span class="slogan_slide noel_span d-block">Spéciale Noël</span></h5>
                         <!-- BTN Découvrir -->
-                        <a href="{{ path('mengallery') }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                        <a href="{{ path('promos') }}" class="btn-decouvrir btn-noel rounded-0 mt-4 py-2 px-3">Découvrir ></a>
                     </div>
                     <!-- Shadow -->
                     <div class="container-fluid position-absolute h-100 w-100 shadow_content"></div>
                     <!-- Image du slide -->
-                    <img class="d-block slide_visuel" src="{{ asset( 'assets/images/slides/slide_home.jpg' ) }}" alt="Image du slide t-shirt originaux">
+                    <img class="d-block slide_visuel" src="{{ asset( 'assets/images/slides/slide_noel.jpg' ) }}" alt="Image du slide Promos">
                 </div>
             </div>
+
             <!-- slide 02 -->
             <div class="carousel-item">
                 <div class="d-flex justify-content-center">
