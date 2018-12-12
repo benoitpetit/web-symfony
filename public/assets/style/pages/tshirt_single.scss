@@ -1,5 +1,10 @@
 .show_tshirt{
     height: 550px;
+
+    .tshirt-visuel-home{
+        height: 550px;
+        min-height: 443px;
+    }
     
     .min_logo{
         height: 200px;
@@ -10,9 +15,7 @@
         right: 0;
     }
 }
-.see_tshirt{
-    height: 450px;
-}
+
 .price_see_tshirt{
     background-color: yellow;
 }
@@ -52,5 +55,6 @@
 
 
 .see_shirt{
+    height: 450px;
     border: white solid 5px;
 }
