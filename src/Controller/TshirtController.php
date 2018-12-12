@@ -62,17 +62,17 @@ class TshirtController extends AbstractController
     /**
      * @Route("gallerie/homme/visuel", name="menvisuel")
      */
-    public function menVisuel( TshirtService $tshirtService, $color='#5ea822' )
+    public function menVisuel( TshirtService $tshirtService, $color='#18a4d2', $motif='sass')
     {
-        return new Response( $tshirtService->menTshirt($color), 200, array( 'Content-Type' => 'image/jpeg' ) );
+        return new Response( $tshirtService->menTshirt($color, $motif), 200, array( 'Content-Type' => 'image/jpeg' ) );
     }
 
     /**
      * @Route("gallerie/femme/visuel", name="womenvisuel")
      */
-    public function womenVisuel( TshirtService $tshirtService, $color='#e52424' )
+    public function womenVisuel( TshirtService $tshirtService, $color='#e52424', $motif='idfix')
     {
-        return new Response( $tshirtService->womenTshirt($color), 200, array( 'Content-Type' => 'image/jpeg' ) );
+        return new Response( $tshirtService->womenTshirt($color, $motif), 200, array( 'Content-Type' => 'image/jpeg' ) );
     }
 
 
