@@ -62,6 +62,7 @@
 }
 
 // ---- Effet de Overlay ---- //
+
 .overlay {
     position: absolute;
     top: 0;
@@ -74,8 +75,11 @@
     transition: .4s ease-out;
 }
 
+// ---- les critères de sélection de la gallery ---- //
+
 .filter_bandeau {
     height:70px;
     background-color: $grey;
 }
+
 

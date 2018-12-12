@@ -23,7 +23,7 @@ class TshirtController extends AbstractController
     public function menGallery()
     {
         return $this->render('tshirt/men_gallery.html.twig', [
-            'controller_name' => 'Gallerie homme',
+            'controller_name' => 'homme',
         ]);
     }
 
@@ -38,7 +38,7 @@ class TshirtController extends AbstractController
     public function womenGallery()
     {
         return $this->render('tshirt/women_gallery.html.twig', [
-            'controller_name' => 'Gallerie femme',
+            'controller_name' => 'femme',
         ]);
     }
 
@@ -95,15 +95,16 @@ class TshirtController extends AbstractController
     /**
      * Promo
      * 
-     * @Route("/gallerie/promo", name="promo")
+     * @Route("/gallerie/promo", name="promos")
      * 
      * @return render
      * 
      */
-    public function promo()
+    public function promos()
     {
-        return $this->render('tshirt/promo.html.twig', [
-            'controller_name' => 'Promos de Noël',
+        return $this->render('tshirt/promos.html.twig', [
+            'controller_name' => 'Promos',
+            'evenement' => 'Noël',
         ]);
     }
 }
