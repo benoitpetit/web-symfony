@@ -54,7 +54,7 @@ class TshirtController extends AbstractController
     {
         return $this->render('tshirt/men_single_tshirt.html.twig', [
             // a modifier avec le nom du model quand il seront creer sur la BDD
-            'controller_name' => 'Détail Tshirt homme',
+            'controller_name' => 'Tshirt',
         ]);
     }
 
@@ -88,7 +88,7 @@ class TshirtController extends AbstractController
     {
         return $this->render('tshirt/women_single_tshirt.html.twig', [
             // a modifier avec le nom du model quand il seront creer sur la BDD
-            'controller_name' => 'Tshirt femme',
+            'controller_name' => 'Tshirt',
         ]);
     }
 
