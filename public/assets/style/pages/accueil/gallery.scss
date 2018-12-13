@@ -2,6 +2,9 @@
 .produit_link{
     text-decoration: none;
     
+    &.hidden-visuel {
+        overflow: hidden;
+    }
     
     .card-img-top-principale {
         z-index:100;
