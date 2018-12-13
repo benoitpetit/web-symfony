@@ -2,10 +2,10 @@ $(document).ready(function(e) {
 
 
 // $("p").hide();
-$("a").prev().hide();
+$("lire").prev().hide();
 
 
-$("a").click(function(e) {
+$("lire").click(function(e) {
   
 
 
