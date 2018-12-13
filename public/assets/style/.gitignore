@@ -17,15 +17,13 @@
 ###< symfony/web-server-bundle ###
 
 \.vscode/settings\.json
-.idea
 
 
 /.sass-cache
 .sass-cache
 .sass-cache/
 *.scssc
-*min.css.map
+*.css.map
 styles/.sass-cache/
 public/assets/style/.sasscache/
-public/assets/style/style.min.css.map
-
+public/assets/style/*.style.min.css.map
