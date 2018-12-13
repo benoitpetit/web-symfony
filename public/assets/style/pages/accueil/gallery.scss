@@ -2,6 +2,9 @@
 .produit_link{
     text-decoration: none;
     
+    &.hidden-visuel {
+        overflow: hidden;
+    }
     
     .card-img-top-principale {
         z-index:100;
@@ -82,8 +85,13 @@
 // ---- les critères de sélection de la gallery ---- //
 
 .filter_bandeau {
-    height:70px;
-    background-color: $grey;
+    height:50px;
+    background: #aa201b; /* Old browsers */
+    
+    a:hover {
+        text-decoration: none;
+        color: $white;
+    }
 }
 
 

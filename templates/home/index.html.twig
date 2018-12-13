@@ -81,7 +81,7 @@
 </section>
 
 <!-- //////////////////////// GALLERIE NOUVEAUTES PRODUITS ////////////////////////// -->
-<section class="container-fluid px-0 produit_gallery pb-3">
+<section class="container-fluid position-relative px-0 pb-3">
     <div class="container text-center pt-5 pb-2 position-relative">
 
         <!-- Titre de la section -->
@@ -103,9 +103,11 @@
                 <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
                     <a href="{{ path('mengallery') }}" class="produit_link position-relative w-100 d-flex bg-danger align-items-center">
                         <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/form_idable.png') }}" alt="Image du motif formidable">
+                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/form_idable.png') }}"
+                            alt="Image du motif formidable">
                         <div class="overlay bg-danger">
-                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/homme/tshirt_homme_form_idable.png') }}" alt="Image du t-shirt formidable" />
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/homme/tshirt_homme_form_idable.png') }}"
+                                alt="Image du t-shirt formidable" />
                         </div>
                     </a>
                 </div>
@@ -121,9 +123,11 @@
                 <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
                     <a href="{{ path('womengallery') }}" class="produit_link position-relative w-100 d-flex bg-success align-items-center">
                         <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/lorem_et_hardy.png') }}" alt="Image du motif Lorem et Hardy">
+                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/lorem_et_hardy.png') }}"
+                            alt="Image du motif Lorem et Hardy">
                         <div class="overlay bg-success">
-                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/femme/tshirt_femme_lorem_et_hardy.png') }}" alt="Image du t-shirt Lorem et Hardy" />
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/femme/tshirt_femme_lorem_et_hardy.png') }}"
+                                alt="Image du t-shirt Lorem et Hardy" />
                         </div>
                     </a>
                 </div>
@@ -139,9 +143,11 @@
                 <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
                     <a href="{{ path('mengallery') }}" class="produit_link position-relative w-100 d-flex bg-warning align-items-center">
                         <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/game_hover.png') }}" alt="Image du motif Game Hover">
+                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/game_hover.png') }}"
+                            alt="Image du motif Game Hover">
                         <div class="overlay bg-warning">
-                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/homme/tshirt_homme_game_hover.png') }}" alt="Image du t-shirt Game Hover" />
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/homme/tshirt_homme_game_hover.png') }}"
+                                alt="Image du t-shirt Game Hover" />
                         </div>
                     </a>
                 </div>
@@ -157,9 +163,11 @@
                 <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
                     <a href="{{ path('womengallery') }}" class="produit_link position-relative w-100 d-flex bg-info align-items-center">
                         <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/toggle.png') }}" alt="Image du motif Toggle toi-même">
+                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/toggle.png') }}"
+                            alt="Image du motif Toggle toi-même">
                         <div class="overlay bg-info">
-                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/femme/tshirt_femme_toggle.png') }}" alt="Image du t-shirt Toggle toi-même" />
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/femme/tshirt_femme_toggle.png') }}"
+                                alt="Image du t-shirt Toggle toi-même" />
                         </div>
                     </a>
                 </div>
@@ -169,15 +177,14 @@
                     <h5 class="price_gallery pt-2">13,00€</h5>
                 </div>
             </div>
+
         </section>
 
-        <!-- btn -->
+        <!-- btns  -->
         <div class="row position-absolute btn_motifs d-block text-center w-100">
             <a href="{{ path('mengallery') }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
-                < Nouveautés Homme
-            </a>
-            <a href="{{ path('womengallery') }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
-                Nouveautés Femme >
+                < Nouveautés Homme </a> <a href="{{ path('womengallery') }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
+                    Nouveautés Femme >
             </a>
         </div>
     </div>

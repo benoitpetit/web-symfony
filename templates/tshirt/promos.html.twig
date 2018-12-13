@@ -9,94 +9,34 @@
 
     <!-- Encart visuel -->
     <section class="row slide_promo">
-        <div class="snow"></div>  
+        <div class="snow"></div>
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center text-white">
             <h1 class="display-4 text-warning">-20%</h1>
             <p class="lead">
-                <span class="font-weight-bold text-uppercase slogan_noel">Sur notre sélection <span class="slogan_slide noel text-success">Spécial Noël</span></span><br>
+                <span class="font-weight-bold text-uppercase slogan_noel">Sur notre sélection <span class="slogan_slide noel text-success">Spécial
+                        Noël</span></span><br>
                 Valable du 15 au 28 <strong>Décembre 2018</strong>
             </p>
-        </div>  
+        </div>
     </section>
- 
-            <!-- Titre de la page -->
-            <div class="container text-center pt-5 pb-2 position-relative">
-                <div class="row d-flex justify-content-between">
-                    <!-- Titre -->
-                    <div class="col-8 pb-4">
-                        <div class="col-12 pb-2 text-left">                   
-                            <h2>
-                                {{ controller_name }} de <span class="text-bleu">{{ evenement }}</span>
-                            </h2>
-                        </div>
-                        <div class="col-12">                                    
-                            <div class="separator_gallery"></div>
-                        </div>
-                    </div>
-        
-                    <!-- controllers -->
-                    <div class="col-4">   
-                       <nav aria-label="controller-produit py-0">
-                            <ul class="pagination d-flex justify-content-end">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo; Précédent</span>
-                                        <span class="sr-only">Précédent</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">Suivant &raquo;</span>
-                                        <span class="sr-only">Suivant</span>
-                                    </a>
-                                </li>
-                            </ul>
-                       </nav>
-                    </div> 
 
-<!-- Gallerie -->
- <section class="row mb-4">
-            <!-- Produit 01 -->
-            <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                    <a href="{{ path('mengallery') }}" class="produit_link position-relative w-100 d-flex bg-success align-items-center">
-                        <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/sass.png') }}" alt="Image du motif Sensasstionel">
-                        <div class="overlay bg-success">
-                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/homme/tshirt_homme_sass.png') }}" alt="Image du t-shirt Sensasstionel" />
-                        </div>
-                    </a>
+    <!-- Titre de la page -->
+    <div class="container text-center pt-5 pb-2 position-relative">
+        <div class="row d-flex justify-content-between">
+            <!-- Titre -->
+            <div class="col-8 pb-4">
+                <div class="col-12 pb-2 text-left">
+                    <h2>
+                        {{ controller_name }} de <span class="text-bleu">{{ evenement }}</span>
+                    </h2>
                 </div>
-                <!-- Infos produit -->
-                <div class="card-body">
-                    <h3 class="title_produit_gallery">Sensasstionel</h3>
-                    <h5 class="price_gallery pb-2">13,00€</h5>
+                <div class="col-12">
+                    <div class="separator_gallery"></div>
                 </div>
             </div>
 
-            <!-- Produit 02 -->
-            <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                    <a href="{{ path('mengallery') }}" class="produit_link position-relative w-100 d-flex bg-danger align-items-center">
-                        <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/id_fix.png') }}" alt="Image du motif Id Fix">
-                        <div class="overlay bg-danger">
-                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/homme/tshirt_homme_id_fix.png') }}" alt="Image du t-shirt Id Fix" />
-                        </div>
-                    </a>
-                </div>
-                <!-- Infos produit -->
-                <div class="card-body">
-                    <h3 class="title_produit_gallery">Id Fix</h3>
-                    <h5 class="price_gallery pb-2">13,00€</h5>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- controllers -->
-        <div class="container d-flex justify-content-end">
-            <div class="col-4 px-0">
+            <!-- controllers -->
+            <div class="col-4">
                 <nav aria-label="controller-produit py-0">
                     <ul class="pagination d-flex justify-content-end">
                         <li class="page-item">
@@ -114,8 +54,74 @@
                     </ul>
                 </nav>
             </div>
-        </div>
 
+            <!-- Gallerie -->
+            <section class="row mb-4">
+                <!-- Produit 01 -->
+                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                    <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
+                        <a href="{{ path('mensingle') }}" class="produit_link position-relative w-100 d-flex bg-success hidden-visuel align-items-center">
+                            <!-- Visuel Produit -->
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/sass.png') }}"
+                                alt="Image du motif Sensasstionel">
+                            <div class="overlay bg-success">
+                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/homme/tshirt_homme_sass.png') }}"
+                                    alt="Image du t-shirt Sensasstionel" />
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Infos produit -->
+                    <div class="card-body">
+                        <h3 class="title_produit_gallery">Sensasstionel</h3>
+                        <h5 class="price_gallery pb-2">13,00€</h5>
+                    </div>
+                </div>
+
+                <!-- Produit 02 -->
+                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                    <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
+                        <a href="{{ path('mensingle') }}" class="produit_link position-relative w-100 d-flex bg-danger hidden-visuel align-items-center">
+                            <!-- Visuel Produit -->
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/id_fix.png') }}"
+                                alt="Image du motif Id Fix">
+                            <div class="overlay bg-danger">
+                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/homme/tshirt_homme_id_fix.png') }}"
+                                    alt="Image du t-shirt Id Fix" />
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Infos produit -->
+                    <div class="card-body">
+                        <h3 class="title_produit_gallery">Id Fix</h3>
+                        <h5 class="price_gallery pb-2">13,00€</h5>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- controllers -->
+            <div class="container d-flex justify-content-end">
+                <div class="col-4 px-0">
+                    <nav aria-label="controller-produit py-0">
+                        <ul class="pagination d-flex justify-content-end">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo; Précédent</span>
+                                    <span class="sr-only">Précédent</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">Suivant &raquo;</span>
+                                    <span class="sr-only">Suivant</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
 
