@@ -1,20 +1,22 @@
-
 .produit_gallery{
  
     justify-content:center;
+    overflow: hidden;
   
     .div.overflow
     {
         width: 500px;
         height: 40px;
         overflow: hidden;
-        text-overflow: ellipsis;
+        // text-overflow: ellipsis;
         white-space: nowrap;
         text-align: justify;
     }
 
     .p{
         width: 200px;
+        overflow-y: hidden;
+        text-overflow: ellipsis;
      
     }   
     
@@ -22,13 +24,13 @@
     text-align: center;
     }
 
-    .p{
-        overflow: hidden;
-    }
-
-    // .ul{
+    // .p{
     //     overflow: hidden;
     // }
+
+    // // .ul{
+    // //     overflow: hidden;
+    // // }
 
 
 .rounded-circle {
@@ -67,6 +69,11 @@ color: #fff;
 border-radius: 100%;
 outline: 0;
 background-color: #212529;
+}
+
+.overflow {
+    overflow-y: hidden;
+    text-overflow: ellipsis;
 }
 
 }
