@@ -24,6 +24,7 @@ class TshirtController extends AbstractController
     {
         return $this->render('tshirt/men_gallery.html.twig', [
             'controller_name' => 'homme',
+            'menGalleryNav' => true,
         ]);
     }
 
@@ -39,6 +40,7 @@ class TshirtController extends AbstractController
     {
         return $this->render('tshirt/women_gallery.html.twig', [
             'controller_name' => 'femme',
+            'womenGalleryNav' => true,
         ]);
     }
 
@@ -55,6 +57,7 @@ class TshirtController extends AbstractController
         return $this->render('tshirt/men_single_tshirt.html.twig', [
             // a modifier avec le nom du model quand il seront creer sur la BDD
             'controller_name' => 'Tshirt',
+            'menSingleNav' => true,
         ]);
     }
 
@@ -62,7 +65,7 @@ class TshirtController extends AbstractController
     /**
      * @Route("gallerie/homme/visuel", name="menvisuel")
      */
-    public function menVisuel( TshirtService $tshirtService, $color='#18a4d2', $motif='sass')
+    public function menVisuel( TshirtService $tshirtService, $color='#18a4d2', $motif='game_hover')
     {
         return new Response( $tshirtService->menTshirt($color, $motif), 200, array( 'Content-Type' => 'image/jpeg' ) );
     }
@@ -89,6 +92,7 @@ class TshirtController extends AbstractController
         return $this->render('tshirt/women_single_tshirt.html.twig', [
             // a modifier avec le nom du model quand il seront creer sur la BDD
             'controller_name' => 'Tshirt',
+            'womenSingleNav' => true,
         ]);
     }
 

@@ -27,14 +27,10 @@ class Color
     private $colorHexa;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="datetime")
      */
-    private $quantity;
+    private $createdDate;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getColorName(): ?string
     {
@@ -60,14 +56,14 @@ class Color
         return $this;
     }
 
-    public function getQuantity(): ?int
+    public function getCreatedDate(): ?\DateTimeInterface
     {
-        return $this->quantity;
+        return $this->createdDate;
     }
 
-    public function setQuantity(int $quantity): self
+    public function setCreatedDate(\DateTimeInterface $createdDate): self
     {
-        $this->quantity = $quantity;
+        $this->createdDate = $createdDate;
 
         return $this;
     }

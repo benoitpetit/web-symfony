@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\GenderRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\RateRepository")
  */
-class Gender
+class Rate
 {
     /**
      * @ORM\Id()
@@ -17,14 +17,14 @@ class Gender
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="datetime")
      */
-    private $men;
+    private $RateDateStart;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="datetime", nullable=true)
      */
-    private $women;
+    private $rateDateEnd;
 
     /**
      * @ORM\Column(type="datetime")
@@ -36,26 +36,26 @@ class Gender
         return $this->id;
     }
 
-    public function getMen(): ?string
+    public function getRateDateStart(): ?\DateTimeInterface
     {
-        return $this->men;
+        return $this->RateDateStart;
     }
 
-    public function setMen(string $men): self
+    public function setRateDateStart(\DateTimeInterface $RateDateStart): self
     {
-        $this->men = $men;
+        $this->RateDateStart = $RateDateStart;
 
         return $this;
     }
 
-    public function getWomen(): ?string
+    public function getRateDateEnd(): ?\DateTimeInterface
     {
-        return $this->women;
+        return $this->rateDateEnd;
     }
 
-    public function setWomen(string $women): self
+    public function setRateDateEnd(?\DateTimeInterface $rateDateEnd): self
     {
-        $this->women = $women;
+        $this->rateDateEnd = $rateDateEnd;
 
         return $this;
     }

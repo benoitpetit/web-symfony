@@ -6,16 +6,35 @@
 
 
 <div class="container mt-5">
+
     <div class="row">
-        <div class="col-sm-12 col-md-6">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-transparent">
+                    <li class="breadcrumb-item"><a href="{{ path('home') }}">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('mengallery') }}">{{ controller_name }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Game-Hover</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-6 big-encart">
             <!-- image en grand -->
-            <div class="show_tshirt w-100 position-relative bg-dark d-flex justify-content-center p-0">
+            <div class="show_tshirt w-100 position-relative d-flex justify-content-start p-0">
 
                 <div class="position-relative">
-                    <img src="{{ path('menvisuel') }}" class="tshirt-visuel-home">
+                    <a href="">
+                        <img src="{{ path('menvisuel') }}" class="tshirt-visuel-home">
+                    </a>
                     <!-- petit logo -->
-                    <div class="min_logo position-absolute bg-success">
-                        <img src="../../public/assets/images/motifs/game_hover.svg" class="w-100">
+                    <div class="min_logo position-absolute bg-info">
+                        <a href="#" class="h-100 align-items-center d-flex">
+                            <img src="{{ asset('assets/images/motifs/game_hover.png') }}" class="w-100">
+                        </a>
                     </div>
                 </div>
 
