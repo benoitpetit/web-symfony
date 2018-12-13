@@ -9,11 +9,11 @@
 <section class="container-fluid px-0 produit_gallery pt-5 pb-2 ">
 
     <!-- Titre de la page -->
-        <div class="container text-center pt-2 pb-2 position-relative">
+        <div class="container text-center pt-1 pb-1 position-relative">
             <div class="row d-flex justify-content-between">
                 <!-- Titre -->
-                <div class="col-8 pb-2">
-                    <div class="col-12 pb-2 text-left">                   
+                <div class="col-8 pb-1">
+                    <div class="col-12 pb-1 text-left">                   
                         <h2>
                            Nos <span class="text-bleu">{{ controller_name }}</span>
                         </h2>
@@ -28,12 +28,18 @@
         <div class="row justify-content-center ">
           <div class="col-lg-12 text-center"><br/>
             <h2 class="section-heading text-uppercase mb-5">Notre Team de Créatifs</h2>
-            <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
+        
           </div>
         </div>
+       
         <div class="row justify-content-center">
+
+         {# Benoit Petit #}
+
+
           <div class="col-sm-2 justify-content-center text-center">
             <div class="team-member justify-content-center">
+              
               <img class="mx-auto rounded-circle" src="{{ asset('./assets/images/designers/Benoit.png') }}" alt="Avatar de Benoit Petit">
               <h4>Benoit Petit</h4>
               <p class="text-muted">Designer</p>
@@ -54,13 +60,19 @@
                   </a>
                 </li>
               </ul>
-              <p class="text-muted text-justify pl-3 pr-3 overflow-hidden;">Une nuit noire et glacée, comme toutes les autres à Gotham City. Il y a de l’agitation dans les rues et les sirènes 
-de polices retentissent un peu partout. Au dessus de tout ce chaos, un homme, sur le toit d’un building, scrute le ciel. 
-Il porte un masque noir et une cape qui flotte au vent. Soudain, un faisceau lumineux dessine une chauve-souris dans le ciel. 
-C’est le signal, enfin. L’homme s’élance du toit et fonce livrer une guerre impitoyable. Cet homme, c’est Bat'ben. 
-Un superhéros la nuit qui, le jour, mène une existence de développeur web, sous l’identité de Benoit P...</p>
+              <p class="text-muted text-justify pl-3 pr-3">Une nuit noire et glacée, comme toutes les autres à Gotham City. Il y a de l’agitation dans les rues et les sirènes 
+                  de polices retentissent un peu partout. Au dessus de tout ce chaos, un homme, sur le toit d’un building, scrute le ciel. 
+                  Il porte un masque noir et une cape qui flotte au vent.</p>
+              <p class="text-muted text-justify pl-3 pr-3">Soudain, un faisceau lumineux dessine une chauve-souris dans le ciel. 
+              C’est le signal, enfin. L’homme s’élance du toit et fonce livrer une guerre impitoyable. Cet homme, c’est Bat'ben. 
+              Un superhéros la nuit qui, le jour, mène une existence de développeur web, sous l’identité de Benoit P...</p>
+              <a href="#">Lire la suite</a>
+
             </div>
           </div>
+
+
+          {# Gaelle Runel #}
           <div class="col-sm-2 text-center">
             <div class="team-member">
               <img class="mx-auto rounded-circle" src="{{ asset('./assets/images/designers/Gaelle.png') }}" alt="Avatar de Gaelle Runel">
@@ -83,15 +95,21 @@ Un superhéros la nuit qui, le jour, mène une existence de développeur web, so
                   </a>
                 </li>
               </ul>
+                
               <p class="text-muted text-justify pl-3 pr-3">L’histoire de Gaelle débute très loin d’ici, sur l’île de Themyscira, surnommée l’île du paradis, au sein d’une 
-société d’Amazones dirigée par la reine Hippolyte. Elevée par la reine comme sa propre fille, la légende dit qu’elle a 
-en fait été créée par les dieux à base d’argile afin de lutter contre le mal. Ces derniers lui conférèrent de nombreux 
-pouvoirs à cette fin. 
-C’est ainsi, qu’après avoir été entraînée pour être une guerrière impossible à conquérir, elle quitte son foyer pour 
-partir à la découverte du monde et combattre le crime, sous le nom de Wonder Gaga, tout en travaillant comme 
-développeuse Web.</p>
+                  société d’Amazones dirigée par la reine Hippolyte. Elevée par la reine comme sa propre fille, la légende dit qu’elle a 
+                en fait été créée par les dieux à base d’argile afin de lutter contre le mal</p>
+              <p class="text-muted text-justify pl-3 pr-3">Ces derniers lui conférèrent de nombreux pouvoirs à cette fin. 
+              C’est ainsi, qu’après avoir été entraînée pour être une guerrière impossible à conquérir, elle quitte son foyer pour 
+              partir à la découverte du monde et combattre le crime, sous le nom de Wonder Gaga, tout en travaillant comme 
+              développeuse Web.</p>
+               <a href="#">Lire la suite</a>
+                      
             </div>
           </div>
+
+
+            {# Sebastien Renoult #}
             <div class="col-sm-2 text-center">
             <div class="team-member">
               <img class="mx-auto rounded-circle" src="{{ asset('./assets/images/designers/Sebastien.png') }}" alt="Avatar de Sebastien Renoult">
@@ -114,16 +132,23 @@ développeuse Web.</p>
                   </a>
                 </li>
               </ul>
+
+
               <p class="text-muted text-justify pl-3 pr-3">
-Smallville, Kansas. Une petite ville bien tranquille où il fait bon grandir. 
-C’est là que le petit Sébastien R. a été trouvé bébé dans un champs par un jeune couple. 
-Sa capsule venait de s’écraser sur Terre...
-Devenu adulte, Korel, de son nom kryptonien, quitte Smallville pour la grande ville de Métropolis où tout le monde 
-pensait qu’il deviendrait un brillant journaliste. Mais le destin de Sébastien, outre celui de sauver le monde, 
-était de devenir designer et developpeur web. Et il ne menageait d’ailleurs pas ses efforts pour y arriver. 
-Jusqu’au jour où il découvrit un centre de superhéros, bien caché aux yeux du monde. Son nom... WebForce3.</p>
+                Smallville, Kansas. Une petite ville bien tranquille où il fait bon grandir. 
+                C’est là que le petit Sébastien R. a été trouvé bébé dans un champs par un jeune couple. 
+                Sa capsule venait de s’écraser sur Terre...
+                Devenu adulte, Korel, de son nom kryptonien, quitte Smallville pour la grande ville de Métropolis
+              <p class="text-muted text-justify pl-3 pr-3">où tout le monde 
+              pensait qu’il deviendrait un brillant journaliste. Mais le destin de Sébastien, outre celui de sauver le monde, 
+              était de devenir designer et developpeur web. Et il ne menageait d’ailleurs pas ses efforts pour y arriver. 
+              Jusqu’au jour où il découvrit un centre de superhéros, bien caché aux yeux du monde. Son nom... WebForce3.</p>
+              <a href="#">Lire la suite</a>
             </div>
           </div>
+
+
+            {# Christophe Deguillage #}
             <div class="col-sm-2 text-center">
             <div class="team-member">
               <img class="mx-auto rounded-circle" src="{{ asset('./assets/images/designers/Christophe.png') }}" alt="Avatar de Christophe Deguillage">
@@ -136,25 +161,29 @@ Jusqu’au jour où il découvrit un centre de superhéros, bien caché aux yeux
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="https://www.linkedin.com/in/christophe-deguillage-4863518/"  target="_blank">
+                  <a href="https://www.facebook.com" target="_blank">
                     <i class="fab fa-facebook-f"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#">
+                   <a href="https://www.linkedin.com/in/christophe-deguillage-4863518/"  target="_blank">
                     <i class="fab fa-linkedin-in"></i>
                   </a>
                 </li>
               </ul>
               <p class="text-muted text-justify pl-3 pr-3">Dans les bureaux de La Star Tower, il ne s’ennuie jamais.
-Cet industriel flamboyant,  inventeur brillant et imaginatif, met sa fortune et son génie au service de la recherche 
-technologique. Cet homme, c’est Chris Stark. Mais pas seulement. Iron Chris, le super héros connu de tous, et lui, 
-ne sont en réalité qu’une seule et même personne. Parfait accord entre l’homme et la machine.
-Et face à la pression du gouvernement pour qu'il partage sa technologie avec l'armée, et les ennemis de l’humanité 
-qui le harcèlent sans relache, Chris lutte tous le jours et de toutes ses forces et protéger le monde et les secrets 
-de son armure, un véritable bijou de technologie.</p>
+                Cet industriel flamboyant,  inventeur brillant et imaginatif, met sa fortune et son génie au service de la recherche 
+                technologique. Cet homme, c’est Chris Stark. Mais pas seulement. </p>
+              <p class="text-muted text-justify pl-3 pr-3"> Iron Chris, le super héros connu de tous, et lui, ne sont en réalité qu’une seule et même personne. Parfait accord entre l’homme et la machine.
+              Et face à la pression du gouvernement pour qu'il partage sa technologie avec l'armée, et les ennemis de l’humanité 
+              qui le harcèlent sans relache, Chris lutte tous le jours et de toutes ses forces et protéger le monde et les secrets 
+              de son armure, un véritable bijou de technologie.</p>
+              <a href="#">Lire la suite</a>
             </div>
           </div>
+
+
+          {# Nathan Prigent #}
           <div class="col-sm-2 text-center">
             <div class="team-member">
               <img class="mx-auto rounded-circle" src="{{ asset('./assets/images/designers/Nathan.png') }}" alt="Avatar de Nathan Prigent">
@@ -178,14 +207,15 @@ de son armure, un véritable bijou de technologie.</p>
                 </li>
               </ul>
               <p class="text-muted text-justify pl-3 pr-3">Combattant aguerri revenu des croisades, Nathan de Locksley, regagne son pays natal et y prend la tête d’une 
-audacieuse révolte contre la corruption des institutions. 
-Caché dans la forêt de Sherwood, celui que tout le monde surnomme Nathan Wood, reste insaisissable et défie 
-les oppresseurs du peuple qui se tapissent dans l’ombre.
-Armé de son ordinateur portable, il livre une bataille féroce contre les riches hackers qui pillent l’argent des 
-honnêtes gens. Assoiffé d’égalité et de revanche, son seul et unique mot d’ordre, en tout lieux et tout temps, 
-demeurre de voler aux riches pour donner aux pauvres.</p>
+              audacieuse révolte contre la corruption des institutions. 
+              Caché dans la forêt de Sherwood, celui que tout le monde surnomme Nathan Wood,</p><p class="text-muted text-justify pl-3 pr-3"> reste insaisissable et défie les oppresseurs du peuple qui se tapissent dans l’ombre.Armé de son ordinateur portable, il livre une bataille féroce contre les riches hackers qui pillent l’argent des 
+              honnêtes gens. Assoiffé d’égalité et de revanche, son seul et unique mot d’ordre, en tout lieux et tout temps, 
+              demeurre de voler aux riches pour donner aux pauvres.</p>
+              <a href="#">Lire la suite</a>
+                  
             </div>
           </div>
+        </div>
         </div>
         <div class="row">
           <div class="col-lg-8 mx-auto text-center mt-5">

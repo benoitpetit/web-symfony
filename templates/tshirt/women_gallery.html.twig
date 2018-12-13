@@ -7,12 +7,20 @@
 <!-- //////////////////////// CONTENU DE LA PAGE ////////////////////////// -->
 <section class="container-fluid px-0 produit_gallery pb-3">
     <!-- Filtres de sélection -->
-    <section class="row filter_bandeau">
+    <section class="row filter_bandeau d-flex justify-content-center align-items-center ">
+            <a href="{{ path('promos') }}" class="lead mb-0 promo-slogan">
+                <i class="fas fa-holly-berry px-3 text-white"></i>
+                <span class=" text-warning">Profite de notre sélection de produits 
+                    <span class="slogan_slide text-uppercase font-weight-bold text-success">Spécial Noël</span>
+                </span>
+                <i class="fas fa-holly-berry px-3 text-white"></i>
+            </a>
     </section>
 
     <!-- Titre de la page -->
     <div class="container text-center pt-5 pb-2 position-relative">
         <div class="row d-flex justify-content-between">
+
             <!-- Titre -->
             <div class="col-8 pb-4">
                 <div class="col-12 pb-2 text-left">                   
@@ -27,187 +35,94 @@
 
             <!-- controllers -->
             <div class="col-4">   
-                    <nav aria-label="controller-produit py-0">
-                        <ul class="pagination d-flex justify-content-end">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo; Précédent</span>
-                                    <span class="sr-only">Précédent</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">Suivant &raquo;</span>
-                                    <span class="sr-only">Suivant</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div> 
-                
-                
+                      <nav aria-label="controller-produit py-0">
+                    <ul class="pagination d-flex justify-content-end">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo; Précédent</span>
+                                <span class="sr-only">Précédent</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">Suivant &raquo;</span>
+                                <span class="sr-only">Suivant</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div> 
+            
             <!-- Gallerie -->
             <section class="row mb-4">
-                <!-- Produit 01 -->
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                    <a href="{{ path('womensingle') }}" class="produit_link position-relative">
-                        <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
-                        <div class="overlay">
-                            <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
+                    <!-- Produit 01 -->
+                    <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                        <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
+                            <a href="{{ path('womensingle') }}" class="produit_link position-relative w-100 d-flex bg-info hidden-visuel align-items-center">
+                                <!-- Visuel Produit -->
+                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/li_bell_ul.png') }}"
+                                    alt="Image du motif Li bell ul">
+                                <div class="overlay bg-info">
+                                    <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/femme/tshirt_femme_li_bell_ul.png') }}"
+                                        alt="Image du t-shirt Li bell ul" />
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                    <!-- Infos produit -->
-                    <div class="card-body">
-                        <h3 class="title_produit_gallery">Sass</h3>
-                        <h5 class="price_gallery pb-2">13,00€</h5>
+                        <!-- Infos produit -->
+                        <div class="card-body">
+                            <h3 class="title_produit_gallery">Li bell ul</h3>
+                            <h5 class="price_gallery pb-2">13,00€</h5>
+                        </div>
+                    </div>
+    
+                    <!-- Produit 02 -->
+                    <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                        <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
+                            <a href="{{ path('womensingle') }}" class="produit_link position-relative w-100 d-flex bg-warning hidden-visuel align-items-center">
+                                <!-- Visuel Produit -->
+                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/lorem_et_hardy.png') }}"
+                                    alt="Image du motif Lorem et Hardy">
+                                <div class="overlay bg-warning">
+                                    <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/femme/tshirt_femme_lorem_et_hardy.png') }}"
+                                        alt="Image du t-shirt Lorem et Hardy" />
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Infos produit -->
+                        <div class="card-body">
+                            <h3 class="title_produit_gallery">Lorem et Hardy</h3>
+                            <h5 class="price_gallery pb-2">13,00€</h5>
+                        </div>
+                    </div>
+    
+                </section>
+    
+                <!-- controllers -->
+                <div class="container d-flex justify-content-end">
+                    <div class="col-4 px-0">
+                        <nav aria-label="controller-produit py-0">
+                            <ul class="pagination d-flex justify-content-end">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo; Précédent</span>
+                                        <span class="sr-only">Précédent</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">Suivant &raquo;</span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
-    
-                <!-- Produit 02 -->
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                    <a href="{{ path('womensingle') }}" class="produit_link position-relative">
-                        <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
-                        <div class="overlay">
-                            <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
-                        </div>
-                    </a>
-                    <!-- Infos produit -->
-                    <div class="card-body">
-                        <h3 class="title_produit_gallery">Id Fix</h3>
-                        <h5 class="price_gallery pb-2">13,00€</h5>
-                    </div>
-                </div>
-    
-                <!-- Produit 03 -->
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                    <a href="{{ path('womensingle') }}" class="produit_link position-relative">
-                        <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
-                        <div class="overlay">
-                            <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
-                        </div>
-                    </a>
-                    <!-- Infos produit -->
-                    <div class="card-body">
-                        <h3 class="title_produit_gallery">Lorem et Hardy</h3>
-                        <h5 class="price_gallery pb-2">13,00€</h5>
-                    </div>
-                </div>
-    
-                <!-- Produit 04 -->
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                    <a href="{{ path('womensingle') }}" class="produit_link position-relative">
-                        <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
-                        <div class="overlay">
-                            <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
-                        </div>
-                    </a>
-                    <!-- Infos produit -->
-                    <div class="card-body">
-                        <h3 class="title_produit_gallery">Getter Setter</h3>
-                        <h5 class="price_gallery pb-2">13,00€</h5>
-                    </div>
-                </div>
-    
-                <!-- Produit 05 -->
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                    <a href="{{ path('womensingle') }}" class="produit_link position-relative">
-                        <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
-                        <div class="overlay">
-                            <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
-                        </div>
-                    </a>
-                    <!-- Infos produit -->
-                    <div class="card-body">
-                        <h3 class="title_produit_gallery">Entre quote</h3>
-                        <h5 class="price_gallery pb-2">13,00€</h5>
-                    </div>
-                </div>
-    
-                <!-- Produit 06 -->
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                    <a href="{{ path('womensingle') }}" class="produit_link position-relative">
-                        <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
-                        <div class="overlay">
-                            <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
-                        </div>
-                    </a>
-                    <!-- Infos produit -->
-                    <div class="card-body">
-                        <h3 class="title_produit_gallery">Class ik</h3>
-                        <h5 class="price_gallery pb-2">13,00€</h5>
-                    </div>
-                </div>
-    
-                <!-- Produit 07 -->
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                    <a href="{{ path('womensingle') }}" class="produit_link position-relative">
-                        <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
-                        <div class="overlay">
-                            <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
-                        </div>
-                    </a>
-                    <!-- Infos produit -->
-                    <div class="card-body">
-                        <h3 class="title_produit_gallery">Li bell ul</h3>
-                        <h5 class="price_gallery pb-2">13,00€</h5>
-                    </div>
-                </div>
-    
-                <!-- Produit 08 -->
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                    <a href="{{ path('womensingle') }}" class="produit_link position-relative">
-                        <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
-                        <div class="overlay">
-                            <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
-                        </div>
-                    </a>
-                    <!-- Infos produit -->
-                    <div class="card-body">
-                        <h3 class="title_produit_gallery">Toggle toi-même</h3>
-                        <h5 class="price_gallery pb-2">13,00€</h5>
-                    </div>
-                </div>
-    
-    
-            </section>
-
-
-        <!--  ///////////////////////////////////////////////////////////////////////////////////////  -->
-        
-            <!-- controllers -->
-            <div class="container d-flex justify-content-end">
-                <div class="col-4 px-0">   
-                    <nav aria-label="controller-produit py-0">
-                        <ul class="pagination d-flex justify-content-end">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo; Précédent</span>
-                                    <span class="sr-only">Précédent</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">Suivant &raquo;</span>
-                                    <span class="sr-only">Suivant</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div> 
-            </div>
-        
-                    
-            </div>
+            
         </div>
-    
-    </section>
-    
+    </div>
+
+</section>
+
+
 {% endblock %}

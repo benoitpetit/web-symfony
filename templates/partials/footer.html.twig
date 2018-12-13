@@ -28,7 +28,7 @@
             <div class="col-md-3">
                 <span> DEV my Shirts </span>
                 <ul>
-                    {# <li><a href="#"> A propos de nous </a></li> #}
+                    <li><a href="{{ path('about') }}"> A propos de nous </a></li>
                     <li><a href="{{ path('about') }}"> Nos designers </a></li>
                     <li><a href="{{ path('contact') }}"> Contact </a></li>
                     <li><a href="{{ path('contact') }}"> Boîte à idées </a></li>
@@ -37,9 +37,9 @@
             <div class="col-md-3">
                 <span> Services </span>
                 <ul>
-                    <li><a href="{{ path('infopl') }}"> Modes de livraison </a></li>
-                    <li><a href="{{ path('infopl') }}"> Modes de paiement </a></li>
-                    <li><a href="{{ path('infopl') }}"> Garantie Satisfaction </a></li>
+                    <li><a href="{{ path('infopl') }} "> Modes de livraison </a></li>
+                    <li><a href="{{ path('infopl', {'_fragment': 'pay'}) }}"> Modes de paiement </a></li>
+                    <li><a href="{{ path('infopl', {'_fragment': 'satisf'}) }}"> Garantie Satisfaction </a></li>
                 </ul>
             </div>
             <div class="col-md-3">
@@ -47,7 +47,7 @@
                 <ul>
                     <li><a href="{{ path('mengallery') }}"> T-Shirts Homme</a></li>
                     <li><a href="{{ path('womengallery') }}"> T-Shirts Femme</a></li>
-                    <li><a href="{{ path('login') }}"> Mon compte </a></li>
+                    <li><a href="#"> Mon compte </a></li>
                     <li><a href="{{ path('faq') }}"> FAQ </a></li>
                 </ul>
             </div>
@@ -56,7 +56,7 @@
                 <ul>
                     <li><a href="{{ path('rgpd') }}"> Protection des données </a></li>
                     <li><a href="{{ path('cgv') }}"> CGV </a></li>
-                    <li><a href="#"> Mentions légales </a></li>
+                    <li><a href="{{ path('cgv') }}"> Mentions légales </a></li>
                 </ul>
             </div>
         </div>

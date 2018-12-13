@@ -1,35 +1,20 @@
 
 .produit_gallery{
- 
+
     justify-content:center;
-  
-    .div.overflow
-    {
-        width: 500px;
-        height: 40px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        text-align: justify;
-    }
 
     .p{
         width: 200px;
-     
+        height: 200px;
     }   
     
     .h4 {
     text-align: center;
     }
 
-    .p{
-        overflow: hidden;
+    .card-body{
+      
     }
-
-    // .ul{
-    //     overflow: hidden;
-    // }
-
 
 .rounded-circle {
     border-radius: 50%!important;
@@ -42,18 +27,10 @@
     vertical-align: middle;
     border-style: none;
 }
-*, ::after, ::before {
-    box-sizing: border-box;
-}
-
-// .row{
-//     justify-content:center;
-// }
-
-
 // *, ::after, ::before {
 //     box-sizing: border-box;
 // }
+
 
 .i {
 font-size: 20px;
@@ -69,4 +46,7 @@ outline: 0;
 background-color: #212529;
 }
 
+
 }
+
+// style="height:190px;overflow: hidden;"
