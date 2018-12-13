@@ -19,19 +19,23 @@
 
             <!-- slide 01 -->
             <div class="carousel-item active">
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center ">
+                    <!-- effet de neige -->
+                    <div class="snow"></div>
+
                     <div class="carousel-caption d-none d-md-block carousel_content">
-                        <p class="title_slide">Développe un <span>style unique</span></p>
-                        <h5>Porte un T-shirt <span class="slogan_slide d-block">Original</span></h5>
+                        <p class="title_slide noel">Optez pour un look <span class="noel">original</span> pour les fêtes</p>
+                        <h5 class="slogan-noel">Notre sélection <span class="slogan_slide noel_span d-block">Spéciale Noël</span></h5>
                         <!-- BTN Découvrir -->
-                        <a href="{{ path('mengallery') }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                        <a href="{{ path('promos') }}" class="btn-decouvrir btn-noel rounded-0 mt-4 py-2 px-3">Découvrir ></a>
                     </div>
                     <!-- Shadow -->
                     <div class="container-fluid position-absolute h-100 w-100 shadow_content"></div>
                     <!-- Image du slide -->
-                    <img class="d-block slide_visuel" src="{{ asset( 'assets/images/slides/slide_home.jpg' ) }}" alt="Image du slide t-shirt originaux">
+                    <img class="d-block slide_visuel" src="{{ asset( 'assets/images/slides/slide_noel.jpg' ) }}" alt="Image du slide Promos">
                 </div>
             </div>
+
             <!-- slide 02 -->
             <div class="carousel-item">
                 <div class="d-flex justify-content-center">
@@ -96,65 +100,73 @@
         <section class="row mb-4">
             <!-- Produit 01 -->
             <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                <a href="{{ path('mengallery') }}" class="produit_link position-relative">
-                    <!-- Visuel Produit -->
-                    <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
-                    <div class="overlay">
-                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
-                    </div>
-                </a>
+                <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
+                    <a href="{{ path('mengallery') }}" class="produit_link position-relative w-100 d-flex bg-danger align-items-center">
+                        <!-- Visuel Produit -->
+                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/form_idable.png') }}" alt="Image du motif formidable">
+                        <div class="overlay bg-danger">
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/homme/tshirt_homme_form_idable.png') }}" alt="Image du t-shirt formidable" />
+                        </div>
+                    </a>
+                </div>
                 <!-- Infos produit -->
                 <div class="card-body">
-                    <h3 class="title_produit_gallery">Game Hover</h3>
-                    <h5 class="price_gallery pt-2">25,00€</h5>
+                    <h3 class="title_produit_gallery">Form idable</h3>
+                    <h5 class="price_gallery pt-2">13,00€</h5>
                 </div>
             </div>
 
             <!-- Produit 02 -->
             <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                <a href="{{ path('mengallery') }}" class="produit_link position-relative">
-                    <!-- Visuel Produit -->
-                    <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
-                    <div class="overlay">
-                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
-                    </div>
-                </a>
+                <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
+                    <a href="{{ path('womengallery') }}" class="produit_link position-relative w-100 d-flex bg-success align-items-center">
+                        <!-- Visuel Produit -->
+                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/lorem_et_hardy.png') }}" alt="Image du motif Lorem et Hardy">
+                        <div class="overlay bg-success">
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/femme/tshirt_femme_lorem_et_hardy.png') }}" alt="Image du t-shirt Lorem et Hardy" />
+                        </div>
+                    </a>
+                </div>
                 <!-- Infos produit -->
                 <div class="card-body">
-                    <h3 class="title_produit_gallery">Game Hover</h3>
-                    <h5 class="price_gallery pt-2">25,00€</h5>
+                    <h3 class="title_produit_gallery">Lorem et Hardy</h3>
+                    <h5 class="price_gallery pt-2">13,00€</h5>
                 </div>
             </div>
 
             <!-- Produit 03 -->
             <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                <a href="{{ path('womengallery') }}" class="produit_link position-relative">
-                    <!-- Visuel Produit -->
-                    <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
-                    <div class="overlay">
-                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
-                    </div>
-                </a>
+                <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
+                    <a href="{{ path('mengallery') }}" class="produit_link position-relative w-100 d-flex bg-warning align-items-center">
+                        <!-- Visuel Produit -->
+                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/game_hover.png') }}" alt="Image du motif Game Hover">
+                        <div class="overlay bg-warning">
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/homme/tshirt_homme_game_hover.png') }}" alt="Image du t-shirt Game Hover" />
+                        </div>
+                    </a>
+                </div>
                 <!-- Infos produit -->
                 <div class="card-body">
                     <h3 class="title_produit_gallery">Game Hover</h3>
-                    <h5 class="price_gallery pt-2">25,00€</h5>
+                    <h5 class="price_gallery pt-2">13,00€</h5>
                 </div>
             </div>
 
             <!-- Produit 04 -->
             <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                <a href="{{ path('womengallery') }}" class="produit_link position-relative">
-                    <!-- Visuel Produit -->
-                    <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du motif gamehover">
-                    <div class="overlay">
-                        <img class="card-img-top rounded-0" src="https://place-hold.it/300x400" alt="Image du t-shirt gamehover" />
-                    </div>
-                </a>
+                <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
+                    <a href="{{ path('womengallery') }}" class="produit_link position-relative w-100 d-flex bg-info align-items-center">
+                        <!-- Visuel Produit -->
+                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/toggle.png') }}" alt="Image du motif Toggle toi-même">
+                        <div class="overlay bg-info">
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/femme/tshirt_femme_toggle.png') }}" alt="Image du t-shirt Toggle toi-même" />
+                        </div>
+                    </a>
+                </div>
                 <!-- Infos produit -->
                 <div class="card-body">
-                    <h3 class="title_produit_gallery">Game Hover</h3>
-                    <h5 class="price_gallery pt-2">25,00€</h5>
+                    <h3 class="title_produit_gallery">Toggle toi-même</h3>
+                    <h5 class="price_gallery pt-2">13,00€</h5>
                 </div>
             </div>
         </section>
