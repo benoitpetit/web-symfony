@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\GenderRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ProductTypeRepository")
  */
-class Gender
+class ProductType
 {
     /**
      * @ORM\Id()
@@ -19,12 +19,7 @@ class Gender
     /**
      * @ORM\Column(type="string", length=45)
      */
-    private $men;
-
-    /**
-     * @ORM\Column(type="string", length=45)
-     */
-    private $women;
+    private $productType;
 
     /**
      * @ORM\Column(type="datetime")
@@ -36,26 +31,14 @@ class Gender
         return $this->id;
     }
 
-    public function getMen(): ?string
+    public function getProductType(): ?string
     {
-        return $this->men;
+        return $this->productType;
     }
 
-    public function setMen(string $men): self
+    public function setProductType(string $productType): self
     {
-        $this->men = $men;
-
-        return $this;
-    }
-
-    public function getWomen(): ?string
-    {
-        return $this->women;
-    }
-
-    public function setWomen(string $women): self
-    {
-        $this->women = $women;
+        $this->productType = $productType;
 
         return $this;
     }

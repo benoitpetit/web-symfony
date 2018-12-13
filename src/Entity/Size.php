@@ -21,6 +21,11 @@ class Size
      */
     private $size;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdDate;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +39,18 @@ class Size
     public function setSize(string $size): self
     {
         $this->size = $size;
+
+        return $this;
+    }
+
+    public function getCreatedDate(): ?\DateTimeInterface
+    {
+        return $this->createdDate;
+    }
+
+    public function setCreatedDate(\DateTimeInterface $createdDate): self
+    {
+        $this->createdDate = $createdDate;
 
         return $this;
     }

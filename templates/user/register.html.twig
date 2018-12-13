@@ -3,8 +3,9 @@
 {% block title %}{{ parent() }}
 {% endblock %}
 
-{% block displayArray %}
+{% block body %}
 {{ dump(form) }}
+{{ dump(app.user) }}
     <br /><br />
     <h4>Inscription</h4>
 
@@ -15,40 +16,32 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                {{ form_row ( form.firstname ) }}
+                {{ form_row ( form.username ) }}
+            </div>
+            <div class="col-6">
+                {{ form_row ( form.plainpassword ) }}
             </div>
         </div>
         <div class="row">
+            <div class="col-6">
+                {{ form_row ( form.firstname ) }}
+            </div>
             <div class="col-6">
                 {{ form_row ( form.lastname ) }}
             </div>
         </div>
-          </div>
         <div class="row">
             <div class="col-6">
                 {{ form_row ( form.email ) }}
             </div>
-        </div>
-        <div class="row">
             <div class="col-6">
                 {{ form_row ( form.phone ) }}
             </div>
-      
-        <div class="row">
-            <div class="col-6">
-                {{ form_row ( form.password ) }}
-            </div>
         </div>
-        {# <div class="row">
-            <div class="col-6">
-                {{ form_row ( form.roles ) }}
-            </div>
-        </div> #}
-
-        {# {{form_widget(form) }} #}
         <div class="row text-center">
             <div class="col-6">
-                <button type="submit">Créer votre compte</button>
+                {# <button type="submit">Créer votre compte</button> #}
+                {{ form_row ( form.submit ) }}
             </div>
         </div>
     </div>
