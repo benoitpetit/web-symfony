@@ -31,6 +31,7 @@ class HomeController extends AbstractController
     public function about(){
         return $this->render('home/about.html.twig', [
             'controller_name' => 'Designers',
+            'aboutNav' => true,
         ]);
     }
 }
