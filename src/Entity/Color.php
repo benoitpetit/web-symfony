@@ -26,16 +26,6 @@ class Color
      */
     private $colorHexa;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $quantity;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function getColorName(): ?string
     {
         return $this->colorName;
@@ -60,15 +50,4 @@ class Color
         return $this;
     }
 
-    public function getQuantity(): ?int
-    {
-        return $this->quantity;
-    }
-
-    public function setQuantity(int $quantity): self
-    {
-        $this->quantity = $quantity;
-
-        return $this;
-    }
 }
