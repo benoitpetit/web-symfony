@@ -7,56 +7,60 @@
 <!-- //////////////////////// CONTENU DE LA PAGE ////////////////////////// -->
 <section class="container-fluid px-0 produit_gallery pb-3">
     <!-- Bandeau Noel -->
-    <section class="row filter_bandeau d-flex justify-content-center align-items-center ">
-            <a href="{{ path('promos') }}" class="lead mb-0 promo-slogan d-flex">
-                <i class="fas fa-holly-berry px-3 text-white"></i>
+    <section class="row filter_bandeau d-flex justify-content-center align-items-center mx-0">
+            <a href="{{ path('promos') }}" class="lead mb-0 promo-slogan d-flex text-center py-3">
+                <i class="fas fa-holly-berry px-3 text-white  d-flex align-items-center"></i>
                 <span class=" text-warning">Profite de notre sélection de produits 
                     <span class="slogan_slide text-uppercase font-weight-bold text-success">Spéciale Noël</span>
                 </span>
-                <i class="fas fa-holly-berry px-3 text-white"></i>
+                <i class="fas fa-holly-berry px-3 text-white d-flex align-items-center"></i>
             </a>
     </section>
 
     <!-- Titre de la page -->
     <div class="container text-center pt-5 pb-2 position-relative">
-        <div class="row d-flex justify-content-between">
+        <div class="row mx-0 d-flex justify-content-between">
 
-            <!-- Titre -->
-            <div class="col-8 pb-4">
-                <div class="col-12 pb-2 text-left">                   
-                    <h2>
-                        T-shirts <span class="text-bleu">{{ controller_name }}</span>
-                    </h2>
+            <div class="row w-100 mx-0 px-0">
+
+                <!-- Titre -->
+                <div class="col-xs-12 col-sm-8 pb-4 px-0">
+                    <div class="col-12 pb-2 text-center text-md-left">                   
+                        <h2>
+                            T-shirts <span class="text-bleu">{{ controller_name }}</span>
+                        </h2>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 d-flex justify-content-center justify-content-sm-start">                                    
+                        <div class="separator_gallery mx-0"></div>
+                    </div>
                 </div>
-                <div class="col-12">                                    
-                    <div class="separator_gallery"></div>
-                </div>
+    
+                <!-- controllers -->
+                <div class=" col-xs-12 col-sm-4">   
+                        <nav aria-label="controller-produit py-0">
+                        <ul class="pagination d-flex justify-content-center justify-content-md-end">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo; Précédent</span>
+                                    <span class="sr-only">Précédent</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">Suivant &raquo;</span>
+                                    <span class="sr-only">Suivant</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div> 
+
             </div>
-
-            <!-- controllers -->
-            <div class="col-4">   
-                      <nav aria-label="controller-produit py-0">
-                    <ul class="pagination d-flex justify-content-end">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo; Précédent</span>
-                                <span class="sr-only">Précédent</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">Suivant &raquo;</span>
-                                <span class="sr-only">Suivant</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div> 
             
             <!-- Gallerie -->
             <section class="row mb-4">
                     <!-- Produit 01 -->
-                    <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                    <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0 ">
                         <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
                             <a href="{{ path('womensingle') }}" class="produit_link position-relative w-100 d-flex bg-info hidden-visuel align-items-center">
                                 <!-- Visuel Produit -->
@@ -69,14 +73,14 @@
                             </a>
                         </div>
                         <!-- Infos produit -->
-                        <div class="card-body">
+                        <div class="card-body px-0">
                             <h3 class="title_produit_gallery">Li bell ul</h3>
                             <h5 class="price_gallery pb-2">13,00€</h5>
                         </div>
                     </div>
     
                     <!-- Produit 02 -->
-                    <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                    <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0 ">
                         <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
                             <a href="{{ path('womensingle') }}" class="produit_link position-relative w-100 d-flex bg-warning hidden-visuel align-items-center">
                                 <!-- Visuel Produit -->
@@ -89,7 +93,7 @@
                             </a>
                         </div>
                         <!-- Infos produit -->
-                        <div class="card-body">
+                        <div class="card-body px-0">
                             <h3 class="title_produit_gallery">Lorem et Hardy</h3>
                             <h5 class="price_gallery pb-2">13,00€</h5>
                         </div>
@@ -99,9 +103,10 @@
     
                 <!-- controllers -->
                 <div class="container d-flex justify-content-end">
-                    <div class="col-4 px-0">
+                   <!-- controllers -->
+                    <div class=" col-xs-12 col-sm-4">   
                         <nav aria-label="controller-produit py-0">
-                            <ul class="pagination d-flex justify-content-end">
+                            <ul class="pagination d-flex justify-content-center justify-content-md-end">
                                 <li class="page-item">
                                     <a class="page-link" href="#" aria-label="Previous">
                                         <span aria-hidden="true">&laquo; Précédent</span>
@@ -116,7 +121,7 @@
                                 </li>
                             </ul>
                         </nav>
-                    </div>
+                    </div> 
                 </div>
             
         </div>
