@@ -70,7 +70,7 @@ class TshirtController extends AbstractController
     /**
      * @Route("gallerie/femme/visuel", name="womenvisuel")
      */
-    public function womenVisuel( TshirtService $tshirtService, $color='#e52424', $motif='idfix')
+    public function womenVisuel( TshirtService $tshirtService, $color='#e52424', $motif='id_fix')
     {
         return new Response( $tshirtService->womenTshirt($color, $motif), 200, array( 'Content-Type' => 'image/jpeg' ) );
     }

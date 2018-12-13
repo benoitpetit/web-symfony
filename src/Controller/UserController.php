@@ -13,7 +13,17 @@ class UserController extends AbstractController
     public function index()
     {
         return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
+            'controller_name' => 'User',
+        ]);
+    }
+
+     /**
+     * @Route("/login", name="login")
+     */
+    public function login()
+    {
+        return $this->render('user/login.html.twig', [
+            'controller_name' => 'Login',
         ]);
     }
 }
