@@ -1,37 +1,32 @@
-.produit_gallery{
- 
-    justify-content:center;
+
+
+
+.bloc_deroulant {
+    max-height: 1em;
     overflow: hidden;
-  
-    .div.overflow
-    {
-        width: 500px;
-        height: 40px;
-        overflow: hidden;
-        // text-overflow: ellipsis;
-        white-space: nowrap;
-        text-align: justify;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     }
+    
+.bloc_deroulant:hover {
+    max-height: none;
+    white-space: normal;
+    }
+
+
+.produit_gallery{
+
+    justify-content:center;
 
     .p{
         width: 200px;
-        overflow-y: hidden;
-        text-overflow: ellipsis;
-     
+        height: 200px;
     }   
     
     .h4 {
     text-align: center;
     }
-
-    // .p{
-    //     overflow: hidden;
-    // }
-
-    // // .ul{
-    // //     overflow: hidden;
-    // // }
-
+ 
 
 .rounded-circle {
     border-radius: 50%!important;
@@ -47,11 +42,6 @@
 *, ::after, ::before {
     box-sizing: border-box;
 }
-
-// .row{
-//     justify-content:center;
-// }
-
 
 // *, ::after, ::before {
 //     box-sizing: border-box;
@@ -71,9 +61,7 @@ outline: 0;
 background-color: #212529;
 }
 
-.overflow {
-    overflow-y: hidden;
-    text-overflow: ellipsis;
-}
 
 }
+
+// style="height:190px;overflow: hidden;"
