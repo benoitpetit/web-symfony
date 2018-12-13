@@ -26,6 +26,12 @@ class Color
      */
     private $colorHexa;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdDate;
+
+
     public function getColorName(): ?string
     {
         return $this->colorName;
@@ -50,4 +56,15 @@ class Color
         return $this;
     }
 
+    public function getCreatedDate(): ?\DateTimeInterface
+    {
+        return $this->createdDate;
+    }
+
+    public function setCreatedDate(\DateTimeInterface $createdDate): self
+    {
+        $this->createdDate = $createdDate;
+
+        return $this;
+    }
 }
