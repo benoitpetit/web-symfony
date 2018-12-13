@@ -80,6 +80,14 @@
     }
 }
 
+.slogan-title-mobile{
+    top: 25%;
+
+    &.slogan-noel {
+        color: #3a8e06;
+    }
+}
+
 a.btn-noel {
     background: linear-gradient(to right, #3a8e06 50%, #275f04 50%);
     background-size: 200% 100%;
