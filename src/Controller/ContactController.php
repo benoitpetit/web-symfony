@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Contact;
+use App\Form\Model;
+use App\Form\Model\Contact;
 use App\Form\ContactType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -25,27 +26,35 @@ class ContactController extends AbstractController
      * 
      * @return response
      */
-    public function contact(Request $request, ObjectManager $manager)
+    public function contact(Request $request, \Swift_Mailer $mailer)
     {
+        // // On passe un objet au FormBuilder
+        // $contact = new Contact();
+        // // creer moi un formulaire
+        // $form = $this->createForm(ContactType::class, $contact);
+        // // gérer les envois de formulaire
+        // $form->handleRequest($request);
+        // dump($contact);
 
-        // On passe un objet au FormBuilder
-        $contact = new Contact();
-        // Passe l'identité dans les paramètres du formbuilder
-        $form = $this->createForm(ContactType::class, $contact);
-        // (handleRequest) parcours la requête et les envoi dans l'entité $contact
+        $form = $this->createForm(ContactType::class);
+
         $form->handleRequest($request);
 
-        // condition + envoi dans la base de données 
+
         if($form->isSubmitted() && $form->isValid()){
-        // persiste les données
-            $manager->persist($new);
-        // envoi les données
-            $manager->flush();
-        // affiche un message de success si l'envoi est valide
-        $this->addFlash(
-            'success',
-            "Votre message a bien été envoyé"
-        );
+        // $this->addFlash(
+        //     'success',
+        //     "Votre message a bien été envoyé"
+        // );
+        $contactFormData = $form->getData();
+        dump($contactFormData);
+        
+        $message = (new \Swift_Message('DevMyShirt Contact'))
+        ->setFrom('benoitp62@gmail.com')
+        ->setTo('110.benp@gmail.com')
+        ->setBody($contactFormData,
+        'text/plain');
+        $mailer->send($message);
     }
         return $this->render('contact/contact.html.twig', [
             'controller_name' => 'Contact',
