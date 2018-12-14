@@ -28,34 +28,69 @@ class ContactController extends AbstractController
      */
     public function contact(Request $request, \Swift_Mailer $mailer)
     {
-        // // On passe un objet au FormBuilder
-        // $contact = new Contact();
-        // // creer moi un formulaire
-        // $form = $this->createForm(ContactType::class, $contact);
-        // // gérer les envois de formulaire
-        // $form->handleRequest($request);
-        // dump($contact);
-
         $form = $this->createForm(ContactType::class);
-
         $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
 
-        if($form->isSubmitted() && $form->isValid()){
-        // $this->addFlash(
-        //     'success',
-        //     "Votre message a bien été envoyé"
-        // );
-        $contactFormData = $form->getData();
-        dump($contactFormData);
-        
-        $message = (new \Swift_Message('DevMyShirt Contact'))
-        ->setFrom('benoitp62@gmail.com')
-        ->setTo('110.benp@gmail.com')
-        ->setBody($contactFormData,
-        'text/plain');
-        $mailer->send($message);
-    }
+            // $sent = $form->getData();
+
+            if (isset($form)) {
+                $lastname = $form['lastName']->getData();
+            } else {
+                $lastname = 'undefined';
+            }
+            if (isset($form)) {
+                $firstname = $form['firstName']->getData();
+            } else {
+                $firstname = 'undefined';
+            }
+            if (isset($form)) {
+                $email = $form['email']->getData();
+            } else {
+                $email = 'undefined';
+            }
+            if (isset($form)) {
+                $phone = $form['phone']->getData();
+            } else {
+                $phone = 'undefined';
+            }
+            if (isset($form)) {
+                $topic = $form['topic']->getData();
+            } else {
+                $topic = 'undefined';
+            }
+            if (isset($form)) {
+                $message = $form['message']->getData();
+            } else {
+                $message = 'undefined';
+            }
+            
+            
+            
+
+            $message = (new \Swift_Message('Nouveau message sur le formulaire de contact !'))
+                ->setFrom($email)
+                ->setTo('tshirtwf3money@mailinator.com')
+                ->setBody(
+                    $this->renderView(
+                // templates/emails/registration.html.twig
+                        'emails/email.html.twig',
+                        array(
+                            'lastName' => $lastname,
+                            'fristName' => $firstname,
+                            'email' => $email,
+                            'phone' => $phone,
+                            'topic' => $topic,
+                            'message' => $message
+                            )
+                    ),
+                    'text/html'
+                );
+
+            $mailer->send($message);
+        }
+
         return $this->render('contact/contact.html.twig', [
             'controller_name' => 'Contact',
             'form' => $form->createView(),
