@@ -72,7 +72,7 @@ class OrderLine
     private $createdDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Order")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Orders")
      * @ORM\JoinColumn(nullable=false)
      */
     private $orderId;
