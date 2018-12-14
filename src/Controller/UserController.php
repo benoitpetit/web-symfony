@@ -14,33 +14,38 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 
 use App\Entity\User;
-use App\Service\UserService;
+use App\Entity\Address;
+use App\Service\UserAddressService;
 
 use App\Form\LoginType;
-use App\Form\RegisterType;
+use App\Form\UserType;
+use App\Form\AddressType;
 
 class UserController extends AbstractController
 {
     /**
      * @Route("/user/register", name="register")
      */
-    public function register(Request $request, UserService $userService, UserPasswordEncoderInterface $passwordEncoder )
+    public function register(Request $request, UserAddressService $useraddressService, UserPasswordEncoderInterface $passwordEncoder )
     {
+        // Utilisateur / Address
         $user = new User();
-
-        $form = $this->createForm( RegisterType::class, $user );
+        $form = $this->createForm( UserType::class, $user, array( 'method' => 'GET' ) );
 
         // Contrôle les @Assert dans l'entité
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $user = $form->getData();
+
             // On crypte le mot de passe
             $password = $passwordEncoder->encodePassword( $user, $user->getPlainPassword() );
             $user->setPassword( $password );
 
+
             // Service - Roles / Password / ...
-            $userService->add( $user );
+            $useraddressService->add( $user );
 
             // Flash
             $this->addFlash('success', 'Votre compte a été bien enregistré.');
@@ -60,12 +65,12 @@ class UserController extends AbstractController
     /**
      * @Route("/user/account/{id}", name="account")
      */
-    public function account(Request $request, UserService $userService, string $id )
+    public function account(Request $request, UserAddressService $useraddressService, string $id )
     {
         return $this->render('user/account.html.twig', [
             'title' => 'Votre compte',
             'id' => $id,
-            'user' => $userService->getOneId( $id ),
+            'user' => $useraddressService->getOneId( $id ),
         ]);
     }
 

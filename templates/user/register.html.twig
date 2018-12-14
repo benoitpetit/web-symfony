@@ -14,6 +14,7 @@
 
     {{ form_start ( form ) }}
     <div class="container">
+        <div>Votre compte :</div>
         <div class="row">
             <div class="col-6">
                 {{ form_row ( form.username ) }}
@@ -38,9 +39,28 @@
                 {{ form_row ( form.phone ) }}
             </div>
         </div>
+        <br />
+        <div>Votre adresse :</div>
+        <div class="row">
+            <div class="col">
+                {{ form_row ( form.addressBillingId.street ) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ form_row ( form.addressBillingId.zip_code ) }}
+            </div>
+            <div class="col-6">
+                {{ form_row ( form.addressBillingId.city ) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ form_row ( form.addressBillingId.country ) }}
+            </div>
+        </div>
         <div class="row text-center">
             <div class="col-6">
-                {# <button type="submit">Créer votre compte</button> #}
                 {{ form_row ( form.submit ) }}
             </div>
         </div>

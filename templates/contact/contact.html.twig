@@ -31,7 +31,7 @@
 
 <!-- ////////////////// FORMULAIRE de CONTACT /////////////////////////// -->
 <div class="container">
-{{ form(form) }}
+
 </div>
 
 <div class="container contact pt-0">
@@ -41,8 +41,8 @@
 
             <form method= "POST">
                 <div class="col-auto">
-                      
-                    <div class="input-group mb-4">
+                      {{ form(form) }}
+                    {# <div class="input-group mb-4">
                       <div class="input-group-prepend">
                         <div class="input-group-text"> * Nom :</div>
                       </div>
@@ -89,7 +89,7 @@
                         <a href="#" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
                             Envoyer
                         </a>
-                      </div>
+                      </div> #}
                 </div> <!-- fin col-auto -->
 
 
@@ -100,17 +100,17 @@
 
     <!-- ////////////////// GOOGLE MAP /////////////////////////// -->
 
-        <div class="col-md-5"> 
+        <div class="col-md-5 mt-5"> 
             <div class="map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2529.9822615576736!2d3.073785515738492!3d50.6460205795028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c32a0cd483c20f%3A0x5151a22a084d3ded!2s110+Avenue+de+la+R%C3%A9publique%2C+59110+La+Madeleine!5e0!3m2!1sfr!2sfr!4v1543161040050" 
                         height="400" frameborder="0" style="border:0"></iframe>
             </div>
-            <div class="address text-center text-md-left">
-              <strong>DEV My Shirts </strong><br>
-                  110 avenue de la République <br>
-                  59110 LA MADELEINE <br>
-                  Tél : 03.20.10.10.10 <br>
-                  <span>dev-my-shirt@gmail.com</span> 
+            <div class="address"><strong>DEV My Shirts </strong><br><br>
+                                110 avenue de la République <br>
+                                59110 LA MADELEINE <br>
+                                Tél : 03.20.10.10.10 <br>
+                                <a href="mailto:dev-my-shirt@gmail.com"> dev-my-shirt@gmail.com </a> 
+                                
             </div>
         </div> <!-- fin col-md-5-->
 
