@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Form\Model;
 use App\Form\Model\Contact;
 use App\Form\ContactType;
+
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
+
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContactController extends AbstractController
@@ -29,8 +31,10 @@ class ContactController extends AbstractController
     public function contact(Request $request, \Swift_Mailer $mailer)
     {
         $form = $this->createForm(ContactType::class);
+        // gére les envois de formulaire
         $form->handleRequest($request);
 
+        // condition isset détermine si une variable est définie
         if ($form->isSubmitted() && $form->isValid()) {
 
             if (isset($form)) {
@@ -64,7 +68,7 @@ class ContactController extends AbstractController
                 $message = 'undefined';
             }
             
-    
+            // creation, configuration, envoi de de l'objet Swift_Message
             $message = (new \Swift_Message('Nouveau message sur le formulaire de contact !'))
                 ->setFrom($email)
                 ->setTo('wf3tshirt@gmail.com')
@@ -84,11 +88,16 @@ class ContactController extends AbstractController
                     'text/html'
                 );
 
+            // message flash
             $this->addFlash(
                 'success',
                 'Votre message a bien été envoyé'
             );
+
+            // envoi du mail
             $mailer->send($message);
+
+            // redirection sur la page home
             return $this->redirectToRoute('home');
         }
 
