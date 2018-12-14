@@ -31,6 +31,11 @@ class Rate
      */
     private $createdDate;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $rate;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +73,18 @@ class Rate
     public function setCreatedDate(\DateTimeInterface $createdDate): self
     {
         $this->createdDate = $createdDate;
+
+        return $this;
+    }
+
+    public function getRate(): ?float
+    {
+        return $this->rate;
+    }
+
+    public function setRate(float $rate): self
+    {
+        $this->rate = $rate;
 
         return $this;
     }
