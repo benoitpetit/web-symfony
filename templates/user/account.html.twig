@@ -4,12 +4,74 @@
 {% endblock %}
 
 {% block body %}
+<div class="container bg-light p-5">
+    <h1 class="pb-2 mt-3 text-center text-md-left"> MON COMPTE </h1>
+
+    <div class="col-xs-12 col-sm-12 w-75 d-flex justify-content-center px-0 justify-content-sm-start">
+        <div class="separator_gallery mx-0"></div>
+    </div>
+
+    {# information #}
+    <div class="row mt-5 mb-5">
+        <div class="col-md-4">
+            <h3 class="mb-4">INFORMATION PERSONNEL</h3>
+            <p><b>Pseudo: </b>Bazinga</p>
+            <p><b>Nom: </b>Petit</p>
+            <p><b>Prenom: </b>Benoit</p>
+            <p><b>Adresse mail: </b>adressemail@gmail.com</p>
+            <p><b>Téléphone: </b>0606060606</p>
+            <button type="button" class="btn btn-warning btn-sm mb-3">Modifier</button>
+            <hr>
+
+            <h3 class="mb-4 mt-4">MON ADRESSE</h3>
+            <p><b>Numéro / rue: </b>110 avenue de la republique</p>
+            <p><b>Code postal: </b>59000</p>
+            <p><b>Ville: </b>Lille</p>
+            <p><b>Country: </b>France</p>
+            <button type="button" class="btn btn-warning btn-sm">Modifier</button>
+
+        </div>
+        
+        
+        {# tableau #}
+        <div class="col-md-8">
+            <h3 class="mb-5">MES COMMANDES</h3>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">price</th>
+                        <th scope="col">date</th>
+                        <th scope="col">Plus d'informations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>85€</td>
+                        <td>21/12/2018</td>
+                        <td><a href="{{ path('detail') }}">detail</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{# comment #}
+
+{# 
 {{ dump(app.user) }}
     <br /><br />
     <h4>Compte</h4>
 
     {# Formulaire Account #}
-    <div class="container">
+    {# <div class="container">
         <div class="row">
             <div class="col-6">
                 {{ user.username }}
@@ -34,6 +96,4 @@
                 {{ user.phone }}
             </div>
         </div>
-    </div>
-
-{% endblock %}
+    </div> #}

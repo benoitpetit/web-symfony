@@ -62,17 +62,51 @@ class UserController extends AbstractController
 
     }
 
+    // /**
+    //  * @Route("/user/account/{id}", name="account")
+    //  */
+    // public function account(Request $request, UserAddressService $useraddressService, string $id )
+    // {
+    //     return $this->render('user/account.html.twig', [
+    //         'title' => 'Votre compte',
+    //         'id' => $id,
+    //         'user' => $useraddressService->getOneId( $id ),
+    //     ]);
+    // }
+
     /**
-     * @Route("/user/account/{id}", name="account")
+     * detail global du compte utilisateur
+     * 
+     * @Route("/user/account", name="account")
+     * 
+     * @return render
+     * 
      */
-    public function account(Request $request, UserAddressService $useraddressService, string $id )
+    public function account()
     {
+        
         return $this->render('user/account.html.twig', [
-            'title' => 'Votre compte',
-            'id' => $id,
-            'user' => $useraddressService->getOneId( $id ),
+            'controller_name' => 'Votre compte',
         ]);
     }
+
+
+    /**
+     * detail de la commande
+     * 
+     * @Route("/user/account/detail", name="detail")
+     * 
+     * @return render
+     * 
+     */
+    public function detail()
+    {
+        return $this->render('user/account_detail_order.html.twig', [
+            'controller_name' => 'Detail',
+        ]);
+    }
+
+
 
     /**
      * @Route("/logout", name="logout")
