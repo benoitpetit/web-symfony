@@ -6,7 +6,7 @@ namespace App\Form\Model;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Model du formulaire de contact
+ * Modele du formulaire de contact
  * 
  */
 class Contact
@@ -14,22 +14,24 @@ class Contact
     
     /**
      * @Assert\NotBlank
+     * @Assert\Regex(pattern="/^[a-zA-Z]/", message="{{ value }} n'est pas un nom valide")
      * @Assert\Length(
-     *      min=3, 
+     *      min=2, 
      *      max=30, 
      *      minMessage="Le nom doit faire plus de 3 caractères",
-     *      maxMessage="Le nom ne peu pas faire plus de 30 caratères"
+     *      maxMessage="Le nom ne peut pas faire plus de 30 caratères"
      *      )
      */
     private $lastName;
 
     /**
      * @Assert\NotBlank
+     * @Assert\Regex(pattern="/^[a-zA-Z]/", message="{{ value }} n'est pas un prénom valide")
      * @Assert\Length(
-     *      min=3, 
+     *      min=2, 
      *      max=30, 
      *      minMessage="Le prenom doit faire plus de 3 caractères",
-     *      maxMessage="Le prenom ne peu pas faire plus de 30 caratères"
+     *      maxMessage="Le prenom ne peut pas faire plus de 30 caratères"
      *      )
      */
     private $firstName;
@@ -37,15 +39,14 @@ class Contact
     /**
      * @Assert\NotBlank
      * @Assert\Email(
-     *     message = "{{ value }} n'est pas une adresse mail valide"
+     *     message = "{{ value }} n'est pas une adresse mail valide",
+     *     checkMX = true
      *     )
-     * @Assert\Email(strict=true)
      */
     private $email;
 
     /**
-     * (nullable=true)
-     * @Assert\Regex(pattern="/^(0|\+33)[1-9]([-. ]?[0-9]{2}){4}$/", message="{{ value }} n'est pas un numero de telephone valide")
+     * @Assert\Regex(pattern="/^(0|\+33)[1-9]([-. ]?[0-9]{2}){4}$/", message="{{ value }} n'est pas un numéro de téléphone valide")
      */
     private $phone;
 
@@ -59,10 +60,10 @@ class Contact
     /**
      * @Assert\NotBlank
      * @Assert\Length(
-     *      min=30, 
-     *      max=255, 
+     *      min=20, 
+     *      max=250, 
      *      minMessage="Le message doit faire plus de 30 caractères",
-     *      maxMessage="Le message ne peu pas faire plus de 30 caratères"
+     *      maxMessage="Le message ne peut pas faire plus de 30 caratères"
      *      )
      */
     private $message;
