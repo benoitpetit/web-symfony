@@ -20,7 +20,7 @@ class ContactController extends AbstractController
     /**
      * Page de contact
      * 
-     * Permet a utilisateur de contacter l'entreprise
+     * Permet a l'utilisateur de contacter l'entreprise
      * 
      * @Route("/contact", name="contact")
      * 
@@ -32,8 +32,6 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            // $sent = $form->getData();
 
             if (isset($form)) {
                 $lastname = $form['lastName']->getData();
@@ -66,15 +64,13 @@ class ContactController extends AbstractController
                 $message = 'undefined';
             }
             
-            
-            
-
+    
             $message = (new \Swift_Message('Nouveau message sur le formulaire de contact !'))
                 ->setFrom($email)
                 ->setTo('wf3tshirt@gmail.com')
                 ->setBody(
                     $this->renderView(
-                // templates/emails/registration.html.twig
+
                         'emails/email.html.twig',
                         array(
                             'lastName' => $lastname,
@@ -88,7 +84,12 @@ class ContactController extends AbstractController
                     'text/html'
                 );
 
+            $this->addFlash(
+                'success',
+                'Votre message a bien été envoyé'
+            );
             $mailer->send($message);
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('contact/contact.html.twig', [

@@ -32,9 +32,6 @@ class AddressType extends AbstractType
                                         ),
                                         'preferred_choices' => array('France')
             ))
-            // ->add('country', TextType::class, array( 'label' => 'Pays',
-            //                                         'required' => true,
-            //                                     ))
         ;
     }
 
