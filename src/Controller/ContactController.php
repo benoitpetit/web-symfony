@@ -78,7 +78,7 @@ class ContactController extends AbstractController
                         'emails/email.html.twig',
                         array(
                             'lastName' => $lastname,
-                            'fristName' => $firstname,
+                            'firstName' => $firstname,
                             'email' => $email,
                             'phone' => $phone,
                             'topic' => $topic,
