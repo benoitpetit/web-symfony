@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="App\Repository\StockInputRepository")
  */
 class StockInput
@@ -48,6 +49,14 @@ class StockInput
      * @ORM\JoinColumn(nullable=false)
      */
     private $productId;
+
+    /**
+     * @ORM\PrePersist
+     */
+    function onPrePersist() {
+        // set default date
+        $this->createdDate = new \DateTime('now',  new \DateTimeZone( 'UTC' ));
+    }
 
     public function getId(): ?int
     {

@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,7 +13,10 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class RegisterType extends AbstractType
+use App\Entity\User;
+use App\Form\AddressType;
+
+class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -39,7 +41,11 @@ class RegisterType extends AbstractType
             ->add('phone', TelType::class, array( 'label' => 'Téléphone',
                                                   'required' => false,
                                                 ))
-            ->add('submit', SubmitType::class, ['label'=>'Envoyer', 'attr'=>['class'=>'btn-primary btn-block']])
+            // Formulaire AddressType
+            ->add('addressBillingId', AddressType::class)
+
+            // SUBMIT //
+            ->add('submit', SubmitType::class, ['label'=>'Enregistrer'])
         ;
     }
 

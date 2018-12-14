@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="App\Repository\RateRepository")
  */
 class Rate
@@ -27,9 +28,22 @@ class Rate
     private $rateDateEnd;
 
     /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $rate;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $createdDate;
+
+    /**
+     * @ORM\PrePersist
+     */
+    function onPrePersist() {
+        // set default date
+        $this->createdDate = new \DateTime('now',  new \DateTimeZone( 'UTC' ));
+    }
 
     public function getId(): ?int
     {
@@ -56,6 +70,18 @@ class Rate
     public function setRateDateEnd(?\DateTimeInterface $rateDateEnd): self
     {
         $this->rateDateEnd = $rateDateEnd;
+
+        return $this;
+    }
+
+    public function getRate(): ?float
+    {
+        return $this->rate;
+    }
+
+    public function setRate(?float $rate): self
+    {
+        $this->rate = $rate;
 
         return $this;
     }
