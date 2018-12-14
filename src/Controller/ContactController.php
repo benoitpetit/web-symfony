@@ -71,7 +71,7 @@ class ContactController extends AbstractController
 
             $message = (new \Swift_Message('Nouveau message sur le formulaire de contact !'))
                 ->setFrom($email)
-                ->setTo('tshirtwf3money@mailinator.com')
+                ->setTo('wf3tshirt@gmail.com')
                 ->setBody(
                     $this->renderView(
                 // templates/emails/registration.html.twig
