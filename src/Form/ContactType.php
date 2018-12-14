@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Contact;
+use App\Form\Model\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class ContactType extends AbstractType
 {
@@ -22,23 +23,26 @@ class ContactType extends AbstractType
             ->add('firstName', TextType::class, [
                 'label' => '* Prénom:'
             ])
-            ->add('email', TextType::class, [
+            ->add('email', EmailType::class, [
                 'label' => '* Email:'
             ])
             ->add('phone', TextType::class, [
-                'label' => 'Tel:'
+                'label' => 'Tel:',
+                'required' => false
             ])
             ->add('topic', ChoiceType::class, [
                 'label' => '* Sujet:',
                 'choices' => [
-                        ' Une idée de motif à soumettre ' => 'idée',
-                        ' Un simple message ' => 'message'
+                        'Une idée de motif à soumettre' => 'Une idée de motif à soumettre',
+                        'Un simple message' => 'Un simple message'
                 ]
             ])
             ->add('message', TextareaType::class, [
                 'label' => '* Message:'
             ])
-            ->add('ENVOYER', SubmitType::class)
+            ->add('send', SubmitType::class, [
+                'label' => 'Envoyer'
+            ])
         ;
     }
 
