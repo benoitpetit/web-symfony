@@ -46,6 +46,16 @@ a.text-midium-metal-upper {
     color: $blue;
 }
 
+.counter_mobile {
+    position: absolute;
+    top: 65%;
+    left: 15%;
+    transform: translate(-50%,-50%);
+    @include Rob-bold;
+    font-size: 0.9rem;
+    color: $blue;
+}
+
 .panier_mobile {
     width: 25px;
 }

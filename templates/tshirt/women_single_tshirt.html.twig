@@ -1,29 +1,70 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ controller_name }}{% endblock %}
+{% block title %}{{ controller_name }} | {{ parent() }}{% endblock %}
 
 {% block body %}
 
+<!-- Bandeau Noel -->
+<section class="row filter_bandeau d-flex justify-content-center align-items-center mx-0">
+        <a href="{{ path('promos') }}" class="lead mb-0 promo-slogan d-flex text-center py-3">
+            <i class="fas fa-holly-berry px-3 text-success d-flex align-items-center"></i>
+            <span class=" text-warning">Profite de notre sélection de produits 
+                <span class="slogan_slide text-uppercase font-weight-bold text-white">Spéciale Noël</span>
+            </span>
+            <i class="fas fa-holly-berry px-3 text-success d-flex align-items-center"></i>
+        </a>
+</section>
+
 <div class="container mt-5">
+
     <div class="row">
-        <div class="col-sm-12 col-md-6">
-            <!-- image en grand -->
-            <div class="show_tshirt w-100 position-relative bg-dark p-0">
-            <!-- petit logo -->
-                <div class="min_logo position-absolute bg-success"></div>
-            </div>
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-transparent">
+                    <li class="breadcrumb-item"><a href="{{ path('home') }}">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('womengallery') }}">{{ controller_name }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Game-Hover</li>
+                </ol>
+            </nav>
         </div>
-        <div class="col-sm-12 col-md-6">
-                <h3>TOGGLE TOI MEME</h3>
-                
-                <div class="ligne"></div>
-                <hr>
-                <div>
-                    <p>Couleurs</p>
+    </div>
+
+
+<div class="row">
+
+    <div class="col-sm-12 col-md-6 big-encart">
+        <!-- image en grand -->
+        <div class="show_tshirt w-100 position-relative d-flex justify-content-start p-0">
+
+            <div class="position-relative">
+                <a href="" id="motif-visuel">
+                    <img src="{{ path('womenvisuel') }}" class="tshirt-visuel-home">
+                </a>
+                <!-- petit logo -->
+                <div class="min_logo position-absolute bg-info">
+                    <a href="#" class="h-100 align-items-center d-flex">
+                        <img src="{{ asset('assets/images/motifs/game_hover.png') }}" class="w-100">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <!-- Titre du logo -->
+        <div class="col-12 px-0">
+            <h2 class="text-uppercase">Game Hover</h2>
+        </div>
+
+        <!-- Couleurs -->
+        <div class="ligne"></div>
+        <hr>
+        <div class="col-12 px-0">
+            <h5 class="py-2">Couleurs</h5>
                 <div class="d-none d-sm-block">
                     <div class="row mx-0 d-flex flex-wrap">
                         <div class="col d-flex justify-content-center align-items-center mt-1">
-                            <div class="rounded-circle color_div1 d-flex justify-content-center align-items-center"></div>
+                            <div class="rounded-circle border border-white color_div1 d-flex justify-content-center align-items-center"></div>
                         </div>
                         <div class="col d-flex justify-content-center align-items-center mt-1">
                             <div class="rounded-circle color_div2 d-flex justify-content-center align-items-center"></div>
@@ -51,118 +92,204 @@
                         <option>noir</option>
                         <option>orange</option>
                         <option>vert</option>
-                </select> 
+                    </select>
                 </div>
-                    <hr>
-                    <div>
-                        <p>Tailles</p>
-                        <div class="row p-0 mx-0 d-none d-sm-flex">
-                            <div class="col col-md-2 p-0 text-center">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="S">
-                                    <label class="form-check-label" for="inlineRadio1">S</label>
-                                </div>
-                            </div>
-                            <div class="col col-md-2 p-0 text-center">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="M">
-                                    <label class="form-check-label" for="inlineRadio1">M</label>
-                                </div>
-                            </div>
-                            <div class="col col-md-2 p-0 text-center">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="M">
-                                    <label class="form-check-label" for="inlineRadio1">L</label>
-                                </div>
-                            </div>
-                            <div class="col col-md-2 p-0 text-center">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="M">
-                                    <label class="form-check-label" for="inlineRadio1">XL</label>
-                                </div>
+
+                <hr>
+
+                <div class="col-12 px-0">
+                    <h5 class="py-2">Tailles</h5>
+                    <div class="row mx-0 d-none d-sm-flex pb-2">
+                        <div class="col col-md-2 p-0 text-center">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                    value="S">
+                                <label class="form-check-label" for="inlineRadio1">S</label>
                             </div>
                         </div>
-               
-                        <div class="form-group d-flex align-items-center d-block d-sm-none">
-                            <label for="color"></label>
-                            <select class="form-control" id="color">
-                                <option>S</option>
-                                <option>M</option>
-                                <option>L</option>
-                                <option>XL</option>
-                        </select> 
+                        <div class="col col-md-2 p-0 text-center">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                    value="M">
+                                <label class="form-check-label" for="inlineRadio1">M</label>
+                            </div>
+                        </div>
+                        <div class="col col-md-2 p-0 text-center">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                    value="M">
+                                <label class="form-check-label" for="inlineRadio1">L</label>
+                            </div>
+                        </div>
+                        <div class="col col-md-2 p-0 text-center">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                    value="M">
+                                <label class="form-check-label" for="inlineRadio1">XL</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <hr>
-                <div class="row d-flex justify-content-between m-0">
-                    <div class="form-group d-flex align-items-center">
-                        <label for="Quantité">Quantité</label>
-                        <select class="form-control ml-3" id="Quantité">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+
+                    <div class="form-group d-flex align-items-center d-block d-sm-none">
+                        <label for="color"></label>
+                        <select class="form-control" id="color">
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                            <option>XL</option>
                         </select>
                     </div>
-                    <a href="#image_taille">Guide des tailles</a>
-                </div>
-                <div class="price_detail">
-                    <p class="price display-4 mb-1"><strong>25,00 €</strong>TTC</p>
-                </div>
-                <div class="row">
-                    <div class="col">
-                            <button type="button" class="btn btn-info">Ajouter au panier +</button>
-                    </div>
-                    <div class="col text-right">
-                        <p>Partager sur</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="garantie mb-5">
-                        <p>Garantie satisfaction & livraison</p>
                 </div>
         </div>
+
+        <hr>
+        <!-- Quantité -->
+        <div class="row d-flex justify-content-between m-0 py-2">
+            <div class="form-group d-flex align-items-center">
+                <h5 class="m-0">
+                    <label for="Quantité">Quantité</label>
+                </h5>
+                <select class="form-control ml-3" id="Quantité">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <a href="#image_taille" class="js-scrollTo">Guide des tailles</a>
+        </div>
+        <div class="price_detail pb-3">
+            <p class="price display-4 mb-1 text-danger"><strong>13,00 €</strong><span class="text-black-50 pl-2 ttc">TTC</span></p>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-info">
+                    <span class="pr-2">Ajouter au panier</span>
+                    <img src="{{ asset( 'assets/images/icones/panier-blanc.svg' ) }}" class="h-100 panier_mobile" alt="Icone de panier d'achat">
+                </button>
+            </div>
+            <div class="col text-right">
+                <p class="color_facebook">
+                    Partager sur 
+                    <a href="https://www.facebook.com/Devmyshirts-592002044553765/" target="_blank">
+                        <img class=" icone_sociaux" src="{{ asset( 'assets/images/icones/facebook-bleu.svg' ) }}" alt="Icone de Facebook">
+                    </a>
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="garantie mb-5">
+            <p>Garantie satisfaction & livraison</p>
+        </div>
     </div>
+</div>
 
-
-
-
-<!-- A VOIR EGALLEMENT -->
-        <h3 class="text-center mt-5">A VOIR EGALEMENT</h3>
-
-        <!-- ligne de produits -->
-        <div class="row p-3">
-            <div class="col-xs-12 col-sm-6 col-md-3 flex-column px-1 see_tshirt ">
-                <div class="col-md-12 bg-success h-75 p-0"></div>
-                <div class="col-md-12  h-25 text-center p-0 d-flex align-items-center justify-content-center">
-                    <p>Hello</p>
+<!-- //////////////////////// GALLERIE NOUVEAUTES PRODUITS ////////////////////////// -->
+<section class="container-fluid position-relative px-0 pb-3">
+        <div class="container text-center pt-3 pb-5 px-0 position-relative">
+    
+            <!-- Titre de la section -->
+            <div class="row mb-5">
+                <div class="col-12 pb-2">
+                    <h2>
+                        À voir <span class="text-bleu">également</span>
+                    </h2>
+                </div>
+                <div class="col-12">
+                    <div class="separator mx-auto"></div>
                 </div>
             </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-3 flex-column px-1 see_tshirt">
-                    <div class="col-md-12 bg-success h-75 p-0"></div>
-                    <div class="col-md-12  h-25 text-center p-0 d-flex align-items-center justify-content-center">
-                        <p>Hello</p>
+    
+            <!-- Gallerie -->
+            <section class="row mb-4">
+                <!-- Produit 01 -->
+                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                    <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
+                        <a href="{{ path('mensingle') }}" class="produit_link position-relative w-100 d-flex bg-danger align-items-center">
+                            <!-- Visuel Produit -->
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/form_idable.png') }}"
+                                alt="Image du motif formidable">
+                            <div class="overlay bg-danger">
+                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/femme/tshirt_femme_form_idable.png') }}"
+                                    alt="Image du t-shirt formidable" />
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Infos produit -->
+                    <div class="card-body">
+                        <h3 class="title_produit_gallery">Form idable</h3>
+                        <h5 class="price_gallery pt-2">13,00€</h5>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 flex-column px-1 see_tshirt">
-                        <div class="col-md-12 bg-success h-75 p-0"></div>
-                        <div class="col-md-12  h-25 text-center p-0 d-flex align-items-center justify-content-center">
-                            <p>Hello</p>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-3 flex-column px-1 see_tshirt">
-                            <div class="col-md-12 bg-success h-75 p-0"></div>
-                            <div class="col-md-12  h-25 text-center p-0 d-flex align-items-center justify-content-center">
-                                <p>Hello</p>
+    
+                <!-- Produit 02 -->
+                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                    <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
+                        <a href="{{ path('mensingle') }}" class="produit_link position-relative w-100 d-flex bg-success align-items-center">
+                            <!-- Visuel Produit -->
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/lorem_et_hardy.png') }}"
+                                alt="Image du motif Lorem et Hardy">
+                            <div class="overlay bg-success">
+                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/femme/tshirt_femme_lorem_et_hardy.png') }}"
+                                    alt="Image du t-shirt Lorem et Hardy" />
                             </div>
-                        </div>
-        </div> 
+                        </a>
+                    </div>
+                    <!-- Infos produit -->
+                    <div class="card-body">
+                        <h3 class="title_produit_gallery">Lorem et Hardy</h3>
+                        <h5 class="price_gallery pt-2">13,00€</h5>
+                    </div>
+                </div>
+    
+                <!-- Produit 03 -->
+                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                    <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
+                        <a href="{{ path('mensingle') }}" class="produit_link position-relative w-100 d-flex bg-warning align-items-center">
+                            <!-- Visuel Produit -->
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/id_fix.png') }}"
+                                alt="Image du motif Id Fix">
+                            <div class="overlay bg-warning">
+                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/femme/tshirt_femme_id_fix.png') }}"
+                                    alt="Image du t-shirt Id Fix" />
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Infos produit -->
+                    <div class="card-body">
+                        <h3 class="title_produit_gallery">Id Fix</h3>
+                        <h5 class="price_gallery pt-2">13,00€</h5>
+                    </div>
+                </div>
+    
+                <!-- Produit 04 -->
+                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                    <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
+                        <a href="{{ path('mensingle') }}" class="produit_link position-relative w-100 d-flex bg-info align-items-center">
+                            <!-- Visuel Produit -->
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/toggle.png') }}"
+                                alt="Image du motif Toggle toi-même">
+                            <div class="overlay bg-info">
+                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/femme/tshirt_femme_toggle.png') }}"
+                                    alt="Image du t-shirt Toggle toi-même" />
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Infos produit -->
+                    <div class="card-body">
+                        <h3 class="title_produit_gallery">Toggle toi-même</h3>
+                        <h5 class="price_gallery pt-2">13,00€</h5>
+                    </div>
+                </div>
+    
+            </section>
+
+        </div>
+    </section>
 
        
-                <div class="row mb-5">
+                <div class="row">
                     <div class="col-md-6 mb-5">
                             <img id="image_taille" class="taille img-fluid w-100 h-100" src="{{ asset('./assets/images/femme/tableau_mesure_femme.jpg') }}" alt="taille tshirt">
                     </div>

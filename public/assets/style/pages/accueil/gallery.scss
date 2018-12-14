@@ -66,6 +66,7 @@
     bottom: -35px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 1000;
 }
 
 // ---- Effet de Overlay ---- //
@@ -85,13 +86,14 @@
 // ---- les critères de sélection de la gallery ---- //
 
 .filter_bandeau {
-    height:50px;
     background: #aa201b; /* Old browsers */
     
     a:hover {
         text-decoration: none;
         color: $white;
     }
+
 }
+
 
 

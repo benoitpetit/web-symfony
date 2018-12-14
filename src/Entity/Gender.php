@@ -19,12 +19,7 @@ class Gender
     /**
      * @ORM\Column(type="string", length=45)
      */
-    private $men;
-
-    /**
-     * @ORM\Column(type="string", length=45)
-     */
-    private $women;
+    private $name;
 
     /**
      * @ORM\Column(type="datetime")
@@ -36,26 +31,14 @@ class Gender
         return $this->id;
     }
 
-    public function getMen(): ?string
+    public function getName(): ?string
     {
-        return $this->men;
+        return $this->name;
     }
 
-    public function setMen(string $men): self
+    public function setName(string $name): self
     {
-        $this->men = $men;
-
-        return $this;
-    }
-
-    public function getWomen(): ?string
-    {
-        return $this->women;
-    }
-
-    public function setWomen(string $women): self
-    {
-        $this->women = $women;
+        $this->men = $name;
 
         return $this;
     }
