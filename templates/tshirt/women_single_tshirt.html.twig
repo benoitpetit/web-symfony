@@ -164,9 +164,9 @@
         </div>
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-info">
-                    <span class="pr-2">Ajouter au panier</span>
-                    <img src="{{ asset( 'assets/images/icones/panier-blanc.svg' ) }}" class="h-100 panier_mobile" alt="Icone de panier d'achat">
+                <button type="button" class="btn btn-info"><a href= "{{ path('show_basket') }}">
+                    <span class="pr-2 text-light">Ajouter au panier</span>
+                    <img src="{{ asset( 'assets/images/icones/panier-blanc.svg' ) }}" class="h-100 panier_mobile" alt="Icone de panier d'achat"></a>
                 </button>
             </div>
             <div class="col text-right">
