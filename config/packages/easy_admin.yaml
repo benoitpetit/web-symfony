@@ -1,0 +1,31 @@
+easy_admin:
+   site_name: 'Dev my shirts'
+   design:
+        brand_color: '#00A2A5'
+        menu: 
+            - { entity: 'Orders', label: 'Commandes', icon: 'user' }
+            - { entity: 'Color', label: 'Couleurs' }
+            - { entity: 'Logo', label: 'Logos' }
+            - { entity: 'Size', label: 'Tailles' }
+            - { entity: 'Address', label: 'Adresses' }
+            - { entity: 'User', label: 'Utilisateurs' }
+            - { entity: 'Rate', label: 'Remise' }
+            - { entity: 'Gender', label: 'Genre' }
+            - { entity: 'OrderLine', label: 'Remise' }
+            - { entity: 'Product', label: 'Produits' }
+            - { entity: 'ProductType', label: 'Type de produit' }
+            - { entity: 'StockInput', label: 'Stock' }
+   entities:
+       # List the entity class name you want to manage
+       - App\Entity\Address
+       - App\Entity\Color
+       - App\Entity\Gender
+       - App\Entity\Logo
+       - App\Entity\Orders
+       - App\Entity\OrderLine
+       - App\Entity\Product
+       - App\Entity\ProductType
+       - App\Entity\Rate
+       - App\Entity\Size
+       - App\Entity\StockInput
+       - App\Entity\User

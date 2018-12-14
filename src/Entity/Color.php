@@ -14,22 +14,22 @@ class Color
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\Column(type="string", length=45)
      */
-    private $colorName;
+    public $colorName;
 
     /**
      * @ORM\Column(type="string", length=45)
      */
-    private $colorHexa;
+    public $colorHexa;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $createdDate;
+    public $createdDate;
 
 
     public function getColorName(): ?string
@@ -67,4 +67,5 @@ class Color
 
         return $this;
     }
+
 }

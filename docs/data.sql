@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 14 déc. 2018 à 12:22
+-- Généré le :  ven. 14 déc. 2018 à 15:12
 -- Version du serveur :  10.1.37-MariaDB
 -- Version de PHP :  7.2.12
 
@@ -46,7 +46,8 @@ INSERT INTO `address` (`id`, `address_type`, `street`, `zip_code`, `city`, `coun
 (1, '@BILLING', '33, rue de Groussay', '26100', 'ROMANS-SUR-ISÈRE', 'France', '2018-12-14 09:00:00'),
 (2, '@BILLING', '44, rue des six frères Ruellan', '95110', 'SANNOIS', 'France', '2018-12-14 09:00:00'),
 (3, '@BILLING', '83, rue des Soeurs', '83130', 'LA GARDE', 'France', '2018-12-14 09:00:00'),
-(4, '@BILLING', '31, rue Lenotre', '35700', 'RENNES', 'France', '2018-12-14 09:00:00');
+(4, '@BILLING', '31, rue Lenotre', '35700', 'LILLE', 'France', '2018-12-14 09:00:00'),
+(5, '@BILLING', '31, rue du paradis', '59200', 'Paris', 'France', '2018-12-10 10:00:00');
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,7 @@ INSERT INTO `logo` (`id`, `logo_name`, `slug`, `link`, `created_date`) VALUES
 (12, 'Quiche Lorem', 'quiche_lorem', 'images/quiche_lorem.png', '2018-12-14 09:00:00'),
 (13, 'Sensassionnel', 'sass', 'images/sass.png', '2018-12-14 09:00:00'),
 (14, 'Toggle toi-même', 'toggle', 'images/toggle.png', '2018-12-14 09:00:00'),
-(15, 'What else', 'what_else', 'images/what_else.png', '2018-12-14 09:00:00');
+(15, 'What else', 'what_else', 'images/what_else.png', '2018-12-14 10:00:00');
 
 -- --------------------------------------------------------
 
@@ -151,10 +152,10 @@ INSERT INTO `migration_versions` (`version`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order`
+-- Structure de la table `orders`
 --
 
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `address_billing_id_id` int(11) NOT NULL,
   `address_delivery_id_id` int(11) DEFAULT NULL,
@@ -164,10 +165,10 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `order`
+-- Déchargement des données de la table `orders`
 --
 
-INSERT INTO `order` (`id`, `address_billing_id_id`, `address_delivery_id_id`, `order_register`, `order_date`, `created_date`) VALUES
+INSERT INTO `orders` (`id`, `address_billing_id_id`, `address_delivery_id_id`, `order_register`, `order_date`, `created_date`) VALUES
 (1, 1, NULL, '125048624', '2018-12-14 09:00:00', '2018-12-14 09:00:00'),
 (2, 2, NULL, '753695186', '2018-12-14 10:00:00', '2018-12-14 10:00:00');
 
@@ -382,7 +383,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `address_billing_id_id`, `username`, `firstname`, `lastname`, `email`, `password`, `phone`, `roles`, `is_active`, `created_date`) VALUES
 (1, 1, 'Aembett', 'Akim', 'Embett', 'wf3tshirt@gmail.com', '$2y$13$Us8zdLD3IDa9HFZGIH9bYOm27Dr6EDD\\/OxQ5MML.qFGldRn6FegFq', '0621524185', 'a:1:{i:0;s:9:\"ROLE_USER\";}', 0, '2018-12-14 11:00:00'),
-(2, 2, 'Bglace', 'Brice', 'Glace', 'wf3tshirt@gmail.com', '$2y$13$Us8zdLD3IDa9HFZGIH9bYOm27Dr6EDD\\/OxQ5MML.qFGldRn6FegFq', '0685968574', 'a:1:{i:0;s:9:\"ROLE_ADMIN\";}', 0, '2018-12-14 11:00:00'),
+(2, 2, 'Bglace', 'Brice', 'Glace', 'wf3tshirt@gmail.com', '$2y$13$Us8zdLD3IDa9HFZGIH9bYOm27Dr6EDD\\/OxQ5MML.qFGldRn6FegFq', '0685968574', 'a:1:{i:0;s:10:\"ROLE_ADMIN\";}', 0, '2018-12-14 11:00:00'),
 (3, 3, 'Gtar', 'Guy', 'Tar', 'wf3tshirt@gmail.com', '$2y$13$Us8zdLD3IDa9HFZGIH9bYOm27Dr6EDD\\/OxQ5MML.qFGldRn6FegFq', '0758932145', 'a:1:{i:0;s:9:\"ROLE_USER\";}', 0, '2018-12-14 11:00:00'),
 (4, 4, 'Jcelert', 'Jacques', 'Célert', 'wf3tshirt@gmail.com', '$2y$13$Us8zdLD3IDa9HFZGIH9bYOm27Dr6EDD\\/OxQ5MML.qFGldRn6FegFq', '0682829206', 'a:1:{i:0;s:9:\"ROLE_USER\";}', 0, '2018-12-14 11:00:00');
 
@@ -421,9 +422,9 @@ ALTER TABLE `migration_versions`
   ADD PRIMARY KEY (`version`);
 
 --
--- Index pour la table `order`
+-- Index pour la table `orders`
 --
-ALTER TABLE `order`
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `UNIQ_F5299398F052D342` (`address_billing_id_id`),
   ADD UNIQUE KEY `UNIQ_F529939847C7A933` (`address_delivery_id_id`);
@@ -480,7 +481,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `color`
@@ -501,9 +502,9 @@ ALTER TABLE `logo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT pour la table `order`
+-- AUTO_INCREMENT pour la table `orders`
 --
-ALTER TABLE `order`
+ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -553,9 +554,9 @@ ALTER TABLE `user`
 --
 
 --
--- Contraintes pour la table `order`
+-- Contraintes pour la table `orders`
 --
-ALTER TABLE `order`
+ALTER TABLE `orders`
   ADD CONSTRAINT `FK_F529939847C7A933` FOREIGN KEY (`address_delivery_id_id`) REFERENCES `address` (`id`),
   ADD CONSTRAINT `FK_F5299398F052D342` FOREIGN KEY (`address_billing_id_id`) REFERENCES `address` (`id`);
 
