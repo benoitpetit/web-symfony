@@ -6,8 +6,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 // use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 use App\Entity\User;
+use App\Entity\Address;
 
-class UserService {
+class UserAddressService {
 
     // Object Manager global
     private $om;
@@ -44,6 +45,9 @@ class UserService {
     // }
 
     public function add( $user ) {
+
+var_dump($user);
+
         // On définit le rôle
         $user->addRole( ['ROLE_BUYER'] );
 
@@ -52,6 +56,8 @@ class UserService {
 
         $repo = $this->om->getRepository( User::class );
         $this->om->persist( $user );
+
+        // Sauvegarde base de donnée
         $this->om->flush();
     }
     

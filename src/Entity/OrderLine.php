@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="App\Repository\OrderLineRepository")
  */
 class OrderLine
@@ -76,6 +77,14 @@ class OrderLine
      * @ORM\JoinColumn(nullable=false)
      */
     private $orderId;
+
+    /**
+     * @ORM\PrePersist
+     */
+    function onPrePersist() {
+        // set default date
+        $this->createdDate = new \DateTime('now',  new \DateTimeZone( 'UTC' ));
+    }
 
     public function getId(): ?int
     {

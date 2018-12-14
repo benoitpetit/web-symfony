@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="App\Repository\AddressRepository")
  */
 class Address
@@ -45,6 +46,16 @@ class Address
      * @ORM\Column(type="datetime")
      */
     private $createdDate;
+
+    /**
+     * @ORM\PrePersist
+     */
+    function onPrePersist() {
+        // set default date
+        $this->createdDate = new \DateTime('now',  new \DateTimeZone( 'UTC' ));
+        // set default address type
+        $this->addressType = ( ($this->getAddressType() == NULL) OR ($this->getAddressType() != "@DELIVERY") ) ? "@BILLING" : "@DELIVERY";
+    }
 
     public function getId(): ?int
     {

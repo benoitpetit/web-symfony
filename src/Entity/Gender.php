@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="App\Repository\GenderRepository")
  */
 class Gender
@@ -26,6 +27,14 @@ class Gender
      */
     private $createdDate;
 
+    /**
+     * @ORM\PrePersist
+     */
+    function onPrePersist() {
+        // set default date
+        $this->createdDate = new \DateTime('now',  new \DateTimeZone( 'UTC' ));
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -38,7 +47,7 @@ class Gender
 
     public function setName(string $name): self
     {
-        $this->men = $name;
+        $this->men = $men;
 
         return $this;
     }

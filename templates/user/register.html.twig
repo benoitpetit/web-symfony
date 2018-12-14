@@ -4,16 +4,20 @@
 {% endblock %}
 
 {% block body %}
-{{ dump(form) }}
-{{ dump(app.user) }}
+<div class="container">
     <br /><br />
-    <h4>Inscription</h4>
+    <h1 class="pb-2 mt-3 text-center text-md-left"> Inscription </h1>
 
+    <div class="col-xs-12 col-sm-12 w-75 d-flex justify-content-center px-0 justify-content-sm-start">                                    
+        <div class="separator_gallery mx-0"></div>
+    </div>
 
     {# Formulaire Register #}
 
     {{ form_start ( form ) }}
-    <div class="container">
+            <hr>
+
+        <h4 class="text-center" >Votre compte</h4>
         <div class="row">
             <div class="col-6">
                 {{ form_row ( form.username ) }}
@@ -38,9 +42,31 @@
                 {{ form_row ( form.phone ) }}
             </div>
         </div>
-        <div class="row text-center">
+        <br />
+        <hr>
+        <h4 class="text-center" >Votre adresse</h4>
+        <div class="row">
+            <div class="col">
+                {{ form_row ( form.addressBillingId.street ) }}
+            </div>
+        </div>
+        <div class="row">
             <div class="col-6">
-                {# <button type="submit">Créer votre compte</button> #}
+                {{ form_row ( form.addressBillingId.zip_code ) }}
+            </div>
+            <div class="col-6">
+                {{ form_row ( form.addressBillingId.city ) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ form_row ( form.addressBillingId.country ) }}
+            </div>
+        </div>
+                <hr>
+
+        <div class="row text-center">
+            <div class="col-12">
                 {{ form_row ( form.submit ) }}
             </div>
         </div>

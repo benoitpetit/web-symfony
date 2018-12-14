@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 use App\Entity\User;
-use App\Service\UserService;
+use App\Service\UserAddressService;
 use App\Form\LoginType;
 
 class SecurityController extends AbstractController {
@@ -16,7 +16,7 @@ class SecurityController extends AbstractController {
     /**
      * @Route("/user/login", name="login")
      */
-    public function login(Request $request, UserService $userService, AuthenticationUtils $authenticationUtils) {
+    public function login(Request $request, UserAddressService $useraddressService, AuthenticationUtils $authenticationUtils) {
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -31,7 +31,7 @@ class SecurityController extends AbstractController {
 
         if ($form->isSubmitted() && $form->isValid()) {
             
-            if ( $userService->isConnected( $user ) ) {
+            if ( $useraddressService->isConnected( $user ) ) {
                 // $session = new Session(new NativeSessionStorage(), new AttributeBag());
                 // $session->set( 'name', $user->getUsername() );
                 // $session->set( 'role', $user->getRoles() );

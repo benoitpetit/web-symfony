@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -17,7 +19,7 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="string", length=45, unique=true)
      */
     private $username;
 
@@ -32,7 +34,7 @@ class User
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
 
@@ -40,6 +42,11 @@ class User
      * @ORM\Column(type="string", length=255)
      */
     private $password;
+
+    /**
+     * 
+     */
+    private $plainpassword;
 
     /**
      * @ORM\Column(type="string", length=45)
@@ -62,10 +69,18 @@ class User
     private $createdDate;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Address", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity="App\Entity\Address", cascade={"persist"})
+     * @ORM\JoinColumn(name="address_billing_id_id", referencedColumnName="id")
      */
     private $addressBillingId;
+
+    /**
+     * @ORM\PrePersist
+     */
+    function onPrePersist() {
+        // set default date
+        $this->createdDate = new \DateTime('now',  new \DateTimeZone( 'UTC' ));
+    }
 
     public function getId(): ?int
     {
@@ -80,6 +95,18 @@ class User
     public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainpassword;
+    }
+
+    public function setPlainPassword(string $plainpassword): self
+    {
+        $this->plainpassword = $plainpassword;
 
         return $this;
     }
@@ -144,15 +171,17 @@ class User
         return $this;
     }
 
-    public function getRoles(): ?array
+    public function getRoles()
     {
+        if ( empty($this->roles) ) {
+            return ['ROLE_BUYER'];
+        }
         return $this->roles;
     }
 
-    public function setRoles(array $roles): self
+    public function setRoles( array $roles ): self
     {
         $this->roles = $roles;
-
         return $this;
     }
 
@@ -190,6 +219,18 @@ class User
         $this->addressBillingId = $addressBillingId;
 
         return $this;
+    }
+
+    // UserInterface
+    public function eraseCredentials() {}
+
+    public function getSalt() {
+        return null;
+    }
+
+    function addRole( $role )
+    {
+        $this->roles[] = $role;
     }
 
 }

@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  */
 class Product
@@ -43,6 +44,14 @@ class Product
      * @ORM\JoinColumn(nullable=false)
      */
     private $genderId;
+
+    /**
+     * @ORM\PrePersist
+     */
+    function onPrePersist() {
+        // set default date
+        $this->createdDate = new \DateTime('now',  new \DateTimeZone( 'UTC' ));
+    }
 
     public function getId(): ?int
     {
