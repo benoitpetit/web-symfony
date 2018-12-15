@@ -36,6 +36,7 @@ class UserController extends AbstractController
     {
         // Utilisateur / Address
         $user = new User();
+
         $form = $this->createForm( UserType::class, $user, array( 'method' => 'GET' ) );
 
         // Contrôle les @Assert dans l'entité
@@ -43,41 +44,41 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            if (isset($form)) {
-                $lastname = $form['lastName']->getData();
-            } else {
-                $lastname = 'undefined';
-            }
+            // if (isset($form)) {
+            //     $lastname = $form['lastName']->getData();
+            // } else {
+            //     $lastname = 'undefined';
+            // }
 
-            if (isset($form)) {
-                $firstname = $form['firstName']->getData();
-            } else {
-                $firstname = 'undefined';
-            }
+            // if (isset($form)) {
+            //     $firstname = $form['firstName']->getData();
+            // } else {
+            //     $firstname = 'undefined';
+            // }
 
-            if (isset($form)) {
-                $email = $form['email']->getData();
-            } else {
-                $email = 'undefined';
-            }
+            // if (isset($form)) {
+            //     $email = $form['email']->getData();
+            // } else {
+            //     $email = 'undefined';
+            // }
 
-            if (isset($form)) {
-                $phone = $form['phone']->getData();
-            } else {
-                $phone = 'undefined';
-            }
+            // if (isset($form)) {
+            //     $phone = $form['phone']->getData();
+            // } else {
+            //     $phone = 'undefined';
+            // }
 
-            if (isset($form)) {
-                $topic = $form['topic']->getData();
-            } else {
-                $topic = 'undefined';
-            }
+            // if (isset($form)) {
+            //     $topic = $form['topic']->getData();
+            // } else {
+            //     $topic = 'undefined';
+            // }
 
-            if (isset($form)) {
-                $message = $form['message']->getData();
-            } else {
-                $message = 'undefined';
-            }
+            // if (isset($form)) {
+            //     $message = $form['message']->getData();
+            // } else {
+            //     $message = 'undefined';
+            // }
 
 
             $user = $form->getData();
@@ -102,6 +103,7 @@ class UserController extends AbstractController
             'title' => 'Inscription',
             'registerNav' => true,
             'form' => $form->createView(),
+            'id' => $user->getId(),
         ]);
 
     }

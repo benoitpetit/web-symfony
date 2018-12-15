@@ -74,7 +74,7 @@ class User implements UserInterface
     private $roles = [];
 
     /**
-     * @Assert\ChoiceType({0, 1})
+     * @Assert\Choice({0, 1})
      * @ORM\Column(type="smallint")
      */
     private $isActive;
@@ -171,26 +171,26 @@ class User implements UserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
+        
         return $this;
     }
-
+    
     public function getPhone(): ?string
     {
         return $this->phone;
     }
-
+    
     public function setPhone(string $phone): self
     {
         $this->phone = $phone;
-
+        
         return $this;
     }
-
+    
     public function getRoles()
     {
         if ( empty($this->roles) ) {
-            return [ self::ROLE['BUYER'] ];
+            return self::ROLE['BUYER'];
         }
         return $this->roles;
     }
@@ -201,6 +201,11 @@ class User implements UserInterface
         return $this;
     }
 
+    function addRole( $role )
+    {
+        $this->roles[] = $role;
+    }
+    
     public function getIsActive(): ?int
     {
         return $this->isActive;
@@ -237,16 +242,32 @@ class User implements UserInterface
         return $this;
     }
 
-    // UserInterface
+    // UserInterface / Suppression d'information sensible stockée dans l'entité
     public function eraseCredentials() {}
 
+    // UserInterface / Méthode de chiffrement non utilisé (null)
     public function getSalt() {
         return null;
     }
 
-    function addRole( $role )
+    // Pour les informations sensibles
+    public function serialize()
     {
-        $this->roles[] = $role;
+        return $this->serialize([
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->email
+        ]);
+    }
+
+    public function unserialize( $serialized ) {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->email
+        ) = unserialize( $serialized, ['allowed_classes' => false] ); // Classes non instanciées
     }
 
 }
