@@ -23,10 +23,14 @@ easy_admin:
                 - 'assets/style/admin.min.css'
             js:
                 - 'bundles/easyadmin/bootstrap-all.js'
+                - 'assets/script/admin.js'
         brand_color: '#084562'
         menu:
             - { label: 'Les Utilisateurs' }
             - { entity: 'Address', label: 'Adresses' , icon: 'map-marker-alt' }
+            - { entity: 'Color', label: 'Couleurs' , icon: 'palette'}
+            - { entity: 'Gender', label: 'Genres', icon: 'user' }
+            - { entity: 'Logo', label: 'Logos' , icon: 'code'}
         # menu: 
         #     - { label: 'Les commandes' }
         #     - { entity: 'Orders', label: 'Numéro de commandes', icon: '', default: true }
@@ -82,7 +86,7 @@ easy_admin:
                     - { property: 'zipCode', label: 'Code postal' }
                     - { property: 'city', label: 'Ville' }
                     - { property: 'country', label: 'Pays' }
-            new: # affichage "Modifier"
+            new: # affichage "Ajouter"
                 title: 'Ajouter une nouvelle adresse'  # titre de la section
                 actions: # les boutons à afficher
                     - { name: 'list', label: 'Retour', icon: 'arrow-left' }
@@ -93,5 +97,90 @@ easy_admin:
                     - { property: 'zipCode', label: 'Code postal' }
                     - { property: 'city', label: 'Ville' }
                     - { property: 'country', label: 'Pays' }
-            
+            search: # affichage "Rechercher"
+                title: 'Résultat de la recherche'  # titre de la section
+       Color: # Entité
+            class: App\Entity\Color # chemin d'accés à l'entité
+            label: 'Couleurs' # Le nom affiché de l'entité
+            list: # mode liste
+                title: 'Liste des couleurs' # titre de la section
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'colorName', label: 'Couleur' }
+                    - { property: 'colorHexa', label: 'Code Hexadécimal' }
+                    - { property: 'createdDate', label: 'Date de création' }
+            edit: # affichage "Modifier"
+                title: "Modifier la couleur"  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'colorName', label: 'Couleur' }
+                    - { property: 'colorHexa', label: 'Code Hexadécimal' }
+            new: # affichage "Ajouter"
+                title: 'Ajouter une nouvelle couleur'  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'colorName', label: 'Couleur' }
+                    - { property: 'colorHexa', label: 'Code Hexadécimal' }
+            search: # affichage "Rechercher"
+                title: 'Résultat de la recherche'  # titre de la section
+       Gender: # Entité
+            class: App\Entity\Gender # chemin d'accés à l'entité
+            label: 'Genres' # Le nom affiché de l'entité
+            list: # mode liste
+                title: 'Liste des genres' # titre de la section
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'Name', label: 'Genre' }
+                    - { property: 'createdDate', label: 'Date de création' }
+            edit: # affichage "Modifier"
+                title: "Modifier le genre"  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'Name', label: 'Genre' }
+            new: # affichage "Ajouter"
+                title: 'Ajouter un nouveau genre'  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'Name', label: 'Genre' }
+            search: # affichage "Rechercher"
+                title: 'Résultat de la recherche'  # titre de la section
+       Logo: # Entité
+            class: App\Entity\Logo # chemin d'accés à l'entité
+            label: 'Logos' # Le nom affiché de l'entité
+            list: # mode liste
+                title: 'Liste des Logos' # titre de la section
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'logoName', label: 'Logo' }
+                    - { property: 'slug', label: 'Slug' }
+                    - { property: 'link', label: 'Lien' }
+                    - { property: 'createdDate', label: 'Date de création' }
+            edit: # affichage "Modifier"
+                title: "Modifier le logo"  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'logoName', label: 'Logo' }
+                    - { property: 'slug', label: 'Slug' }
+                    - { property: 'link', label: 'Lien' }
+            new: # affichage "Ajouter"
+                title: 'Ajouter un logo'  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'logoName', label: 'Logo' }
+                    - { property: 'slug', label: 'Slug' }
+                    - { property: 'link', label: 'Lien' }
+            search: # affichage "Rechercher"
+                title: 'Résultat de la recherche'  # titre de la section
 
