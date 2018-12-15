@@ -65,7 +65,7 @@ class TshirtService {
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
     public function getAllGender( $product, $gender )
     {
-        $rawSql = "SELECT v.* FROM vProduct_".$product." v WHERE v.name = '".$gender."'";
+        $rawSql = "SELECT v.* FROM vProduct_".$product." v WHERE v.name = '".$gender."' ORDER BY v.logo_id, v.color_id";
         $stmt = $this->om->prepare($rawSql);
         $stmt->execute([]);
         
