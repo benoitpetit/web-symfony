@@ -1,12 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }}
-{% endblock %}
+{% block title %} {{ controller_name }} | {{ parent() }} {% endblock %}
 
 {% block body %}
-{{ dump(form) }}
-    <br /><br />
-    <h4>{{ title }}</h4>
+
+<!-- //////////////////////// CONTENU DE LA PAGE ////////////////////////// -->
+<section class="container-fluid px-0 produit_gallery pb-1">
+  
+  <!-- Titre de la page -->
+  <div class="container text-center pt-5 pb-2 position-relative">
+    <div class="row d-flex justify-content-between">
+     
+        <!-- Titre -->
+        <div class="col-xs-12 col-sm-8 pb-4 px-0">
+            <div class="col-12 pb-2 text-center text-md-left">                   
+                <h2>
+                  Votre <span class="text-bleu">connexion</span>
+                </h2>
+            </div>
+            <div class="col-xs-12 col-sm-12 d-flex justify-content-center justify-content-sm-start">                                    
+                <div class="separator_gallery mx-0"></div>
+            </div>
+        </div>
+
+    </div>
+  </div>
+  
+</section>
+
+
+
+<!-- ////////////////// FORMULAIRE de CONNEXION /////////////////////////// -->
+
+
+    <div class="container mt-4">
+
+        {% if error %}
+            <div class="alert alert-danger">
+                <ul class="list-unstyled mb-0">
+                    <li><span class="initialism form-error-icon badge badge-danger">Erreur à la connexion</span> 
+                        <span class="form-error-message">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
+                    </li>
+                </ul>
+            </div>
+        {% endif %}
+
+        <form action="{{ path('login') }}" method="post">
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="_password" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Se connecter</button>
+        </form>
+        <br /><br /><br />
+
+    </div>
+
 
     {# Formulaire de connexion #}
     
@@ -31,6 +86,6 @@
     </div>
     {{ form_end ( form ) }} #}
 
-{{form(form)}}
+    {# {{form(form)}} #}
 
 {% endblock %}
