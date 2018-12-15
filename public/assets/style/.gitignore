@@ -17,7 +17,7 @@
 ###< symfony/web-server-bundle ###
 
 \.vscode/settings\.json
-
+.idea
 
 /.sass-cache
 .sass-cache
@@ -27,3 +27,4 @@
 styles/.sass-cache/
 public/assets/style/.sasscache/
 public/assets/style/*.style.min.css.map
+public/assets/style/admin.min.css.map

@@ -1,36 +1,97 @@
 easy_admin:
-   site_name: 'Dev my shirts'
+   site_name: '<strong>Dev</strong> <em>my shirts</em>'
+   formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'
+   list:
+        actions: # renommage des boutons sur la section liste
+            - { name: 'edit', label: 'Modifier' , icon: 'edit'}
+            - { name: 'delete', label: 'Supprimer' , icon: 'trash'}
+            - { name: 'new', label: 'Ajouter', icon: 'plus' }
+            - { name: 'search', label: 'Rechercher' }
+   edit: # boutton desactivé sur toutes les sections
+        actions: ['-delete']
+   new: # boutton desactivé sur toutes les sections
+        actions: ['-delete']
    design:
-        brand_color: '#00A2A5'
-        menu: 
-            - { label: 'Les commandes' }
-            - { entity: 'OrderLine', label: 'Commandes' , icon: '' }
-            - { entity: 'Orders', label: 'Numéro de commandes', icon: '', default: true }
-            - { entity: 'Rate', label: 'Remise', icon: '' }
-            - { label: 'Les Produits' }
-            - { entity: 'ProductType', label: 'Type de produit' , icon: '' }
-            - { entity: 'Product', label: 'Produits', icon: '' }
-            - { entity: 'Gender', label: 'Genre', icon: '' }
-            - { entity: 'Size', label: 'Tailles' , icon: '' }
-            - { entity: 'Logo', label: 'Logos' , icon: ''}
-            - { entity: 'Color', label: 'Couleurs' , icon: ''}
-            - { entity: 'StockInput', label: 'Stock' , icon: ''}
+        assets:
+            favicon: 'assets/icone/favico.png'
+            css:
+                - 'https://use.fontawesome.com/releases/v5.6.1/css/all.css'
+                - 'bundles/easyadmin/bootstrap-all.css'
+                - 'assets/style/admin.min.css'
+            js:
+                - 'bundles/easyadmin/bootstrap-all.js'
+        brand_color: '#084562'
+        menu:
             - { label: 'Les Utilisateurs' }
-            - { entity: 'User', label: 'Utilisateurs' , icon: ''}
-            - { entity: 'Address', label: 'Adresses' , icon: '' }
-            - { label: 'Boutique' }
-            - { label: '< Accéder au site', route: 'home' , icon: '' }
+            - { entity: 'Address', label: 'Adresses' , icon: 'map-marker-alt' }
+        # menu: 
+        #     - { label: 'Les commandes' }
+        #     - { entity: 'Orders', label: 'Numéro de commandes', icon: '', default: true }
+        #     - { entity: 'OrderLine' , label: 'Détails Commandes' , icon: '' }
+        #     - { entity: 'Rate', label: 'Remise', icon: '' }
+        #     - { label: 'Les Produits' }
+        #     - { entity: 'ProductType', label: 'Type de produit' , icon: '' }
+        #     - { entity: 'Product', label: 'Produits', icon: '' }
+        #     - { entity: 'Gender', label: 'Genre', icon: '' }
+        #     - { entity: 'Size', label: 'Tailles' , icon: '' }
+        #     - { entity: 'Logo', label: 'Logos' , icon: ''}
+        #     - { entity: 'Color', label: 'Couleurs' , icon: ''}
+        #     - { entity: 'StockInput', label: 'Stock' , icon: ''}
+        #     - { label: 'Les Utilisateurs' }
+        #     - { entity: 'User', label: 'Utilisateurs' , icon: ''}
+        #     - { entity: 'Address', label: 'Adresses' , icon: '' }
+        #     - { label: 'Boutique' }
+        #     - { label: '< Accéder au site', route: 'home' , icon: '' }
    entities:
        # List the entity class name you want to manage
-       - App\Entity\Address
-       - App\Entity\Color
-       - App\Entity\Gender
-       - App\Entity\Logo
-       - App\Entity\Orders
-       - App\Entity\OrderLine
-       - App\Entity\Product
-       - App\Entity\ProductType
-       - App\Entity\Rate
-       - App\Entity\Size
-       - App\Entity\StockInput
-       - App\Entity\User
+    #    - App\Entity\Address
+    #    - App\Entity\Color
+    #    - App\Entity\Gender
+    #    - App\Entity\Logo
+    #    - App\Entity\Orders
+    #    - App\Entity\OrderLine
+    #    - App\Entity\Product
+    #    - App\Entity\ProductType
+    #    - App\Entity\Rate
+    #    - App\Entity\Size
+    #    - App\Entity\StockInput
+       Address: # Entité
+            class: App\Entity\Address # chemin d'accés à l'entité
+            label: 'Adresses' # Le nom affiché de l'entité
+            list: # mode liste
+                title: 'Liste des adresses' # titre de la section
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'addressType', label: 'Type' }
+                    - { property: 'street', label: 'Adresse' }
+                    - { property: 'zipCode', label: 'Code postal' }
+                    - { property: 'city', label: 'Ville' }
+                    - { property: 'country', label: 'Pays' }
+                    - { property: 'createdDate', label: 'Date de création' }
+            edit: # affichage "Modifier"
+                title: "Modifier l'adresse"  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'addressType', label: 'Type' }
+                    - { property: 'street', label: 'Adresse' }
+                    - { property: 'zipCode', label: 'Code postal' }
+                    - { property: 'city', label: 'Ville' }
+                    - { property: 'country', label: 'Pays' }
+            new: # affichage "Modifier"
+                title: 'Ajouter une nouvelle adresse'  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'addressType', label: 'Type' }
+                    - { property: 'street', label: 'Adresse' }
+                    - { property: 'zipCode', label: 'Code postal' }
+                    - { property: 'city', label: 'Ville' }
+                    - { property: 'country', label: 'Pays' }
+            
+
