@@ -108,20 +108,6 @@ class UserController extends AbstractController
 
     }
 
-    // /**
-    //  * @Route("/user/account/{id}", name="account")
-    //  */
-    // public function account(Request $request, UserAddressService $useraddressService, string $id )
-    // {
-    //     return $this->render('user/account.html.twig', [
-    //         'title' => 'Votre compte',
-    //         'id' => $id,
-    //         'user' => $useraddressService->getOneId( $id ),
-    //     ]);
-    // }
-
-
-
     /**
      * 
      * Permet à un client/prospect de voir son compte
@@ -154,7 +140,7 @@ class UserController extends AbstractController
      * 
      * Permet à un client/prospect de se déconnecter de son compte
      * 
-     * @Route("/logout", name="logout")
+     * @Route("/user/logout", name="logout")
      */
     public function logout() {}
 
