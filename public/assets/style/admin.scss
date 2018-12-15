@@ -1,0 +1,24 @@
+// -------- IMPORTS PARTIALS -------------- //
+
+@import "./partials/colors.scss";
+@import "./partials/mixins.scss";
+@import "./partials/fonts.scss";
+
+// -------- GENERIQUES ----------- //
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: $ocean;
+
+    //--------- TITRE --------- //
+    #header-logo a strong{
+        color:#00a2a5!important;   
+    } 
+
+}

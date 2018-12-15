@@ -1,5 +1,5 @@
 easy_admin:
-   site_name: '<strong>Dev</strong> <i>my shirts</i>'
+   site_name: '<strong>Dev</strong> <em>my shirts</em>'
    formats:
         date:     'd/m/Y'
         time:     'H:i'
@@ -16,10 +16,14 @@ easy_admin:
         actions: ['-delete']
    design:
         assets:
-            favicon: ''
+            favicon: 'assets/icone/favico.png'
             css:
                 - 'https://use.fontawesome.com/releases/v5.6.1/css/all.css'
-        brand_color: '#00A2A5'
+                - 'bundles/easyadmin/bootstrap-all.css'
+                - 'assets/style/admin.min.css'
+            js:
+                - 'bundles/easyadmin/bootstrap-all.js'
+        brand_color: '#084562'
         menu:
             - { label: 'Les Utilisateurs' }
             - { entity: 'Address', label: 'Adresses' , icon: 'map-marker-alt' }
