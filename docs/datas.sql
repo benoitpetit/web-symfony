@@ -115,8 +115,8 @@ INSERT INTO `stock_input` (`id`, `color_id_id`, `size_id_id`, `product_id_id`, `
 (48, 2, 4, 2, '2018-12-14 08:00:00', 20, '2018-12-14 11:00:00');
 
 INSERT INTO `user` (`id`, `address_billing_id_id`, `username`, `firstname`, `lastname`, `email`, `password`, `phone`, `roles`, `is_active`, `created_date`) VALUES
-(1, 1, 'Aembett', 'Akim', 'Embett', 'wf3tshirt@gmail.com', '$2y$13$Us8zdLD3IDa9HFZGIH9bYOm27Dr6EDD\\/OxQ5MML.qFGldRn6FegFq', '0621524185', 'a:1:{i:0;s:9:\"ROLE_USER\";}', 0, '2018-12-14 11:00:00'),
+(1, 1, 'Aembett', 'Akim', 'Embett', 'wf3tshirt@gmail.com', '$2y$13$Us8zdLD3IDa9HFZGIH9bYOm27Dr6EDD\\/OxQ5MML.qFGldRn6FegFq', '0621524185', 'a:1:{i:0;s:9:\"ROLE_BUYER\";}', 0, '2018-12-14 11:00:00'),
 (2, 2, 'Bglace', 'Brice', 'Glace', 'wf3tshirt@gmail.com', '$2y$13$Us8zdLD3IDa9HFZGIH9bYOm27Dr6EDD\\/OxQ5MML.qFGldRn6FegFq', '0685968574', 'a:1:{i:0;s:9:\"ROLE_ADMIN\";}', 0, '2018-12-14 11:00:00'),
-(3, 3, 'Gtar', 'Guy', 'Tar', 'wf3tshirt@gmail.com', '$2y$13$Us8zdLD3IDa9HFZGIH9bYOm27Dr6EDD\\/OxQ5MML.qFGldRn6FegFq', '0758932145', 'a:1:{i:0;s:9:\"ROLE_USER\";}', 0, '2018-12-14 11:00:00'),
-(4, 4, 'Jcelert', 'Jacques', 'Célert', 'wf3tshirt@gmail.com', '$2y$13$Us8zdLD3IDa9HFZGIH9bYOm27Dr6EDD\\/OxQ5MML.qFGldRn6FegFq', '0682829206', 'a:1:{i:0;s:9:\"ROLE_USER\";}', 0, '2018-12-14 11:00:00');
+(3, 3, 'Gtar', 'Guy', 'Tar', 'wf3tshirt@gmail.com', '$2y$13$Us8zdLD3IDa9HFZGIH9bYOm27Dr6EDD\\/OxQ5MML.qFGldRn6FegFq', '0758932145', 'a:1:{i:0;s:9:\"ROLE_BUYER\";}', 0, '2018-12-14 11:00:00'),
+(4, 4, 'Jcelert', 'Jacques', 'Célert', 'wf3tshirt@gmail.com', '$2y$13$Us8zdLD3IDa9HFZGIH9bYOm27Dr6EDD\\/OxQ5MML.qFGldRn6FegFq', '0682829206', 'a:1:{i:0;s:9:\"ROLE_BUYER\";}', 0, '2018-12-14 11:00:00');
 
