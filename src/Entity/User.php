@@ -74,7 +74,7 @@ class User implements UserInterface
     private $roles = [];
 
     /**
-     * @Assert\ChoiceType({0, 1})
+     * @Assert\Choice({0, 1})
      * @ORM\Column(type="smallint")
      */
     private $isActive;
