@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\HasLifecycleCallbacks()
@@ -28,6 +29,7 @@ class Address
     private $street;
 
     /**
+     * @Assert\Regex("/^[0-9]{5}$/")
      * @ORM\Column(type="string", length=45)
      */
     private $zipCode;
