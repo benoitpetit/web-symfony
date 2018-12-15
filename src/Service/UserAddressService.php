@@ -3,7 +3,6 @@
 namespace App\Service;
 
 use Doctrine\Common\Persistence\ObjectManager;
-// use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 use App\Entity\User;
 use App\Entity\Address;

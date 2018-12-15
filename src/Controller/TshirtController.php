@@ -15,91 +15,103 @@ class TshirtController extends AbstractController
     /**
      * Gallerie homme
      * 
-     * @Route("/gallerie/homme", name="mengallery")
+     * @Route("/gallery/man", name="mangallery")
      * 
      * @return render
      * 
      */
-    public function menGallery()
+    public function manGallery( TshirtService $products )
     {
-        return $this->render('tshirt/men_gallery.html.twig', [
-            'controller_name' => 'homme',
-            'menGalleryNav' => true,
+        $product_type = "tshirt";
+        $genderFR = "homme";
+        $genderEN = "man";
+
+        return $this->render('tshirt/gallery.html.twig', [
+            'controller_name' => $genderFR,
+            'gender' => $genderEN,
+            'manGalleryNav' => true,
+            'products' => $products->getAllGender( $product_type, $genderFR ),
         ]);
     }
 
     /**
      * Gallerie femme
      * 
-     * @Route("/gallerie/femme", name="womengallery")
+     * @Route("/gallery/woman", name="womangallery")
      * 
      * @return render
      * 
      */
-    public function womenGallery()
+    public function womanGallery( TshirtService $products )
     {
-        return $this->render('tshirt/women_gallery.html.twig', [
-            'controller_name' => 'femme',
-            'womenGalleryNav' => true,
+        $product_type = "tshirt";
+        $genderFR = "femme";
+        $genderEN = "woman";
+
+        return $this->render('tshirt/gallery.html.twig', [
+            'controller_name' => $genderFR,
+            'gender' => $genderEN,
+            'womanGalleryNav' => true,
+            'products' => $products->getAllGender( $product_type, $genderFR ),
         ]);
     }
 
     /**
      * Affichage detail d'un tshirt homme
      * 
-     * [todo] la route sera modifier en ("gallery/homme/detail/{id}" quand la BDD sera creer)
-     * @Route("gallerie/homme/detail", name="mensingle")
+     * [todo] la route sera modifier en ("gallery/man/detail/{id}" quand la BDD sera creer)
+     * @Route("gallery/man/detail", name="mansingle")
      *
      * @return render
      */
-    public function menSingle()
+    public function manSingle()
     {
-        return $this->render('tshirt/men_single_tshirt.html.twig', [
+        return $this->render('tshirt/man_single_tshirt.html.twig', [
             // a modifier avec le nom du model quand il seront creer sur la BDD
             'controller_name' => 'Tshirt',
-            'menSingleNav' => true,
+            'manSingleNav' => true,
         ]);
     }
 
     
     /**
-     * @Route("gallerie/homme/visuel", name="menvisuel")
+     * @Route("gallery/man/visual", name="manvisual")
      */
-    public function menVisuel( TshirtService $tshirtService, $color='#18a4d2', $motif='game_hover')
+    public function manVisual( TshirtService $tshirtService, $color='#18a4d2', $motif='game_hover')
     {
-        return new Response( $tshirtService->menTshirt($color, $motif), 200, array( 'Content-Type' => 'image/jpeg' ) );
+        return new Response( $tshirtService->manTshirt($color, $motif), 200, array( 'Content-Type' => 'image/jpeg' ) );
     }
 
     /**
-     * @Route("gallerie/femme/visuel", name="womenvisuel")
+     * @Route("gallery/woman/visual", name="womanvisual")
      */
-    public function womenVisuel( TshirtService $tshirtService, $color='#18a4d2', $motif='game_hover')
+    public function womanVisual( TshirtService $tshirtService, $color='#18a4d2', $motif='game_hover')
     {
-        return new Response( $tshirtService->womenTshirt($color, $motif), 200, array( 'Content-Type' => 'image/jpeg' ) );
+        return new Response( $tshirtService->womanTshirt($color, $motif), 200, array( 'Content-Type' => 'image/jpeg' ) );
     }
 
 
     /**
      * Affichage detail d'un tshirt femme
      * 
-     * [todo] la route sera modifier en ("gallery/femme/detail/{id}" quand la BDD sera creer)
-     * @Route("gallerie/femme/detail", name="womensingle")
+     * [todo] la route sera modifier en ("gallery/woman/detail/{id}" quand la BDD sera creer)
+     * @Route("gallery/woman/detail", name="womansingle")
      *
      * @return render
      */
-    public function womenSingle()
+    public function womanSingle()
     {
-        return $this->render('tshirt/women_single_tshirt.html.twig', [
+        return $this->render('tshirt/woman_single_tshirt.html.twig', [
             // a modifier avec le nom du model quand il seront creer sur la BDD
             'controller_name' => 'Tshirt',
-            'womenSingleNav' => true,
+            'womanSingleNav' => true,
         ]);
     }
 
     /**
      * Promo
      * 
-     * @Route("/gallerie/promo", name="promos")
+     * @Route("/gallery/promo", name="promos")
      * 
      * @return render
      * 

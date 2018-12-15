@@ -3,7 +3,7 @@
 {% block title %}T-shirts {{ controller_name }} | {{ parent() }}{% endblock %}
 
 {% block body %}
-
+{{ dump(products) }}
 <!-- //////////////////////// CONTENU DE LA PAGE ////////////////////////// -->
 <section class="container-fluid px-0 produit_gallery pb-3">
     <!-- Bandeau Noel -->
@@ -59,45 +59,30 @@
             
             <!-- Gallerie -->
             <section class="row mb-4">
-                    <!-- Produit 01 -->
+
+                {% for product in products %}
+
+                    <!-- Produit xx -->
                     <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0 ">
                         <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                            <a href="{{ path('mensingle') }}" class="produit_link position-relative w-100 d-flex bg-info hidden-visuel align-items-center">
+                            <a href="{{ path(gender ~ 'single') }}" class="produit_link position-relative w-100 d-flex hidden-visuel align-items-center" style="background-color:{{ product.color_hexa }};">
                                 <!-- Visuel Produit -->
-                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/li_bell_ul.png') }}"
-                                    alt="Image du motif Li bell ul">
-                                <div class="overlay bg-info">
-                                    <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/homme/tshirt_homme_li_bell_ul.png') }}"
-                                        alt="Image du t-shirt Li bell ul" />
+                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/' ~ product.slug ~ '.png') }}"
+                                    alt="Image du motif {{ product.slug }}">
+                                <div class="overlay" style="background-color:{{ product.color_hexa }};">
+                                    <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/' ~ gender ~ '/tshirt_' ~ gender ~ '_' ~ product.slug ~ '.png') }}"
+                                        alt="Image du t-shirt {{ product.slug }}" />
                                 </div>
                             </a>
                         </div>
                         <!-- Infos produit -->
                         <div class="card-body px-0">
-                            <h3 class="title_produit_gallery">Li bell ul</h3>
-                            <h5 class="price_gallery pb-2">13,00€</h5>
+                            <h3 class="title_produit_gallery">{{ product.slug }}</h3>
+                            <h5 class="price_gallery pb-2">{{ product.price_unit_ttc }}€</h5>
                         </div>
                     </div>
-    
-                    <!-- Produit 02 -->
-                    <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0 ">
-                        <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                            <a href="{{ path('mensingle') }}" class="produit_link position-relative w-100 d-flex bg-warning hidden-visuel align-items-center">
-                                <!-- Visuel Produit -->
-                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/lorem_et_hardy.png') }}"
-                                    alt="Image du motif Lorem et Hardy">
-                                <div class="overlay bg-warning">
-                                    <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/homme/tshirt_homme_lorem_et_hardy.png') }}"
-                                        alt="Image du t-shirt Lorem et Hardy" />
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Infos produit -->
-                        <div class="card-body px-0">
-                            <h3 class="title_produit_gallery">Lorem et Hardy</h3>
-                            <h5 class="price_gallery pb-2">13,00€</h5>
-                        </div>
-                    </div>
+
+                {% endfor %}
     
                 </section>
     
