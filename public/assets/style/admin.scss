@@ -14,11 +14,70 @@
 body {
     font-size: 14px;
     box-sizing: border-box;
+    color: #707071;
     background-color: $ocean;
 
     //--------- TITRE --------- //
-    #header-logo a strong{
-        color:#00a2a5!important;   
+    #header-logo a {
+
+        strong{
+            color:#fff!important;   
+        } 
+        em {
+            color:#00a2a5!important; 
+        }
+
     } 
+
+    .title {
+        color:#00a2a5!important; 
+    }
+
+    //--------- Button --------- //
+    .action-edit {
+        color:#00a2a5!important; 
+    }
+
+    .action-delete {
+        color:#c50707!important; 
+    }
+
+    #modal-delete-button {
+        background-color:#c50707; 
+    }
+
+    .action-new, .action-save {
+        background-color:#0f9230!important; 
+    }
+
+    //--------- Lien --------- //
+
+    .active a{
+        color:#0ddee2!important; 
+
+        .fa {
+            color:#0ddee2!important; 
+        }
+    }
+
+    .sidebar-menu a {
+        color: #ffffff;
+
+        .fa {
+            color: #e2e2e2;
+        }
+    }
+
+
+    //--------- custom --------- //
+
+    .datagrid thead {
+        background: #e2f7ea !important;
+    }
+
+    .integer{
+        color: #da0707;
+        font-weight: 600;
+    }
 
 }

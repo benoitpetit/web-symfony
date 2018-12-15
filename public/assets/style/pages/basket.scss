@@ -2,17 +2,35 @@
     
     padding: 30px 5px 50px 5px;
     
+    @media screen and (max-width:800px) {
+        thead {
+            display:none;
+        }
+    } 
+    
+    @media screen and (max-width:540px){
+        .button {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
     h1 {
         @include Rob-light-upper;
         margin: 40px 0 10px 0;
         color: $anthracite;
         font-size: 36px;
-
-         span{
+        
+        span{
             @include Rob-regular-upper;
             color:$blue;
             font-size: 36px;
         }
     }
+    
+    .delete_item {
+        display:flex;
+        align-items: center;
+    }    
+    
 }
-
