@@ -3,14 +3,23 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity("email")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface
 {
+
+    const ROLE = [
+        'BUYER' => 'ROLE_BUYER',
+        'ADMIN' => 'ROLE_ADMIN'
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -19,26 +28,31 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @Assert\Length(min=3, max=255)
      * @ORM\Column(type="string", length=45, unique=true)
      */
     private $username;
 
     /**
+     * @Assert\Length(min=3, max=255)
      * @ORM\Column(type="string", length=45)
      */
     private $firstname;
 
     /**
+     * @Assert\Length(min=3, max=255)
      * @ORM\Column(type="string", length=45)
      */
     private $lastname;
 
     /**
+     * @Assert\Length(min=3, max=255)
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
 
     /**
+     * @Assert\Length(min=3, max=50)
      * @ORM\Column(type="string", length=255)
      */
     private $password;
@@ -49,6 +63,7 @@ class User implements UserInterface
     private $plainpassword;
 
     /**
+     * @Assert\Length(min=10, max=45)
      * @ORM\Column(type="string", length=45)
      */
     private $phone;
@@ -59,6 +74,7 @@ class User implements UserInterface
     private $roles = [];
 
     /**
+     * @Assert\Choice({0, 1})
      * @ORM\Column(type="smallint")
      */
     private $isActive;
@@ -155,26 +171,26 @@ class User implements UserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
+        
         return $this;
     }
-
+    
     public function getPhone(): ?string
     {
         return $this->phone;
     }
-
+    
     public function setPhone(string $phone): self
     {
         $this->phone = $phone;
-
+        
         return $this;
     }
-
+    
     public function getRoles()
     {
         if ( empty($this->roles) ) {
-            return ['ROLE_BUYER'];
+            return self::ROLE['BUYER'];
         }
         return $this->roles;
     }
@@ -185,6 +201,11 @@ class User implements UserInterface
         return $this;
     }
 
+    function addRole( $role )
+    {
+        $this->roles[] = $role;
+    }
+    
     public function getIsActive(): ?int
     {
         return $this->isActive;
@@ -221,16 +242,32 @@ class User implements UserInterface
         return $this;
     }
 
-    // UserInterface
+    // UserInterface / Suppression d'information sensible stockée dans l'entité
     public function eraseCredentials() {}
 
+    // UserInterface / Méthode de chiffrement non utilisé (null)
     public function getSalt() {
         return null;
     }
 
-    function addRole( $role )
+    // Pour les informations sensibles
+    public function serialize()
     {
-        $this->roles[] = $role;
+        return $this->serialize([
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->email
+        ]);
+    }
+
+    public function unserialize( $serialized ) {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->email
+        ) = unserialize( $serialized, ['allowed_classes' => false] ); // Classes non instanciées
     }
 
 }

@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity("productType")
  * @ORM\Entity(repositoryClass="App\Repository\ProductTypeRepository")
  */
 class ProductType

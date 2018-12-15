@@ -21,13 +21,18 @@
                 <div class="row align-items-center user_elements">
                     <!-- Connexion -->
                     <div class="col-md-8 h-100 d-flex justify-content-end align-items-center">
-                        <a href="{{ path('login') }}" class="text-midium-metal-upper">Connexion</a>       
+                        {% if app.user is null %}
+                            <a href="{{ path('login') }}" class="text-midium-metal-upper">Connexion</a>
+                        {% else %}
+                            <a href="{{ path('account', {"id": "1"}) }}" class="text-midium-metal-upper">Bienvenue {{ app.user.username }}</a>
+                            <a href="{{ path('logout') }}" class="text-midium-metal-upper">Se déconnecter</a>
+                        {% endif %}
                     </div>
                     <!-- Panier -->
                     <div class="col-md-4 h-100">
                         <div class="row h-100">                            
                             <div class="col-md-8 h-100 d-flex justify-content-end align-items-center">
-                                <a href="#" class="text-midium-metal-upper">Panier</a> 
+                                <a href="{{path('show_basket')}}" class="text-midium-metal-upper">Panier</a> 
                             </div>
                             <div class="col-md-4 h-75 p-0 d-flex align-items-center ">
                                 <span class="counter">0</span>
