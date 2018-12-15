@@ -1,5 +1,5 @@
 
-.contact {
+.register {
     padding: 20px 5px 50px 5px;
 
     h1 {
@@ -54,21 +54,6 @@
         left:0;
         bottom:0;
         transform: translateX(0)!important;
-    }
-
-
-    /* MAP et Adresse ---------------------------------- */
-
-    .map{
-        margin: 50px 0;
-
-        iframe {
-            width: 100%;
-        }
-    }
-
-    .address span{
-        color: $blue;
     }
 
 }

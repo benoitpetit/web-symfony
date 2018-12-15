@@ -23,7 +23,13 @@ use App\Form\AddressType;
 
 class UserController extends AbstractController
 {
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
     /**
+     * 
+     * Permet à un client/prospect de s'enregistrer et d'ouvrir un compte
+     * 
      * @Route("/user/register", name="register")
      */
     public function register(Request $request, UserAddressService $useraddressService, UserPasswordEncoderInterface $passwordEncoder )
@@ -36,6 +42,43 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            if (isset($form)) {
+                $lastname = $form['lastName']->getData();
+            } else {
+                $lastname = 'undefined';
+            }
+
+            if (isset($form)) {
+                $firstname = $form['firstName']->getData();
+            } else {
+                $firstname = 'undefined';
+            }
+
+            if (isset($form)) {
+                $email = $form['email']->getData();
+            } else {
+                $email = 'undefined';
+            }
+
+            if (isset($form)) {
+                $phone = $form['phone']->getData();
+            } else {
+                $phone = 'undefined';
+            }
+
+            if (isset($form)) {
+                $topic = $form['topic']->getData();
+            } else {
+                $topic = 'undefined';
+            }
+
+            if (isset($form)) {
+                $message = $form['message']->getData();
+            } else {
+                $message = 'undefined';
+            }
+
 
             $user = $form->getData();
 
@@ -51,30 +94,38 @@ class UserController extends AbstractController
             $this->addFlash('success', 'Votre compte a été bien enregistré.');
 
             // return $this->redirectToRoute('account', [ 'id' => $user->getId() ]);
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('login');
         }
 
         return $this->render('user/register.html.twig', [
+            'controller_name' => 'Inscription',
             'title' => 'Inscription',
-            'mainRegstration' => true,
+            'registerNav' => true,
             'form' => $form->createView(),
         ]);
 
     }
 
     /**
+     * 
+     * Permet à un client/prospect de voir son compte
+     * 
      * @Route("/user/account/{id}", name="account")
      */
     public function account(Request $request, UserAddressService $useraddressService, string $id )
     {
         return $this->render('user/account.html.twig', [
             'title' => 'Votre compte',
+            'accountNav' => true,
             'id' => $id,
             'user' => $useraddressService->getOneId( $id ),
         ]);
     }
 
     /**
+     * 
+     * Permet à un client/prospect de se déconnecter de son compte
+     * 
      * @Route("/logout", name="logout")
      */
     public function logout() {}

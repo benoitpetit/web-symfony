@@ -21,25 +21,25 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', TextType::class, array( 'label' => 'Utilisateur',
+            ->add('username', TextType::class, array( 'label' => '* Utilisateur',
                                                   'required' => true,
                                                 ))
-            ->add('lastname', TextType::class, array( 'label' => 'Nom',
+            ->add('lastname', TextType::class, array( 'label' => '* Nom',
                                                   'required' => true,
                                                   ))
-            ->add('firstname', TextType::class, array( 'label' => 'Prénom',
+            ->add('firstname', TextType::class, array( 'label' => '* Prénom',
                                                   'required' => true,
                                                 ))
             ->add('plainpassword', RepeatedType::class, array(
                                                 'type' => PasswordType::class,
-                                                'first_options' => array( 'label' => 'Mot de passe', 'required' => true ),
-                                                'second_options' => array( 'label' => 'Confirmation du mot de passe', 'required' => true ),
+                                                'first_options' => array( 'label' => '* Mot de passe', 'required' => true ),
+                                                'second_options' => array( 'label' => '* Confirmation du mot de passe', 'required' => true ),
                                                 ))
-            ->add('email', EmailType::class, array( 'label' => 'Email',
+            ->add('email', EmailType::class, array( 'label' => '* Email',
                                                     'required' => true,
                                                 ))
-            ->add('phone', TelType::class, array( 'label' => 'Téléphone',
-                                                  'required' => false,
+            ->add('phone', TelType::class, array( 'label' => '* Téléphone',
+                                                  'required' => true,
                                                 ))
             // Formulaire AddressType
             ->add('addressBillingId', AddressType::class)
