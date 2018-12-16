@@ -15,8 +15,6 @@
         </a>
 </section>
 
-{% dump('products') %}
-
 <div class="container mt-5">
 
     <div class="row">
@@ -24,7 +22,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent">
                     <li class="breadcrumb-item"><a href="{{ path('home') }}">Accueil</a></li>
-                    <li class="breadcrumb-item"><a href="{{ path('mangallery') }}">{{ controller_name }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman' }) }}">{{ controller_name }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Game-Hover</li>
                 </ol>
             </nav>
@@ -40,7 +38,7 @@
 
             <div class="position-relative">
                 <div id="motif-visuel">
-                    <img src="{{ path('manvisual') }}" class="tshirt-visuel-home">
+                    <img src="{{ path('womanvisual') }}" class="tshirt-visuel-home">
                 </div>
                 <!-- petit logo -->
                 <div class="min_logo position-absolute bg-info">
@@ -66,7 +64,7 @@
                 <div class="d-none d-sm-block">
                     <div class="row mx-0 d-flex flex-wrap">
                         <div class="col d-flex justify-content-center align-items-center mt-1">
-                            <div class="color_div1 rounded-circle border border-white d-flex justify-content-center align-items-center"></div>
+                            <div class="color_div1 rounded-circle border border-white color_div1 d-flex justify-content-center align-items-center"></div>
                         </div>
                         <div class="col d-flex justify-content-center align-items-center mt-1">
                             <div class="color_div2 rounded-circle d-flex justify-content-center align-items-center"></div>
@@ -174,7 +172,6 @@
             <div class="col text-right">
                 <p class="color_facebook">
                     <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.facebook.com%2FDevmyshirts-592002044553765%2F&layout=button&size=large&mobile_iframe=true&width=89&height=28&appId" width="89" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe></a>
-                    </a>
                 </p>
             </div>
         </div>
@@ -211,7 +208,7 @@
                             <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/form_idable.png') }}"
                                 alt="Image du motif formidable">
                             <div class="overlay bg-danger">
-                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/man/tshirt_man_form_idable.png') }}"
+                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/woman/tshirt_woman_form_idable.png') }}"
                                     alt="Image du t-shirt formidable" />
                             </div>
                         </a>
@@ -231,7 +228,7 @@
                             <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/lorem_et_hardy.png') }}"
                                 alt="Image du motif Lorem et Hardy">
                             <div class="overlay bg-success">
-                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/man/tshirt_man_lorem_et_hardy.png') }}"
+                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/woman/tshirt_woman_lorem_et_hardy.png') }}"
                                     alt="Image du t-shirt Lorem et Hardy" />
                             </div>
                         </a>
@@ -251,7 +248,7 @@
                             <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/id_fix.png') }}"
                                 alt="Image du motif Id Fix">
                             <div class="overlay bg-warning">
-                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/man/tshirt_man_id_fix.png') }}"
+                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/woman/tshirt_woman_id_fix.png') }}"
                                     alt="Image du t-shirt Id Fix" />
                             </div>
                         </a>
@@ -271,7 +268,7 @@
                             <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/toggle.png') }}"
                                 alt="Image du motif Toggle toi-même">
                             <div class="overlay bg-info">
-                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/man/tshirt_man_toggle.png') }}"
+                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/woman/tshirt_woman_toggle.png') }}"
                                     alt="Image du t-shirt Toggle toi-même" />
                             </div>
                         </a>
@@ -286,12 +283,12 @@
             </section>
 
         </div>
-</section>
+    </section>
 
        
     <div class="row">
         <div class="col-md-6 mb-5">
-                <img id="image_taille" class="taille img-fluid w-100 h-100" src="{{ asset('./assets/images/man/tableau_mesure_man.jpg') }}" alt="taille tshirt">
+                <img id="image_taille" class="taille img-fluid w-100 h-100" src="{{ asset('./assets/images/woman/tableau_mesure_woman.jpg') }}" alt="taille tshirt">
         </div>
         <div class="col-md-6">
             <h3>Détails du produit</h3>
@@ -304,7 +301,6 @@
                 </p>
         </div>
     </div>
-
 </div>
 
 {% endblock %}
