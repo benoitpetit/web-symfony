@@ -145,7 +145,7 @@ class TshirtController extends AbstractController
      * @return render
      * 
      */
-    public function promoswoman( TshirtService $products )
+    public function promosWoman( TshirtService $products )
     {
         $product_type = "tshirt";
         $genderFR = "femme";

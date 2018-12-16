@@ -17,6 +17,10 @@ a.btn-decouvrir{
     }
 }
 
+.error-content a.retour {
+    text-decoration: none;
+}
+
 
 @import "./accueil/slide.scss";
 @import "./accueil/slogan.scss";
