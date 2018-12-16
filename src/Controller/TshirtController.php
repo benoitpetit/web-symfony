@@ -68,7 +68,7 @@ class TshirtController extends AbstractController
     {
         return $this->render('tshirt/man_single_tshirt.html.twig', [
             // a modifier avec le nom du model quand il seront creer sur la BDD
-            'controller_name' => 'Tshirt '.$genderFR,
+            'controller_name' => 'Tshirt ',
             'manSingleNav' => true,
         ]);
     }
@@ -111,7 +111,7 @@ class TshirtController extends AbstractController
     /**
      * Promo
      * 
-     * @Route("/gallery/promo", name="promos")
+     * @Route("/gallery/promos_man", name="promosman")
      * 
      * @return render
      * 
@@ -119,12 +119,52 @@ class TshirtController extends AbstractController
     public function promos( TshirtService $products )
     {
         $product_type = "tshirt";
-
+        $genderFR = "homme";
+        $genderEN = "man";
+        $colorOne = "green";
+        $colorTwo = "red";
+        $promo = 20/100;
+        
         return $this->render('tshirt/promos.html.twig', [
             'controller_name' => 'Promos',
             'evenement' => 'Noël',
-            'manGalleryNav' => true,
-            'products' => $products->getAllGender( $product_type ),
+            'promosNav' => true,
+            'gender' => $genderEN,
+            'genderFR' => $genderFR,
+            'promo' => $promo,
+            'colorOne' => $colorOne,
+            'colorTwo' => $colorTwo,
+            'products' => $products->getAllGender( $product_type, $genderFR ),
+        ]);
+    }
+
+    /**
+     * Promo
+     * 
+     * @Route("/gallery/promos_woman", name="promoswoman")
+     * 
+     * @return render
+     * 
+     */
+    public function promoswoman( TshirtService $products )
+    {
+        $product_type = "tshirt";
+        $genderFR = "femme";
+        $genderEN = "woman";
+        $colorOne = "green";
+        $colorTwo = "red";
+        $promo = 20/100;
+        
+        return $this->render('tshirt/promos.html.twig', [
+            'controller_name' => 'Promos',
+            'evenement' => 'Noël',
+            'promosNav' => true,
+            'gender' => $genderEN,
+            'promo' => $promo,
+            'genderFR' => $genderFR,
+            'colorOne' => $colorOne,
+            'colorTwo' => $colorTwo,
+            'products' => $products->getAllGender( $product_type, $genderFR ),
         ]);
     }
 }
