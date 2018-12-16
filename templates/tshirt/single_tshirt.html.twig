@@ -14,8 +14,7 @@
             <i class="fas fa-holly-berry px-3 text-success d-flex align-items-center"></i>
         </a>
 </section>
-
-{% dump('products') %}
+{{ dump(product) }}
 
 <div class="container mt-5">
 
@@ -24,13 +23,12 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent">
                     <li class="breadcrumb-item"><a href="{{ path('home') }}">Accueil</a></li>
-                    <li class="breadcrumb-item"><a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man' }) }}">{{ controller_name }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Game-Hover</li>
+                    <li class="breadcrumb-item"><a href="{{ path('gallery', {product_type: product_type, genderEN: genderEN }) }}">{{ controller_name }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ product.logo_name }}</li>
                 </ol>
             </nav>
         </div>
     </div>
-
 
 <div class="row">
 
