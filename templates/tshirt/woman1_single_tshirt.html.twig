@@ -149,12 +149,10 @@
                 <h5 class="m-0">
                     <label for="Quantité">Quantité</label>
                 </h5>
-                <select class="form-control ml-3" id="Quantité">
-                    <option value= "1">1</option>
-                    <option value= "2">2</option>
-                    <option value= "3">3</option>
-                    <option value= "4">4</option>
-                    <option value= "5">5</option>
+                <select class="form-control ml-3" id="quantity" name="quantity">
+                    {% for i in 1..10 %}
+                        <option value= "{{i}}">{{i}}</option>
+                    {% endfor %}
                 </select>
             </div>
             <a href="#image_taille" class="js-scrollTo">Guide des tailles</a>
@@ -164,7 +162,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-info"><a href= "{{ path('show_basket') }}">
+                <button type="button" class="btn btn-info"><a href= "{{ path('basket') }}">
                     <span class="pr-2 text-light">Ajouter au panier</span>
                     <img src="{{ asset( 'assets/images/icones/panier-blanc.svg' ) }}" class="h-100 panier_mobile" alt="Icone de panier d'achat"></a>
                 </button>

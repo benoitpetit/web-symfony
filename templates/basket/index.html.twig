@@ -18,7 +18,7 @@
 
     <!-- //////////////////////////  PANIER ///////////////////////////////// -->
 
-        {# {% for item in cart.items %} #}
+        {# {% for item in basket.items %} #}
             
         <table class="table cart">
             <thead class="thead-light">
@@ -34,12 +34,12 @@
         
         <!-- ///////  Lignes du panier en fonction du nombre d'articles (boucle) /////// -->
             <tbody>
-                {# {% for item in cart.items %} #}
+                {# {% for item in basket.items %} #}
                 <tr class="row">
                     <td class="col-md-1 delete_item"><a href="#" 
                         {# data-item-id="{{item.id}}" #}
                         ><img src="../../public/assets/images/icones/trash.svg" width="20px"></a></td>
-                    <td class="col-md-2"><img src="../../public/assets/images/homme/tshirt_homme_c_mieux.png" class="img-responsive" width="100px" alt=""></td>
+                    <td class="col-md-2"><img src="../../public/assets/images/man/tshirt_man_c_mieux.png" class="img-responsive" width="100px" alt=""></td>
                     <td class="col-md-3"><a href="#"><div class="font-weight-bold">T-Shirt name </div></a><br>
                         <div > product.color </div>
                         <div > product.size </div>
@@ -82,7 +82,7 @@
     <!-- /////////////////// BOUTONS Poursuite Achats / Commande ///////////////// -->
 
         <div class="d-flex justify-content-between button">
-            <button type="button" class="btn btn-warning mb-4"><a href="{{ path('mengallery') }}">Continuer mes achats</a></button>   
+            <button type="button" class="btn btn-warning mb-4"><a href="{{ path('home') }}">Continuer mes achats</a></button>   
             <button type="button" class="btn btn-success mb-4">Passer la commande</button> 
         </div>
 

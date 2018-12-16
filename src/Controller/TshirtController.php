@@ -54,7 +54,7 @@ class TshirtController extends AbstractController
      *
      * @return render
      */
-    public function dispplayTshirtDetail( TshirtService $products, $product_type = 'tshirt', $genderEN, $color_id, $logo_id )
+    public function displayTshirtDetail( TshirtService $products, $product_type = 'tshirt', $genderEN, $color_id, $logo_id )
     {
         // A défaut de translate pour le moment ! (manque de temps)
         $this->genderFR = $this->translateENtoFR( $genderEN );

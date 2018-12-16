@@ -87,13 +87,15 @@
                 </div>
                 <div class="form-group d-flex align-items-center d-block d-sm-none">
                     <label for="color"></label>
-                    <select class="form-control" id="color">
-                        <option>bleu</option>
-                        <option>jaune</option>
-                        <option>vert</option>
-                        <option>rouge</option>
-                        <option>noir</option>
-                        <option>violet</option>
+                    <select class="form-control" id="color" name="color">
+                        {% for color in color_id %}
+                            <option value ="{{color_name}}">{{color_name}}</option>
+                            <!-- <option value ="yellow">jaune</option>
+                            <option value ="green">vert</option>
+                            <option value ="red">rouge</option>
+                            <option value ="black">noir</option>
+                            <option value ="purple">violet</option> -->
+                        {% endfor %}
                     </select>
                 </div>
 
@@ -134,7 +136,7 @@
 
                     <div class="form-group d-flex align-items-center d-block d-sm-none">
                         <label for="color"></label>
-                        <select class="form-control" id="color">
+                        <select class="form-control" id="size" name="size">
                             <option value= "s">S</option>
                             <option value= "m">M</option>
                             <option value= "l">L</option>
@@ -149,14 +151,12 @@
         <div class="row d-flex justify-content-between m-0 py-2">
             <div class="form-group d-flex align-items-center">
                 <h5 class="m-0">
-                    <label for="Quantité">Quantité</label>
+                    <label for="quantity">Quantité</label>
                 </h5>
-                <select class="form-control ml-3" id="Quantité">
-                    <option value= "1">1</option>
-                    <option value= "2">2</option>
-                    <option value= "3">3</option>
-                    <option value= "4">4</option>
-                    <option value= "5">5</option>
+                <select class="form-control ml-3" id="quantity" name="quantity">
+                    {% for i in 1..10 %}
+                        <option value= "{{i}}">{{i}}</option>
+                    {% endfor %}
                 </select>
             </div>
             <a href="#image_taille" class="js-scrollTo">Guide des tailles</a>
@@ -166,7 +166,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-info"><a href= "{{ path('show_basket') }}">
+                <button type="button" class="btn btn-info"><a href= "{{ path('basket') }}">
                     <span class="pr-2 text-light">Ajouter au panier</span>
                     <img src="{{ asset( 'assets/images/icones/panier-blanc.svg' ) }}" class="h-100 panier_mobile" alt="Icone de panier d'achat"></a>
                 </button>
