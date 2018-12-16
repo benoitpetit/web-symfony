@@ -165,7 +165,7 @@ easy_admin:
                 title: 'Liste des commandes' # titre de la section
                 fields: # champas à afficher
                     - { property: 'id', label: 'ID' }
-                    - { property: 'orderId', label: 'Référence' }
+                    - { property: 'ordersId', label: 'Référence' }
                     - { property: 'productId', label: 'ID Produit' }
                     - { property: 'productColorId', label: 'ID Couleur' }
                     - { property: 'productLogoId', label: 'ID Logo' }
