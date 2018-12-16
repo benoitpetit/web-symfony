@@ -64,34 +64,34 @@
                 <div class="d-none d-sm-block">
                     <div class="row mx-0 d-flex flex-wrap">
                         <div class="col d-flex justify-content-center align-items-center mt-1">
-                            <div class="rounded-circle border border-white color_div1 d-flex justify-content-center align-items-center"></div>
+                            <div class="color_div1 rounded-circle border border-white color_div1 d-flex justify-content-center align-items-center"></div>
                         </div>
                         <div class="col d-flex justify-content-center align-items-center mt-1">
-                            <div class="rounded-circle color_div2 d-flex justify-content-center align-items-center"></div>
+                            <div class="color_div2 rounded-circle d-flex justify-content-center align-items-center"></div>
                         </div>
                         <div class="col d-flex justify-content-center align-items-center mt-1">
-                            <div class="rounded-circle color_div3 d-flex justify-content-center align-items-center"></div>
+                            <div class="color_div3 rounded-circle d-flex justify-content-center align-items-center"></div>
                         </div>
                         <div class="col d-flex justify-content-center align-items-center mt-1">
-                            <div class="rounded-circle color_div4 d-flex justify-content-center align-items-center"></div>
+                            <div class="color_div4 rounded-circle d-flex justify-content-center align-items-center"></div>
                         </div>
                         <div class="col d-flex justify-content-center align-items-center mt-1">
-                            <div class="rounded-circle color_div5 d-flex justify-content-center align-items-center"></div>
+                            <div class="color_div5 rounded-circle d-flex justify-content-center align-items-center"></div>
                         </div>
                         <div class="col d-flex justify-content-center align-items-center mt-1">
-                            <div class="rounded-circle color_div6 d-flex justify-content-center align-items-center"></div>
+                            <div class="color_div6 rounded-circle d-flex justify-content-center align-items-center"></div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group d-flex align-items-center d-block d-sm-none">
                     <label for="color"></label>
                     <select class="form-control" id="color">
-                        <option>gris</option>
                         <option>bleu</option>
-                        <option>antracite</option>
-                        <option>noir</option>
-                        <option>orange</option>
+                        <option>jaune</option>
                         <option>vert</option>
+                        <option>rouge</option>
+                        <option>noir</option>
+                        <option>violet</option>
                     </select>
                 </div>
 
@@ -103,28 +103,28 @@
                         <div class="col col-md-2 p-0 text-center">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                    value="S">
+                                    value="s">
                                 <label class="form-check-label" for="inlineRadio1">S</label>
                             </div>
                         </div>
                         <div class="col col-md-2 p-0 text-center">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                    value="M">
+                                    value="m">
                                 <label class="form-check-label" for="inlineRadio1">M</label>
                             </div>
                         </div>
                         <div class="col col-md-2 p-0 text-center">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                    value="M">
+                                    value="l">
                                 <label class="form-check-label" for="inlineRadio1">L</label>
                             </div>
                         </div>
                         <div class="col col-md-2 p-0 text-center">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                    value="M">
+                                    value="xl">
                                 <label class="form-check-label" for="inlineRadio1">XL</label>
                             </div>
                         </div>
@@ -133,10 +133,10 @@
                     <div class="form-group d-flex align-items-center d-block d-sm-none">
                         <label for="color"></label>
                         <select class="form-control" id="color">
-                            <option>S</option>
-                            <option>M</option>
-                            <option>L</option>
-                            <option>XL</option>
+                            <option value= "s">S</option>
+                            <option value= "m">M</option>
+                            <option value= "l">L</option>
+                            <option value= "xl">XL</option>
                         </select>
                     </div>
                 </div>
@@ -150,11 +150,11 @@
                     <label for="Quantité">Quantité</label>
                 </h5>
                 <select class="form-control ml-3" id="Quantité">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option value= "1">1</option>
+                    <option value= "2">2</option>
+                    <option value= "3">3</option>
+                    <option value= "4">4</option>
+                    <option value= "5">5</option>
                 </select>
             </div>
             <a href="#image_taille" class="js-scrollTo">Guide des tailles</a>
@@ -286,22 +286,21 @@
     </section>
 
        
-                <div class="row">
-                    <div class="col-md-6 mb-5">
-                            <img id="image_taille" class="taille img-fluid w-100 h-100" src="{{ asset('./assets/images/woman/tableau_mesure_woman.jpg') }}" alt="taille tshirt">
-                    </div>
-                    <div class="col-md-6">
-                        <h3>Détails du produit</h3>
-                                T-shirt<br>
-                                Un classique sans compromis : vous allez adorer ce T-shirt simple et classique. Un basique à porter en toutes occasions.<br>
-                                Finitions haut de gamme avec doubles coutures<br>
-                                Coupe droite<br>
-                                Tissu résistant : 185 g/m²<br>
-                                Composition : 100 % coton (sauf en gris chiné : 85 % coton, 15 % viscose)<br>
-                        </p>
-                    </div>
-                </div>
+    <div class="row">
+        <div class="col-md-6 mb-5">
+                <img id="image_taille" class="taille img-fluid w-100 h-100" src="{{ asset('./assets/images/woman/tableau_mesure_woman.jpg') }}" alt="taille tshirt">
+        </div>
+        <div class="col-md-6">
+            <h3>Détails du produit</h3>
+                <p> T-shirt<br>
+                    Un classique sans compromis : vous allez adorer ce T-shirt simple et classique. Un basique à porter en toutes occasions.<br>
+                    Finitions haut de gamme avec doubles coutures<br>
+                    Coupe droite<br>
+                    Tissu résistant : 185 g/m²<br>
+                    Composition : 100 % coton (sauf en gris chiné : 85 % coton, 15 % viscose)<br>
+                </p>
+        </div>
     </div>
-
+</div>
 
 {% endblock %}

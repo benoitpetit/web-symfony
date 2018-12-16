@@ -50,6 +50,7 @@ class User implements UserInterface
 
     /**
      * @Assert\Length(min=3, max=255)
+     * @Assert\Email()
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;

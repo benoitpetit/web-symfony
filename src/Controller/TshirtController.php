@@ -64,11 +64,11 @@ class TshirtController extends AbstractController
      *
      * @return render
      */
-    public function manSingle()
+    public function manSingle( )
     {
         return $this->render('tshirt/man_single_tshirt.html.twig', [
             // a modifier avec le nom du model quand il seront creer sur la BDD
-            'controller_name' => 'Tshirt',
+            'controller_name' => 'Tshirt '.$genderFR,
             'manSingleNav' => true,
         ]);
     }
@@ -116,11 +116,15 @@ class TshirtController extends AbstractController
      * @return render
      * 
      */
-    public function promos()
+    public function promos( TshirtService $products )
     {
+        $product_type = "tshirt";
+
         return $this->render('tshirt/promos.html.twig', [
             'controller_name' => 'Promos',
             'evenement' => 'Noël',
+            'manGalleryNav' => true,
+            'products' => $products->getAllGender( $product_type ),
         ]);
     }
 }

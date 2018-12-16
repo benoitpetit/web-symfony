@@ -33,4 +33,12 @@ class SecurityController extends AbstractController {
         ]);
     }
 
+    // /**
+    //  * @Route("/user/admin", name="useradmin")
+    //  */
+    // public function admin() {
+    //     return $this->redirectToRoute('admin');
+    // }
+
+
 }

@@ -1,0 +1,16 @@
+.visuel-content-idee {
+    background: url(../images/home/idee-visuel.jpg) no-repeat center center;
+    background-size: cover;
+
+    .separator_gallery {
+        width: 14%;
+    }
+
+    .filter-encart{
+        background-color: #001510a1;
+    }
+
+    .produit_gallery h2 {
+        color: $white;
+    }
+}
