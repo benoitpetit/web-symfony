@@ -65,12 +65,12 @@
                     <!-- Produit xx -->
                     <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0 ">
                         <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                            <a href="{{ path(gender ~ 'single') }}" class="produit_link position-relative w-100 d-flex hidden-visuel align-items-center" style="background-color:{{ product.color_hexa }};">
+                            <a href="{{ path('tshirtdetail', {product_type: product_type, genderEN: genderEN, color_id: product.color_id, logo_id: product.logo_id }) }}" class="produit_link position-relative w-100 d-flex hidden-visuel align-items-center" style="background-color:{{ product.color_hexa }};">
                                 <!-- Visuel Produit -->
                                 <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/' ~ product.slug ~ '.png') }}"
                                     alt="Image du motif {{ product.slug }}">
                                 <div class="overlay" style="background-color:{{ product.color_hexa }};">
-                                    <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/' ~ gender ~ '/tshirt_' ~ gender ~ '_' ~ product.slug ~ '.png') }}"
+                                    <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/' ~ genderEN ~ '/tshirt_' ~ genderEN ~ '_' ~ product.slug ~ '.png') }}"
                                         alt="Image du t-shirt {{ product.slug }}" />
                                 </div>
                             </a>

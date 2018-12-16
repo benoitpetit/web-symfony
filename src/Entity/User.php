@@ -7,9 +7,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
+// @UniqueEntity("email") génére une erreur a l'edition
+
 /**
  * @ORM\HasLifecycleCallbacks()
- * @UniqueEntity("email")
+ * 
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface
@@ -53,7 +56,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @Assert\Length(min=3, max=50)
+     * @Assert\Length(min=3)
      * @ORM\Column(type="string", length=255)
      */
     private $password;
