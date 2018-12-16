@@ -104,10 +104,21 @@ nav.bg-ocean{
                 color: $white;
             }
         }
+
     }
     
     .gr_sociaux {
         max-height: 40px;
+    }
+    
+}
+
+.dropdown-menu{
+    background-color: #8A0C0A!important;
+    min-width: 100%!important;
+
+    .dropdown-item:hover{
+        background-color: #9e100c!important;
     }
 
 }

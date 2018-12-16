@@ -84,8 +84,13 @@
                     <li class="nav-item">
                         <a class="nav-link py-3 px-3 {% if aboutNav is defined  %}active{% endif %}" href="{{ path('about') }}">Nos Designers</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link promo py-3 px-3" href="{{ path('promos') }}">Promos de Noël</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle promo py-3 px-3" href="{{ path('promosman') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Promos de Noël</a>
+                        <!-- Sous-catégories -->
+                        <div class="dropdown-menu rounded-0 py-0" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-white text-navbar border-bottom border-danger py-3" href="{{ path('promosman') }}">Homme</a>
+                            <a class="dropdown-item text-white text-navbar py-3" href="{{ path('promoswoman') }}">Femme</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link py-3 px-3  {% if contactNav is defined  %}active{% endif %}" href="{{ path('contact') }}">Contact</a>
