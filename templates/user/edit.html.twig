@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<!-- //////////////////////// CONTENU DE LA PAGE ////////////////////////// -->
+<section class="container-fluid px-0 produit_gallery pb-1">
+  
+  <!-- Titre de la page -->
+  <div class="container text-center pt-5 pb-2 position-relative">
+    <div class="row d-flex justify-content-between">
+     
+        <!-- Titre -->
+        <div class="col-xs-12 col-sm-8 pb-4 px-0">
+            <div class="col-12 pb-2 text-center text-md-left">                   
+                <h2>
+                  Modifier <span class="text-bleu">vos informations</span>
+                </h2>
+            </div>
+            <div class="col-xs-12 col-sm-12 d-flex justify-content-center justify-content-sm-start">                                    
+                <div class="separator_gallery mx-0"></div>
+            </div>
+        </div>
+
+    </div>
+  </div>
+  
+</section>
+
+
+
+<!-- ////////////////// FORMULAIRE de COMPTE /////////////////////////// -->
+<div class="container register pt-0">
+    <div class="row">
+        <div class="col-md"> <!-- formulaire -->
+            <div class= "champs">Les champs précédés d'une * sont <span>obligatoires</span></div>
+
+                {{ form_start ( form ) }}
+
+                <!-- ///// COMPTE ///// -->
+                <hr>
+                <div class="col pb-2 text-center">
+                    <h4>
+                        Votre <span class="text-bleu">compte</span>
+                    </h4>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        {{ form_row ( form.username ) }}
+                    </div>
+                    {# <div class="col-6">
+                        {{ form_row ( form.plainpassword ) }}
+                    </div> #}
+                </div>
+
+                <div class="row">
+                    <br /><hr><br />
+                </div>
+                        
+    <!-- ////////////////// FORMULAIRE IDENTITE / ADRESSE /////////////////////////// -->
+                <hr>
+                <div class="row">
+
+                    <!-- ///// IDENTITE ///// -->
+                    <div class="col-6 pb-2 text-center">
+                        <h4>
+                            Votre <span class="text-bleu">identité</span>
+                        </h4>
+                        <div class="row">
+                            <div class="col text-left">
+                                {{ form_row ( form.firstname ) }}
+                                {{ form_row ( form.lastname ) }}
+                                {{ form_row ( form.email ) }}
+                                {{ form_row ( form.phone ) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ///// ADRESSE ///// -->
+                    <div class="col-6 pb-2 text-center">
+                        <h4>
+                            Votre <span class="text-bleu">adresse</span>
+                        </h4>
+                        <div class="row">
+                            <div class="col text-left">
+                                {{ form_row ( form.addressBillingId.street ) }}
+                                {{ form_row ( form.addressBillingId.zip_code ) }}
+                                {{ form_row ( form.addressBillingId.city ) }}
+                                {{ form_row ( form.addressBillingId.country ) }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+    <!-- ////////////////// SOUMISSION DU FORMULAIRE /////////////////////////// -->
+                <div class="row text-center">
+                    <div class="col">
+                        {{ form_row ( form.submit ) }}
+                    </div>
+                </div>
+                
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
