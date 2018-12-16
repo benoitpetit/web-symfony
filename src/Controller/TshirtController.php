@@ -67,10 +67,11 @@ class TshirtController extends AbstractController
             'genderEN' => $genderEN,
             'color_id' => $color_id,
             'logo_id' => $logo_id,
+            'product' => $products->getAllGenderDetail( $product_type, $this->genderFR, $color_id, $logo_id )[0],
         ]);
     }
 
-    
+
     /**
      * @Route("gallery/man/visual", name="manvisual")
      */
