@@ -22,7 +22,7 @@
                     <!-- Connexion -->
                     <div class="col-md-8 h-100 d-flex justify-content-end align-items-center">
                         {% if app.user %}
-                            <a href="{{ path('account', {"id": "1"}) }}" class="text-midium-metal-upper">Bienvenue {{ app.user.username }}</a>
+                            <a href="{{ path('account', {"id": app.user.id }) }}" class="text-midium-metal-upper">Bienvenue {{ app.user.username }}</a>
                             <a href="{{ path('logout') }}" class="text-midium-metal-upper">Se déconnecter</a>
                         {% else %}
                             <a href="{{ path('login') }}" class="text-midium-metal-upper">Connexion</a>
