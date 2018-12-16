@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class BasketController extends AbstractController
 {
     /**
-     * @Route("/basket", name="show_basket")
+     * @Route("/basket", name="basket")
      */
     public function index()
     {
@@ -16,4 +16,7 @@ class BasketController extends AbstractController
             'controller_name' => 'Panier',
         ]);
     }
+
+
+    
 }
