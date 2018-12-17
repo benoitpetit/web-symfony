@@ -26,17 +26,5 @@ class HomeController extends AbstractController
         ]);
     }
 
-    /**
-     * Page a propos de nous & nos designer
-     *
-     * @Route("/about", name="about")
-     * 
-     * @return render
-     */
-    public function about(){
-        return $this->render('home/about.html.twig', [
-            'controller_name' => 'Designers',
-            'aboutNav' => true,
-        ]);
-    }
+    
 }

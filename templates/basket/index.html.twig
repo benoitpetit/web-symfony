@@ -1,23 +1,97 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ controller_name }}{% endblock %}
+{% block title %} {{ controller_name }} {% endblock %}
 
 {% block body %}
 
-    <div class="container basket px-4">
-
-        <h1 class="pb-2 mt-3 text-center text-md-left">  Mon <span>Panier</span></h1>
-
-        <div class="col-xs-12 col-sm-12 d-flex justify-content-center px-0 justify-content-sm-start">                                    
-            <div class="separator_gallery mx-0"></div>
+<!-- //////////////////////// CONTENU DE LA PAGE ////////////////////////// -->
+<section class="container-fluid px-0 produit_gallery pb-1">
+  
+  <!-- Titre de la page -->
+  <div class="container text-center pt-5 pb-1 position-relative">
+    <div class="row d-flex justify-content-between">
+     
+        <!-- Titre -->
+        <div class="col-xs-12 col-sm-8 pb-4 px-0">
+            <div class="col-12 pb-2 text-center text-md-left">                   
+                <h2>
+                  <span class="text-bleu">Mon {{ controller_name }}</span>
+                </h2>
+            </div>
+            <div class="col-xs-12 col-sm-12 d-flex justify-content-center justify-content-sm-start">                                    
+                <div class="separator_gallery mx-0"></div>
+            </div>
         </div>
 
-        {# {% if cart.count <= 0 %} #}
-        <!-- <h3>Il n'y a rien dans ton panier... :(</h3> -->
-        {#{% else %} #}
+    </div>
+  </div>
+  
+</section>
 
-    <!-- //////////////////////////  PANIER ///////////////////////////////// -->
 
+<!-- ////////////////// COLONNE GAUCHE IDENTIFIANT /////////////////////////// -->
+<div class="container">
+
+</div>
+
+        <div class="container cart pt-0">
+            <div class="row">
+                {# <div class="registerside"> #}
+
+                <!-- formulaire Register-->
+                <div class="col-md-7"> 
+                    
+
+                    <form method= "POST">
+                        <div>  
+                        <div class="col-sm-11 mb-2">
+                        <div>
+                        <h5>Nouveau client ?</h5>
+                        <p class="font-weight-bold">Inscrivez-vous en quelques instants</p>
+                        </div>
+
+                        <form action="/web-symfony/public/index.php/user/login" method="post">
+                        <button type="submit" class="btn btn-primary mb-3 mt-2"><a class="text-white" href="{{ path('register') }}">Créer un compte</a></button>
+                        </form>
+                        
+                </div>
+                        <hr/>
+            </div> 
+
+                    </form>
+                <!-- Connectez-vous si déja inscrit -->
+
+        <section class="col-sm-11 mt-5 mb-4">
+            <div>
+                <h5 class>Déja inscrit ?</h5>
+                    <p class="font-weight-bold"> Connectez-vous en saisissant vos identifiants</p>
+
+                <form action="/web-symfony/public/index.php/user/login" method="post">
+                    <div class="form-group w-100">
+                        <label for="username">Nom d'utilisateur</label>
+                        <input type="text" id="username" name="_username" class="form-control" value="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" id="password" name="_password" class="form-control">
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary mt-2">Valider et continuer</button>
+                    </div>
+                </form>
+                
+        </section>
+                <hr/>
+                    <div class= "champs">Les champs précédés d'une * sont <span>obligatoires</span></div>
+                </div> <!-- fin col-md-7-->
+                {# </div> <!-- fin registerside--> #}
+
+
+    <!-- ////////////////// PANIER /////////////////////////// -->
+
+        <div class="panierup col-md-5 mt-1"> 
+  
         {# {% for item in cart.items %} #}
             
         <table class="table cart">
@@ -32,7 +106,7 @@
                 </tr>
             </thead>
         
-        <!-- ///////  Lignes du panier en fonction du nombre d'articles (boucle) /////// -->
+         <!-- ///////  Lignes du panier en fonction du nombre d'articles (boucle) /////// -->
             <tbody>
                 {# {% for item in cart.items %} #}
                 <tr class="row">
@@ -63,8 +137,7 @@
                 {# {% endfor %} #}
             </tbody>
         </table>
-        <hr>
-
+        
 
     <!--////////////////// Partie PRIX TOTAUX /////////////////////////////////-->
 
@@ -77,17 +150,34 @@
             <div class="col-10 text-right p-0">Dont TVA : </div>
             <div class="col-2 text-right p-0">15.00€</div> {# <span > item.total * 0.20 </span> #}
         </div><hr>
+                    
+                    
+         <!-- /////////////////// BOUTONS Poursuite Achats / Commande ///////////////// -->
 
-
-    <!-- /////////////////// BOUTONS Poursuite Achats / Commande ///////////////// -->
-
-        <div class="d-flex justify-content-between button">
-            <button type="button" class="btn btn-warning mb-4"><a href="{{ path('mengallery') }}">Continuer mes achats</a></button>   
-            <button type="button" class="btn btn-success mb-4">Passer la commande</button> 
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-warning mb-4 mr-2"><a class="text-white" href="{{ path('mengallery') }}">Continuer mes achats</a></button>   
+            <button type="button" class="btn btn-success mb-4 ml-2"><a class="text-white" href="{{ path('delivery') }}">Passer la commande</a></button> 
         </div>
+                    </div>
+                    </div>
+    
+        
 
-    </div> <!--fin container basket -->
+
+
+
+
+
+   
     {# {% endif %} #} <!-- fin de la condition - panier vide ou non -->
+
+        </div> <!-- fin col-md-5-->
+            
+            
+
+    </div> <!-- fin div raw-->
+
+    
 
 
 
