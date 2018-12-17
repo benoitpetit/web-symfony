@@ -3,15 +3,10 @@
 namespace App\Service;
 
 use Doctrine\Common\Persistence\ObjectManager;
-Use App\Service\TshirtService;
 
 class TranslateService {
 
-    private $tshirt;
-
-    public function __construct ( ObjectManager $om, TshirtService $tshirtService ) {
-        $this->tshirt = new tshirtService( $om );
-    }
+    public function __construct () {}
 
     // NO TIME for translate !!!
     // Translate English to French to display
@@ -46,19 +41,6 @@ class TranslateService {
         }
 
         return $wordFR;
-    }
-
-    public function getAllColorsFR( $type_product ) {
-
-        $colorsEN = $this->tshirt->getAllTshirtColor( $type_product );
-        $colorsFR = [];
-
-        // Translate English to French to display
-        foreach( $colorsEN as $keyColorEN => $valueColorEN ) {
-            array_push( $colorsFR, $this->translateENtoFR( $colorsEN[$keyColorEN]['color_name'] ) );
-        }
-
-        return $colorsFR;
     }
 
 }

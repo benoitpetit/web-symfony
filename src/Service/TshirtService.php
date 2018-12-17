@@ -3,7 +3,7 @@
 namespace App\Service;
 
 use App\Repository\SQLViewsRepository;
-
+Use App\Service\TranslateService;
 
 // include composer autoload
 // require 'assets/vendor/intervention/vendor/autoload.php';
@@ -127,19 +127,30 @@ class TshirtService {
 // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
     public function getRandomTshirtGender( $product, $genderFR, $randNumber)
     {
-        // $rawSql = "SELECT v.* FROM vproduct_".$product." v WHERE v.name = :genderFR ORDER BY RAND() LIMIT :randNumber";
-        $rawSql = "SELECT v.* FROM vproduct_".$product." v WHERE v.name = '". $genderFR . "' ORDER BY RAND() LIMIT ". $randNumber;
-        // $arrayParam = [
-        //     [ 'genderFR', $genderFR, PDO::PARAM_STR ],
-        //     [ 'randNumber', $genderFR, PDO::PARAM_INT ],
-        // ];
-        // $stmt = $this->om->executeQuery( $rawSql, $arrayParam );
+        // $rawSql = "SELECT v.* FROM vproduct_".$product." v WHERE v.name = ? ORDER BY RAND() LIMIT ? ";
+        $rawSql = "SELECT v.* FROM vproduct_".$product." v WHERE v.name = :genderFR ORDER BY RAND() LIMIT ".$randNumber;
+        // $rawSql = "SELECT v.* FROM vproduct_".$product." v WHERE v.name = '". $genderFR . "' ORDER BY RAND() LIMIT ". $randNumber;
         $stmt = $this->om->prepare( $rawSql );
-        // $stmt = $this->bindValue( 'genderFR', $genderFR );
-        // $stmt = $this->bindValue( 'randNumber', $randNumber );
-        $stmt->execute([]);
+        $stmt->execute( array(':genderFR' => $genderFR) );
+        // $stmt->execute( array($genderFR, $randNumber) );
         
         return $stmt->fetchAll();
+    }
+
+
+    public function getAllColorsFR( $type_product ) {
+
+        $translate = new TranslateService();
+
+        $colorsEN = $this->getAllTshirtColor( $type_product );
+        $colorsFR = [];
+
+        // Translate English to French to display
+        foreach( $colorsEN as $keyColorEN => $valueColorEN ) {
+            array_push( $colorsFR, $translate->translateENtoFR( $colorsEN[$keyColorEN]['color_name'] ) );
+        }
+
+        return $colorsFR;
     }
 
 }
