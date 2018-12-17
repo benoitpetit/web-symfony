@@ -28,12 +28,12 @@ class TshirtController extends AbstractController
     /**
      * Gallerie homme
      * 
-     * @Route("/gallery/{product_type}/{genderEN}/{color_id}", name="gallery")
+     * @Route("/gallery/{product_type}/{genderEN}/{color_id}/{logo_id}", name="gallery")
      * 
      * @return render
      * 
      */
-    public function displayTshirtGallery( TshirtService $products, $product_type = 'tshirt', $genderEN , $color_id)
+    public function displayTshirtGallery( TshirtService $products, $product_type = 'tshirt', $genderEN , $color_id, $logo_id)
     {
         // A défaut de translate pour le moment ! (manque de temps)
         $this->genderFR = $this->translateENtoFR( $genderEN );
@@ -44,7 +44,8 @@ class TshirtController extends AbstractController
             'product_type' => $product_type,
             'genderEN' => $genderEN,
             'color_id' => $color_id,
-            'products' => $products->getAllGender( $product_type, $this->genderFR, $color_id),
+            'logo_id' => $logo_id,
+            'products' => $products->getAllGender( $product_type, $this->genderFR, $color_id, $logo_id),
         ]);
     }
 
@@ -108,33 +109,9 @@ class TshirtController extends AbstractController
             'womanSingleNav' => true,
         ]);
     }
+    
 
-    // /**
-    //  * Promo
-    //  * 
-    //  * @Route("/gallery/{product_type}/promos_{genderEN}/{color_name}", name="promosman")
-    //  * 
-    //  * @return render
-    //  * 
-    //  */
-    // public function promos( TshirtService $products, $product_type = 'tshirt', $genderEN , $color_name )
-    // {
-    //     $promo = 20/100;
-        
-    //     return $this->render('tshirt/promos.html.twig', [
-    //         'controller_name' => 'Promos',
-    //         'evenement' => 'Noël',
-    //         'promosNav' => true,
-    //         'promo' => $promo,
-    //         'genderFR' => 'homme',
-    //         'product_type' => $product_type,
-    //         'genderEN' => $genderEN,
-    //         'color_name' => $color_name,
-    //         'products' => $products->getAllGender( $product_type, $this->genderFR, $color_name),
-    //     ]);
-    // }
-
-        /**
+    /**
      * Gallerie homme
      * 
      * @Route("/gallery/{product_type}/promos/{genderEN}/{color_id}", name="promos")

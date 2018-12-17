@@ -76,16 +76,16 @@
                 <!-- Menu principal -->
                 <ul class="navbar-nav">
                     <li class="nav-item ">
-                        <a class="nav-link py-3 px-3 {% if ((manGalleryNav is defined) or (manSingleNav is defined)) %}active{% endif %}" href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: '1' }) }}">Homme</a>
+                        <a class="nav-link py-3 px-3 {% if ((manGalleryNav is defined) or (manSingleNav is defined)) %}active{% endif %}" href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: '0', logo_id:'0' }) }}">Homme</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link py-3 px-3 {% if ((womanGalleryNav is defined) or (womanSingleNav is defined)) %}active{% endif %}" href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman', color_id: '1' }) }}">Femme</a>
+                        <a class="nav-link py-3 px-3 {% if ((womanGalleryNav is defined) or (womanSingleNav is defined)) %}active{% endif %}" href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman', color_id: '0', logo_id:'0' }) }}">Femme</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link py-3 px-3 {% if aboutNav is defined  %}active{% endif %}" href="{{ path('about') }}">Nos Designers</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle promo py-3 px-3" href="{{ path('promos', {product_type: 'tshirt', genderEN: 'man', color_id: '3' }) }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Promos de Noël</a>
+                        <a class="nav-link dropdown-toggle promo py-3 px-3" href="{{ path('promos', {product_type: 'tshirt', genderEN: 'man', color_id: '1', logo_id: '1' }) }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Promos de Noël</a>
                         <!-- Sous-catégories -->
                         <div class="dropdown-menu rounded-0 py-0" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white text-navbar border-bottom border-danger py-3" href="{{ path('promos', {product_type: 'tshirt', genderEN: 'man', color_id: '3' }) }}">Homme</a>
