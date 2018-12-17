@@ -108,12 +108,12 @@
         
          <!-- ///////  Lignes du panier en fonction du nombre d'articles (boucle) /////// -->
             <tbody>
-                {# {% for item in cart.items %} #}
+                {# {% for item in basket.items %} #}
                 <tr class="row">
                     <td class="col-md-1 delete_item"><a href="#" 
                         {# data-item-id="{{item.id}}" #}
                         ><img src="../../public/assets/images/icones/trash.svg" width="20px"></a></td>
-                    <td class="col-md-2"><img src="../../public/assets/images/homme/tshirt_homme_c_mieux.png" class="img-responsive" width="100px" alt=""></td>
+                    <td class="col-md-2"><img src="../../public/assets/images/man/tshirt_man_c_mieux.png" class="img-responsive" width="100px" alt=""></td>
                     <td class="col-md-3"><a href="#"><div class="font-weight-bold">T-Shirt name </div></a><br>
                         <div > product.color </div>
                         <div > product.size </div>
@@ -121,7 +121,7 @@
                     <td class="col-md-2 pr-4">
                         <div class="d-md-none"> Prix Unitaire: </div>
                         <div class="text-right mr-2">15.00€</div> 
-                        {# <span>product.price</span> #}
+                        {# <span>{{ product.price_unit_ttc }} €</span> #}
                                     </td>
                     <td class="col-md-2 pr-4">
                         <div class="d-md-none">Quantité: </div>
@@ -131,7 +131,7 @@
                     <td class="col-md-2 pr-4">
                         <div class="d-md-none"> Prix Total: </div>
                         <div class="text-right">45.00€</div> 
-                        {# <span > item.total </span> #}
+                        {# <span >{{ product.price_unit_ttc }} * {{quantity}}</span> #}
                     </td>
                 </tr>
                 {# {% endfor %} #}

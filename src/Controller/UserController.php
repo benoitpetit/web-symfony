@@ -2,24 +2,26 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
-use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
-
 use App\Entity\User;
+use App\Form\UserType;
 use App\Entity\Address;
+use App\Form\LoginType;
+use App\Form\AddressType;
 use App\Service\UserAddressService;
 
-use App\Form\LoginType;
-use App\Form\UserType;
-use App\Form\AddressType;
+use App\Repository\AddressRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
+
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 
 class UserController extends AbstractController
 {
@@ -117,24 +119,57 @@ class UserController extends AbstractController
      * @return render
      * 
      */
-    public function account(Request $request, UserAddressService $useraddressService, string $id)
+    public function account(Request $request, UserAddressService $useraddressService, string $id, AddressRepository $repo)
     {
         // Utilisateur / Address
         $user = new User();
-        // pour ma modification des informations utilisateur
-        $form = $this->createForm( UserType::class, $user, array( 'method' => 'GET' ) );
-
-        // Contrôle les @Assert dans l'entité
-        $form->handleRequest($request);
+        // $address = $repo->findAll();
+        $address = $repo->findOneById($id);
 
         return $this->render('user/account.html.twig', [
             'title' => 'Votre compte',
             'accountNav' => true,
             'id' => $id,
             'user' => $useraddressService->getOneId( $id ),
+            'addr' => $address
+
+        ]);
+    }
+
+    /**
+     * permet d'afficher le formulaire d'edition de compte utilisateur
+     *
+     * @Route("/user/account/{id}/edit", name="user_edit")
+     * 
+     * @return Response
+     */
+    public function edit(User $user, Request $request, ObjectManager $om){
+
+        // create form
+        $form = $this->createForm(UserType::class, $user);
+        
+        // gére les envois de formulaire
+        $form->handleRequest($request);
+
+        // condition
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // object manager
+            $om->persist($user);
+            $om->flush();
+
+            // Flash
+            $this->addFlash('success', 'Vos modification on bien été enregistré.');
+
+            // redirection
+            return $this->redirectToRoute('home');
+        }
+        
+        return $this->render('user/edit.html.twig',[
             'form' => $form->createView()
         ]);
     }
+
 
     /**
      * 

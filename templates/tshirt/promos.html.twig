@@ -27,7 +27,7 @@
             <div class="col-xs-12 col-sm-8 pb-4 px-0">
                 <div class="col-12 pb-2 text-center text-md-left">                   
                     <h2>
-                        {{ controller_name }} de <span class="text-bleu">{{ evenement }}</span>
+                        {{ controller_name }} de <span class="text-bleu">{{ evenement ~ ' / '~ genderFR }}</span>
                     </h2>
                 </div>
                 <div class="col-xs-12 col-sm-12 d-flex justify-content-center justify-content-sm-start">                                    
@@ -57,52 +57,41 @@
 
             <!-- Gallerie -->
             <section class="row mb-4">
-                <!-- Produit 01 -->
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                    <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                        <a href="{{ path('mensingle') }}" class="produit_link position-relative w-100 d-flex bg-success hidden-visuel align-items-center">
-                            <!-- Visuel Produit -->
-                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/sass.png') }}"
-                                alt="Image du motif Sensasstionel">
-                            <div class="overlay bg-success">
-                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/homme/tshirt_homme_sass.png') }}"
-                                    alt="Image du t-shirt Sensasstionel" />
+
+                {% for product in products %}
+
+                    {% if (product.color_name == colorOne ) or (product.color_name == colorTwo ) %}
+
+                    <!-- Produit xx -->
+                    <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+                        <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
+                            <a href="{{ path('tshirtdetail', {product_type: product_type, genderEN: genderEN, color_id: product.color_id, logo_id: product.logo_id }) }}" class="produit_link position-relative w-100 d-flex hidden-visuel align-items-center" style="background-color:{{ product.color_hexa }};">
+                                <!-- Visuel Produit -->
+                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/' ~ product.slug ~ '.png') }}"
+                                    alt="Image du motif {{ product.slug }}">
+                                <div class="overlay" style="background-color:{{ product.color_hexa }};">
+                                    <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/' ~ gender ~ '/tshirt_' ~ gender ~ '_' ~ product.slug ~ '.png') }}"
+                                        alt="Image du t-shirt {{ product.slug }}" />
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Infos produit -->
+                        <div class="card-body">
+                            <h3 class="title_produit_gallery">{{ product.logo_name }}</h3>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <h5 class="price_gallery text-danger">{{ product.price_unit_ttc - ( product.price_unit_ttc * promo ) }}0 €
+                                    <del class="text-info font-weight-light">{{ product.price_unit_ttc }} €</del></h5>
+                                    
+                                </div>
                             </div>
-                        </a>
-                    </div>
-                    <!-- Infos produit -->
-                    <div class="card-body">
-                        <h3 class="title_produit_gallery">Sensasstionel</h3>
-                        <div class="row">
-                            <div class="col pr-1"><h5 class="price_gallery text-right text-danger">10,00€</h5></div>
-                            <div class="col pl-1 text-left"><del >13,00€</del></div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Produit 02 -->
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                    <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                        <a href="{{ path('mensingle') }}" class="produit_link position-relative w-100 d-flex bg-danger hidden-visuel align-items-center">
-                            <!-- Visuel Produit -->
-                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/id_fix.png') }}"
-                                alt="Image du motif Id Fix">
-                            <div class="overlay bg-danger">
-                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/homme/tshirt_homme_id_fix.png') }}"
-                                    alt="Image du t-shirt Id Fix" />
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Infos produit -->
-                    <div class="card-body">
-                        <h3 class="title_produit_gallery">Id Fix</h3>
-                        <div class="row">
-                            <div class="col pr-1"><h5 class="price_gallery text-right text-danger">10,00€</h5></div>
-                            <div class="col pl-1 text-left"><del >13,00€</del></div>
-                        </div>
-                    </div>
-                </div>
+                    {% endif %}
 
+                {% endfor %}
+            
             </section>
 
            <!-- controllers -->

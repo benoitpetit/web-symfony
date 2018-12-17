@@ -26,42 +26,25 @@ easy_admin:
                 - 'assets/script/admin.js'
         brand_color: '#084562'
         menu:
-            - { label: 'Les Utilisateurs' }
-            - { entity: 'Address', label: 'Adresses' , icon: 'map-marker-alt' }
-            - { entity: 'Color', label: 'Couleurs' , icon: 'palette'}
-            - { entity: 'Gender', label: 'Genres', icon: 'user' }
+            - { label: 'Les commandes' }
+            - { entity: 'Orders', label: 'Numéro de commandes', icon: 'copy', default: true }
+            - { entity: 'OrderLine' , label: 'Détail des Commandes' , icon: 'clipboard-list' }
+            - { entity: 'Rate', label: 'Remises', icon: 'certificate' }
+            - { label: 'Les Produits' }
+            - { entity: 'ProductType', label: 'Type de produit' , icon: 'cubes' }
+            - { entity: 'Product', label: 'Produits', icon: 'bullseye' }
+            - { entity: 'Gender', label: 'Genres', icon: 'venus-mars' }
+            - { entity: 'Size', label: 'Tailles' , icon: 'ruler-horizontal' }
             - { entity: 'Logo', label: 'Logos' , icon: 'code'}
-        # menu: 
-        #     - { label: 'Les commandes' }
-        #     - { entity: 'Orders', label: 'Numéro de commandes', icon: '', default: true }
-        #     - { entity: 'OrderLine' , label: 'Détails Commandes' , icon: '' }
-        #     - { entity: 'Rate', label: 'Remise', icon: '' }
-        #     - { label: 'Les Produits' }
-        #     - { entity: 'ProductType', label: 'Type de produit' , icon: '' }
-        #     - { entity: 'Product', label: 'Produits', icon: '' }
-        #     - { entity: 'Gender', label: 'Genre', icon: '' }
-        #     - { entity: 'Size', label: 'Tailles' , icon: '' }
-        #     - { entity: 'Logo', label: 'Logos' , icon: ''}
-        #     - { entity: 'Color', label: 'Couleurs' , icon: ''}
-        #     - { entity: 'StockInput', label: 'Stock' , icon: ''}
-        #     - { label: 'Les Utilisateurs' }
-        #     - { entity: 'User', label: 'Utilisateurs' , icon: ''}
-        #     - { entity: 'Address', label: 'Adresses' , icon: '' }
-        #     - { label: 'Boutique' }
-        #     - { label: '< Accéder au site', route: 'home' , icon: '' }
+            - { entity: 'Color', label: 'Couleurs' , icon: 'palette'}
+            - { entity: 'StockInput', label: 'Stocks' , icon: 'box'}
+            - { label: 'Les Utilisateurs' }
+            # - { entity: 'User', label: 'Utilisateurs' , icon: 'user'}
+            - { entity: 'Address', label: 'Adresses' , icon: 'map-marker-alt' }
+            - { label: 'Boutique' }
+            - { label: '< Retour au site', route: 'home' , icon: '' }
+        
    entities:
-       # List the entity class name you want to manage
-    #    - App\Entity\Address
-    #    - App\Entity\Color
-    #    - App\Entity\Gender
-    #    - App\Entity\Logo
-    #    - App\Entity\Orders
-    #    - App\Entity\OrderLine
-    #    - App\Entity\Product
-    #    - App\Entity\ProductType
-    #    - App\Entity\Rate
-    #    - App\Entity\Size
-    #    - App\Entity\StockInput
        Address: # Entité
             class: App\Entity\Address # chemin d'accés à l'entité
             label: 'Adresses' # Le nom affiché de l'entité
@@ -80,7 +63,6 @@ easy_admin:
                 actions: # les boutons à afficher
                     - { name: 'list', label: 'Retour', icon: 'arrow-left' }
                 fields: # champas à afficher
-                    - { property: 'id', label: 'ID' }
                     - { property: 'addressType', label: 'Type' }
                     - { property: 'street', label: 'Adresse' }
                     - { property: 'zipCode', label: 'Code postal' }
@@ -91,7 +73,6 @@ easy_admin:
                 actions: # les boutons à afficher
                     - { name: 'list', label: 'Retour', icon: 'arrow-left' }
                 fields: # champas à afficher
-                    - { property: 'id', label: 'ID' }
                     - { property: 'addressType', label: 'Type' }
                     - { property: 'street', label: 'Adresse' }
                     - { property: 'zipCode', label: 'Code postal' }
@@ -114,7 +95,6 @@ easy_admin:
                 actions: # les boutons à afficher
                     - { name: 'list', label: 'Retour', icon: 'arrow-left' }
                 fields: # champas à afficher
-                    - { property: 'id', label: 'ID' }
                     - { property: 'colorName', label: 'Couleur' }
                     - { property: 'colorHexa', label: 'Code Hexadécimal' }
             new: # affichage "Ajouter"
@@ -122,7 +102,6 @@ easy_admin:
                 actions: # les boutons à afficher
                     - { name: 'list', label: 'Retour', icon: 'arrow-left' }
                 fields: # champas à afficher
-                    - { property: 'id', label: 'ID' }
                     - { property: 'colorName', label: 'Couleur' }
                     - { property: 'colorHexa', label: 'Code Hexadécimal' }
             search: # affichage "Rechercher"
@@ -141,14 +120,12 @@ easy_admin:
                 actions: # les boutons à afficher
                     - { name: 'list', label: 'Retour', icon: 'arrow-left' }
                 fields: # champas à afficher
-                    - { property: 'id', label: 'ID' }
                     - { property: 'Name', label: 'Genre' }
             new: # affichage "Ajouter"
                 title: 'Ajouter un nouveau genre'  # titre de la section
                 actions: # les boutons à afficher
                     - { name: 'list', label: 'Retour', icon: 'arrow-left' }
                 fields: # champas à afficher
-                    - { property: 'id', label: 'ID' }
                     - { property: 'Name', label: 'Genre' }
             search: # affichage "Rechercher"
                 title: 'Résultat de la recherche'  # titre de la section
@@ -168,7 +145,6 @@ easy_admin:
                 actions: # les boutons à afficher
                     - { name: 'list', label: 'Retour', icon: 'arrow-left' }
                 fields: # champas à afficher
-                    - { property: 'id', label: 'ID' }
                     - { property: 'logoName', label: 'Logo' }
                     - { property: 'slug', label: 'Slug' }
                     - { property: 'link', label: 'Lien' }
@@ -177,10 +153,243 @@ easy_admin:
                 actions: # les boutons à afficher
                     - { name: 'list', label: 'Retour', icon: 'arrow-left' }
                 fields: # champas à afficher
-                    - { property: 'id', label: 'ID' }
                     - { property: 'logoName', label: 'Logo' }
                     - { property: 'slug', label: 'Slug' }
                     - { property: 'link', label: 'Lien' }
             search: # affichage "Rechercher"
                 title: 'Résultat de la recherche'  # titre de la section
+       OrderLine: # Entité
+            class: App\Entity\OrderLine # chemin d'accés à l'entité
+            label: 'Détail des commandes' # Le nom affiché de l'entité
+            list: # mode liste
+                title: 'Liste des commandes' # titre de la section
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'ordersId', label: 'Référence' }
+                    - { property: 'productId', label: 'ID Produit' }
+                    - { property: 'productColorId', label: 'ID Couleur' }
+                    - { property: 'productLogoId', label: 'ID Logo' }
+                    - { property: 'productSizeId', label: 'ID Size' }
+                    - { property: 'productGenderId', label: 'ID Genre' }
+                    - { property: 'quantity', label: 'Quantité' }
+                    - { property: 'priceUnitHt', label: 'Prix HT Unité' }
+                    - { property: 'promoUnitHt', label: 'Remise' }
+                    - { property: 'rateId', label: 'TVA' }
+                    - { property: 'priceTotalTtc', label: 'Prix TTC Total' }
+            disabled_actions: ['new','edit']
+            search: # affichage "Rechercher"
+                title: 'Résultat de la recherche'  # titre de la section
+       Orders: # Entité
+            class: App\Entity\Orders # chemin d'accés à l'entité
+            label: 'Référence des commandes' # Le nom affiché de l'entité
+            list: # mode liste
+                title: 'Liste des références commandes' # titre de la section
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'orderRegister', label: 'Numéro de commande' }
+                    - { property: 'addressBillingId', label: 'Adresse de facturation' }
+                    - { property: 'addressDeliveryId', label: 'Adresse de livraison' }
+                    - { property: 'orderDate', label: 'Date de la commande' }
+            disabled_actions: ['new','edit']
+            search: # affichage "Rechercher"
+                title: 'Résultat de la recherche'  # titre de la section
+       Product: # Entité
+            class: App\Entity\Product # chemin d'accés à l'entité
+            label: 'Produits' # Le nom affiché de l'entité
+            list: # mode liste
+                title: 'Liste des produits' # titre de la section
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'productTypeId', label: 'Type de produit' }
+                    - { property: 'genderId', label: 'Genre' }
+                    - { property: 'rateId', label: 'Remise' }
+                    - { property: 'priceUnitHt', label: 'Prix HT Unité' }
+                    - { property: 'createdDate', label: 'Date de création' }
+            edit: # affichage "Modifier"
+                title: "Modifier le produit"  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'productTypeId', label: 'Type de produit' }
+                    - { property: 'genderId', label: 'Genre' }
+                    - { property: 'rateId', label: 'Remise' }
+                    - { property: 'priceUnitHt', label: 'Prix HT Unité' }
+            new: # affichage "Ajouter"
+                title: 'Ajouter un produit'  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'productTypeId', label: 'Type de produit' }
+                    - { property: 'genderId', label: 'Genre' }
+                    - { property: 'rateId', label: 'Remise' }
+                    - { property: 'priceUnitHt', label: 'Prix HT Unité' }
+            search: # affichage "Rechercher"
+                title: 'Résultat de la recherche'  # titre de la section
+       ProductType: # Entité
+            class: App\Entity\ProductType # chemin d'accés à l'entité
+            label: 'Produits' # Le nom affiché de l'entité
+            list: # mode liste
+                title: 'Liste des différents types produits' # titre de la section
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'productType', label: 'Type de produit' }
+                    - { property: 'createdDate', label: 'Date de création' }
+            edit: # affichage "Modifier"
+                title: "Modifier le type d'un produit"  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'productType', label: 'Type de produit' }
+            new: # affichage "Ajouter"
+                title: 'Ajouter un type de produit'  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'productType', label: 'Type de produit' }
+            search: # affichage "Rechercher"
+                title: 'Résultat de la recherche'  # titre de la section
+       Rate: # Entité
+            class: App\Entity\Rate # chemin d'accés à l'entité
+            label: 'Remises' # Le nom affiché de l'entité
+            list: # mode liste
+                title: 'Liste des remises' # titre de la section
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'rate', label: 'Remise' }
+                    - { property: 'RateDateStart', label: 'Début de la remise' }
+                    - { property: 'rateDateEnd', label: 'Fin de la remise' }
+                    - { property: 'createdDate', label: 'Date de création' }
+            edit: # affichage "Modifier"
+                title: "Modifier une remise"  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'rate', label: 'Remise' }
+                    - { property: 'RateDateStart', label: 'Début de la remise' }
+                    - { property: 'rateDateEnd', label: 'Fin de la remise' }
+            new: # affichage "Ajouter"
+                title: 'Ajouter une remise'  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'rate', label: 'Remise' }
+                    - { property: 'RateDateStart', label: 'Début de la remise' }
+                    - { property: 'rateDateEnd', label: 'Fin de la remise' }
+            search: # affichage "Rechercher"
+                title: 'Résultat de la recherche'  # titre de la section
+       Size: # Entité
+            class: App\Entity\Size # chemin d'accés à l'entité
+            label: 'Tailles' # Le nom affiché de l'entité
+            list: # mode liste
+                title: 'Liste des Tailles' # titre de la section
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'size', label: 'Taille' }
+                    - { property: 'createdDate', label: 'Date de création' }
+            edit: # affichage "Modifier"
+                title: "Modifier une taille"  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'size', label: 'Taille' }
+            new: # affichage "Ajouter"
+                title: 'Ajouter une Taille'  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'size', label: 'Taille' }
+            search: # affichage "Rechercher"
+                title: 'Résultat de la recherche'  # titre de la section
+       StockInput: # Entité
+            class: App\Entity\StockInput # chemin d'accés à l'entité
+            label: 'Stocks' # Le nom affiché de l'entité
+            list: # mode liste
+                title: 'Liste des stocks' # titre de la section
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'productId', label: 'Produit' }
+                    - { property: 'ColorId', label: 'Couleur' }
+                    - { property: 'SizeId', label: 'Taille' }
+                    - { property: 'quantity', label: 'Quantité' }
+                    - { property: 'inputDate', label: 'Arrivage du stock' }
+                    - { property: 'createdDate', label: 'Date de création' }
+            edit: # affichage "Modifier"
+                title: "Modifier un stock"  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'productId', label: 'Produit' }
+                    - { property: 'ColorId', label: 'Couleur' }
+                    - { property: 'SizeId', label: 'Taille' }
+                    - { property: 'quantity', label: 'Quantité' }
+                    - { property: 'inputDate', label: 'Arrivage du stock' }
+            new: # affichage "Ajouter"
+                title: 'Ajouter un stock'  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'productId', label: 'Produit' }
+                    - { property: 'ColorId', label: 'Couleur' }
+                    - { property: 'SizeId', label: 'Taille' }
+                    - { property: 'quantity', label: 'Quantité' }
+                    - { property: 'inputDate', label: 'Arrivage du stock' }
+            search: # affichage "Rechercher"
+                title: 'Résultat de la recherche'  # titre de la section
+    #    User: # Entité
+    #         class: App\Entity\User # chemin d'accés à l'entité
+    #         label: 'Utilisateurs' # Le nom affiché de l'entité
+    #         list: # mode liste
+    #             title: 'Liste des utilisateurs' # titre de la section
+    #             fields: # champas à afficher
+    #                 - { property: 'id', label: 'ID' }
+    #                 - { property: 'username', label: 'Identifiant' }
+    #                 - { property: 'firstname', label: 'Prénom' }
+    #                 - { property: 'lastname', label: 'Nom' }
+    #                 - { property: 'password', label: 'Hash' }
+    #                 - { property: 'email', label: 'Email' }
+    #                 - { property: 'phone', label: 'Téléphone' }
+    #                 - { property: 'roles', label: 'Rôle d'accès' }
+    #                 - { property: 'isActive', label: 'Actif' }
+    #                 - { property: 'createdDate', label: 'Date de création' }
+    #         edit: # affichage "Modifier"
+    #             title: "Modifier un utilisateur"  # titre de la section
+    #             actions: # les boutons à afficher
+    #                 - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+    #             fields: # champas à afficher
+    #                 - { property: 'username', label: 'Identifiant' }
+    #                 - { property: 'firstname', label: 'Prénom' }
+    #                 - { property: 'lastname', label: 'Nom' }
+    #                 - { property: 'password', label: 'Hash' }
+    #                 - { property: 'email', label: 'Email' }
+    #                 - { property: 'phone', label: 'Téléphone' }
+    #                 - { property: 'roles', label: 'Rôle d'accès' }
+    #                 - { property: 'isActive', label: 'Actif' }
+    #         new: # affichage "Ajouter"
+    #             title: 'Ajouter un utilisateur'  # titre de la section
+    #             actions: # les boutons à afficher
+    #                 - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+    #             fields: # champas à afficher
+    #                 - { property: 'username', label: 'Identifiant' }
+    #                 - { property: 'firstname', label: 'Prénom' }
+    #                 - { property: 'lastname', label: 'Nom' }
+    #                 - { property: 'password', label: 'Hash' }
+    #                 - { property: 'email', label: 'Email' }
+    #                 - { property: 'phone', label: 'Téléphone' }
+    #                 - { property: 'roles', label: 'Rôle d'accès' }
+    #                 - { property: 'isActive', label: 'Actif' }
+    #         search: # affichage "Rechercher"
+    #             title: 'Résultat de la recherche'  # titre de la section
+
+
+
+
+
+
+
+
+
+
+
+
+
 
