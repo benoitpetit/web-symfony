@@ -32,7 +32,7 @@ class TshirtController extends AbstractController
             'color_id' => $color_id,
             'logo_id' => $logo_id,
             'products' => $products->getAllGender( $product_type, $genderFR, $color_id, $logo_id),
-            'colors' => $translate->getAllColorsFR( $product_type ),
+            'colors' => $products->getAllColorsFR( $product_type ),
         ]);
     }
 

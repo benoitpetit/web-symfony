@@ -22,7 +22,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent">
                     <li class="breadcrumb-item"><a href="{{ path('home') }}">Accueil</a></li>
-                    <li class="breadcrumb-item"><a href="{{ path('gallery', {product_type: product_type, genderEN: genderEN ,color_id: color_id}) }}">{{ controller_name }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('gallery', {product_type: product_type, genderEN: genderEN, color_id: color_id, logo_id: logo_id}) }}">{{ controller_name }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ product.logo_name }}</li>
                 </ol>
             </nav>
