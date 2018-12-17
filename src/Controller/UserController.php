@@ -96,7 +96,7 @@ class UserController extends AbstractController
             $useraddressService->add( $user );
 
             // Flash
-            $this->addFlash('success', 'Votre compte a été bien enregistré.');
+            $this->addFlash('success', 'Ton compte a bien été enregistré.');
 
             // return $this->redirectToRoute('account', [ 'id' => $user->getId() ]);
             return $this->redirectToRoute('login');
@@ -129,7 +129,7 @@ class UserController extends AbstractController
         $address = $repo->findOneById($id);
 
         return $this->render('user/account.html.twig', [
-            'title' => 'Votre compte',
+            'title' => 'Ton compte',
             'accountNav' => true,
             'id' => $id,
             'user' => $useraddressService->getOneId( $id ),
@@ -161,7 +161,7 @@ class UserController extends AbstractController
             $om->flush();
 
             // Flash
-            $this->addFlash('success', 'Vos modification on bien été enregistré.');
+            $this->addFlash('success', 'Tes modifications ont bien été enregistrées.');
 
             // redirection
             return $this->redirectToRoute('home');

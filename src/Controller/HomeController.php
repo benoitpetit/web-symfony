@@ -17,10 +17,7 @@ class HomeController extends AbstractController
      * @return render
      */
     public function index(SessionInterface $session, AuthenticationUtils $authenticationUtils)  
-    {  // Ouverture de session à l'arrivée sur le site
-        // $session->set('foo', 'bar');  
-        // $session->get('foo');
-
+    {  
         $error = $authenticationUtils->getLastAuthenticationError();
 
         $auth_checker = $this->get('security.authorization_checker');
@@ -35,7 +32,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * Page a propos de nous & nos designer
+     * Page a propos de nous & nos designers
      *
      * @Route("/about", name="about")
      * 
