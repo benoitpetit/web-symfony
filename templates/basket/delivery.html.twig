@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ controller_name }}{% endblock %}
-
+ 
 {% block body %}
 
     <div class="container delivery px-4">
@@ -25,9 +25,28 @@
                     </div>
 
                     <div class="col-sm-8">
-                        <ul> <li> Livraison gratuite proche de chez vous ou de votre travail chez un des 5000 commercants partenaires avec Kiala</li></ul>
-                   
-                        {% include 'basket/mondialrelay.thml.twig' %} 
+                            
+                    <div >
+                
+                        <!-- Zone dans laquelle le Widget est chargé -->
+                        <div class="col-sm-8" id="Zone_Widget"></div>
+                        <div style="padding:8px; overflow:auto;"></div>
+
+                        {% block javascripts %}
+                        <!-- Librairie jQuery, facilitant la programmation de scripts côté client.-->
+                    
+                        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+                        <!-- Librairie de Cartographie : Leaflet. -->
+                        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+                        <!-- Widget MR -->
+                        <script src="https://widget.mondialrelay.com/parcelshop-picker/jquery.plugin.mondialrelay.parcelshoppicker.min.js"></script>
+
+                        <script src="{{ asset( 'assets/script/mondial_relay.js' ) }}"></script>
+                        {% endblock %}
+
+                    </div>
+
                     </div>
                    
                 </div>
@@ -63,9 +82,8 @@
         </div>
     </div>
     
-    </div> <!--fin container delivery -->
+    {# </div> <!--fin container delivery --> #}
     {# {% endif %} #} <!-- fin de la condition - panier vide ou non -->
-
 
 
 

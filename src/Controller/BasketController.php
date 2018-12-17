@@ -24,29 +24,6 @@ class BasketController extends AbstractController
         ]);
     }
 
-
-
-    //     // Do the login stuff...
-    // if (/* Login is successful */) {
-    //     // Do whatever it is you have to do to finish the login...    
-    //     // Then check if the login_redirect is set, and use that.
-    //     // Otherwise just redirect back to members.php.
-    //     if (isset($_SESSION"login_redirect"]) {
-    //         header("Location: " . $_SESSION"login_redirect"]);
-    //         // And remember to clean up the session variable after
-    //         // this is done. Don't want it lingering.
-    //         unset($_SESSION"login_redirect"]);
-    //     }
-    //     else {
-    //         header("Location: members.php");
-    //     }
-    //     exit;
-
-
-
-
-
-    
     // /**
     //  * Ajout d'un article dans le panier 
     //  * @param array $select variable tableau associatif contenant les valeurs de l'article 

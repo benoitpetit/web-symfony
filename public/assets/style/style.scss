@@ -18,6 +18,12 @@ body {
     box-sizing: border-box;
     background-color: $white;
 
+
+    // #cb {
+    //     max-height: 155px;
+    //     height: 105px;
+    // }
+
     // ---- IMPORTS PAGES ---- //
 
     @import "./pages/home.scss";
@@ -33,3 +39,4 @@ body {
     @import "./pages/payment.scss";
 
 }
+

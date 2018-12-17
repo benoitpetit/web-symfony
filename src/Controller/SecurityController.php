@@ -33,12 +33,38 @@ class SecurityController extends AbstractController {
         ]);
     }
 
-    // /**
+   
+    /**
+     *  Redirection apres connexionBasket
+     * @Route("/basket/delivery", name="delivery")
+     */
+    // public function postLoginRedirectAction()
+    // {
+    //     // if ($user->hasConnected() == true) {
+    //     //     return $this->redirectToRoute("delivery");
+    //     // } else if ($user->hasCompleteProfile() == false) {
+    //     //     return $this->redirectToRoute("basket");
+    //     // } else {
+    //     //     return $this->redirectToRoute("index");
+    //     // }
+    //     // session_start();
+        
+    //     if(!isset($_SESSION['basket'])) {
+    //     // header('Location:login.html.twig');
+    //              return $this->redirectToRoute("delivery"); 
+    //         } else if(!isset($_SESSION['index'])) {
+    //             return $this->redirectToRoute("index");
+    //         }
+    //         session_start();
+       
+
+
+    // }
+}
+
+ // /**
     //  * @Route("/user/admin", name="useradmin")
     //  */
     // public function admin() {
     //     return $this->redirectToRoute('admin');
     // }
-
-
-}

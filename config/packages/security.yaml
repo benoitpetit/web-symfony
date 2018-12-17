@@ -21,8 +21,8 @@ security:
             form_login:
                 login_path: login
                 check_path: login
-                default_target_path: /
-
+                # default_target_path: /     'basket/delivery'
+                # always_use_default_target_path: true
             logout:
                 path: /user/logout
                 target: /

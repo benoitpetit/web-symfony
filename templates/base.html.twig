@@ -11,12 +11,27 @@
         <!-- Favico -->
         <link rel="icon" href="{{ asset( 'assets/icone/favico.png' ) }}" type="image/png" />
         <!-- Styles -->
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <link rel="stylesheet" href="{{ asset( 'https://use.fontawesome.com/releases/v5.6.1/css/all.css' ) }}">
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset( 'assets/vendor/style/bootstrap.min.css' ) }}" />
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset( 'assets/style/style.min.css' ) }}" />
+        {# <!-- Ajax -->
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <!--On charge Google Map API-->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+          <!--Leaf Map -->
+        <script src="//unpkg.com/leaflet/dist/leaflet.js"></script>
+        <link rel="stylesheet" type="text/css" href="//unpkg.com/leaflet/dist/leaflet.css" />
+        <!-- Widget MR -->
+        <script src="//widget.mondialrelay.com/parcelshop-picker/jquery.plugin.mondialrelay.parcelshoppicker.min.js"></script>
+
+        <!--On charge le widget mondial relay depuis leurs serveurs-->
+        <script type="text/javascript" src="http://widget.mondialrelay.com/parcelshoppicker/v3_2_1/scripts/jquery.plugin.mondialrelay.parcelshoppicker.min.js"></script> #}
+
         {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
+        </head>
+        <body>
         {% include 'partials/header.html.twig' %}
 
         {# Affiche des messages flash #}
@@ -29,12 +44,13 @@
 
         {% include 'partials/footer.html.twig' %}
         <!-- Liens vers les .JS -->
+
         <script src="{{ asset( 'assets/vendor/script/jquery-3.3.1.min.js' ) }}"></script>
         <script src="{{ asset( 'assets/vendor/script/popper.min.js' ) }}"></script>
         <script src="{{ asset( 'assets/vendor/script/bootstrap.min.js' ) }}"></script>
         <script src="{{ asset( 'assets/script/script.js' ) }}"></script>
         <script src="{{ asset( 'assets/script/about.js' ) }}"></script>
-        <script src="{{ asset( 'assets/script/mondialrelay.js' ) }}"></script>
+
         
         {% block javascripts %}{% endblock %}
     </body>
