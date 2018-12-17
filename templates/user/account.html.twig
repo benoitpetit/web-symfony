@@ -4,6 +4,10 @@
 {% endblock %}
 
 {% block body %}
+
+{# condition #}
+{% if app.user %}
+
 <div class="container bg-light p-5">
     <h1 class="pb-2 mt-3 text-center text-md-left"> MON COMPTE / MES COMMANDES </h1>
     
@@ -11,8 +15,10 @@
         <div class="separator_gallery mx-0"></div>
     </div>
 
+
 {# information #}
 <div class="row mt-5 mb-5">
+
     <div class="col-md-4">
         <h4 class="mb-4">INFORMATIONS / ADRESSE</h4>
         <hr>
@@ -76,8 +82,40 @@
     </table>
 </div>
 </div>
+</div>
+{% else %}
+<div class="h-100 d-flex flex-row align-items-center">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center error-content">
+                <i class="fab fa-fly display-1 mb-3 text-info"></i>
+                <span class="display-1 d-block"><span class="text-info"><</span> 404 <span class="text-info">/></span></span>
+                <div class="mb-4 lead">La page que vous recherchez n'a pas été trouvé...</div>
+                <a href="{{ path('home') }}" class="btn btn-link retour mb-5">Retour à la page d'Accueil</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 </div>
+
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 {% endblock %}
