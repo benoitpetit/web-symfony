@@ -4,6 +4,7 @@ CREATE SCHEMA `devmyshirts` DEFAULT CHARACTER SET utf8 ;
 USE `devmyshirts`;
 
 /* 2. */
+/* !!! NE PAS FAIRE php bin/console make:migration !!! */
 /* php bin/console doctrine:migrations:migrate */
 
 /* 3. */
