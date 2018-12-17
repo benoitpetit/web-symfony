@@ -8,7 +8,7 @@
 <section class="container-fluid px-0 produit_gallery pb-3">
     <!-- Bandeau Noel -->
     <section class="row filter_bandeau d-flex justify-content-center align-items-center mx-0">
-            <a href="{{ path('promos' ~ genderEN) }}" class="lead mb-0 promo-slogan d-flex text-center py-3">
+            <a href="{{ path('promos', {product_type: 'tshirt', genderEN: 'man', color_id: '3' }) }}" class="lead mb-0 promo-slogan d-flex text-center py-3">
                 <i class="fas fa-holly-berry px-3 text-success d-flex align-items-center"></i>
                 <span class=" text-warning">Profite de notre sélection de produits 
                     <span class="slogan_slide text-uppercase font-weight-bold text-white">Spéciale Noël</span>
@@ -24,8 +24,8 @@
             <div class="row w-100 mx-0 px-0">
 
                 <!-- Titre -->
-                <div class="col-xs-12 col-sm-8 pb-4">
-                    <div class="col-12 pb-2 text-center text-md-left">                   
+                <div class="col-xs-12 col-sm-6 pb-4">
+                    <div class="col-12 pb-2 pl-0 text-center text-md-left">                   
                         <h2>
                             T-shirts <span class="text-bleu">{{ controller_name }}</span>
                         </h2>
@@ -34,26 +34,67 @@
                         <div class="separator_gallery mx-0"></div>
                     </div>
                 </div>
+
+                <!-- selecteur de motifs -->
+                <div class="col-xs-12 col-sm-3 ">
+                    <div class="form-group d-flex align-items-center justify-content-center justify-content-md-end">
+                        <div class="d-block text-secondary pr-3">
+                            <label for="color">Trier par motif : </label>
+                        </div>
+                        <div class="d-block">
+                            <select class="form-control text-white bg-secondary"  name="color" onChange="location = this.options[this.selectedIndex].value;">
+
+                                {# <option 
+                                    value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: '1' }) }}"
+                                    {% if color_id == '1' %}selected{% endif %}> bleu
+                                </option>  #}
+                                    
+                            </select>
+                        </div>
+                    </div>
+                </div>
     
-                <!-- controllers -->
-                <div class=" col-xs-12 col-sm-4">   
-                        <nav aria-label="controller-produit py-0">
-                        <ul class="pagination d-flex justify-content-center justify-content-md-end">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo; Précédent</span>
-                                    <span class="sr-only">Précédent</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">Suivant &raquo;</span>
-                                    <span class="sr-only">Suivant</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div> 
+
+                <!-- Selecteur de couleurs -->
+                <div class="col-xs-12 col-sm-3 ">
+                    <div class="form-group d-flex align-items-center justify-content-center justify-content-md-end">
+                        <div class="d-block text-secondary pr-3">
+                            <label for="color">Trier par couleur : </label>
+                        </div>
+                        <div class="d-block">
+                            <select class="form-control text-white bg-secondary"  name="color" onChange="location = this.options[this.selectedIndex].value;">
+                                    <option 
+                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 0 , logo_id: 0}) }}"
+                                        {% if color_id == '1' %}selected{% endif %}> Tous
+                                    </option>
+                                    <option 
+                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 1 , logo_id: 0}) }}"
+                                        {% if color_id == '1' %}selected{% endif %}> bleu
+                                    </option>
+                                    <option 
+                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 2 , logo_id: 0}) }}"
+                                        {% if color_id == '2' %}selected{% endif %}> jaune
+                                    </option>
+                                    <option 
+                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 3 , logo_id: 0 }) }}"
+                                        {% if color_id == '3' %}selected{% endif %}> vert 
+                                    </option>
+                                    <option 
+                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 4 , logo_id: 0 }) }}"
+                                        {% if color_id == '4' %}selected{% endif %}> rouge
+                                    </option>
+                                    <option 
+                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 5 , logo_id: 0 }) }}"
+                                        {% if color_id == '5' %}selected{% endif %}> noir
+                                    </option>
+                                    <option 
+                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 6 , logo_id: 0 }) }}"
+                                        {% if color_id == '6' %}selected{% endif %}> violet
+                                    </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
             </div>
             
