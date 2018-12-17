@@ -132,8 +132,8 @@
          <!-- /////////////////// BOUTONS Poursuite Achats / Commande ///////////////// -->
 
         <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-warning mb-4 mr-2"><a href="{{ path('mengallery') }}">Continuer mes achats</a></button>   
-            <button type="button" class="btn btn-success mb-4 ml-2"><a href="{{ path('delivery') }}">Passer la commande</a></button> 
+            <button type="button" class="btn btn-warning mb-4 mr-2"><a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man' }) }}">Continuer mes achats</a></button>   
+            <button type="button" class="btn btn-success mb-4 ml-2"><a href= {{ path('delivery') }} >Passer la commande</a></button> 
         </div>
 
 
