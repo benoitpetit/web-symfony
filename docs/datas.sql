@@ -168,3 +168,33 @@ id`,
 (46, 2, 2, 2, '2018-12-14 08:00:00', 20, '2018-12-14 11:00:00'),
 (47, 2, 3, 2, '2018-12-14 08:00:00', 20, '2018-12-14 11:00:00'),
 (48, 2, 4, 2, '2018-12-14 08:00:00', 20, '2018-12-14 11:00:00');
+
+UPDATE `devmyshirts`.`color` SET `par_type_product` = '@tshirt' WHERE (`id` = '1');
+UPDATE `devmyshirts`.`color` SET `par_type_product` = '@tshirt' WHERE (`id` = '2');
+UPDATE `devmyshirts`.`color` SET `par_type_product` = '@tshirt' WHERE (`id` = '3');
+UPDATE `devmyshirts`.`color` SET `par_type_product` = '@tshirt' WHERE (`id` = '4');
+UPDATE `devmyshirts`.`color` SET `par_type_product` = '@tshirt' WHERE (`id` = '5');
+UPDATE `devmyshirts`.`color` SET `par_type_product` = '@tshirt' WHERE (`id` = '6');
+
+UPDATE `devmyshirts`.`size` SET `par_type_product` = '@tshirt' WHERE (`id` = '1');
+UPDATE `devmyshirts`.`size` SET `par_type_product` = '@tshirt' WHERE (`id` = '2');
+UPDATE `devmyshirts`.`size` SET `par_type_product` = '@tshirt' WHERE (`id` = '3');
+UPDATE `devmyshirts`.`size` SET `par_type_product` = '@tshirt' WHERE (`id` = '4');
+
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '1');
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '2');
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '3');
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '4');
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '5');
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '6');
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '7');
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '8');
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '9');
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '10');
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '11');
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '12');
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '13');
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '14');
+UPDATE `devmyshirts`.`logo` SET `par_type_product` = '@tshirt' WHERE (`id` = '15');
+
+

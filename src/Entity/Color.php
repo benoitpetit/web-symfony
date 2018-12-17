@@ -21,6 +21,11 @@ class Color
     /**
      * @ORM\Column(type="string", length=45)
      */
+    public $parTypeProduct;
+
+    /**
+     * @ORM\Column(type="string", length=45)
+     */
     public $colorName;
 
     /**
@@ -39,6 +44,18 @@ class Color
     function onPrePersist() {
         // set default date
         $this->createdDate = new \DateTime('now',  new \DateTimeZone( 'UTC' ));
+    }
+
+    public function getParTypeProduct(): ?string
+    {
+        return $this->parTypeProduct;
+    }
+
+    public function setParTypeProduct(string $parTypeProduct): self
+    {
+        $this->parTypeProduct = $parTypeProduct;
+
+        return $this;
     }
 
     public function getColorName(): ?string

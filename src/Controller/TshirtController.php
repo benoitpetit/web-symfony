@@ -7,43 +7,32 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 
 use App\Service\TshirtService;
+use App\Service\TranslateService;
 
 class TshirtController extends AbstractController
 {
-
-    private $genderFR;
-
-    // NO TIME for translate !!!
-    // Translate English to French to display
-    private function translateENtoFR( $wordEN ) {
-        if ( $wordEN == 'woman' )
-            $wordFR = 'femme';
-        elseif ( $wordEN == 'man')
-            $wordFR = 'homme';
-        else $wordFR = null;
-
-        return $wordFR;
-    }
-
     /**
      * Gallerie homme
      * 
-     * @Route("/gallery/{product_type}/{genderEN}", name="gallery")
+     * @Route("/gallery/{product_type}/{genderEN}/{color_id}/{logo_id}", name="gallery")
      * 
      * @return render
      * 
      */
-    public function displayTshirtGallery( TshirtService $products, $product_type = 'tshirt', $genderEN )
+    public function displayTshirtGallery( TshirtService $products, TranslateService $translate, $product_type = 'tshirt', $genderEN , $color_id, $logo_id)
     {
         // A défaut de translate pour le moment ! (manque de temps)
-        $this->genderFR = $this->translateENtoFR( $genderEN );
+        $genderFR = $translate->translateENtoFR( $genderEN );
 
         return $this->render( $product_type .'/gallery.html.twig', [
-            'controller_name' => $this->genderFR,
+            'controller_name' => $genderFR,
             $genderEN.'GalleryNav' => true,
             'product_type' => $product_type,
             'genderEN' => $genderEN,
-            'products' => $products->getAllGender( $product_type, $this->genderFR ),
+            'color_id' => $color_id,
+            'logo_id' => $logo_id,
+            'products' => $products->getAllGender( $product_type, $genderFR, $color_id, $logo_id),
+            'colors' => $translate->getAllColorsFR( $product_type ),
         ]);
     }
 
@@ -56,20 +45,23 @@ class TshirtController extends AbstractController
      *
      * @return render
      */
-    public function displayTshirtDetail( TshirtService $products, $product_type = 'tshirt', $genderEN, $color_id, $logo_id )
+    public function displayTshirtDetail( TshirtService $products, TranslateService $translate, $product_type = 'tshirt', $genderEN, $color_id, $logo_id )
     {
         // A défaut de translate pour le moment ! (manque de temps)
-        $this->genderFR = $this->translateENtoFR( $genderEN );
+        $genderFR = $translate->translateENtoFR( $genderEN );
 
         return $this->render( $product_type .'/single_'. $product_type .'.html.twig', [
             // a modifier avec le nom du model quand il seront creer sur la BDD
-            'controller_name' => 'Tshirt '.$this->genderFR,
+            'controller_name' => 'Tshirt '.$genderFR,
             $genderEN.'SingleNav' => true,
             'product_type' => $product_type,
             'genderEN' => $genderEN,
             'color_id' => $color_id,
             'logo_id' => $logo_id,
-            'product' => $products->getAllGenderDetail( $product_type, $this->genderFR, $color_id, $logo_id )[0],
+            'product' => $products->getAllGenderDetail( $product_type, $genderFR, $color_id, $logo_id )[0],
+            'colors' => $products->getAllTshirtColor( $product_type ),
+            'sizes' => $products->getAllTshirtSize($product_type),
+            'productsRand' => $products->getRandomTshirtGender( $product_type, $genderFR, 4 ),
         ]);
     }
 
@@ -107,68 +99,66 @@ class TshirtController extends AbstractController
             'womanSingleNav' => true,
         ]);
     }
+    
 
     /**
-     * Promo
+     * Gallerie homme
      * 
-     * @Route("/gallery/promos_man", name="promosman")
+     * @Route("/gallery/{product_type}/promos/{genderEN}/{color_id}", name="promos")
      * 
      * @return render
      * 
      */
-    public function promos( TshirtService $products )
+    public function promos( TshirtService $products, $product_type = 'tshirt', $genderEN , $color_id)
     {
-        $product_type = "tshirt";
-        $genderFR = "homme";
-        $genderEN = "man";
-        $colorOne = "green";
-        $colorTwo = "red";
+        // A défaut de translate pour le moment ! (manque de temps)
+        $this->genderFR = $this->translateENtoFR( $genderEN );
+
         $promo = 20/100;
-        
-        return $this->render('tshirt/promos.html.twig', [
-            'controller_name' => 'Promos',
+
+        return $this->render( $product_type .'/promos.html.twig', [
+            'controller_name' => 'Tshirt '.$this->genderFR,
             'evenement' => 'Noël',
+            'rubrique' => 'promos',
             'promosNav' => true,
-            'product_type' => $product_type,
-            'gender' => $genderEN,
-            'genderFR' => $genderFR,
-            'genderEN' => $genderEN,
             'promo' => $promo,
-            'colorOne' => $colorOne,
-            'colorTwo' => $colorTwo,
-            'products' => $products->getAllGender( $product_type, $genderFR ),
+            $genderEN.'PromosNav' => true,
+            'product_type' => $product_type,
+            'genderEN' => $genderEN,
+            'color_id' => $color_id,
+            'products' => $products->getAllGender( $product_type, $this->genderFR, $color_id),
         ]);
     }
 
-    /**
-     * Promo
-     * 
-     * @Route("/gallery/promos_woman", name="promoswoman")
-     * 
-     * @return render
-     * 
-     */
-    public function promosWoman( TshirtService $products )
-    {
-        $product_type = "tshirt";
-        $genderFR = "femme";
-        $genderEN = "woman";
-        $colorOne = "green";
-        $colorTwo = "red";
-        $promo = 20/100;
+    // /**
+    //  * Promo
+    //  * 
+    //  * @Route("/gallery/promos_woman", name="promoswoman")
+    //  * 
+    //  * @return render
+    //  * 
+    //  */
+    // public function promosWoman( TshirtService $products )
+    // {
+    //     $product_type = "tshirt";
+    //     $genderFR = "femme";
+    //     $genderEN = "woman";
+    //     $colorOne = "green";
+    //     $colorTwo = "red";
+    //     $promo = 20/100;
         
-        return $this->render('tshirt/promos.html.twig', [
-            'controller_name' => 'Promos',
-            'evenement' => 'Noël',
-            'promosNav' => true,
-            'product_type' => $product_type,
-            'gender' => $genderEN,
-            'genderEN' => $genderEN,
-            'promo' => $promo,
-            'genderFR' => $genderFR,
-            'colorOne' => $colorOne,
-            'colorTwo' => $colorTwo,
-            'products' => $products->getAllGender( $product_type, $genderFR ),
-        ]);
-    }
+    //     return $this->render('tshirt/promos.html.twig', [
+    //         'controller_name' => 'Promos',
+    //         'evenement' => 'Noël',
+    //         'promosNav' => true,
+    //         'product_type' => $product_type,
+    //         'gender' => $genderEN,
+    //         'genderEN' => $genderEN,
+    //         'promo' => $promo,
+    //         'genderFR' => $genderFR,
+    //         'colorOne' => $colorOne,
+    //         'colorTwo' => $colorTwo,
+    //         'products' => $products->getAll( $product_type ),
+    //     ]);
+    // }
 }
