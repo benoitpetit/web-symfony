@@ -21,6 +21,11 @@ class Logo
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=45)
+     */
+    public $parTypeProduct;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $logoName;
@@ -51,6 +56,18 @@ class Logo
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getParTypeProduct(): ?string
+    {
+        return $this->parTypeProduct;
+    }
+
+    public function setParTypeProduct(string $parTypeProduct): self
+    {
+        $this->parTypeProduct = $parTypeProduct;
+
+        return $this;
     }
 
     public function getLogoName(): ?string

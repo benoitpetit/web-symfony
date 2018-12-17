@@ -23,7 +23,17 @@ class Size
     /**
      * @ORM\Column(type="string", length=45)
      */
+    public $parTypeProduct;
+
+    /**
+     * @ORM\Column(type="string", length=45)
+     */
     private $size;
+
+    /**
+     * @ORM\Column(type="string", length=45)
+     */
+    private $name;
 
     /**
      * @ORM\Column(type="datetime")
@@ -43,6 +53,18 @@ class Size
         return $this->id;
     }
 
+    public function getParTypeProduct(): ?string
+    {
+        return $this->parTypeProduct;
+    }
+
+    public function setParTypeProduct(string $parTypeProduct): self
+    {
+        $this->parTypeProduct = $parTypeProduct;
+
+        return $this;
+    }
+
     public function getSize(): ?string
     {
         return $this->size;
@@ -51,6 +73,18 @@ class Size
     public function setSize(string $size): self
     {
         $this->size = $size;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
