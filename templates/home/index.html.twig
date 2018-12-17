@@ -28,7 +28,7 @@
                         <h5 class="slogan-noel">Notre sélection <span class="slogan_slide noel_span d-block">Spéciale Noël</span></h5>
                         
                         <!-- BTN Découvrir -->
-                        <a href="{{ path('promosman') }}" class="btn-decouvrir btn-noel rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                        <a href="{{ path('promos', {product_type: 'tshirt', genderEN: 'man', color_id: '3' }) }}" class="btn-decouvrir btn-noel rounded-0 mt-4 py-2 px-3">Découvrir ></a>
                     </div>
                     <!-- Shadow -->
                     <div class="container-fluid position-absolute h-100 w-100 shadow_content"></div>
@@ -43,7 +43,7 @@
                             <br>pour les fêtes</p>
                         <!-- BTN Découvrir -->
                         <div>
-                            <a href="{{ path('promosman') }}" class="btn-decouvrir btn-noel btn-block rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                            <a href="{{ path('promos', {product_type: 'tshirt', genderEN: 'man', color_id: '3' }) }}" class="btn-decouvrir btn-noel btn-block rounded-0 mt-4 py-2 px-3">Découvrir ></a>
                         </div>
                     </div>
 
@@ -58,7 +58,7 @@
                         <h5>Porte un T-shirt <span class="slogan_slide d-block">Original</span></h5>
 
                         <!-- BTN Découvrir -->
-                        <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man' }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                        <a href="{{ path('gallery', { product_type: 'tshirt', genderEN: 'man', color_id: '1' }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">Découvrir ></a>
                     </div>
                     <!-- Shadow -->
                     <div class="container-fluid position-absolute h-100 w-100 shadow_content"></div>
@@ -71,7 +71,7 @@
                         <h3>Porte un T-shirt <span class="text-info d-block">Original</span></h3>
                         <p class="title_slide">Développe un <span class>style unique</span></p>
                         <!-- BTN Découvrir -->
-                        <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man' }) }}" class="btn-decouvrir btn-block rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                        <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: '1' }) }}" class="btn-decouvrir btn-block rounded-0 mt-4 py-2 px-3">Découvrir ></a>
                     </div>
 
                 </div>
@@ -127,7 +127,7 @@
             <!-- Produit 01 -->
             <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
                 <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                    <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man' }) }}" class="produit_link position-relative w-100 d-flex bg-danger align-items-center">
+                    <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: '4' }) }}" class="produit_link position-relative w-100 d-flex bg-danger align-items-center">
                         <!-- Visuel Produit -->
                         <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/form_idable.png') }}"
                             alt="Image du motif formidable">
@@ -147,7 +147,7 @@
             <!-- Produit 02 -->
             <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
                 <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                    <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman' }) }}" class="produit_link position-relative w-100 d-flex bg-success align-items-center">
+                    <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman', color_id: '3'}) }}" class="produit_link position-relative w-100 d-flex bg-success align-items-center">
                         <!-- Visuel Produit -->
                         <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/lorem_et_hardy.png') }}"
                             alt="Image du motif Lorem et Hardy">
@@ -167,7 +167,7 @@
             <!-- Produit 03 -->
             <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
                 <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                    <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man' }) }}" class="produit_link position-relative w-100 d-flex bg-warning align-items-center">
+                    <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: '2' }) }}" class="produit_link position-relative w-100 d-flex bg-warning align-items-center">
                         <!-- Visuel Produit -->
                         <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/game_hover.png') }}"
                             alt="Image du motif Game Hover">
@@ -187,7 +187,7 @@
             <!-- Produit 04 -->
             <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
                 <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                    <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman' }) }}" class="produit_link position-relative w-100 d-flex bg-info align-items-center">
+                    <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman', color_id: '1' }) }}" class="produit_link position-relative w-100 d-flex bg-info align-items-center">
                         <!-- Visuel Produit -->
                         <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/toggle.png') }}"
                             alt="Image du motif Toggle toi-même">
@@ -208,18 +208,18 @@
 
         <!-- btns  -->
         <div class="row position-absolute btn_motifs d-none d-md-block text-center w-100">
-            <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man' }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
+            <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: '1' }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
                 < Nouveautés Homme </a>
-            <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man' }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
+            <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman', color_id: '1' }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
                 Nouveautés Femme > </a>
         </div>
         <!-- Version Mobile -->
         <div class="flex-direction-column d-xs-block d-md-none w-100">
             <div class="col-xs-12">
-                <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man' }) }}" class="btn-decouvrir btn-block rounded-0 py-3">Nouveautés Homme > </a>
+                <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: '1'}) }}" class="btn-decouvrir btn-block rounded-0 py-3">Nouveautés Homme > </a>
             </div>
             <div class="col-xs-12">
-                <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman' }) }}" class="btn-decouvrir btn-block rounded-0 py-3 mt-2">Nouveautés Femme > </a>
+                <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman', color_id: '1' }) }}" class="btn-decouvrir btn-block rounded-0 py-3 mt-2">Nouveautés Femme > </a>
             </div>
         </div>
 
