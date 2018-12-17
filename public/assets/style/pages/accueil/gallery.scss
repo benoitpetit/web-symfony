@@ -32,6 +32,11 @@
     color: $blue;
 }
 
+.price-init {
+    @include Rob-bold-upper;
+    font-size:2rem;
+}
+
 .produit_gallery h2 {
     @include Rob-light-upper;
     font-size: 36px;

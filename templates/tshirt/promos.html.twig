@@ -44,7 +44,7 @@
                     
                     <div class="d-block">
                         <select class="form-control text-white bg-secondary"  name="color" onChange="location = this.options[this.selectedIndex].value;">
-                                <option 
+                                {# <option 
                                     value ="{{ path('promos', {product_type: 'tshirt', genderEN: 'man', color_id: '3' }) }}"
                                     {% if color_id == '3' %}
                                         selected
@@ -57,7 +57,17 @@
                                         selected
                                     {% endif %}
                                     >rouge
-                                </option>
+                                </option> #}
+
+                            <!-- boucle sur les options -->
+                            {% for color in colors %}
+                                {% if loop.index == '3' or loop.index == '4' %}
+                                    <option 
+                                        value ="{{ path('promos', {product_type: 'tshirt', genderEN: genderEN, color_id:loop.index, logo_id: 0}) }}"
+                                        {% if color_id == loop.index %}selected{% endif %}> {{ color }}
+                                    </option>
+                                {% endif %}
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
