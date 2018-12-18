@@ -10,7 +10,7 @@
 {{ dump(orderLines) }}
 
 {# condition #}
-{% if app.user %}
+{% if app.user.email == user.email %}
 
 <div class="container bg-light p-5">
     <h1 class="pb-2 mt-3 text-center text-md-left"> MON COMPTE / MES COMMANDES </h1>
@@ -68,9 +68,9 @@
                 {% for orderLine in orderLines %}
                     {% if ( order.orders_id == orderLine.order_id ) %}
 
-                            <b>Couleur: </b>noir / <b>Taille: </b>XL /<b> Quantité: </b>1<br>
+                            <b>Couleur: </b>{{ orderLine.color_name }} / <b>Taille: </b>{{ orderLine.size_name }} /<b> Quantité: </b>{{ orderLine.quantity }}<br>
                             <b>Model: </b>
-                            <a href="{{ path('tshirtdetail', {product_type: 'tshirt', genderEN: 'man', color_id: orderLine.product_color_id, logo_id: orderLine.product_logo_id }) }}">lorem et hardy</a>
+                            <a href="{{ path('tshirtdetail', {product_type: orderLine.product_type, genderEN: orderLine.gender_name, color_id: orderLine.product_color_id, logo_id: orderLine.product_logo_id }) }}">{{ orderLine.logo_name }}</a>
                             <br /><br />
 
                     {% endif %}

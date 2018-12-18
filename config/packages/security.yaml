@@ -29,9 +29,13 @@ security:
 
     role_hierarchy:
         ROLE_ADMIN: ROLE_BUYER
+        ROLE_BUYER: ROLE_BUYER
+
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/user/account, roles: ROLE_BUYER }
         # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/backdev, roles: ROLE_ADMIN }
+        - { path: ^/user/account, roles: ROLE_BUYER }
