@@ -51,26 +51,12 @@ body {
     }
 
     //--------- Lien --------- //
-    
-    .treeview {
-        
-        .li a{
-            color:#e2e2e2!important;
-            
-            .fa {
-                color:#e2e2e2!important;
-            }
-        }
-    }
 
-    .treeview-menu {
+    .active a{
+        color:#0ddee2!important; 
 
-        .active a{
-            color:#0ddee2!important;
-    
-            .fa {
-                color:#0ddee2!important;
-            }
+        .fa {
+            color:#0ddee2!important; 
         }
     }
 
@@ -82,16 +68,10 @@ body {
         }
     }
 
-    .sidebar-menu li:not(.submenu-active).active a {
-        color:#0ddee2!important;
-
-        .fa {
-            color:#0ddee2!important;
-        }
-    }
 
 
     //--------- custom --------- //
+
     .datagrid thead {
         background: #e2f7ea !important;
     }
