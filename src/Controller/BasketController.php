@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Service\TshirtService;
-use App\Service\TranslateService;
+
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -73,8 +73,22 @@ class BasketController extends AbstractController
             //     }
             
             
+
+    /**
+     * Redirection apres Bouton Commander
+     * @Route("/basket/delivery", name="delivery")
+     * @Route("/basket/login", name="login")
+     */
+    // public function postLoginRedirectAction()
+    // {
+    //     // if (($user->hasconnected() == true) && (!empty($basket)) {
+    //     //     return $this->redirectToRoute("delivery");
+    //     // } else {
+    //     //     return $this->redirectToRoute("login");
+    //     // }
+
             
-        }
+}
 
 
 
