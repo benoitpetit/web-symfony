@@ -11,6 +11,8 @@ use App\Service\TshirtService;
 use App\Service\TranslateService;
 use Symfony\Component\HttpFoundation\Request;
 
+use App\Entity\BasketProduct;
+
 
 class BasketController extends AbstractController
 {
@@ -26,20 +28,34 @@ class BasketController extends AbstractController
         ]);
     }
 
-    // public function addToBasket(Request $request, TshirtService $product, $genderFR, $color_id, $logo_id )
-    // {
+    public function addToBasket(Request $request, $product_type, $gender_id, $color_id, $logo_id, $size_id, $quantity, $price_unit_ttc)
+    {
 
-    // // On vérifie que le panier existe bien, sinon on le crée (tableau vide)
-    //     if (!$session->has('basket')) {
-    //         $session->set('basket', array());
-    //     }
+    // On vérifie que le panier existe bien, sinon on le crée (tableau vide)
+        if (!$session->has('basket')) {
+            $session->set('basket', array());
+        }
 
-    // // Initialisation du panier       
-    //     $basket = $session->get('basket');
 
-    //     if (array_key_exists($id, $basket)) {
-    //         if ($request->query->get('qty') != null) {
-    //             $basket[$id] = $request->query->get('qty');
+
+    // Initialisation du panier       
+        $basket = $session->get('basket');
+
+        $basket = $session->set('basket', array(
+            $product_type= "",
+            $gender_id="",
+            $color_id="",
+            $logo_id="",
+            $size_id="",
+            $quantity="",
+            $price_unit_ttc=""
+        ));    
+        
+        
+        
+        //     if (array_key_exists($id, $basket)) {
+    //         if ($request->query->get('color_id') != null) {
+    //             $basket[$id] = $request->query->get('color_id');
     //         }
                   
     //         $this->addFlash('success', 'Article ajouté avec succès !');
@@ -79,3 +95,4 @@ class BasketController extends AbstractController
 
 
 
+    }

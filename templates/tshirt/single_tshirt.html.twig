@@ -127,7 +127,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-info"><a href= "{{ path('basket') }}">
+                <button type="button" class="btn btn-info"><a href= "{{ path('basket', {product_type: product_type, genderEN: genderEN, color_id: 'red', logo_id: logo_id }) }}">
                     <span class="pr-2 text-light">Ajouter au panier</span>
                     <img src="{{ asset( 'assets/images/icones/panier-blanc.svg' ) }}" class="h-100 panier_mobile" alt="Icone de panier d'achat"></a>
                 </button>
