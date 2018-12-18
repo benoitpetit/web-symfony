@@ -39,7 +39,7 @@ easy_admin:
             - { entity: 'Color', label: 'Couleurs' , icon: 'palette'}
             - { entity: 'StockInput', label: 'Stocks' , icon: 'box'}
             - { label: 'Les Utilisateurs' }
-            # - { entity: 'User', label: 'Utilisateurs' , icon: 'user'}
+            - { entity: 'User', label: 'Utilisateurs' , icon: 'user'}
             - { entity: 'Address', label: 'Adresses' , icon: 'map-marker-alt' }
             - { label: 'Boutique' }
             - { label: '< Retour au site', route: 'home' , icon: '' }
@@ -68,16 +68,7 @@ easy_admin:
                     - { property: 'zipCode', label: 'Code postal' }
                     - { property: 'city', label: 'Ville' }
                     - { property: 'country', label: 'Pays' }
-            new: # affichage "Ajouter"
-                title: 'Ajouter une nouvelle adresse'  # titre de la section
-                actions: # les boutons à afficher
-                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
-                fields: # champas à afficher
-                    - { property: 'addressType', label: 'Type' }
-                    - { property: 'street', label: 'Adresse' }
-                    - { property: 'zipCode', label: 'Code postal' }
-                    - { property: 'city', label: 'Ville' }
-                    - { property: 'country', label: 'Pays' }
+            disabled_actions: ['new']
             search: # affichage "Rechercher"
                 title: 'Résultat de la recherche'  # titre de la section
        Color: # Entité
@@ -335,50 +326,38 @@ easy_admin:
                     - { property: 'inputDate', label: 'Arrivage du stock' }
             search: # affichage "Rechercher"
                 title: 'Résultat de la recherche'  # titre de la section
-    #    User: # Entité
-    #         class: App\Entity\User # chemin d'accés à l'entité
-    #         label: 'Utilisateurs' # Le nom affiché de l'entité
-    #         list: # mode liste
-    #             title: 'Liste des utilisateurs' # titre de la section
-    #             fields: # champas à afficher
-    #                 - { property: 'id', label: 'ID' }
-    #                 - { property: 'username', label: 'Identifiant' }
-    #                 - { property: 'firstname', label: 'Prénom' }
-    #                 - { property: 'lastname', label: 'Nom' }
-    #                 - { property: 'password', label: 'Hash' }
-    #                 - { property: 'email', label: 'Email' }
-    #                 - { property: 'phone', label: 'Téléphone' }
-    #                 - { property: 'roles', label: 'Rôle d'accès' }
-    #                 - { property: 'isActive', label: 'Actif' }
-    #                 - { property: 'createdDate', label: 'Date de création' }
-    #         edit: # affichage "Modifier"
-    #             title: "Modifier un utilisateur"  # titre de la section
-    #             actions: # les boutons à afficher
-    #                 - { name: 'list', label: 'Retour', icon: 'arrow-left' }
-    #             fields: # champas à afficher
-    #                 - { property: 'username', label: 'Identifiant' }
-    #                 - { property: 'firstname', label: 'Prénom' }
-    #                 - { property: 'lastname', label: 'Nom' }
-    #                 - { property: 'password', label: 'Hash' }
-    #                 - { property: 'email', label: 'Email' }
-    #                 - { property: 'phone', label: 'Téléphone' }
-    #                 - { property: 'roles', label: 'Rôle d'accès' }
-    #                 - { property: 'isActive', label: 'Actif' }
-    #         new: # affichage "Ajouter"
-    #             title: 'Ajouter un utilisateur'  # titre de la section
-    #             actions: # les boutons à afficher
-    #                 - { name: 'list', label: 'Retour', icon: 'arrow-left' }
-    #             fields: # champas à afficher
-    #                 - { property: 'username', label: 'Identifiant' }
-    #                 - { property: 'firstname', label: 'Prénom' }
-    #                 - { property: 'lastname', label: 'Nom' }
-    #                 - { property: 'password', label: 'Hash' }
-    #                 - { property: 'email', label: 'Email' }
-    #                 - { property: 'phone', label: 'Téléphone' }
-    #                 - { property: 'roles', label: 'Rôle d'accès' }
-    #                 - { property: 'isActive', label: 'Actif' }
-    #         search: # affichage "Rechercher"
-    #             title: 'Résultat de la recherche'  # titre de la section
+       User: # Entité
+            class: App\Entity\User # chemin d'accés à l'entité
+            label: 'Utilisateurs' # Le nom affiché de l'entité
+            list: # mode liste
+                title: 'Liste des utilisateurs' # titre de la section
+                fields: # champas à afficher
+                    - { property: 'id', label: 'ID' }
+                    - { property: 'username', label: 'Identifiant' }
+                    - { property: 'firstname', label: 'Prénom' }
+                    - { property: 'lastname', label: 'Nom' }
+                    # - { property: 'password', label: 'Hash' }
+                    - { property: 'email', label: 'Email' }
+                    - { property: 'phone', label: 'Téléphone' }
+                    - { property: 'roles', label: 'Rôle' }
+                    - { property: 'isActive', label: 'Actif' }
+                    - { property: 'createdDate', label: 'Date de création' }
+            edit: # affichage "Modifier"
+                title: "Modifier un utilisateur"  # titre de la section
+                actions: # les boutons à afficher
+                    - { name: 'list', label: 'Retour', icon: 'arrow-left' }
+                fields: # champas à afficher
+                    - { property: 'username', label: 'Identifiant' }
+                    - { property: 'firstname', label: 'Prénom' }
+                    - { property: 'lastname', label: 'Nom' }
+                    - { property: 'password', label: 'Hash' }
+                    - { property: 'email', label: 'Email' }
+                    - { property: 'phone', label: 'Téléphone' }
+                    - { property: 'roles', label: 'Rôle' }
+                    - { property: 'isActive', label: 'Actif' }
+            disabled_actions: ['new']
+            search: # affichage "Rechercher"
+                title: 'Résultat de la recherche'  # titre de la section
 
 
 
