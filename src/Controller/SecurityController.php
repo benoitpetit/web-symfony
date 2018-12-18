@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+
 use App\Entity\User;
 use App\Service\UserAddressService;
 use App\Form\LoginType;
@@ -15,6 +16,7 @@ class SecurityController extends AbstractController {
 
     /**
      * @Route("/user/login", name="login")
+     *
      */
     public function login( AuthenticationUtils $authenticationUtils ) {
 
@@ -23,7 +25,7 @@ class SecurityController extends AbstractController {
 
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-    
+
         return $this->render('user/login.html.twig', [
                     'controller_name' => 'Connexion',
                     'title' => 'Connexion',
@@ -37,17 +39,13 @@ class SecurityController extends AbstractController {
     /**
      *  Redirection apres connexionBasket
      * @Route("/basket/delivery", name="delivery")
+     * @IsGranted("ROLE_BUYER")
      */
     // public function postLoginRedirectAction()
     // {
-    //     // if ($user->hasConnected() == true) {
-    //     //     return $this->redirectToRoute("delivery");
-    //     // } else if ($user->hasCompleteProfile() == false) {
-    //     //     return $this->redirectToRoute("basket");
-    //     // } else {
-    //     //     return $this->redirectToRoute("index");
-    //     // }
-    //     // session_start();
+    //     if (($user->hasBasket() == true) && (!empty($basket)) {
+    //         return $this->redirectToRoute("delivery");
+    //     } 
         
     //     if(!isset($_SESSION['basket'])) {
     //     // header('Location:login.html.twig');
