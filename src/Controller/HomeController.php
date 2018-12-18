@@ -6,9 +6,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Form\Model\EmailType;
+
+
+use Doctrine\Common\Persistence\ObjectManager;
+use App\Entity\Newsletter;
+
+use Symfony\Component\HttpFoundation\Request;
 
 use App\Service\TshirtService;
 use App\Service\TranslateService;
+use App\Service\UserAddressService;
+
 
 class HomeController extends AbstractController
 {
@@ -66,4 +75,5 @@ class HomeController extends AbstractController
             'controller_name' => '404',
         ]);
     }
+
 }

@@ -3,10 +3,10 @@
 namespace App\Service;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\User;
 use App\Entity\Address;
-use App\Entity\Nesletter;
 
 class UserAddressService {
 
@@ -55,11 +55,6 @@ class UserAddressService {
         $user_password = $user->getPassword();
         $bdd_password = $this->getPassword( $user->getUsername() );
         return ( password_verify( $user_password, $bdd_password ) );
-    }
-
-    public function newsletter($newsletter)
-    {
-        
     }
 
 }

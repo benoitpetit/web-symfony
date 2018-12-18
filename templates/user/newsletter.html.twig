@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{{ form_start ( form ) }}
+<div class="col-5 text-center justify-content-center align-items-center d-flex mx-auto my-5 py-5">
+
+    {{ form_widget ( form ) }}
+    <button type="submit" class="bg-success p-2 ml-3 text-white">Ok</button>
+</div>
+{{ form_start ( form ) }}
+{% endblock %}

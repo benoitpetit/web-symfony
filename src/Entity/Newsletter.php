@@ -21,6 +21,11 @@ class Newsletter
      */
     private $mail;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdDate;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +39,18 @@ class Newsletter
     public function setMail(string $mail): self
     {
         $this->mail = $mail;
+
+        return $this;
+    }
+
+    public function getCreatedDate(): ?\DateTimeInterface
+    {
+        return $this->createdDate;
+    }
+
+    public function setCreatedDate(?\DateTimeInterface $createdDate): self
+    {
+        $this->createdDate = $createdDate;
 
         return $this;
     }

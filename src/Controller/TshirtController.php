@@ -140,13 +140,5 @@ class TshirtController extends AbstractController
         ]);
     }
 
-    /**
-     * Newsletter 
-     * 
-     * @Route("/gallery/{product_type}/promos/{genderEN}/{color_id}/{logo_id}", name="promos")
-     * 
-     * @return render
-     * 
-     */
 
 }
