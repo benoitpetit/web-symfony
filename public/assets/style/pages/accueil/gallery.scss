@@ -26,6 +26,10 @@
     color: rgba(173, 171, 171, 0.5)!important;
 }
 
+.visu-image {
+    width: 255px;
+}
+
 .price_gallery {
     @include Rob-bold-upper;
     font-size: 20px;

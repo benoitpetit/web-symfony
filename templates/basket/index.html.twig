@@ -13,48 +13,98 @@
         <div class="separator_gallery mx-0"></div>
     </div>
 
-    {# {% if cart.count <= 0 %}
-    <h1>No Items in your cart yet</h1>
+    {# {% if basket.count <= 0 %}
+    <h1>Il n'y a rien dans ton panier... :(</h1>
     {% else %} #}
 
-    {# {% for item in cart.items %} #}
-        <div class="row cart-header" >
-        {# id="{{item.id}}" > #}
+<!-- //////////////////////////  PANIER ///////////////////////////////// -->
 
-            <a href="#" class="col-1 deleteItem" 
-            {# data-item-id="{{item.id}}" #}
-            ><img src="../../public/assets/images/icones/poubelle.svg" width="20px"></a>
-            
-            <div class="col-2 cart-item img">
-                <img src="../../public/assets/images/homme/tshirt_homme_c_mieux.png" class="img-responsive" width="100px" alt="">
-            </div>
-        
-            <div class="col-3 description" ><a href="#"> item.product.title </a></div>
-                
-           
-                <div class="col-2 unit_price">Prix Unitaire
-                    {# <span > item.product.price </span> #}
-                </div>
-                <div class="col-2 quantity">Quantité                      
-                    {# <span > item.quantity </span> #}
-                </div>
-                <div class="col-2 total_price">Prix Total 
-                    {# <span > item.total </span> #}
-                </div>
-            
-            </div><hr>
+        <div class="row basket-header" >
+        {# id="{{line.id}}" > #}
 
-            <button type="button" class="btn btn-warning">
-                <a href="{{ path('home') }}"> 
-                {# <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN }) }}"> #}
-                    Continuer mes achats</a></button> 
-            <button type="button" class="btn btn-success"><a href="{{ path('login') }}">Passer la commande</button>
-       
+            <table class="table basket">
+                <thead class="thead-light">
+                    <tr class="row">
+                        <th class="col-md-1 delete_item"></th>
+                        <th class="col-md-2 image">Article</th>
+                        <th class="col-md-3 description"></th>
+                        <th class="col-md-2 text-center unit_price">Prix Unitaire</th>
+                        <th class="col-md-2 text-center quantity">Quantité</th>
+                        <th class="col-md-2 text-center total_price">Prix Total</th>
+                    </tr>
+                </thead>
+            
+            <!-- ///////  Lignes du panier en fonction du nombre d'articles (boucle) /////// -->
+                <tbody>
+                    {# {% for item in basket.items %} #}
+                    <tr class="row">
+                        <td class="col-md-1 delete_item"><a href="#" 
+                            {# data-item-id="{{ligne.id}}" #}
+                            ><img src="../../public/assets/images/icones/trash.svg" width="20px"></a></td>
+                        <td class="col-md-2 cart-item img">
+                            {# <a href="{{ path('tshirtdetail', {product_type: product_type, genderEN: genderEN, color_id: product.color_id, logo_id: product.logo_id}) }}" 
+                                class="produit_link position-relative w-100 d-flex align-items-center" style="background-color:{{ product.color_hexa }};"> #}
+                            <img src="../../public/assets/images/homme/tshirt_homme_c_mieux.png" class="img-responsive" width="100px" alt="">
+                        </td>
+                        <td class="col-md-3"><div class="font-weight-bold">T-Shirt name </div></a><br>
+                            <div> product.color {# {{color.id.name}} #}</div>
+                            <div> product.size {# {{size.id.size}} #}</div> 
+                        </td>
+                        <td class="col-md-2 pr-4">
+                            <div class="d-md-none"> Prix Unitaire: </div>
+                            <div class="text-right mr-2">15.00€ {# {{product.price_unit_ttc}} € #}</div> 
+                                                    </td>
+                        <td class="col-md-2 pr-4">
+                            <div class="d-md-none">Quantité: </div>
+                            <div class="text-right">3  {# {{qty}} #}</div> 
+                        </td>
+                        <td class="col-md-2 pr-4">
+                            <div class="d-md-none"> Prix Total: </div>
+                            <div class="text-right">45.00€ {# ( {{product.price_unit_ttc}} * {{qty}} ) € #}</div> 
+                        </td>
+                    </tr>
+                    {# {% endfor %} #}
+                </tbody>
+            </table>
         </div>
-        {# {% endfor %} #}
+        <hr>
 
+<!--////////////////// Partie PRIX TOTAUX /////////////////////////////////-->
+
+        <div class="row pr-4 font-weight-bold ttc-price">
+            <div class="col-10 text-right p-0"> TOTAL DES ACHATS :</div>
+            <div class="col-2 text-right p-0 ">70.00€</div>{# ( {{product.price_unit_ttc}} * {{qty}} ) * nb orderline #}
+        </div><hr>
+
+        <div class="row pr-4 tva">
+            <div class="col-10 text-right p-0">Livraison : </div>
+            <div class="col-2 text-right p-0">Gratuite</div> 
+        </div><hr>
+
+        
+    <!-- /////////////////// BOUTONS Poursuite Achats / Commande ///////////////// -->
     
-</div>
-{# {% endif %} #}
+        <div class="d-flex justify-content-between button">
+            <button type="button" class="btn btn-warning mb-4"><a href="{{ path('home') }}">Continuer mes achats</a></button>   
+            <button type="button" class="btn btn-success mb-4"><a href="{{ path('login') }}">Passer la commande</a></button> 
+        </div>
+                    
+    {# {% endif %} #} <!-- fin de la condition - panier vide ou non -->
 
-{% endblock %}
+</div> <!--fin container basket -->
+    
+    {% endblock %}
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
