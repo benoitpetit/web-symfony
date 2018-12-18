@@ -35,7 +35,6 @@ class TshirtService {
         $image->fill('assets/images/'. $gender .'/tshirt_'. $gender .'_'. $motif .'.png');
         
         return $image->response('jpg',90);
-        
     }
 
     
@@ -67,9 +66,10 @@ class TshirtService {
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
     public function getAll( $product )
     {
-        $rawSql = "SELECT v.* FROM vProduct_".$product." v";
-        $stmt = $this->om->prepare($rawSql);
-        $stmt->execute([]);
+        $viewSql = "vProduct_".$product;
+        $rawSql = "SELECT v.* FROM ". $viewSql ." v";
+        $stmt = $this->om->prepare( $rawSql );
+        $stmt->execute( [] );
         
         return $stmt->fetchAll();
     }
@@ -77,25 +77,36 @@ class TshirtService {
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
     public function getAllGender( $product, $gender, $color_id, $logo_id)
     {
+        $paramSql = [];
         $criteria = "";
-        if ( $color_id != 0 )
-            $criteria = "AND v.color_id = ". $color_id;
-        if ( $logo_id != 0 )
-            $criteria .= " AND v.logo_id = ". $logo_id;
+        if ( $color_id != 0 ) {
+            $criteria = "AND v.color_id = :color_id";
+            array_push( $paramSql, [ ':color_id' => $color_id ] );
+        }
+        if ( $logo_id != 0 ) {
+            $criteria .= " AND v.logo_id = :logo_id";
+            array_push( $paramSql, [ ':logo_id' => $logo_id ] );
+        }
 
-        // $rawSql = "SELECT v.* FROM vProduct_".$product." v WHERE v.name = '".$gender."' ORDER BY v.logo_id, v.color_id";
-        $rawSql = "SELECT v.* FROM vProduct_".$product." v WHERE v.name = '".$gender."' ". $criteria ." ORDER BY v.logo_id";
-        $stmt = $this->om->prepare($rawSql);
-        $stmt->execute([]);
+        $viewSql = "vProduct_".$product;
+        $rawSql = "SELECT v.* FROM ". $viewSql ." v WHERE v.name = '".$gender."' ". $criteria ." ORDER BY v.logo_id";
+        $stmt = $this->om->prepare( $rawSql );
+        $stmt->execute( $paramSql );
         return $stmt->fetchAll();
     }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
     public function getAllGenderDetail( $product, $gender, $color_id, $logo_id )
     {
-        $rawSql = "SELECT v.* FROM vProduct_".$product." v WHERE v.name = '". $gender ."' AND v.color_id = ". $color_id ." AND v.logo_id = ". $logo_id;
-        $stmt = $this->om->prepare($rawSql);
-        $stmt->execute([]);
+        $viewSql = "vProduct_".$product;
+        $rawSql = "SELECT v.* FROM ". $viewSql ." v WHERE v.name = :gender AND v.color_id = :color_id AND v.logo_id = :logo_id";
+        $paramSql = [ ':gender' => $gender,
+                      ':color_id' => $color_id,
+                      ':logo_id' => $logo_id,
+        ];
+
+        $stmt = $this->om->prepare( $rawSql );
+        $stmt->execute( $paramSql );
         
         return $stmt->fetchAll();
     }
@@ -103,9 +114,12 @@ class TshirtService {
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
     public function getAllTshirtColor( $product )
     {
-        $rawSql = "SELECT c.* FROM color c WHERE c.par_type_product = '@". $product ."'";
-        $stmt = $this->om->prepare($rawSql);
-        $stmt->execute([]);
+        $viewSql = "vProduct_".$product;
+        $rawSql = "SELECT c.* FROM color c WHERE c.par_type_product = :par_type_product";
+        $paramSql = [ ':par_type_product' => '@'.$product ];
+
+        $stmt = $this->om->prepare( $rawSql );
+        $stmt->execute( $paramSql );
         
         return $stmt->fetchAll();
     }
@@ -113,9 +127,11 @@ class TshirtService {
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
     public function getAllTshirtSize( $product )
     {
-        $rawSql = "SELECT s.*, CONCAT(s.size, ' - ', s.name) as wording FROM size s WHERE s.par_type_product = '@". $product ."'";
-        $stmt = $this->om->prepare($rawSql);
-        $stmt->execute([]);
+        $rawSql = "SELECT s.*, CONCAT(s.size, ' - ', s.name) as wording FROM size s WHERE s.par_type_product = :par_type_product";
+        $paramSql = [ ':par_type_product' => '@'.$product ];
+
+        $stmt = $this->om->prepare( $rawSql );
+        $stmt->execute( $paramSql );
         
         return $stmt->fetchAll();
     }
@@ -131,7 +147,7 @@ class TshirtService {
     }
 
 
-// $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
+    // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
     public function getRandomTshirtGender( $product, $genderFR, $randNumber)
     {
         $criteria = '';
@@ -139,10 +155,11 @@ class TshirtService {
 
         if ( $genderFR != 'All' ) {
             $criteria = 'WHERE v.name = :genderFR ';
-            $paramSql = array(':genderFR' => $genderFR);
+            $paramSql = [ ':genderFR' => $genderFR ];
         }
 
-        $rawSql = "SELECT v.* FROM vproduct_".$product." v ORDER BY RAND() LIMIT ".$randNumber;
+        $viewSql = "vProduct_".$product;
+        $rawSql = "SELECT v.* FROM ".$viewSql." v ORDER BY RAND() LIMIT ".$randNumber;
 
         $stmt = $this->om->prepare( $rawSql );
         $stmt->execute( $paramSql );
@@ -151,6 +168,7 @@ class TshirtService {
     }
 
 
+    // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
     public function getAllColorsFR( $type_product ) {
 
         $translate = new TranslateService();
