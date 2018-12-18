@@ -38,6 +38,8 @@
         {# Affiche des messages flash #}
         {% include 'partials/flash.html.twig' %}
 
+        <a id="button"><i class="fas fa-angle-up"></i></a>   <!-- bouton scroll -->
+        
         {% block body %}
         
         {% endblock %}
@@ -45,7 +47,7 @@
         {% include 'partials/footer.html.twig' %}
         <!-- Liens vers les .JS -->
 
-        <script src="{{ asset( 'assets/vendor/script/jquery-3.3.1.min.js' ) }}"></script>
+        <script src="{{ asset( 'assets/vendor/script/jquery-3.3.1.js' ) }}"></script>
         <script src="{{ asset( 'assets/vendor/script/popper.min.js' ) }}"></script>
         <script src="{{ asset( 'assets/vendor/script/bootstrap.min.js' ) }}"></script>
         <script src="{{ asset( 'assets/script/script.js' ) }}"></script>

@@ -1,39 +1,50 @@
 #button {
-    // display: inline-block;
-    background-color: #FF9800;
-    width: 200px;
-    height: 250px;
-    // text-align: center;
-    // border-radius: 4px;
-    // position: fixed;
-    // bottom: 30px;
-    // right: 30px;
-    // transition: background-color .3s, 
-    //   opacity .5s, visibility .5s;
-    // opacity: 0;
-    // visibility: hidden;
-    // z-index: 1000;
+    display: inline-block;
+    background-color: #00a2a5;
+    width: 80px;
+    color: #fff;
+    height: 80px;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .3s,
+    opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    margin-bottom: 25px;
+    z-index: 1000;
+
+    &.show {
+      opacity: 0.8;
+      visibility: visible;
+    }
   }
-// #button::after {
-//     content: "\f077";
-//     font-family: FontAwesome;
-//     font-weight: normal;
-//     font-style: normal;
-//     font-size: 2em;
-//     line-height: 50px;
-//     color: #fff;
-//   }
-// #button:hover {
-//     cursor: pointer;
-//     background-color: #333;
-//   }
-// #button:active {
-//     background-color: #555;
-//   }
-// #button.show {
-//     opacity: 1;
-//     visibility: visible;
-//   }
+
+#button::after {
+    content: "";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2em;
+    line-height: 50px;
+    color: #fff;
+  }
+
+#button:hover {
+    cursor: pointer;
+    background-color: #333;
+  }
+  
+#button:active {
+    background-color: #555;
+  }
+
   
   /* Styles for the content section */
   

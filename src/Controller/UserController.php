@@ -7,16 +7,18 @@ use App\Form\UserType;
 use App\Entity\Address;
 use App\Form\LoginType;
 use App\Form\AddressType;
-use App\Service\UserAddressService;
+use App\Service\AccountService;
 
+use App\Service\UserAddressService;
+use App\Repository\OrdersRepository;
 use App\Repository\AddressRepository;
+
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Symfony\Component\HttpFoundation\Response;
+
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -111,20 +113,16 @@ class UserController extends AbstractController
      * @return render
      * 
      */
-    public function account(Request $request, UserAddressService $useraddressService, string $id, AddressRepository $repo)
+    public function account(Request $request, UserAddressService $useraddressService, string $id, AddressRepository $address, AccountService $accountService)
     {
-        // Utilisateur / Address
-        $user = new User();
-        // $address = $repo->findAll();
-        $address = $repo->findOneById($id);
-
         return $this->render('user/account.html.twig', [
             'title' => 'Ton compte',
             'accountNav' => true,
             'id' => $id,
             'user' => $useraddressService->getOneId( $id ),
-            'addr' => $address
-
+            'addr' => $address->findOneById($id),
+            'orders' => $accountService->getAllOrders( $id ),
+            'orderLines' => $accountService->getAllOrderLines( $id ),
         ]);
     }
 
