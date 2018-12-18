@@ -7,6 +7,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+use App\Service\TshirtService;
+use App\Service\TranslateService;
+
 class HomeController extends AbstractController
 {
     /**
@@ -16,8 +19,9 @@ class HomeController extends AbstractController
      * 
      * @return render
      */
-    public function index(SessionInterface $session, AuthenticationUtils $authenticationUtils)  
-    {  // Ouverture de session à l'arrivée sur le site
+    public function index(SessionInterface $session, AuthenticationUtils $authenticationUtils, TshirtService $products)  
+    {  
+        // Ouverture de session à l'arrivée sur le site
         // $session->set('foo', 'bar');  
         // $session->get('foo');
 
@@ -31,6 +35,7 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'Accueil',
+            'productsRand' => $products->getRandomTshirtGender( 'tshirt', 'All', 4 ),
         ]);
     }
 

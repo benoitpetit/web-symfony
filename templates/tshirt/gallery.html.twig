@@ -3,12 +3,12 @@
 {% block title %}T-shirts {{ controller_name }} | {{ parent() }}{% endblock %}
 
 {% block body %}
-{{ dump(colors) }}
+
 <!-- //////////////////////// CONTENU DE LA PAGE ////////////////////////// -->
 <section class="container-fluid px-0 produit_gallery pb-3">
     <!-- Bandeau Noel -->
     <section class="row filter_bandeau d-flex justify-content-center align-items-center mx-0">
-            <a href="{{ path('promos', {product_type: 'tshirt', genderEN: 'man', color_id: '3' }) }}" class="lead mb-0 promo-slogan d-flex text-center py-3">
+            <a href="{{ path('promos', {product_type: product_type, genderEN: genderEN, color_id: '3',logo_id: '0' }) }}" class="lead mb-0 promo-slogan d-flex text-center py-3">
                 <i class="fas fa-holly-berry px-3 text-success d-flex align-items-center"></i>
                 <span class=" text-warning">Profite de notre sélection de produits 
                     <span class="slogan_slide text-uppercase font-weight-bold text-white">Spéciale Noël</span>
@@ -24,7 +24,7 @@
             <div class="row w-100 mx-0 px-0">
 
                 <!-- Titre -->
-                <div class="col-xs-12 col-sm-6 pb-4">
+                <div class="col-xs-12 col-sm-5 pb-4">
                     <div class="col-12 pb-2 pl-0 text-center text-md-left">                   
                         <h2>
                             T-shirts <span class="text-bleu">{{ controller_name }}</span>
@@ -36,7 +36,7 @@
                 </div>
 
                 <!-- selecteur de motifs -->
-                <div class="col-xs-12 col-sm-3 ">
+                <div class="col-xs-12 col-sm-4 ">
                     <div class="form-group d-flex align-items-center justify-content-center justify-content-md-end">
                         <div class="d-block text-secondary pr-3">
                             <label for="color">Trier par motif : </label>
@@ -44,10 +44,18 @@
                         <div class="d-block">
                             <select class="form-control text-white bg-secondary"  name="color" onChange="location = this.options[this.selectedIndex].value;">
 
-                                {# <option 
-                                    value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: '1' }) }}"
-                                    {% if color_id == '1' %}selected{% endif %}> bleu
-                                </option>  #}
+                                <!-- boucle sur les logos -->
+                                    <option value ="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id:color_id, logo_id:0}) }}"
+                                    {% if logo_id == 0 %}selected{% endif %}> Tous
+                                    </option>
+
+                                {% for logo in logos %}
+                            
+                                        <option value ="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id:color_id, logo_id: logo.id}) }}"
+                                        
+                                        {% if logo_id == logo.id %}selected{% endif %}> {{ logo.logo_name }}</option>
+                                    
+                                {% endfor %}
                                     
                             </select>
                         </div>
@@ -63,34 +71,21 @@
                         </div>
                         <div class="d-block">
                             <select class="form-control text-white bg-secondary"  name="color" onChange="location = this.options[this.selectedIndex].value;">
+
                                     <option 
-                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 0 , logo_id: 0}) }}"
-                                        {% if color_id == '1' %}selected{% endif %}> Tous
+                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id: 0, logo_id: 0}) }}"
+                                        {% if color_id == '0' %}selected{% endif %}> Tous
                                     </option>
+                                    
+                                <!-- boucle sur les options -->
+                                {% for color in colors %}
+
                                     <option 
-                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 1 , logo_id: 0}) }}"
-                                        {% if color_id == '1' %}selected{% endif %}> bleu
+                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id:loop.index, logo_id: 0}) }}"
+                                        {% if color_id == loop.index %}selected{% endif %}> {{ color }}
                                     </option>
-                                    <option 
-                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 2 , logo_id: 0}) }}"
-                                        {% if color_id == '2' %}selected{% endif %}> jaune
-                                    </option>
-                                    <option 
-                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 3 , logo_id: 0 }) }}"
-                                        {% if color_id == '3' %}selected{% endif %}> vert 
-                                    </option>
-                                    <option 
-                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 4 , logo_id: 0 }) }}"
-                                        {% if color_id == '4' %}selected{% endif %}> rouge
-                                    </option>
-                                    <option 
-                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 5 , logo_id: 0 }) }}"
-                                        {% if color_id == '5' %}selected{% endif %}> noir
-                                    </option>
-                                    <option 
-                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 6 , logo_id: 0 }) }}"
-                                        {% if color_id == '6' %}selected{% endif %}> violet
-                                    </option>
+                                   
+                                {% endfor %}
                             </select>
                         </div>
                     </div>
@@ -105,21 +100,28 @@
 
                     <!-- Produit xx -->
                     <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0 ">
-                        <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                            <a href="{{ path('tshirtdetail', {product_type: product_type, genderEN: genderEN, color_id: product.color_id, logo_id: product.logo_id }) }}" class="produit_link position-relative w-100 d-flex hidden-visuel align-items-center" style="background-color:{{ product.color_hexa }};">
+                        <div class="encart_visuel position-relative bg-dark d-flex justify-content-center p-0 visu-image">
+                            <a href="{{ path('tshirtdetail', {product_type: product_type, genderEN: genderEN, color_id: product.color_id, logo_id: product.logo_id }) }}" class="produit_link position-relative d-flex hidden-visuel align-items-center" style="background-color:{{ product.color_hexa }};">
                                 <!-- Visuel Produit -->
-                                <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/' ~ product.slug ~ '.png') }}"
+                                <img class="card-img-top rounded-0 " src="{{ asset('assets/images/motifs/' ~ product.slug ~ '.png') }}"
                                     alt="Image du motif {{ product.slug }}">
                                 <div class="overlay" style="background-color:{{ product.color_hexa }};">
-                                    <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/' ~ genderEN ~ '/tshirt_' ~ genderEN ~ '_' ~ product.slug ~ '.png') }}"
+                                    <img class="card-img-top rounded-0 " src="{{ asset('assets/images/' ~ genderEN ~ '/tshirt_' ~ genderEN ~ '_' ~ product.slug ~ '.png') }}"
                                         alt="Image du t-shirt {{ product.slug }}" />
                                 </div>
                             </a>
                         </div>
                         <!-- Infos produit -->
-                        <div class="card-body px-0">
+                        <div class="card-body visu-image px-0">
                             <h3 class="title_produit_gallery">{{ product.logo_name }}</h3>
-                            <h5 class="price_gallery pb-2">{{ product.price_unit_ttc }} €</h5>
+
+                            {% if product.color_id == '3' or product.color_id == '4' %}
+                                <h5 class="price_gallery text-danger">{{ (product.price_unit_ttc - ( product.price_unit_ttc * promo ))|number_format(2) }} €
+                                <del class="text-info font-weight-light">{{ product.price_unit_ttc }} €</del></h5>
+                            {% else %}
+                                <h5 class="price_gallery pb-2">{{ product.price_unit_ttc }} €</h5>
+                            {% endif %}
+
                         </div>
                     </div>
 
