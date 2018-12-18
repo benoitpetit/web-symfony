@@ -28,7 +28,7 @@
                         <h5 class="slogan-noel">Notre sélection <span class="slogan_slide noel_span d-block">Spéciale Noël</span></h5>
                         
                         <!-- BTN Découvrir -->
-                        <a href="{{ path('promos', {product_type: 'tshirt', genderEN: 'man', color_id: '3', logo_id: '0' }) }}" class="btn-decouvrir btn-noel rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                        <a href="{{ path('promos', {product_type: product_type, genderEN: 'man', color_id: '3', logo_id: '0' }) }}" class="btn-decouvrir btn-noel rounded-0 mt-4 py-2 px-3">Découvrir ></a>
                     </div>
                     <!-- Shadow -->
                     <div class="container-fluid position-absolute h-100 w-100 shadow_content"></div>
@@ -43,7 +43,7 @@
                             <br>pour les fêtes</p>
                         <!-- BTN Découvrir -->
                         <div>
-                            <a href="{{ path('promos', {product_type: 'tshirt', genderEN: 'man', color_id: '3', logo_id: '0' }) }}" class="btn-decouvrir btn-noel btn-block rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                            <a href="{{ path('promos', {product_type: product_type, genderEN: 'man', color_id: '3', logo_id: '0' }) }}" class="btn-decouvrir btn-noel btn-block rounded-0 mt-4 py-2 px-3">Découvrir ></a>
                         </div>
                     </div>
 
@@ -58,7 +58,7 @@
                         <h5>Porte un T-shirt <span class="slogan_slide d-block">Original</span></h5>
 
                         <!-- BTN Découvrir -->
-                        <a href="{{ path('gallery', { product_type: 'tshirt', genderEN: 'man', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                        <a href="{{ path('gallery', { product_type: product_type, genderEN: 'man', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">Découvrir ></a>
                     </div>
                     <!-- Shadow -->
                     <div class="container-fluid position-absolute h-100 w-100 shadow_content"></div>
@@ -71,7 +71,7 @@
                         <h3>Porte un T-shirt <span class="text-info d-block">Original</span></h3>
                         <p class="title_slide">Développe un <span class>style unique</span></p>
                         <!-- BTN Découvrir -->
-                        <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 0, logo_id: 0 }) }}" class="btn-decouvrir btn-block rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                        <a href="{{ path('gallery', {product_type: product_type, genderEN: 'man', color_id: 0, logo_id: 0 }) }}" class="btn-decouvrir btn-block rounded-0 mt-4 py-2 px-3">Découvrir ></a>
                     </div>
 
                 </div>
@@ -122,51 +122,23 @@
 
         </div>
 
-        <!-- Gallerie -->
-        <section class="row mb-4">
-
-            {% for productRand in productsRand %}
-            <!-- Produit n/4 -->
-            <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                <div class="encart_visuel w-100 position-relative d-flex justify-content-center p-0">
-                    <a href="{{ path('tshirtdetail', {product_type: productRand.product_type, genderEN: productRand.name, color_id: productRand.color_id, logo_id: productRand.logo_id}) }}" 
-                        class="produit_link position-relative w-100 d-flex align-items-center" style="background-color:{{ productRand.color_hexa }};">
-                        <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/' ~ productRand.slug ~ '.png') }}"
-                            alt="Image du motif {{productRand.slug}}">
-                        <div class="overlay" style="background-color:{{ productRand.color_hexa }};">
-                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/' ~ productRand.name ~ '/' ~ productRand.product_type ~ '_' ~ productRand.name ~ '_' ~ productRand.slug ~ '.png') }}"
-                                alt="Image du t-shirt {{productRand.slug}}" />
-                        </div>
-                    </a>
-                </div>
-                <!-- Infos produit -->
-                <div class="card-body">
-                    <h3 class="title_produit_gallery">{{productRand.slug}}</h3>
-                    <h5 class="price_gallery pt-2">{{productRand.price_unit_ttc}} €</h5>
-                </div>
-            </div>
-            {% endfor %}
-            
-        </section>
-
-
-        </section>
+        <!-- Gallery / Random product / Last news -->
+        {% include 'partials/lastnews.html.twig' %}
 
         <!-- btns  -->
         <div class="row position-absolute btn_motifs d-none d-md-block text-center w-100">
-            <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
+            <a href="{{ path('gallery', {product_type: product_type, genderEN: 'man', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
                 < Nouveautés Homme </a>
-            <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
+            <a href="{{ path('gallery', {product_type: product_type, genderEN: 'woman', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
                 Nouveautés Femme > </a>
         </div>
         <!-- Version Mobile -->
         <div class="flex-direction-column d-xs-block d-md-none w-100">
             <div class="col-xs-12">
-                <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 0 , logo_id: 0}) }}" class="btn-decouvrir btn-block rounded-0 py-3">Nouveautés Homme > </a>
+                <a href="{{ path('gallery', {product_type: product_type, genderEN: 'man', color_id: 0 , logo_id: 0}) }}" class="btn-decouvrir btn-block rounded-0 py-3">Nouveautés Homme > </a>
             </div>
             <div class="col-xs-12">
-                <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir btn-block rounded-0 py-3 mt-2">Nouveautés Femme > </a>
+                <a href="{{ path('gallery', {product_type: product_type, genderEN: 'woman', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir btn-block rounded-0 py-3 mt-2">Nouveautés Femme > </a>
             </div>
         </div>
 

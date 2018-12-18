@@ -1,0 +1,24 @@
+<section class="row mb-4">
+
+    {% for productRand in productsRand %}
+        <!-- Produit n/4 -->
+        <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
+            <div class="encart_visuel w-100 position-relative d-flex justify-content-center p-0">
+                <a href="{{ path('tshirtdetail', {product_type: product_type, genderEN: genderEN, color_id: productRand.color_id, logo_id: productRand.logo_id}) }}" class="produit_link position-relative w-100 d-flex align-items-center" style="background-color:{{ productRand.color_hexa }};">
+                    <!-- Visuel Produit -->
+                    <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/' ~ productRand.slug ~ '.png') }}" alt="Image du motif {{productRand.slug}}">
+                    <div class="overlay" style="background-color:{{ productRand.color_hexa }};">
+                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/' ~ productRand.name ~ '/' ~ productRand.product_type ~ '_' ~ productRand.name ~ '_' ~ productRand.slug ~ '.png') }}" alt="Image du t-shirt {{productRand.slug}}"/>
+                    </div>
+                </a>
+            </div>
+            <!-- Infos produit -->
+            <div class="card-body">
+                <h3 class="title_produit_gallery">{{productRand.slug}}</h3>
+                <h5 class="price_gallery pt-2">{{productRand.price_unit_ttc}}
+                    €</h5>
+            </div>
+        </div>
+    {% endfor %}
+
+</section>
