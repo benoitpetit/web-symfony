@@ -38,14 +38,15 @@ class HomeController extends AbstractController
 
         $product_type = "tshirt";
         $genderEN = "man";
-        $genderFR = $translate->translateENtoFR( $genderEN );
+        $genderFR = $translate->translateXXtoYY( $genderEN );
+        $productsRand = $products->getRandomTshirtGender( $product_type, $genderFR, 4 );
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'Accueil',
             'product_type' => $product_type,
             'genderEN' => $genderEN,
             'genderFR' => $genderFR,
-            'productsRand' => $products->getRandomTshirtGender( $product_type, $genderFR, 4 ),
+            'productsRand' => $productsRand,
         ]);
     }
 

@@ -22,7 +22,7 @@ class TshirtController extends AbstractController
     public function displayTshirtGallery( TshirtService $products, TranslateService $translate, $product_type = 'tshirt', $genderEN , $color_id, $logo_id)
     {
         // A défaut de translate pour le moment ! (manque de temps)
-        $genderFR = $translate->translateENtoFR( $genderEN );
+        $genderFR = $translate->translateXXtoYY( $genderEN );
 
         $promo = 20/100;
 
@@ -52,7 +52,7 @@ class TshirtController extends AbstractController
     public function displayTshirtDetail( TshirtService $products, TranslateService $translate, $product_type = 'tshirt', $genderEN, $color_id, $logo_id )
     {
         // A défaut de translate pour le moment ! (manque de temps)
-        $genderFR = $translate->translateENtoFR( $genderEN );
+        $genderFR = $translate->translateXXtoYY( $genderEN );
 
         $promo = 20/100;
 
@@ -119,7 +119,7 @@ class TshirtController extends AbstractController
     public function promos(TshirtService $products, TranslateService $translate, $product_type = 'tshirt', $genderEN, $color_id, $logo_id )
     {
         // A défaut de translate pour le moment ! (manque de temps)
-        $genderFR = $translate->translateENtoFR( $genderEN );
+        $genderFR = $translate->translateXXtoYY( $genderEN );
 
         $promo = 20/100;
 

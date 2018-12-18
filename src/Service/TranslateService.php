@@ -10,37 +10,92 @@ class TranslateService {
 
     // NO TIME for translate !!!
     // Translate English to French to display
-    public function translateENtoFR( $wordEN ) {
+    public function translateXXtoYY( $wordXX ) {
 
-        $wordFR = '';
+        $wordYY = '';
 
         // Gender
-        switch ( $wordEN )
+        switch ( $wordXX )
         {
             case 'woman':
-                $wordFR = 'femme'; break;
+                $wordYY = 'femme'; break;
             case 'man':
-                $wordFR = 'homme'; break;
+                $wordYY = 'homme'; break;
         }
+
+        switch ( $wordXX )
+        {
+            case 'femme':
+                $wordYY = 'woman'; break;
+            case 'homme':
+                $wordYY = 'man'; break;
+        }
+
 
         // Color
-        switch ( $wordEN )
+        switch ( $wordXX )
         {
             case 'blue':
-                $wordFR = 'bleu'; break;
+                $wordYY = 'bleu'; break;
             case 'yellow':
-                $wordFR = 'jaune'; break;
+                $wordYY = 'jaune'; break;
             case 'green':
-                $wordFR = 'vert'; break;
+                $wordYY = 'vert'; break;
             case 'red':
-                $wordFR = 'rouge'; break;
+                $wordYY = 'rouge'; break;
             case 'black':
-                $wordFR = 'noir'; break;
+                $wordYY = 'noir'; break;
             case 'purple':
-                $wordFR = 'violet'; break;
+                $wordYY = 'violet'; break;
         }
 
-        return $wordFR;
+        switch ( $wordXX )
+        {
+            case 'bleu':
+                $wordYY = 'blue'; break;
+            case 'jaune':
+                $wordYY = 'yellow'; break;
+            case 'vert':
+                $wordYY = 'green'; break;
+            case 'rouge':
+                $wordYY = 'red'; break;
+            case 'noir':
+                $wordYY = 'black'; break;
+            case 'violet':
+                $wordYY = 'purple'; break;
+        }
+
+
+        return $wordYY;
+    }
+
+
+    public function arrayPushTanslateXXtoYY( $languageOutput, $arrInput, $arrColumnsXX ) {
+        // var_dump($arrInput);
+        $arrOutput = [];
+        foreach( $arrInput as $keyInput => $valueInput ) {
+
+            $arrColumn = [];
+            foreach( $valueInput as $keyColumn => $valueColumn) {
+
+                $arrColumn[$keyColumn] = $valueColumn;
+                
+                foreach( $arrColumnsXX as $keyColumnXX => $columnNameXX ) {
+                        
+                        // Declaration of new column
+                        $columnNameYY = $columnNameXX.$languageOutput;
+                        
+                        $valueXX = $valueInput[$columnNameXX];
+                        $valueYY = $this->translateXXtoYY($valueInput[$columnNameXX]);
+                        
+                        $arrColumn[$columnNameYY] = $valueYY;
+                }
+
+            }
+            array_push( $arrOutput, $arrColumn );
+        }
+        // var_dump($arrOutput);
+        return $arrOutput;
     }
 
 }
