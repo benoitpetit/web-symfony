@@ -127,13 +127,19 @@ class TshirtService {
 // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
     public function getRandomTshirtGender( $product, $genderFR, $randNumber)
     {
-        // $rawSql = "SELECT v.* FROM vproduct_".$product." v WHERE v.name = ? ORDER BY RAND() LIMIT ? ";
-        $rawSql = "SELECT v.* FROM vproduct_".$product." v WHERE v.name = :genderFR ORDER BY RAND() LIMIT ".$randNumber;
-        // $rawSql = "SELECT v.* FROM vproduct_".$product." v WHERE v.name = '". $genderFR . "' ORDER BY RAND() LIMIT ". $randNumber;
+        $criteria = '';
+        $paramSql = [];
+
+        if ( $genderFR != 'All' ) {
+            $criteria = 'WHERE v.name = :genderFR ';
+            $paramSql = array(':genderFR' => $genderFR);
+        }
+
+        $rawSql = "SELECT v.* FROM vproduct_".$product." v ORDER BY RAND() LIMIT ".$randNumber;
+
         $stmt = $this->om->prepare( $rawSql );
-        $stmt->execute( array(':genderFR' => $genderFR) );
-        // $stmt->execute( array($genderFR, $randNumber) );
-        
+        $stmt->execute( $paramSql );
+
         return $stmt->fetchAll();
     }
 
