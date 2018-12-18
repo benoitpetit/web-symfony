@@ -23,6 +23,7 @@ final class Version20181214085539 extends AbstractMigration
         $this->addSql('CREATE TABLE contact (id INT AUTO_INCREMENT NOT NULL, last_name VARCHAR(255) NOT NULL, first_name VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, phone VARCHAR(255) DEFAULT NULL, topic VARCHAR(255) NOT NULL, message LONGTEXT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE gender (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(45) NOT NULL, created_date DATETIME NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE logo (id INT AUTO_INCREMENT NOT NULL, par_type_product VARCHAR(45) NOT NULL, logo_name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, link VARCHAR(255) NOT NULL, created_date DATETIME NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE newsletter (id INT AUTO_INCREMENT NOT NULL, mail VARCHAR(200) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE orders (id INT AUTO_INCREMENT NOT NULL, address_billing_id_id INT NOT NULL, address_delivery_id_id INT DEFAULT NULL, order_register VARCHAR(50) NOT NULL, order_date DATETIME NOT NULL, created_date DATETIME NOT NULL, UNIQUE INDEX UNIQ_F5299398F052D342 (address_billing_id_id), UNIQUE INDEX UNIQ_F529939847C7A933 (address_delivery_id_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE order_line (id INT AUTO_INCREMENT NOT NULL, order_id_id INT NOT NULL, product_type_id INT NOT NULL, product_color_id INT NOT NULL, product_logo_id INT NOT NULL, product_size_id INT NOT NULL, product_gender_id INT NOT NULL, quantity INT NOT NULL, price_unit_ht DOUBLE PRECISION NOT NULL, promo_unit_ht DOUBLE PRECISION DEFAULT NULL, rate_id INT NOT NULL, price_total_ttc DOUBLE PRECISION NOT NULL, created_date DATETIME NOT NULL, INDEX IDX_9CE58EE1FCDAEAAA (order_id_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE product (id INT AUTO_INCREMENT NOT NULL, product_type_id_id INT NOT NULL, rate_id_id INT NOT NULL, gender_id_id INT NOT NULL, price_unit_ht DOUBLE PRECISION NOT NULL, created_date DATETIME NOT NULL, UNIQUE INDEX UNIQ_D34A04ADE22F468B (product_type_id_id), UNIQUE INDEX UNIQ_D34A04ADEF048774 (rate_id_id), INDEX IDX_D34A04AD6F7F214C (gender_id_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
@@ -67,6 +68,7 @@ final class Version20181214085539 extends AbstractMigration
         $this->addSql('DROP TABLE contact');
         $this->addSql('DROP TABLE gender');
         $this->addSql('DROP TABLE logo');
+        $this->addSql('DROP TABLE newsletter');
         $this->addSql('DROP TABLE orders');
         $this->addSql('DROP TABLE order_line');
         $this->addSql('DROP TABLE product');
