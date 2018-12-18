@@ -34,6 +34,7 @@ class TshirtController extends AbstractController
             'color_id' => $color_id,
             'promo' => $promo,
             'logo_id' => $logo_id,
+            'logos' => $products->getAllTshirtLogo($product_type),
             'products' => $products->getAllGender( $product_type, $genderFR, $color_id, $logo_id),
             'colors' => $products->getAllColorsFR( $product_type ),
         ]);
@@ -123,7 +124,7 @@ class TshirtController extends AbstractController
         $promo = 20/100;
 
         return $this->render( $product_type .'/promos.html.twig', [
-            'controller_name' => 'Tshirt '.$genderFR,
+            'controller_name' => $genderFR,
             'evenement' => 'Noël',
             'rubrique' => 'promos',
             'promosNav' => true,
@@ -133,6 +134,7 @@ class TshirtController extends AbstractController
             'genderEN' => $genderEN,
             'color_id' => $color_id,
             'logo_id' => $logo_id,
+            'logos' => $products->getAllTshirtLogo($product_type),
             'products' => $products->getAllGender( $product_type, $genderFR, $color_id, $logo_id),
             'colors' => $products->getAllColorsFR( $product_type ),
         ]);

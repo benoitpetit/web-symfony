@@ -24,10 +24,10 @@
         <div class="row d-flex justify-content-between">
 
             <!-- Titre -->
-            <div class="col-xs-12 col-sm-8 pb-4 px-0">
+            <div class="col-xs-12 col-sm-5 pb-4 px-0">
                 <div class="col-12 pb-2 text-center text-md-left">                   
                     <h2>
-                        {{ rubrique }} de <span class="text-bleu">{{ evenement ~ ' / '~ controller_name }}</span>
+                        {{ rubrique }} <span class="text-bleu">{{ ' / '~ controller_name }}</span>
                     </h2>
                 </div>
                 <div class="col-xs-12 col-sm-12 d-flex justify-content-center justify-content-sm-start">                                    
@@ -35,8 +35,36 @@
                 </div>
             </div>
 
-            <!-- controllers -->
-            <div class=" col-xs-12 col-sm-4">   
+            <!-- selecteur de motifs -->
+            <div class="col-xs-12 col-sm-4 ">
+                <div class="form-group d-flex align-items-center justify-content-center justify-content-md-end">
+                    <div class="d-block text-secondary pr-3">
+                        <label for="color">Trier par motif : </label>
+                    </div>
+                    <div class="d-block">
+                        <select class="form-control text-white bg-secondary"  name="color" onChange="location = this.options[this.selectedIndex].value;">
+
+                            <!-- boucle sur les logos -->
+                                <option value ="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id:color_id, logo_id:0}) }}"
+                                {% if logo_id == 0 %}selected{% endif %}> Tous
+                                </option>
+
+                            {% for logo in logos %}
+                        
+                                    <option value ="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id:color_id, logo_id: logo.id}) }}"
+                                    
+                                    {% if logo_id == logo.id %}selected{% endif %}> {{ logo.logo_name }}</option>
+                                
+                            {% endfor %}
+                                
+                        </select>
+                    </div>
+                </div>
+            </div>
+    
+
+            <!-- selecteur de couleurs -->
+            <div class=" col-xs-12 col-sm-3">   
                 <div class="form-group d-flex align-items-center justify-content-center justify-content-md-end">
                     <div class="d-block text-secondary pr-3">
                         <label for="color">Trier par couleur : </label>
@@ -44,22 +72,7 @@
                     
                     <div class="d-block">
                         <select class="form-control text-white bg-secondary"  name="color" onChange="location = this.options[this.selectedIndex].value;">
-                                {# <option 
-                                    value ="{{ path('promos', {product_type: 'tshirt', genderEN: 'man', color_id: '3' }) }}"
-                                    {% if color_id == '3' %}
-                                        selected
-                                    {% endif %}
-                                    > vert 
-                                </option>
-                                <option 
-                                    value ="{{ path('promos', {product_type: 'tshirt', genderEN: 'man', color_id: '4' }) }}"
-                                    {% if color_id == '4' %}
-                                        selected
-                                    {% endif %}
-                                    >rouge
-                                </option> #}
-
-                            <!-- boucle sur les options -->
+                                
                             {% for color in colors %}
                                 {% if loop.index == '3' or loop.index == '4' %}
                                     <option 
@@ -68,6 +81,7 @@
                                     </option>
                                 {% endif %}
                             {% endfor %}
+
                         </select>
                     </div>
                 </div>

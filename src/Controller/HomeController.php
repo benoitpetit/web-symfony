@@ -7,6 +7,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+use App\Service\TshirtService;
+use App\Service\TranslateService;
+
 class HomeController extends AbstractController
 {
     /**
@@ -28,6 +31,7 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'Accueil',
+            'productsRand' => $products->getRandomTshirtGender( 'tshirt', 'All', 4 ),
         ]);
     }
 

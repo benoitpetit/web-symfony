@@ -3,7 +3,7 @@
 {% block title %} {{ parent() }} | Développeurs de style {% endblock %}
 
 {% block body %}
-
+{{ dump(productsRand) }}
 <!-- //////////////////////// SLIDE PRINCIPALE ////////////////////////// -->
 <div class="container-fluid position-relative slide_container px-0">
 
@@ -124,85 +124,32 @@
 
         <!-- Gallerie -->
         <section class="row mb-4">
-            <!-- Produit 01 -->
-            <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                    <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 4, logo_id: 5 }) }}" class="produit_link position-relative w-100 d-flex bg-danger align-items-center">
-                        <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/form_idable.png') }}"
-                            alt="Image du motif formidable">
-                        <div class="overlay bg-danger">
-                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/man/tshirt_man_form_idable.png') }}"
-                                alt="Image du t-shirt formidable" />
-                        </div>
-                    </a>
-                </div>
-                <!-- Infos produit -->
-                <div class="card-body">
-                    <h3 class="title_produit_gallery">Form idable</h3>
-                    <h5 class="price_gallery pt-2">13,00€</h5>
-                </div>
-            </div>
 
-            <!-- Produit 02 -->
+            {% for productRand in productsRand %}
+            <!-- Produit n/4 -->
             <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                    <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman', color_id: 3 , logo_id: 11}) }}" class="produit_link position-relative w-100 d-flex bg-success align-items-center">
+                <div class="encart_visuel w-100 position-relative d-flex justify-content-center p-0">
+                    <a href="{{ path('tshirtdetail', {product_type: productRand.product_type, genderEN: productRand.name, color_id: productRand.color_id, logo_id: productRand.logo_id}) }}" 
+                        class="produit_link position-relative w-100 d-flex align-items-center" style="background-color:{{ productRand.color_hexa }};">
                         <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/lorem_et_hardy.png') }}"
-                            alt="Image du motif Lorem et Hardy">
-                        <div class="overlay bg-success">
-                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/woman/tshirt_woman_lorem_et_hardy.png') }}"
-                                alt="Image du t-shirt Lorem et Hardy" />
+                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/' ~ productRand.slug ~ '.png') }}"
+                            alt="Image du motif {{productRand.slug}}">
+                        <div class="overlay" style="background-color:{{ productRand.color_hexa }};">
+                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/' ~ productRand.name ~ '/' ~ productRand.product_type ~ '_' ~ productRand.name ~ '_' ~ productRand.slug ~ '.png') }}"
+                                alt="Image du t-shirt {{productRand.slug}}" />
                         </div>
                     </a>
                 </div>
                 <!-- Infos produit -->
                 <div class="card-body">
-                    <h3 class="title_produit_gallery">Lorem et Hardy</h3>
-                    <h5 class="price_gallery pt-2">13,00€</h5>
+                    <h3 class="title_produit_gallery">{{productRand.slug}}</h3>
+                    <h5 class="price_gallery pt-2">{{productRand.price_unit_ttc}} €</h5>
                 </div>
             </div>
+            {% endfor %}
+            
+        </section>
 
-            <!-- Produit 03 -->
-            <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                    <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 2 , logo_id: 6 }) }}" class="produit_link position-relative w-100 d-flex bg-warning align-items-center">
-                        <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/game_hover.png') }}"
-                            alt="Image du motif Game Hover">
-                        <div class="overlay bg-warning">
-                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/man/tshirt_man_game_hover.png') }}"
-                                alt="Image du t-shirt Game Hover" />
-                        </div>
-                    </a>
-                </div>
-                <!-- Infos produit -->
-                <div class="card-body">
-                    <h3 class="title_produit_gallery">Game Hover</h3>
-                    <h5 class="price_gallery pt-2">13,00€</h5>
-                </div>
-            </div>
-
-            <!-- Produit 04 -->
-            <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0">
-                <div class="encart_visuel w-100 position-relative bg-dark d-flex justify-content-center p-0">
-                    <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman', color_id: 1 , logo_id: 14 }) }}" class="produit_link position-relative w-100 d-flex bg-info align-items-center">
-                        <!-- Visuel Produit -->
-                        <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/toggle.png') }}"
-                            alt="Image du motif Toggle toi-même">
-                        <div class="overlay bg-info">
-                            <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/woman/tshirt_woman_toggle.png') }}"
-                                alt="Image du t-shirt Toggle toi-même" />
-                        </div>
-                    </a>
-                </div>
-                <!-- Infos produit -->
-                <div class="card-body">
-                    <h3 class="title_produit_gallery">Toggle toi-même</h3>
-                    <h5 class="price_gallery pt-2">13,00€</h5>
-                </div>
-            </div>
 
         </section>
 
