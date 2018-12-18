@@ -31,7 +31,7 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'Accueil',
-            'productsRand' => $products->getRandomTshirtGender( 'tshirt', 'All', 4 ),
+            // 'productsRand' => $products->getRandomTshirtGender( 'tshirt', 'All', 4 ),
         ]);
     }
 
