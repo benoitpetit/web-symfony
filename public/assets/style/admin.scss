@@ -52,11 +52,14 @@ body {
 
     //--------- Lien --------- //
 
-    .active a{
-        color:#0ddee2!important; 
+    .treeview-menu {
 
-        .fa {
-            color:#0ddee2!important; 
+        .active a{
+            color:#0ddee2!important;
+    
+            .fa {
+                color:#0ddee2!important;
+            }
         }
     }
 
@@ -71,7 +74,6 @@ body {
 
 
     //--------- custom --------- //
-
     .datagrid thead {
         background: #e2f7ea !important;
     }

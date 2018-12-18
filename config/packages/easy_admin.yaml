@@ -27,20 +27,29 @@ easy_admin:
         brand_color: '#084562'
         menu:
             - { label: 'Les commandes' }
-            - { entity: 'Orders', label: 'Numéro de commandes', icon: 'copy', default: true }
-            - { entity: 'OrderLine' , label: 'Détail des Commandes' , icon: 'clipboard-list' }
-            - { entity: 'Rate', label: 'Remises', icon: 'certificate' }
+            - label: 'Commandes'
+              icon: 'clipboard-list'
+              children:
+                  - { entity: 'Orders', label: 'Numéro de commandes', icon: '', default: true }
+                  - { entity: 'OrderLine' , label: 'Détail des Commandes' , icon: '' }
+                  - { entity: 'Rate', label: 'Remises', icon: '' }
             - { label: 'Les Produits' }
             - { entity: 'ProductType', label: 'Type de produit' , icon: 'cubes' }
             - { entity: 'Product', label: 'Produits', icon: 'bullseye' }
-            - { entity: 'Gender', label: 'Genres', icon: 'venus-mars' }
-            - { entity: 'Size', label: 'Tailles' , icon: 'ruler-horizontal' }
-            - { entity: 'Logo', label: 'Logos' , icon: 'code'}
-            - { entity: 'Color', label: 'Couleurs' , icon: 'palette'}
             - { entity: 'StockInput', label: 'Stocks' , icon: 'box'}
+            - label: 'Critères'
+              icon: 'user'
+              children:
+                  - { entity: 'Gender', label: 'Genres', icon: 'venus-mars' }
+                  - { entity: 'Size', label: 'Tailles' , icon: 'ruler-horizontal' }
+                  - { entity: 'Logo', label: 'Logos' , icon: 'code'}
+                  - { entity: 'Color', label: 'Couleurs' , icon: 'palette'}
             - { label: 'Les Utilisateurs' }
-            - { entity: 'User', label: 'Utilisateurs' , icon: 'user'}
-            - { entity: 'Address', label: 'Adresses' , icon: 'map-marker-alt' }
+            - label: 'Utilisateurs'
+              icon: 'user'
+              children:
+                  - { entity: 'User', label: 'Utilisateurs' , icon: 'user'}
+                  - { entity: 'Address', label: 'Adresses' , icon: 'map-marker-alt' }
             - { label: 'Boutique' }
             - { label: '< Retour au site', route: 'home' , icon: '' }
         
