@@ -120,7 +120,7 @@ class UserController extends AbstractController
             'accountNav' => true,
             'id' => $id,
             'user' => $useraddressService->getOneId( $id ),
-            'addr' => $address->findOneById($id),
+            'address' => $address->findOneById( $useraddressService->getOneId( $id )->getAddressBillingId() ),
             'orders' => $accountService->getAllOrders( $id ),
             'orderLines' => $accountService->getAllOrderLines( $id ),
         ]);

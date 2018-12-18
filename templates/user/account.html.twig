@@ -5,8 +5,10 @@
 
 {% block body %}
 
+{{ dump(id) }}
+{{ dump(user) }}
+{{ dump(address) }}
 {{ dump(orders) }}
-
 {{ dump(orderLines) }}
 
 {# condition #}
@@ -32,14 +34,13 @@
         <p><b>Adresse mail: </b>{{user.email}}</p>
         <p><b>Téléphone: </b>{{user.phone}}</p>
         <hr>
-        <p><b>Numéro / rue: </b>{{addr.street}}</p>
-        <p><b>Code postal: </b>{{addr.zipcode}}</p>
-        <p><b>Ville: </b>{{addr.city}}</p>
-        <p><b>Country: </b>{{addr.country}}</p>
+        <p><b>Numéro / rue: </b>{{address.street}}</p>
+        <p><b>Code postal: </b>{{address.zipcode}}</p>
+        <p><b>Ville: </b>{{address.city}}</p>
+        <p><b>Country: </b>{{address.country}}</p>
         <hr>
         <a href="{{ path('user_edit', {'id': id }) }}" class="btn btn-warning btn-sm mb-3 btn-block mb-3" role="button">Modifier
             mes informations / mon adresse</a>
-
     </div>
         
         
