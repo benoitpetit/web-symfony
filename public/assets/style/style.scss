@@ -19,11 +19,6 @@ body {
     background-color: $white;
 
 
-    // #cb {
-    //     max-height: 155px;
-    //     height: 105px;
-    // }
-
     // ---- IMPORTS PAGES ---- //
 
     @import "./pages/home.scss";
@@ -37,6 +32,9 @@ body {
     @import "./pages/register.scss";
     @import "./pages/delivery.scss";
     @import "./pages/payment.scss";
+    @import "./pages/scroll.scss";
 
+    
 }
+
 
