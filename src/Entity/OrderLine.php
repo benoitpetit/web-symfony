@@ -21,7 +21,7 @@ class OrderLine
     /**
      * @ORM\Column(type="integer")
      */
-    private $productId;
+    private $productTypeId;
 
     /**
      * @ORM\Column(type="integer")
@@ -92,14 +92,14 @@ class OrderLine
         return $this->id;
     }
 
-    public function getProductId(): ?int
+    public function getProductTypeId(): ?int
     {
-        return $this->productId;
+        return $this->productTypeId;
     }
 
-    public function setProductId(int $productId): self
+    public function setProductTypeId(int $productTypeId): self
     {
-        $this->productId = $productId;
+        $this->productTypeId = $productTypeId;
 
         return $this;
     }

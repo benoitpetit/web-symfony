@@ -56,7 +56,7 @@ VALUES
 (1, 1, NULL, '125048624', '2018-12-14 09:00:00', '2018-12-14 09:00:00'),
 (2, 2, 5, '753695186', '2018-12-14 10:00:00', '2018-12-14 10:00:00');
 
-INSERT INTO `order_line` (`id`, `order_id_id`, `product_id`, `product_color_id`, `product_logo_id`, `product_size_id`, `product_gender_id`, `quantity`, `price_unit_ht`, `promo_unit_ht`, `rate_id`, `price_total_ttc`, `created_date`)
+INSERT INTO `order_line` (`id`, `order_id_id`, `product_type_id`, `product_color_id`, `product_logo_id`, `product_size_id`, `product_gender_id`, `quantity`, `price_unit_ht`, `promo_unit_ht`, `rate_id`, `price_total_ttc`, `created_date`)
 VALUES
 (1, 1, 1, 3, 6, 2, 2, 2, 20, NULL, 1, 48, '2018-12-14 12:00:00'),
 (2, 2, 2, 6, 15, 3, 1, 1, 20, NULL, 1, 24, '2018-12-14 12:00:00');

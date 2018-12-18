@@ -5,6 +5,10 @@
 
 {% block body %}
 
+{{ dump(orders) }}
+
+{{ dump(orderLines) }}
+
 {# condition #}
 {% if app.user %}
 
@@ -41,9 +45,9 @@
         
 {# tableau #}
 <div class="col-md-8">
-    <h4 class="mb-4">MES COMMANDES <span class="text-danger">ne fonctionne pas</span> </h4>
+    <h4 class="mb-4">MES COMMANDES</h4>
 
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -53,31 +57,32 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>prix</td>
-                <td>21/12/2018</td>
-                <td>
-                    <b>Couleur: </b>noir / <b>Taille: </b>XL /<b> Quantité: </b>1<br>
-                    <b>Model: </b><a href="#">lorem et hardy</a> <br>
-                    <hr>
-                    <b>Couleur: </b>gris / <b>Taille: </b>L / <b>Quantité: </b>1<br>
-                    <b>Model: </b><a href="#">game over</a> <br>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>125€</td>
-                <td>18/10/2018</td>
-                <td>
-                    <b>Couleur: </b>noir / <b>Taille: </b>XL /<b> Quantité: </b>5<br>
-                    <b>Model: </b><a href="#">lorem et hardy</a> <br>
-                    <hr>
-                    <b>Couleur: </b>gris / <b>Taille: </b>L / <b>Quantité: </b>2<br>
-                    <b>Model: </b><a href="#">game over</a> <br>
 
+            {% for order in orders %}
+
+            <tr>
+                <th scope="row">{{ order.order_register }}</th>
+                <td>{{ order.price_ttc }} &euro;</td>
+                <td>{{ order.order_date }}</td>
+                <td>
+                {% for orderLine in orderLines %}
+                    {% if ( order.orders_id == orderLine.order_id ) %}
+
+                            <b>Couleur: </b>noir / <b>Taille: </b>XL /<b> Quantité: </b>1<br>
+                            <b>Model: </b>
+                            <a href="{{ path('tshirtdetail', {product_type: 'tshirt', genderEN: 'man', color_id: orderLine.product_color_id, logo_id: orderLine.product_logo_id }) }}">lorem et hardy</a>
+                            <br /><br />
+
+                    {% endif %}
+                    
+                    {# {% if not loop.last %} <hr> {% endif %} #}
+
+                {% endfor %}
                 </td>
             </tr>
+
+            {% endfor %}
+
         </tbody>
     </table>
 </div>
