@@ -31,7 +31,7 @@ final class Version20181214085539 extends AbstractMigration
         $this->addSql('CREATE TABLE rate (id INT AUTO_INCREMENT NOT NULL, rate FLOAT, rate_date_start DATETIME NOT NULL, rate_date_end DATETIME DEFAULT NULL, created_date DATETIME NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE size (id INT AUTO_INCREMENT NOT NULL, par_type_product VARCHAR(45) NOT NULL, size VARCHAR(45) NOT NULL, name VARCHAR(45) NOT NULL, created_date DATETIME NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE stock_input (id INT AUTO_INCREMENT NOT NULL, color_id_id INT NOT NULL, size_id_id INT NOT NULL, product_id_id INT NOT NULL, input_date DATETIME NOT NULL, quantity INT NOT NULL, created_date DATETIME NOT NULL, UNIQUE INDEX UNIQ_44382E26E88CCE5 (color_id_id), UNIQUE INDEX UNIQ_44382E26AE945C60 (size_id_id), UNIQUE INDEX UNIQ_44382E26DE18E50B (product_id_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, address_billing_id_id INT NOT NULL, username VARCHAR(45) NOT NULL, firstname VARCHAR(45) NOT NULL, lastname VARCHAR(45) NOT NULL, email VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, phone VARCHAR(45) NOT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', is_active SMALLINT NOT NULL, created_date DATETIME NOT NULL, UNIQUE INDEX UNIQ_8D93D649F052D342 (address_billing_id_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, address_billing_id_id INT NOT NULL, username VARCHAR(45) NOT NULL, firstname VARCHAR(45) NOT NULL, lastname VARCHAR(45) NOT NULL, email VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, phone VARCHAR(45) NOT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', is_active SMALLINT NOT NULL, reset_token VARCHAR(255), created_date DATETIME NOT NULL, UNIQUE INDEX UNIQ_8D93D649F052D342 (address_billing_id_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE orders ADD CONSTRAINT FK_F5299398F052D342 FOREIGN KEY (address_billing_id_id) REFERENCES address (id)');
         $this->addSql('ALTER TABLE orders ADD CONSTRAINT FK_F529939847C7A933 FOREIGN KEY (address_delivery_id_id) REFERENCES address (id)');
         $this->addSql('ALTER TABLE order_line ADD CONSTRAINT FK_9CE58EE1FCDAEAAA FOREIGN KEY (order_id_id) REFERENCES `orders` (id)');
@@ -42,6 +42,8 @@ final class Version20181214085539 extends AbstractMigration
         $this->addSql('ALTER TABLE stock_input ADD CONSTRAINT FK_44382E26AE945C60 FOREIGN KEY (size_id_id) REFERENCES size (id)');
         $this->addSql('ALTER TABLE stock_input ADD CONSTRAINT FK_44382E26DE18E50B FOREIGN KEY (product_id_id) REFERENCES product (id)');
         $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D649F052D342 FOREIGN KEY (address_billing_id_id) REFERENCES address (id)');
+        $this->addSql('ALTER TABLE order_line DROP FOREIGN KEY FK_9CE58EE1FCDAEAAA');
+        $this->addSql('ALTER TABLE order_line DROP INDEX IDX_9CE58EE1FCDAEAAA');
         $this->addSql('CREATE VIEW vProduct_tshirt AS SELECT r.id rate_id, CAST(r.rate * 100 AS DECIMAL(5,2)) AS taux_tva, p.price_unit_ht, ROUND(p.price_unit_ht * r.rate) as price_tva, p.price_unit_ht + ROUND(p.price_unit_ht * r.rate) as price_unit_ttc, pt.id product_type_id, pt.product_type, g.id genre_id, g.name, c.id color_id, c.color_name, c.color_hexa, l.id logo_id, l.logo_name, l.slug FROM product p INNER JOIN rate r ON p.rate_id_id = r.id	INNER JOIN product_type pt ON p.product_type_id_id = pt.id INNER JOIN gender g ON p.gender_id_id = g.id, color c, logo l WHERE pt.id = 1 ORDER BY g.id, c.id, l.id');
         // $this->addSql('CREATE TABLE migration_versions (version VARCHAR(255) NOT NULL)');
     }
@@ -76,6 +78,8 @@ final class Version20181214085539 extends AbstractMigration
         $this->addSql('DROP TABLE stock_input');
         $this->addSql('DROP TABLE user');
         $this->addSql('DROP VIEW vProduct_tshirt');
+        $this->addSql('DROP VIEW vOrders_tshirt');
+        $this->addSql('DROP VIEW vOrderLine_tshirt');
         // $this->addSql('CREATE TABLE migration_versions');
         // $this->addSql('DROP SCHEMA `devmyshirts`');
     }
