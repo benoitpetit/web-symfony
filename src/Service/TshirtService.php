@@ -26,16 +26,28 @@ class TshirtService {
     const _PRODUCT = 'tshirt';
     const _PICTURES = 'assets/images';
 
+    // display products per page
+    const MAX_ITEMS_PER_PAGE = 8;
+
     // Response picture
     private $image;
     
     // Object Manager global
     private $om;
 
+    // $records
+    private $records;
+
 
     public function __construct( ObjectManager $om ) {
         $this->om = $om->getConnection();
     }
+
+
+    public function getRecords() {
+        return $this->records;
+    }
+
 
     // générer le t-shirt
     public function generateTshirt( $gender, $color, $logo )
@@ -69,14 +81,19 @@ class TshirtService {
         $columnToTranslate = [ 'product_type', 'name', 'color_name' ];
         $resultsAddColumnTranslate = $translate->arrayPushTanslate( 'TR', $results, $columnToTranslate );
 
-        return $resultsAddColumnTranslate;
+        // Save the records for call getRecords()
+        $this->records = $resultsAddColumnTranslate;
+
+        // For count() and others
+        return $this;
     }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
-    public function getAllGender( $gender, $color_id, $logo_id )
+    public function getAllGender( $gender, $color_id, $logo_id, $page_number = 0 )
     {
         $paramSql = [];
         $criteria = '';
+        $limit = '';
         if ( $color_id != 0 ) {
             $criteria = "AND v.color_id = :color_id";
             $paramSql[':color_id'] = $color_id;
@@ -87,8 +104,11 @@ class TshirtService {
         }
         $paramSql[':gender'] = $gender;
 
+        if ( $page_number != 0)
+            $limit = 'LIMIT '. self::MAX_ITEMS_PER_PAGE * ($page_number-1) .','. self::MAX_ITEMS_PER_PAGE;
+
         $viewSql = "vProduct_". self::_PRODUCT;
-        $rawSql = "SELECT v.* FROM ". $viewSql ." v WHERE v.name = :gender ". $criteria ." ORDER BY v.logo_id";
+        $rawSql = "SELECT v.* FROM ". $viewSql ." v WHERE v.name = :gender ". $criteria ." ORDER BY v.logo_id ". $limit;
 
         $stmt = $this->om->prepare( $rawSql );
         $stmt->execute( $paramSql );
@@ -99,7 +119,11 @@ class TshirtService {
         $columnToTranslate = [ 'product_type', 'name', 'color_name' ];
         $resultsAddColumnTranslate = $translate->arrayPushTanslate( 'TR', $results, $columnToTranslate );
 
-        return $resultsAddColumnTranslate;
+        // Save the records for call getRecords()
+        $this->records = $resultsAddColumnTranslate;
+
+        // For count() and others
+        return $this;
     }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
@@ -121,7 +145,11 @@ class TshirtService {
         $columnToTranslate = [ 'product_type', 'name', 'color_name' ];
         $resultsAddColumnTranslate = $translate->arrayPushTanslate( 'TR', $results, $columnToTranslate );
 
-        return $resultsAddColumnTranslate[0];
+        // Save the records for call getRecords()
+        $this->records = $resultsAddColumnTranslate[0];
+
+        // For count() and others
+        return $this;
     }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
@@ -140,7 +168,11 @@ class TshirtService {
         $columnToTranslate = [ 'color_name' ];
         $resultsAddColumnTranslate = $translate->arrayPushTanslate( 'TR', $results, $columnToTranslate );
 
-        return $resultsAddColumnTranslate;
+        // Save the records for call getRecords()
+        $this->records = $resultsAddColumnTranslate;
+
+        // For count() and others
+        return $this;
     }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
@@ -152,7 +184,11 @@ class TshirtService {
         $stmt = $this->om->prepare( $rawSql );
         $stmt->execute( $paramSql );
         
-        return $stmt->fetchAll();
+        // Save the records for call getRecords()
+        $this->records = $stmt->fetchAll();
+
+        // For count() and others
+        return $this;
     }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
@@ -163,7 +199,11 @@ class TshirtService {
         $stmt = $this->om->prepare($rawSql);
         $stmt->execute( $paramSql );
         
-        return $stmt->fetchAll();
+        // Save the records for call getRecords()
+        $this->records = $stmt->fetchAll();
+
+        // For count() and others
+        return $this;
     }
 
 
@@ -190,14 +230,18 @@ class TshirtService {
         $columnToTranslate = [ 'product_type', 'name', 'color_name' ];
         $resultsAddColumnTranslate = $translate->arrayPushTanslate( 'TR', $results, $columnToTranslate );
 
-        return $resultsAddColumnTranslate;
+        // Save the records for call getRecords()
+        $this->records = $resultsAddColumnTranslate;
+
+        // For count() and others
+        return $this;
     }
 
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
     public function getAllColorsFR() {
 
-        $colorsEN = $this->getAllTshirtColor();
+        $colorsEN = $this->getAllTshirtColor()->getRecords();
         $colorsFR = [];
 
         // Translate to display colors
@@ -207,6 +251,16 @@ class TshirtService {
         }
 
         return $colorsFR;
+    }
+
+    // Count records
+    public function count() {
+        return count( $this->records );
+    }
+
+    // Number of page(s)
+    public function countPageForPagination( $genderFR, $color_id, $logo_id ) {
+        return floor( $this->getAllGender( $genderFR, $color_id, $logo_id )->count() / self::MAX_ITEMS_PER_PAGE ) + 1;
     }
 
 }

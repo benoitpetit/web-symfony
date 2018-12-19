@@ -16,18 +16,19 @@ use App\Repository\LogoRepository;
 class TshirtController extends AbstractController
 {
     /**
-     * Gallerie homme
+     * Gallery
      * 
-     * @Route("/gallery/{product_type}/{genderEN}/{color_id}/{logo_id}", name="gallery")
+     * @Route("/gallery/{product_type}/{genderEN}/{color_id}/{logo_id}/{pageNumber}", name="gallery")
      * 
      * @return render
      * 
      */
-    public function displayTshirtGallery( TshirtService $products, TranslateService $translate, $product_type = TshirtService::_PRODUCT, $genderEN , $color_id, $logo_id)
+    public function displayTshirtGallery( TshirtService $products, TranslateService $translate, $product_type = TshirtService::_PRODUCT, $genderEN , $color_id, $logo_id, $pageNumber = 1 )
     {
         // A défaut de translate pour le moment ! (manque de temps)
         $genderFR = $translate->translateXXtoYY( $genderEN );
 
+        // Rate promo test
         $promo = 20/100;
 
         return $this->render( TshirtService::_PRODUCT .'/gallery.html.twig', [
@@ -38,12 +39,13 @@ class TshirtController extends AbstractController
             'color_id' => $color_id,
             'promo' => $promo,
             'logo_id' => $logo_id,
-            'logos' => $products->getAllTshirtLogo(),
-            'products' => $products->getAllGender( $genderFR, $color_id, $logo_id ),
+            'logos' => $products->getAllTshirtLogo()->getRecords(),
+            'products' => $products->getAllGender( $genderFR, $color_id, $logo_id, $pageNumber )->getRecords(),
             'colors' => $products->getAllColorsFR(),
+            'countPageForPagination' => $products->countPageForPagination( $genderFR, $color_id, $logo_id ),
+            'pageNumber' => $pageNumber,
         ]);
     }
-
   
 
     /**
@@ -69,10 +71,10 @@ class TshirtController extends AbstractController
             'color_id' => $color_id,
             'logo_id' => $logo_id,
             'promo' => $promo,
-            'product' => $products->getAllGenderDetail( $genderFR, $color_id, $logo_id ),
-            'colors' => $products->getAllTshirtColor(),
-            'sizes' => $products->getAllTshirtSize(),
-            'productsRand' => $products->getRandomTshirtGender( $genderFR, 4 ),
+            'product' => $products->getAllGenderDetail( $genderFR, $color_id, $logo_id )->getRecords(),
+            'colors' => $products->getAllTshirtColor()->getRecords(),
+            'sizes' => $products->getAllTshirtSize()->getRecords(),
+            'productsRand' => $products->getRandomTshirtGender( $genderFR, 4 )->getRecords(),
         ]);
     }
 
@@ -80,7 +82,7 @@ class TshirtController extends AbstractController
     /**
      * @Route("single/{genderEN}/visual/{color_id}/{logo_id}", name="visual")
      */
-    public function manVisual( TshirtService $tshirtService, $genderEN, $color_id, $logo_id, ColorRepository $colorRepository, LogoRepository $logoRepository)
+    public function visualTshirt( TshirtService $tshirtService, $genderEN, $color_id, $logo_id, ColorRepository $colorRepository, LogoRepository $logoRepository)
     {
         return new Response( $tshirtService->generateTshirt( $genderEN,
                                                              $colorRepository->findOneById( $color_id )->getColorHexa(),
@@ -93,7 +95,7 @@ class TshirtController extends AbstractController
 
 
     /**
-     * Gallerie RPOMOS
+     * Gallery PROMOS
      * 
      * @Route("/gallery/{product_type}/promos/{genderEN}/{color_id}/{logo_id}", name="promos")
      * 
@@ -105,6 +107,7 @@ class TshirtController extends AbstractController
         // A défaut de translate pour le moment ! (manque de temps)
         $genderFR = $translate->translateXXtoYY( $genderEN );
 
+        // Promo rate test
         $promo = 20/100;
 
         return $this->render( TshirtService::_PRODUCT .'/promos.html.twig', [
@@ -118,9 +121,9 @@ class TshirtController extends AbstractController
             'genderEN' => $genderEN,
             'color_id' => $color_id,
             'logo_id' => $logo_id,
-            'logos' => $products->getAllTshirtLogo(),
-            'products' => $products->getAllGender( $genderFR, $color_id, $logo_id),
-            'colors' => $products->getAllColorsFR(),
+            'logos' => $products->getAllTshirtLogo()->getRecords(),
+            'products' => $products->getAllGender( $genderFR, $color_id, $logo_id)->getRecords(),
+            'colors' => $products->getAllColorsFR()->getRecords(),
         ]);
     }
 
