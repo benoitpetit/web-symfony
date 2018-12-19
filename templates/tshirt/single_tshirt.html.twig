@@ -37,7 +37,7 @@
 
             <div class="position-relative">
                 <div id="motif-visuel">
-                    <img src="{{ path( genderEN ~ 'visual') }}" class="tshirt-visuel-home">
+                    <img src="{{ path('visual', {genderEN: genderEN, color_id: color_id, logo_id: logo_id}) }}" class="tshirt-visuel-home">
                 </div>
                 <!-- petit logo -->
                 <div class="min_logo position-absolute" style="background-color:{{ product.color_hexa }};">

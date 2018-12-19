@@ -9,6 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Service\TshirtService;
 use App\Service\TranslateService;
 
+use App\Repository\ColorRepository;
+use App\Repository\LogoRepository;
+
+
 class TshirtController extends AbstractController
 {
     /**
@@ -58,7 +62,7 @@ class TshirtController extends AbstractController
 
         return $this->render( TshirtService::_PRODUCT .'/single_'. $product_type .'.html.twig', [
             // a modifier avec le nom du model quand il seront creer sur la BDD
-            'controller_name' => 'Tshirt '.$genderFR,
+            'controller_name' => TshirtService::_PRODUCT.$genderFR,
             $genderEN.'SingleNav' => true,
             'product_type' => $product_type,
             'genderEN' => $genderEN,
@@ -74,39 +78,19 @@ class TshirtController extends AbstractController
 
 
     /**
-     * @Route("gallery/man/visual", name="manvisual")
+     * @Route("single/{genderEN}/visual/{color_id}/{logo_id}", name="visual")
      */
-    public function manVisual( TshirtService $tshirtService, $genderFR='man', $color='#18a4d2', $motif='game_hover')
+    public function manVisual( TshirtService $tshirtService, $genderEN, $color_id, $logo_id, ColorRepository $colorRepository, LogoRepository $logoRepository)
     {
-        return new Response( $tshirtService->generateTshirt($genderFR, $color, $motif), 200, array( 'Content-Type' => 'image/jpeg' ) );
+        return new Response( $tshirtService->generateTshirt( $genderEN,
+                                                             $colorRepository->findOneById( $color_id )->getColorHexa(),
+                                                             $logoRepository->findOneById( $logo_id )->getSlug()
+                                                           ),
+                             200,
+                             array( 'Content-Type' => 'image/jpeg' )
+        );
     }
 
-    /**
-     * @Route("gallery/woman/visual", name="womanvisual")
-     */
-    public function womanVisual( TshirtService $tshirtService, $genderFR='woman', $color='#18a4d2', $motif='game_hover')
-    {
-        return new Response( $tshirtService->generateTshirt($genderFR, $color, $motif), 200, array( 'Content-Type' => 'image/jpeg' ) );
-    }
-
-
-    // /**
-    //  * Affichage detail d'un tshirt femme
-    //  * 
-    //  * [todo] la route sera modifier en ("gallery/woman/detail/{id}" quand la BDD sera creer)
-    //  * @Route("gallery/woman/detail", name="womansingle")
-    //  *
-    //  * @return render
-    //  */
-    // public function womanSingle()
-    // {
-    //     return $this->render('tshirt/woman_single_tshirt.html.twig', [
-    //         // a modifier avec le nom du model quand il seront creer sur la BDD
-    //         'controller_name' => 'Tshirt',
-    //         'womanSingleNav' => true,
-    //     ]);
-    // }
-    
 
     /**
      * Gallerie RPOMOS
