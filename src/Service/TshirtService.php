@@ -52,8 +52,6 @@ class TshirtService {
     // générer le t-shirt
     public function generateTshirt( $gender, $color, $logo )
     {
-// var_dump($color);
-// var_dump($logo);
         // Generate pictures
         $manager = new ImageManager();
         
@@ -243,11 +241,15 @@ class TshirtService {
 
         $colorsEN = $this->getAllTshirtColor( $colorsPromos )->getRecords();
         $colorsFR = [];
+        $colorFR = [];
 
         // Translate to display colors
         $translate = new TranslateService();
+        $colorsFR = [];
         foreach( $colorsEN as $keyColorEN => $valueColorEN ) {
-            array_push( $colorsFR, $translate->translateXXtoYY( $colorsEN[$keyColorEN]['color_name'] ) );
+            $colorFR['id'] = $colorsEN[$keyColorEN]['id'];
+            $colorFR['color_name'] = $translate->translateXXtoYY( $colorsEN[$keyColorEN]['color_name'] );
+            array_push( $colorsFR, $colorFR );
         }
 
         return $colorsFR;
