@@ -36,7 +36,7 @@
     </div>
   </div>
   
-</section>
+
 
 <!-- ////////////////// FORMULAIRE de ENREGISTREMENT /////////////////////////// -->
     <div class="row">
@@ -84,11 +84,14 @@
                     <div class="form-group">
                         <label for="password">Mot de passe</label>
                         <input type="password" id="password" name="_password" class="form-control">
+                <a href="{{ path('app_forgotten_password') }}">mots de passe oublier</a>
                     </div>
 
                     <button type="submit" class="btn btn-info mb-5">Se connecter</button>
                 </form>
                 <br /><br /><br />
+            </div>
+            <div>
             </div>
             <div class="col-3"></div>
         </div>
@@ -97,6 +100,7 @@
     
 
 </div>
+</section>
 
 
 {% endblock %}

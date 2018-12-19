@@ -9,21 +9,24 @@ use App\Form\LoginType;
 use App\Form\AddressType;
 use App\Service\AccountService;
 
+use App\Repository\UserRepository;
 use App\Service\UserAddressService;
 use App\Repository\OrdersRepository;
-use App\Repository\AddressRepository;
 
+use App\Repository\AddressRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\HttpFoundation\Response;
 
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
+use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 class UserController extends AbstractController
 {
@@ -102,6 +105,13 @@ class UserController extends AbstractController
 
     }
 
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
     /**
      * 
      * Permet à un client/prospect de voir son compte
@@ -123,6 +133,12 @@ class UserController extends AbstractController
             'orderLines' => $accountService->getAllOrderLines( $id ),
         ]);
     }
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
 
     /**
      * permet d'afficher le formulaire d'edition de compte utilisateur
@@ -159,6 +175,10 @@ class UserController extends AbstractController
     }
 
 
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+
     /**
      * 
      * Permet à un client/prospect de se déconnecter de son compte
@@ -167,4 +187,103 @@ class UserController extends AbstractController
      */
     public function logout() {}
 
-}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+        
+        
+    /**
+     * entre adresse mail pour changement du mots de passe
+     * 
+     * @Route("/forgotten_password", name="app_forgotten_password")
+     */
+    public function forgottenPassword(
+        Request $request,
+        UserPasswordEncoderInterface $encoder,
+        \Swift_Mailer $mailer,
+        TokenGeneratorInterface $tokenGenerator
+    ): Response
+    {
+
+        if ($request->isMethod('POST')) {
+
+            $email = $request->request->get('email');
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $user = $entityManager->getRepository(User::class)->findOneByEmail($email);
+
+            if ($user === null) {
+                $this->addFlash('danger', 'Email Inconnu');
+                return $this->redirectToRoute('homepage');
+            }
+            $token = $tokenGenerator->generateToken();
+
+            try{
+                $user->setResetToken($token);
+                $entityManager->flush();
+            } catch (\Exception $e) {
+                $this->addFlash('warning', $e->getMessage());
+                return $this->redirectToRoute('homepage');
+            }
+
+            $url = $this->generateUrl('app_reset_password', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
+
+            $message = (new \Swift_Message('mots de passe oublier'))
+                ->setFrom('wf3tshirt@gmail.com')
+                ->setTo($user->getEmail())
+                ->setBody(
+                    "Modifier votre mot de passe : " . $url,
+                    'text/html'
+                );
+
+            $mailer->send($message);
+
+            $this->addFlash('notice', 'Mail envoyé');
+
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('user/forgotten_password.html.twig');
+    }
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    /**
+     * entre le nouveau mots de passe
+     * 
+     * @Route("/reset_password/{token}", name="app_reset_password")
+     */
+    public function resetPassword(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder)
+    {
+
+        if ($request->isMethod('POST')) {
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $user = $entityManager->getRepository(User::class)->findOneByResetToken($token);
+            /* @var $user User */
+
+            if ($user === null) {
+                $this->addFlash('danger', 'Token Inconnu');
+                return $this->redirectToRoute('home');
+            }
+
+            $user->setResetToken(null);
+            $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
+            $entityManager->flush();
+
+            $this->addFlash('notice', 'Mot de passe mis à jour');
+
+            return $this->redirectToRoute('home');
+        }else {
+
+            return $this->render('user/reset_password.html.twig', ['token' => $token]);
+        }
+
+    }
+        
+    }
