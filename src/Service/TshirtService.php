@@ -153,10 +153,10 @@ class TshirtService {
     }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
-    public function getAllTshirtColor()
+    public function getAllTshirtColor( $colorsPromos = '' )
     {
         $viewSql = "vProduct_". self::_PRODUCT;
-        $rawSql = "SELECT c.* FROM color c WHERE c.par_type_product = :par_type_product";
+        $rawSql = "SELECT c.* FROM color c WHERE c.par_type_product = :par_type_product". $colorsPromos;
         $paramSql = [ ':par_type_product' => '@'. self::_PRODUCT ];
 
         $stmt = $this->om->prepare( $rawSql );
@@ -239,9 +239,9 @@ class TshirtService {
 
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
-    public function getAllColorsFR() {
+    public function getAllColorsFR( $colorsPromos = '' ) {
 
-        $colorsEN = $this->getAllTshirtColor()->getRecords();
+        $colorsEN = $this->getAllTshirtColor( $colorsPromos )->getRecords();
         $colorsFR = [];
 
         // Translate to display colors

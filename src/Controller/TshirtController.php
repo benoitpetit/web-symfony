@@ -27,27 +27,63 @@ class TshirtController extends AbstractController
     {
         // A défaut de translate pour le moment ! (manque de temps)
         $genderFR = $translate->translateXXtoYY( $genderEN );
-
+        
         // Rate promo test
         $promo = 20/100;
-
+        
         return $this->render( TshirtService::_PRODUCT .'/gallery.html.twig', [
             'controller_name' => $genderFR,
             $genderEN.'GalleryNav' => true,
             'product_type' => $product_type,
             'genderEN' => $genderEN,
             'color_id' => $color_id,
-            'promo' => $promo,
             'logo_id' => $logo_id,
             'logos' => $products->getAllTshirtLogo()->getRecords(),
             'products' => $products->getAllGender( $genderFR, $color_id, $logo_id, $pageNumber )->getRecords(),
             'colors' => $products->getAllColorsFR(),
             'countPageForPagination' => $products->countPageForPagination( $genderFR, $color_id, $logo_id ),
             'pageNumber' => $pageNumber,
+            // Promos
+            'promo' => $promo,
+            ]);
+        }
+
+    /**
+     * Gallery PROMOS
+     * 
+     * @Route("/promos/{product_type}/{genderEN}/{color_id}/{logo_id}/{pageNumber}", name="promos")
+     * 
+     * @return render
+     * 
+     */
+    public function displayPromos(TshirtService $products, TranslateService $translate, $product_type = TshirtService::_PRODUCT, $genderEN, $color_id, $logo_id, $pageNumber = 1 )
+    {
+        // A défaut de translate pour le moment ! (manque de temps)
+        $genderFR = $translate->translateXXtoYY( $genderEN );
+    
+        // Promo rate test
+        $promo = 20/100;
+    
+        return $this->render( TshirtService::_PRODUCT .'/promos.html.twig', [
+            'controller_name' => $genderFR,
+            $genderEN.'PromosNav' => true,
+            'product_type' => $product_type,
+            'genderEN' => $genderEN,
+            'color_id' => $color_id,
+            'logo_id' => $logo_id,
+            'logos' => $products->getAllTshirtLogo()->getRecords(),
+            'products' => $products->getAllGender( $genderFR, $color_id, $logo_id, $pageNumber )->getRecords(),
+            'colors' => $products->getAllColorsFR( ' AND c.id IN (3, 4)' ),  // Rouge et Vert
+            'countPageForPagination' => $products->countPageForPagination( $genderFR, $color_id, $logo_id ),
+            'pageNumber' => $pageNumber,
+            // Promos
+            'evenement' => 'Noël',
+            'rubrique' => 'promos',
+            'promosNav' => true,
+            'promo' => $promo,
         ]);
     }
-  
-
+        
     /**
      * Affichage detail d'un tshirt
      * 
@@ -92,40 +128,5 @@ class TshirtController extends AbstractController
                              array( 'Content-Type' => 'image/jpeg' )
         );
     }
-
-
-    /**
-     * Gallery PROMOS
-     * 
-     * @Route("/gallery/{product_type}/promos/{genderEN}/{color_id}/{logo_id}", name="promos")
-     * 
-     * @return render
-     * 
-     */
-    public function promos(TshirtService $products, TranslateService $translate, $product_type = TshirtService::_PRODUCT, $genderEN, $color_id, $logo_id )
-    {
-        // A défaut de translate pour le moment ! (manque de temps)
-        $genderFR = $translate->translateXXtoYY( $genderEN );
-
-        // Promo rate test
-        $promo = 20/100;
-
-        return $this->render( TshirtService::_PRODUCT .'/promos.html.twig', [
-            'controller_name' => $genderFR,
-            'evenement' => 'Noël',
-            'rubrique' => 'promos',
-            'promosNav' => true,
-            'promo' => $promo,
-            $genderEN.'PromosNav' => true,
-            'product_type' => $product_type,
-            'genderEN' => $genderEN,
-            'color_id' => $color_id,
-            'logo_id' => $logo_id,
-            'logos' => $products->getAllTshirtLogo()->getRecords(),
-            'products' => $products->getAllGender( $genderFR, $color_id, $logo_id)->getRecords(),
-            'colors' => $products->getAllColorsFR()->getRecords(),
-        ]);
-    }
-
 
 }

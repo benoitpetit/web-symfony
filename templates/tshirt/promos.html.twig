@@ -35,57 +35,65 @@
                 </div>
             </div>
 
-            <!-- selecteur de motifs -->
-            <div class="col-xs-12 col-sm-4 ">
-                <div class="form-group d-flex align-items-center justify-content-center justify-content-md-end">
-                    <div class="d-block text-secondary pr-3">
-                        <label for="color">Trier par motif : </label>
-                    </div>
-                    <div class="d-block">
-                        <select class="form-control text-white bg-secondary"  name="color" onChange="location = this.options[this.selectedIndex].value;">
+                <!-- selecteur de motifs -->
+                <div class="col-xs-12 col-sm-4 ">
+                    <div class="form-group d-flex align-items-center justify-content-center justify-content-md-end">
+                        <div class="d-block text-secondary pr-3">
+                            <label for="color">Trier par motif : </label>
+                        </div>
+                        <div class="d-block">
+                            <select class="form-control text-white bg-secondary"  name="color" onChange="location = this.options[this.selectedIndex].value;">
 
-                            <!-- boucle sur les logos -->
-                                <option value ="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id:color_id, logo_id:0}) }}"
-                                {% if logo_id == 0 %}selected{% endif %}> Tous
+                                <!-- boucle sur les logos -->
+                                <!-- All -->
+                                <option value ="{{ path('promos', {product_type: 'tshirt', genderEN: genderEN, color_id: color_id, logo_id: 0}) }}"
+                                    {% if logo_id == 0 %}selected{% endif %}> Tous
                                 </option>
 
-                            {% for logo in logos %}
-                        
-                                    <option value ="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id:color_id, logo_id: logo.id}) }}"
-                                    
-                                    {% if logo_id == logo.id %}selected{% endif %}> {{ logo.logo_name }}</option>
-                                
-                            {% endfor %}
-                                
-                        </select>
+                                <!-- Other -->
+                                {% for logo in logos %}
+                            
+                                    <option value ="{{ path('promos', {product_type: 'tshirt', genderEN: genderEN, color_id: color_id, logo_id: logo.id}) }}"
+                                        {% if logo_id == logo.id %}selected{% endif %}> {{ logo.logo_name }}
+                                    </option>
+
+                                {% endfor %}
+
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-    
 
-            <!-- selecteur de couleurs -->
-            <div class=" col-xs-12 col-sm-3">   
-                <div class="form-group d-flex align-items-center justify-content-center justify-content-md-end">
-                    <div class="d-block text-secondary pr-3">
-                        <label for="color">Trier par couleur : </label>
-                    </div>
-                    
-                    <div class="d-block">
-                        <select class="form-control text-white bg-secondary"  name="color" onChange="location = this.options[this.selectedIndex].value;">
-                                
-                            {% for color in colors %}
-                                {% if loop.index == '3' or loop.index == '4' %}
+
+                <!-- Selecteur de couleurs -->
+                <div class="col-xs-12 col-sm-3 ">
+                    <div class="form-group d-flex align-items-center justify-content-center justify-content-md-end">
+                        <div class="d-block text-secondary pr-3">
+                            <label for="color">Trier par couleur : </label>
+                        </div>
+                        <div class="d-block">
+                            <select class="form-control text-white bg-secondary"  name="color" onChange="location = this.options[this.selectedIndex].value;">
+
+                                <!-- boucle sur les couleurs -->
+                                <!-- All -->
+                                {# <option
+                                    value ="{{ path('promos', {product_type: 'tshirt', genderEN: genderEN, color_id: 0, logo_id: logo_id}) }}"
+                                    {% if color_id == 0 %}selected{% endif %}> Tous
+                                </option> #}
+                                    
+                                <!-- Other -->
+                                {% for color in colors %}
+
                                     <option 
-                                        value ="{{ path('promos', {product_type: 'tshirt', genderEN: genderEN, color_id:loop.index, logo_id: 0}) }}"
+                                        value ="{{ path('promos', {product_type: 'tshirt', genderEN: genderEN, color_id:loop.index, logo_id: logo_id}) }}"
                                         {% if color_id == loop.index %}selected{% endif %}> {{ color }}
                                     </option>
-                                {% endif %}
-                            {% endfor %}
-
-                        </select>
+                                   
+                                {% endfor %}
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div> 
 
             <!-- Gallerie -->
             <section class="row mb-4">
@@ -122,28 +130,64 @@
             
             </section>
 
-           <!-- controllers -->
-           <div class="container d-flex justify-content-end">
+                {# PAGINATION #}
                 <!-- controllers -->
-                 <div class=" col-xs-12 col-sm-4">   
-                     <nav aria-label="controller-produit py-0">
-                         <ul class="pagination d-flex justify-content-center justify-content-md-end">
-                             <li class="page-item">
-                                 <a class="page-link" href="#" aria-label="Previous">
-                                     <span aria-hidden="true">&laquo; Précédent</span>
-                                     <span class="sr-only">Précédent</span>
-                                 </a>
-                             </li>
-                             <li>
-                                 <a class="page-link" href="#" aria-label="Next">
-                                     <span aria-hidden="true">Suivant &raquo;</span>
-                                     <span class="sr-only">Suivant</span>
-                                 </a>
-                             </li>
-                         </ul>
-                     </nav>
-                 </div> 
-             </div>
+                <div class="container d-flex justify-content-end">
+                   <!-- controllers -->
+                    <div class=" col-xs-12 col-sm-4">   
+                        <nav aria-label="controller-produit py-0">
+                            <ul class="pagination d-flex justify-content-center justify-content-md-end">
+
+                                {# PREVIOUS #}
+                                {% if pageNumber == 1 %}
+                                    <li class="page-item disabled">
+                                        <span class="page-link">&laquo; Précédent</span>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ path('promos', {product_type: 'tshirt', genderEN: genderEN, color_id: color_id, logo_id: logo_id, pageNumber: (pageNumber - 1)}) }}" aria-label="Précédent">
+                                            <span aria-hidden="true">&laquo; Précédent</span>
+                                            <span class="sr-only">&laquo; Précédent</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+
+                                {# PAGINATION #}
+                                {% for i in 1 .. countPageForPagination %}
+                                    {% if i == pageNumber %}
+                                        <li class="page-item active">
+                                            <span class="page-link bg-warning">{{ i }}</span>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ path('promos', {product_type: 'tshirt', genderEN: genderEN, color_id: color_id, logo_id: logo_id, pageNumber: i}) }}" aria-label="Courante">
+                                                <span aria-hidden="true">{{ i }}</span>
+                                                <span class="sr-only">{{ i }}</span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {# NEXT #}
+                                {% if pageNumber == countPageForPagination %}
+                                    <li class="page-item disabled">
+                                        <span class="page-link">Suivant &raquo;</span>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ path('promos', {product_type: 'tshirt', genderEN: genderEN, color_id: color_id, logo_id: logo_id, pageNumber: (pageNumber + 1)}) }}" aria-label="Suivant">
+                                            <span aria-hidden="true">Suivant &raquo;</span>
+                                            <span class="sr-only">Suivant &raquo;</span>
+                                        </a>
+                                    </li>
+                                    
+                                {% endif %}
+
+                            </ul>
+                        </nav>
+
+                    </div> 
+                </div>
 
         </div>
     </div>
