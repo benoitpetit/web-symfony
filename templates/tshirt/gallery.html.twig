@@ -85,8 +85,8 @@
                                 {% for color in colors %}
 
                                     <option 
-                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id:loop.index, logo_id: logo_id}) }}"
-                                        {% if color_id == loop.index %}selected{% endif %}> {{ color }}
+                                        value ="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id: color.id, logo_id: logo_id}) }}"
+                                        {% if color_id == color.id %}selected{% endif %}> {{ color.color_name }}
                                     </option>
                                    
                                 {% endfor %}
