@@ -5,6 +5,10 @@ namespace App\Service;
 use App\Repository\SQLViewsRepository;
 Use App\Service\TranslateService;
 
+use App\Repository\ColorRepository;
+use App\Repository\LogoRepository;
+
+
 // include composer autoload
 // require 'assets/vendor/intervention/vendor/autoload.php';
 
@@ -13,11 +17,16 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Image;
 
+// use App\Entity\Color;
+// use App\Entity\Logo;
+
 class TshirtService {
     
     // Service & Model for product tshirt
     const _PRODUCT = 'tshirt';
+    const _PICTURES = 'assets/images';
 
+    // Response picture
     private $image;
     
     // Object Manager global
@@ -29,43 +38,21 @@ class TshirtService {
     }
 
     // générer le t-shirt
-    public function generateTshirt( string $gender, string $color, string $motif)
+    public function generateTshirt( $gender, $color, $logo )
     {
-        // Va me permettre de gérer nos images
+// var_dump($color);
+// var_dump($logo);
+        // Generate pictures
         $manager = new ImageManager();
         
-        //chemin vers mon image
-        $image = $manager->canvas(600, 700, $color);
-        $image->fill('assets/images/'. $gender .'/tshirt_'. $gender .'_'. $motif .'.png');
+        // Path to pictures
+        $image = $manager->canvas( 600, 700, $color );
+        $image->fill( self::_PICTURES .'/'. $gender .'/'. self::_PRODUCT .'_'. $gender .'_'. $logo .'.png' );
         
-        return $image->response('jpg',90);
+        // Return response
+        return $image->response( 'jpg', 90 );
     }
-
     
-    // // générer le t-shirt homme
-    // public function manTshirt( string $color, string $motif)
-    // {
-    //     // Va me permettre de gérer nos images
-    //     $manager = new ImageManager();
-        
-    //     //chemin vers mon image
-    //     $image = $manager->canvas(600, 700, $color);
-    //     $image->fill('assets/images/man/tshirt_man_'. $motif .'.png');   
-    //     return $image->response('jpg',90);
-        
-    // }
-    
-    // // générer le t-shirt Femme
-    // public function womanTshirt( string $color, string $motif)
-    // {
-    //     // Va me permettre de gérer nos images
-    //     $manager = new ImageManager();
-        
-    //     //chemin vers mon image
-    //     $image = $manager->canvas(600, 700, $color);
-    //     $image->fill('assets/images/woman/tshirt_woman_'. $motif .'.png');     
-    //     return $image->response('jpg',90);     
-    // }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
     public function getAll()

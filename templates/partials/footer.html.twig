@@ -4,20 +4,14 @@
 
     <div class="container-fluid newsletter">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-7 col-md-6 newsletter-text">Reste informé des <strong>dernières nouveautés </strong> ! </div>
-                <div class="col-sm-5  col-md-6 ">
+            <div class="row py-2">
+                <div class="col-xs-12 col-sm-12 col-md-6 newsletter-text text-md-right">Reste informé des <strong>dernières nouveautés </strong> ! </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 d-flex">
 
-                    {# {% include '/user/newsletter.html.twig' %} #}
+                    {{ 
+                        render(controller('App\\Controller\\NewsletterController::souscribe')) 
+                    }}
 
-                    <form class="form-inline">
-                        <div class="col-sm-9">
-                            <input class="form-control mr-sm-2 email" type="email" placeholder="Ton email">
-                        </div>
-                        <div class="col-sm-3 text-center my-2 my-sm-0">
-                            <button type="submit" class="btn btn-outline-success "> Ok </button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
