@@ -76,7 +76,7 @@ class TshirtController extends AbstractController
     /**
      * @Route("gallery/man/visual", name="manvisual")
      */
-    public function manVisual( TshirtService $tshirtService, $genderFR='homme', $color='#18a4d2', $motif='game_hover')
+    public function manVisual( TshirtService $tshirtService, $genderFR='man', $color='#18a4d2', $motif='game_hover')
     {
         return new Response( $tshirtService->generateTshirt($genderFR, $color, $motif), 200, array( 'Content-Type' => 'image/jpeg' ) );
     }
@@ -84,7 +84,7 @@ class TshirtController extends AbstractController
     /**
      * @Route("gallery/woman/visual", name="womanvisual")
      */
-    public function womanVisual( TshirtService $tshirtService, $genderFR='femme', $color='#18a4d2', $motif='game_hover')
+    public function womanVisual( TshirtService $tshirtService, $genderFR='woman', $color='#18a4d2', $motif='game_hover')
     {
         return new Response( $tshirtService->generateTshirt($genderFR, $color, $motif), 200, array( 'Content-Type' => 'image/jpeg' ) );
     }
