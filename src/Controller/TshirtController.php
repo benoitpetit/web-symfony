@@ -26,7 +26,7 @@ class TshirtController extends AbstractController
 
         $promo = 20/100;
 
-        return $this->render( $product_type .'/gallery.html.twig', [
+        return $this->render( TshirtService::_PRODUCT .'/gallery.html.twig', [
             'controller_name' => $genderFR,
             $genderEN.'GalleryNav' => true,
             'product_type' => $product_type,
@@ -56,7 +56,7 @@ class TshirtController extends AbstractController
 
         $promo = 20/100;
 
-        return $this->render( $product_type .'/single_'. $product_type .'.html.twig', [
+        return $this->render( TshirtService::_PRODUCT .'/single_'. $product_type .'.html.twig', [
             // a modifier avec le nom du model quand il seront creer sur la BDD
             'controller_name' => 'Tshirt '.$genderFR,
             $genderEN.'SingleNav' => true,
@@ -65,7 +65,7 @@ class TshirtController extends AbstractController
             'color_id' => $color_id,
             'logo_id' => $logo_id,
             'promo' => $promo,
-            'product' => $products->getAllGenderDetail( $genderFR, $color_id, $logo_id )[0],
+            'product' => $products->getAllGenderDetail( $genderFR, $color_id, $logo_id ),
             'colors' => $products->getAllTshirtColor(),
             'sizes' => $products->getAllTshirtSize(),
             'productsRand' => $products->getRandomTshirtGender( $genderFR, 4 ),
@@ -123,7 +123,7 @@ class TshirtController extends AbstractController
 
         $promo = 20/100;
 
-        return $this->render( $product_type .'/promos.html.twig', [
+        return $this->render( TshirtService::_PRODUCT .'/promos.html.twig', [
             'controller_name' => $genderFR,
             'evenement' => 'Noël',
             'rubrique' => 'promos',

@@ -79,7 +79,7 @@ class TshirtService {
         
         // Translate
         $translate = new TranslateService();
-        $columnToTranslate = [ 'name', 'color_name' ];
+        $columnToTranslate = [ 'product_type', 'name', 'color_name' ];
         $resultsAddColumnTranslate = $translate->arrayPushTanslate( 'TR', $results, $columnToTranslate );
 
         return $resultsAddColumnTranslate;
@@ -109,7 +109,7 @@ class TshirtService {
         
         // Translate
         $translate = new TranslateService();
-        $columnToTranslate = [ 'name', 'color_name' ];
+        $columnToTranslate = [ 'product_type', 'name', 'color_name' ];
         $resultsAddColumnTranslate = $translate->arrayPushTanslate( 'TR', $results, $columnToTranslate );
 
         return $resultsAddColumnTranslate;
@@ -131,10 +131,10 @@ class TshirtService {
         
         // Translate
         $translate = new TranslateService();
-        $columnToTranslate = [ 'name', 'color_name' ];
+        $columnToTranslate = [ 'product_type', 'name', 'color_name' ];
         $resultsAddColumnTranslate = $translate->arrayPushTanslate( 'TR', $results, $columnToTranslate );
 
-        return $resultsAddColumnTranslate;
+        return $resultsAddColumnTranslate[0];
     }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
@@ -181,14 +181,14 @@ class TshirtService {
 
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
-    public function getRandomTshirtGender( $genderFR, $randNumber )
+    public function getRandomTshirtGender( $gender, $randNumber )
     {
         $criteria = '';
         $paramSql = [];
 
-        if ( $genderFR != 'All' ) {
-            $criteria = 'WHERE v.name = :genderFR ';
-            $paramSql[':genderFR'] = $genderFR;
+        if ( $gender != 'All' ) {
+            $criteria = 'WHERE v.name = :gender ';
+            $paramSql[':gender'] = $gender;
         }
 
         $viewSql = "vProduct_". self::_PRODUCT;
@@ -200,7 +200,7 @@ class TshirtService {
         
         // Translate
         $translate = new TranslateService();
-        $columnToTranslate = [ 'name', 'color_name' ];
+        $columnToTranslate = [ 'product_type', 'name', 'color_name' ];
         $resultsAddColumnTranslate = $translate->arrayPushTanslate( 'TR', $results, $columnToTranslate );
 
         return $resultsAddColumnTranslate;
@@ -209,10 +209,10 @@ class TshirtService {
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
     public function getAllColorsFR() {
-        
+
         $colorsEN = $this->getAllTshirtColor();
         $colorsFR = [];
-        
+
         // Translate to display colors
         $translate = new TranslateService();
         foreach( $colorsEN as $keyColorEN => $valueColorEN ) {

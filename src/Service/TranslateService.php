@@ -65,6 +65,13 @@ class TranslateService {
                 $wordYY = 'purple'; break;
         }
 
+        // Other
+        switch ( $wordXX )
+        {
+            case 't-shirt':
+                $wordYY = TshirtService::_PRODUCT; break;
+        }
+
 
         return $wordYY;
     }

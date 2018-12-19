@@ -28,7 +28,7 @@ class HomeController extends AbstractController
      * 
      * @return render
      */
-    public function index(SessionInterface $session, AuthenticationUtils $authenticationUtils, TshirtService $products, TranslateService $translate)
+    public function index(SessionInterface $session, AuthenticationUtils $authenticationUtils, TshirtService $products)
     {  
         $error = $authenticationUtils->getLastAuthenticationError();
         $auth_checker = $this->get('security.authorization_checker');
@@ -36,17 +36,10 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('admin');
         }
 
-        $product_type = "tshirt";
-        $genderEN = "man";
-        $genderFR = $translate->translateXXtoYY( $genderEN );
-        $productsRand = $products->getRandomTshirtGender( $genderFR, 4 );
-
         return $this->render('home/index.html.twig', [
             'controller_name' => 'Accueil',
             'product_type' => TshirtService::_PRODUCT,
-            'genderEN' => $genderEN,
-            'genderFR' => $genderFR,
-            'productsRand' => $productsRand,
+            'productsRand' => $products->getRandomTshirtGender( 'All', 4 ),
         ]);
     }
 
