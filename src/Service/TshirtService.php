@@ -15,11 +15,15 @@ use Intervention\Image\Image;
 
 class TshirtService {
     
+    // Service & Model for product tshirt
+    const _PRODUCT = 'tshirt';
+
     private $image;
     
     // Object Manager global
     private $om;
-    
+
+
     public function __construct( ObjectManager $om ) {
         $this->om = $om->getConnection();
     }
@@ -64,25 +68,28 @@ class TshirtService {
     // }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
-    public function getAll( $product )
+    public function getAll()
     {
-        $translate = new TranslateService();
-
-        $viewSql = "vProduct_".$product;
-        $rawSql = "SELECT v.* FROM ". $viewSql ." v";
+        // Query
+        $viewSql = 'vProduct_'. self::_PRODUCT;
+        $rawSql = 'SELECT v.* FROM '. $viewSql .' v';
         $stmt = $this->om->prepare( $rawSql );
         $stmt->execute( [] );
+        $results = $stmt->fetchAll();
         
-        return $translate->arrayPushTanslateXXtoYY( "YY", $stmt->fetchAll(), [ 'name', 'color_name' ] );
+        // Translate
+        $translate = new TranslateService();
+        $columnToTranslate = [ 'name', 'color_name' ];
+        $resultsAddColumnTranslate = $translate->arrayPushTanslate( 'TR', $results, $columnToTranslate );
+
+        return $resultsAddColumnTranslate;
     }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
-    public function getAllGender( $product, $gender, $color_id, $logo_id)
+    public function getAllGender( $gender, $color_id, $logo_id )
     {
-        $translate = new TranslateService();
-
         $paramSql = [];
-        $criteria = "";
+        $criteria = '';
         if ( $color_id != 0 ) {
             $criteria = "AND v.color_id = :color_id";
             $paramSql[':color_id'] = $color_id;
@@ -93,21 +100,25 @@ class TshirtService {
         }
         $paramSql[':gender'] = $gender;
 
-        $viewSql = "vProduct_".$product;
+        $viewSql = "vProduct_". self::_PRODUCT;
         $rawSql = "SELECT v.* FROM ". $viewSql ." v WHERE v.name = :gender ". $criteria ." ORDER BY v.logo_id";
 
         $stmt = $this->om->prepare( $rawSql );
         $stmt->execute( $paramSql );
+        $results = $stmt->fetchAll();
+        
+        // Translate
+        $translate = new TranslateService();
+        $columnToTranslate = [ 'name', 'color_name' ];
+        $resultsAddColumnTranslate = $translate->arrayPushTanslate( 'TR', $results, $columnToTranslate );
 
-        return $translate->arrayPushTanslateXXtoYY( "YY", $stmt->fetchAll(), [ 'name', 'color_name' ] );
+        return $resultsAddColumnTranslate;
     }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
-    public function getAllGenderDetail( $product, $gender, $color_id, $logo_id )
+    public function getAllGenderDetail( $gender, $color_id, $logo_id )
     {
-        $translate = new TranslateService();
-
-        $viewSql = "vProduct_".$product;
+        $viewSql = "vProduct_". self::_PRODUCT;
         $rawSql = "SELECT v.* FROM ". $viewSql ." v WHERE v.name = :gender AND v.color_id = :color_id AND v.logo_id = :logo_id";
         $paramSql = [ ':gender' => $gender,
                       ':color_id' => $color_id,
@@ -116,30 +127,40 @@ class TshirtService {
 
         $stmt = $this->om->prepare( $rawSql );
         $stmt->execute( $paramSql );
+        $results = $stmt->fetchAll();
         
-        return $translate->arrayPushTanslateXXtoYY( "YY", $stmt->fetchAll(), [ 'name', 'color_name' ] );
+        // Translate
+        $translate = new TranslateService();
+        $columnToTranslate = [ 'name', 'color_name' ];
+        $resultsAddColumnTranslate = $translate->arrayPushTanslate( 'TR', $results, $columnToTranslate );
+
+        return $resultsAddColumnTranslate;
     }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
-    public function getAllTshirtColor( $product )
+    public function getAllTshirtColor()
     {
-        $translate = new TranslateService();
-
-        $viewSql = "vProduct_".$product;
+        $viewSql = "vProduct_". self::_PRODUCT;
         $rawSql = "SELECT c.* FROM color c WHERE c.par_type_product = :par_type_product";
-        $paramSql = [ ':par_type_product' => '@'.$product ];
+        $paramSql = [ ':par_type_product' => '@'. self::_PRODUCT ];
 
         $stmt = $this->om->prepare( $rawSql );
         $stmt->execute( $paramSql );
+        $results = $stmt->fetchAll();
         
-        return $translate->arrayPushTanslateXXtoYY( "YY", $stmt->fetchAll(), [ 'color_name' ] );
+        // Translate
+        $translate = new TranslateService();
+        $columnToTranslate = [ 'color_name' ];
+        $resultsAddColumnTranslate = $translate->arrayPushTanslate( 'TR', $results, $columnToTranslate );
+
+        return $resultsAddColumnTranslate;
     }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
-    public function getAllTshirtSize( $product )
+    public function getAllTshirtSize()
     {
         $rawSql = "SELECT s.*, CONCAT(s.size, ' - ', s.name) as wording FROM size s WHERE s.par_type_product = :par_type_product";
-        $paramSql = [ ':par_type_product' => '@'.$product ];
+        $paramSql = [ ':par_type_product' => '@'. self::_PRODUCT ];
 
         $stmt = $this->om->prepare( $rawSql );
         $stmt->execute( $paramSql );
@@ -148,48 +169,52 @@ class TshirtService {
     }
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
-    public function getAllTshirtLogo( $product )
+    public function getAllTshirtLogo()
     {
-        $rawSql = "SELECT l.* FROM logo l WHERE l.par_type_product = '@". $product ."' ORDER BY l.logo_name";
+        $rawSql = "SELECT l.* FROM logo l WHERE l.par_type_product = :par_type_product ORDER BY l.logo_name";
+        $paramSql = [ ':par_type_product' => '@'. self::_PRODUCT ];
         $stmt = $this->om->prepare($rawSql);
-        $stmt->execute([]);
+        $stmt->execute( $paramSql );
         
         return $stmt->fetchAll();
     }
 
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
-    public function getRandomTshirtGender( $product, $genderFR, $randNumber)
+    public function getRandomTshirtGender( $genderFR, $randNumber )
     {
-        $translate = new TranslateService();
-
         $criteria = '';
         $paramSql = [];
 
         if ( $genderFR != 'All' ) {
             $criteria = 'WHERE v.name = :genderFR ';
-            $paramSql = [ ':genderFR' => $genderFR ];
+            $paramSql[':genderFR'] = $genderFR;
         }
 
-        $viewSql = "vProduct_".$product;
+        $viewSql = "vProduct_". self::_PRODUCT;
         $rawSql = "SELECT v.* FROM ".$viewSql." v ORDER BY RAND() LIMIT ".$randNumber;
 
         $stmt = $this->om->prepare( $rawSql );
         $stmt->execute( $paramSql );
+        $results = $stmt->fetchAll();
         
-        return $translate->arrayPushTanslateXXtoYY( "YY", $stmt->fetchAll(), [ 'name', 'color_name' ] );
+        // Translate
+        $translate = new TranslateService();
+        $columnToTranslate = [ 'name', 'color_name' ];
+        $resultsAddColumnTranslate = $translate->arrayPushTanslate( 'TR', $results, $columnToTranslate );
+
+        return $resultsAddColumnTranslate;
     }
 
 
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
-    public function getAllColorsFR( $type_product ) {
-
-        $translate = new TranslateService();
-
-        $colorsEN = $this->getAllTshirtColor( $type_product );
+    public function getAllColorsFR() {
+        
+        $colorsEN = $this->getAllTshirtColor();
         $colorsFR = [];
-
-        // Translate English to French to display
+        
+        // Translate to display colors
+        $translate = new TranslateService();
         foreach( $colorsEN as $keyColorEN => $valueColorEN ) {
             array_push( $colorsFR, $translate->translateXXtoYY( $colorsEN[$keyColorEN]['color_name'] ) );
         }

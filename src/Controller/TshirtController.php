@@ -19,7 +19,7 @@ class TshirtController extends AbstractController
      * @return render
      * 
      */
-    public function displayTshirtGallery( TshirtService $products, TranslateService $translate, $product_type = 'tshirt', $genderEN , $color_id, $logo_id)
+    public function displayTshirtGallery( TshirtService $products, TranslateService $translate, $product_type = TshirtService::_PRODUCT, $genderEN , $color_id, $logo_id)
     {
         // A défaut de translate pour le moment ! (manque de temps)
         $genderFR = $translate->translateXXtoYY( $genderEN );
@@ -34,9 +34,9 @@ class TshirtController extends AbstractController
             'color_id' => $color_id,
             'promo' => $promo,
             'logo_id' => $logo_id,
-            'logos' => $products->getAllTshirtLogo($product_type),
-            'products' => $products->getAllGender( $product_type, $genderFR, $color_id, $logo_id),
-            'colors' => $products->getAllColorsFR( $product_type ),
+            'logos' => $products->getAllTshirtLogo(),
+            'products' => $products->getAllGender( $genderFR, $color_id, $logo_id ),
+            'colors' => $products->getAllColorsFR(),
         ]);
     }
 
@@ -49,7 +49,7 @@ class TshirtController extends AbstractController
      *
      * @return render
      */
-    public function displayTshirtDetail( TshirtService $products, TranslateService $translate, $product_type = 'tshirt', $genderEN, $color_id, $logo_id )
+    public function displayTshirtDetail( TshirtService $products, TranslateService $translate, $product_type = TshirtService::_PRODUCT, $genderEN, $color_id, $logo_id )
     {
         // A défaut de translate pour le moment ! (manque de temps)
         $genderFR = $translate->translateXXtoYY( $genderEN );
@@ -65,10 +65,10 @@ class TshirtController extends AbstractController
             'color_id' => $color_id,
             'logo_id' => $logo_id,
             'promo' => $promo,
-            'product' => $products->getAllGenderDetail( $product_type, $genderFR, $color_id, $logo_id )[0],
-            'colors' => $products->getAllTshirtColor( $product_type ),
-            'sizes' => $products->getAllTshirtSize($product_type),
-            'productsRand' => $products->getRandomTshirtGender( $product_type, $genderFR, 4 ),
+            'product' => $products->getAllGenderDetail( $genderFR, $color_id, $logo_id )[0],
+            'colors' => $products->getAllTshirtColor(),
+            'sizes' => $products->getAllTshirtSize(),
+            'productsRand' => $products->getRandomTshirtGender( $genderFR, 4 ),
         ]);
     }
 
@@ -90,22 +90,22 @@ class TshirtController extends AbstractController
     }
 
 
-    /**
-     * Affichage detail d'un tshirt femme
-     * 
-     * [todo] la route sera modifier en ("gallery/woman/detail/{id}" quand la BDD sera creer)
-     * @Route("gallery/woman/detail", name="womansingle")
-     *
-     * @return render
-     */
-    public function womanSingle()
-    {
-        return $this->render('tshirt/woman_single_tshirt.html.twig', [
-            // a modifier avec le nom du model quand il seront creer sur la BDD
-            'controller_name' => 'Tshirt',
-            'womanSingleNav' => true,
-        ]);
-    }
+    // /**
+    //  * Affichage detail d'un tshirt femme
+    //  * 
+    //  * [todo] la route sera modifier en ("gallery/woman/detail/{id}" quand la BDD sera creer)
+    //  * @Route("gallery/woman/detail", name="womansingle")
+    //  *
+    //  * @return render
+    //  */
+    // public function womanSingle()
+    // {
+    //     return $this->render('tshirt/woman_single_tshirt.html.twig', [
+    //         // a modifier avec le nom du model quand il seront creer sur la BDD
+    //         'controller_name' => 'Tshirt',
+    //         'womanSingleNav' => true,
+    //     ]);
+    // }
     
 
     /**
@@ -116,7 +116,7 @@ class TshirtController extends AbstractController
      * @return render
      * 
      */
-    public function promos(TshirtService $products, TranslateService $translate, $product_type = 'tshirt', $genderEN, $color_id, $logo_id )
+    public function promos(TshirtService $products, TranslateService $translate, $product_type = TshirtService::_PRODUCT, $genderEN, $color_id, $logo_id )
     {
         // A défaut de translate pour le moment ! (manque de temps)
         $genderFR = $translate->translateXXtoYY( $genderEN );
@@ -134,9 +134,9 @@ class TshirtController extends AbstractController
             'genderEN' => $genderEN,
             'color_id' => $color_id,
             'logo_id' => $logo_id,
-            'logos' => $products->getAllTshirtLogo($product_type),
-            'products' => $products->getAllGender( $product_type, $genderFR, $color_id, $logo_id),
-            'colors' => $products->getAllColorsFR( $product_type ),
+            'logos' => $products->getAllTshirtLogo(),
+            'products' => $products->getAllGender( $genderFR, $color_id, $logo_id),
+            'colors' => $products->getAllColorsFR(),
         ]);
     }
 

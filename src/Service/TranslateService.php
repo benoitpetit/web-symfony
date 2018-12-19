@@ -8,7 +8,7 @@ class TranslateService {
 
     public function __construct () {}
 
-    // NO TIME for translate !!!
+    // NO TIME for translate !!! (To convert in arrays)
     // Translate English to French to display
     public function translateXXtoYY( $wordXX ) {
 
@@ -70,7 +70,7 @@ class TranslateService {
     }
 
 
-    public function arrayPushTanslateXXtoYY( $languageOutput, $arrInput, $arrColumnsXX ) {
+    public function arrayPushTanslate( $languageOutput, $arrInput, $arrColumnsXX ) {
         // var_dump($arrInput);
         $arrOutput = [];
         foreach( $arrInput as $keyInput => $valueInput ) {
