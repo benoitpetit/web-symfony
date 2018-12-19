@@ -215,7 +215,7 @@ class UserController extends AbstractController
 
             if ($user === null) {
                 $this->addFlash('danger', 'Email Inconnu');
-                return $this->redirectToRoute('homepage');
+                return $this->redirectToRoute('home');
             }
             $token = $tokenGenerator->generateToken();
 
@@ -224,13 +224,13 @@ class UserController extends AbstractController
                 $entityManager->flush();
             } catch (\Exception $e) {
                 $this->addFlash('warning', $e->getMessage());
-                return $this->redirectToRoute('homepage');
+                return $this->redirectToRoute('home');
             }
 
             $url = $this->generateUrl('app_reset_password', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
 
             $message = (new \Swift_Message('mots de passe oublier'))
-                ->setFrom('wf3tshirt@gmail.com')
+                ->setFrom('DevMyShirts')
                 ->setTo($user->getEmail())
                 ->setBody(
                     "Modifier votre mot de passe : " . $url,
@@ -239,7 +239,7 @@ class UserController extends AbstractController
 
             $mailer->send($message);
 
-            $this->addFlash('notice', 'Mail envoyé');
+            $this->addFlash('success', 'Mail envoyé');
 
             return $this->redirectToRoute('home');
         }
@@ -265,7 +265,6 @@ class UserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
 
             $user = $entityManager->getRepository(User::class)->findOneByResetToken($token);
-            /* @var $user User */
 
             if ($user === null) {
                 $this->addFlash('danger', 'Token Inconnu');
@@ -276,9 +275,9 @@ class UserController extends AbstractController
             $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
             $entityManager->flush();
 
-            $this->addFlash('notice', 'Mot de passe mis à jour');
-
+            
             return $this->redirectToRoute('home');
+            $this->addFlash('notice', 'Mot de passe mis à jour');
         }else {
 
             return $this->render('user/reset_password.html.twig', ['token' => $token]);

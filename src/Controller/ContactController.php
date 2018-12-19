@@ -71,7 +71,7 @@ class ContactController extends AbstractController
             // creation, configuration, envoi de de l'objet Swift_Message
             $message = (new \Swift_Message('Nouveau message sur le formulaire de contact !'))
                 ->setFrom($email)
-                ->setTo('wf3tshirt@gmail.com')
+                ->setTo('DevMyShirts')
                 ->setBody(
                     $this->renderView(
 
