@@ -77,7 +77,7 @@ class OrderLine
      * @ORM\ManyToOne(targetEntity="App\Entity\Orders")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $ordersId;
+    private $orderId;
 
     /**
      * @ORM\PrePersist
@@ -224,14 +224,14 @@ class OrderLine
         return $this;
     }
 
-    public function getOrdersId(): ?Orders
+    public function getOrderId(): ?Orders
     {
-        return $this->ordersId;
+        return $this->orderId;
     }
 
-    public function setOrdersId(?Orders $ordersId): self
+    public function setOrderId(?Orders $orderId): self
     {
-        $this->ordersId = $ordersId;
+        $this->orderId = $orderId;
 
         return $this;
     }
