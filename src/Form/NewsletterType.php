@@ -15,8 +15,8 @@ class NewsletterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('mail', EmailType::class, array( 
-                'label' => 'votre email',
+            ->add('mail', EmailType::class, array(
+                'label' => false,
                 'required' => true,
         ));
     }
