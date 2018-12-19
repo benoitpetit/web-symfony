@@ -230,7 +230,7 @@ class UserController extends AbstractController
             $url = $this->generateUrl('app_reset_password', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
 
             $message = (new \Swift_Message('mots de passe oublier'))
-                ->setFrom('DevMyShirts')
+                ->setFrom('wf3tshirt@gmail.com')
                 ->setTo($user->getEmail())
                 ->setBody(
                     "Modifier votre mot de passe : " . $url,
