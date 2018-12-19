@@ -78,6 +78,7 @@ class TranslateService {
             $arrColumn = [];
             foreach( $valueInput as $keyColumn => $valueColumn) {
 
+                // Column name
                 $arrColumn[$keyColumn] = $valueColumn;
                 
                 foreach( $arrColumnsXX as $keyColumnXX => $columnNameXX ) {
@@ -85,13 +86,16 @@ class TranslateService {
                         // Declaration of new column
                         $columnNameYY = $columnNameXX.$languageOutput;
                         
+                        // Translate
                         $valueXX = $valueInput[$columnNameXX];
                         $valueYY = $this->translateXXtoYY($valueInput[$columnNameXX]);
                         
+                        // Add column
                         $arrColumn[$columnNameYY] = $valueYY;
                 }
 
             }
+            // Add array record to main array records
             array_push( $arrOutput, $arrColumn );
         }
         // var_dump($arrOutput);
