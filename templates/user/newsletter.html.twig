@@ -1,12 +1,21 @@
-{% extends 'base.html.twig' %}
 
-{% block body %}
+{{ form_start (form, { 'attr': {'class': 'form-inline'} }) }}
 
-{{ form_start ( form ) }}
-<div class="col-5 text-center justify-content-center align-items-center d-flex mx-auto my-5 py-5">
+        <div class="col-5 text-center justify-content-center align-items-center d-flex mx-auto ">
 
-    {{ form_widget ( form ) }}
-    <button type="submit" class="bg-success p-2 ml-3 text-white">Ok</button>
-</div>
-{{ form_start ( form ) }}
-{% endblock %}
+{{ form_widget (form, { 'attr': {'class': 'form-control mr-sm-2 email'} }) }}
+
+            <button type="submit" class="btn btn-outline-success">Ok</button>
+        </div>
+
+{{ form_end (form) }}
+
+{# <form class="form-inline">
+    <div class="col-sm-9">
+        <input class="form-control mr-sm-2 email" type="email" placeholder="Ton email">
+    </div>
+    <div class="col-sm-3 text-center my-2 my-sm-0">
+        <button type="submit" class="btn btn-outline-success "> Ok </button>
+    </div>
+</form> #}
+

@@ -15,14 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 class NewsletterController extends AbstractController
 {
 
-    /**
-     * Newsletter
-     * 
-     * @Route("/user/newsletter", name="newsletter")
-     * 
-     * @return render
-     * 
-     */
+  
     public function souscribe( request $request)
     {
         //créer une nouvelle souscription
@@ -43,6 +36,9 @@ class NewsletterController extends AbstractController
             $om->persist($email);
             // envoi vers la bas de donner
             $om->flush();
+
+            // Flash
+            $this->addFlash('success', 'Ton email a bien été enregistré.');
 
             return $this->redirectToRoute('newsletter');
             // return new Response ('Votre email est enregistré.');

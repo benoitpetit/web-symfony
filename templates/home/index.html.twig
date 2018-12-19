@@ -2,11 +2,8 @@
 
 {% block title %} {{ parent() }} | Développeurs de style {% endblock %}
 
-  {% block body %}
+{% block body %}
 
-    <div class="content">   <!-- contenu bouton scroll  -->
-
-        {# {{ dump(productsRand) }} #}
         <!-- //////////////////////// SLIDE PRINCIPALE ////////////////////////// -->
         <div class="container-fluid position-relative slide_container px-0">
 
@@ -20,38 +17,36 @@
                 <!-- Les slides -->
                 <div class="carousel-inner">
 
-                    <div class="carousel-caption d-none d-md-block carousel_content">
-                        <p class="title_slide noel">Opte pour un look <span class="noel">original</span> pour les fêtes</p>
-                        <h5 class="slogan-noel">Notre sélection <span class="slogan_slide noel_span d-block">Spéciale Noël</span></h5>
-                        
-                        <!-- BTN Découvrir -->
-                        <a href="{{ path('promos', {product_type: product_type, genderEN: 'man', color_id: '3', logo_id: '0' }) }}" class="btn-decouvrir btn-noel rounded-0 mt-4 py-2 px-3">Découvrir ></a>
-                    </div>
-                    <!-- Shadow -->
-                    <div class="container-fluid position-absolute h-100 w-100 shadow_content"></div>
-                    <!-- Image du slide -->
-                    <img class="d-block slide_visuel" src="{{ asset( 'assets/images/slides/slide_noel.jpg' ) }}" alt="Image du slide Promos">
-
+                    <!-- slide 01 -->
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center position-relative">
+                            <!-- effet de neige -->
+                            <div class="snow"></div>
+        
                             <div class="carousel-caption d-none d-md-block carousel_content">
                                 <p class="title_slide noel">Opte pour un look <span class="noel">original</span> pour les fêtes</p>
                                 <h5 class="slogan-noel">Notre sélection <span class="slogan_slide noel_span d-block">Spéciale Noël</span></h5>
                                 
                                 <!-- BTN Découvrir -->
-                                <a href="{{ path('promos', {product_type: 'tshirt', genderEN: 'man', color_id: '3', logo_id: '0' }) }}" class="btn-decouvrir btn-noel rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                                <a href="{{ path('promos', {product_type: product_type, genderEN: 'man', color_id: '3', logo_id: '0' }) }}" class="btn-decouvrir btn-noel rounded-0 mt-4 py-2 px-3">Découvrir ></a>
                             </div>
                             <!-- Shadow -->
                             <div class="container-fluid position-absolute h-100 w-100 shadow_content"></div>
                             <!-- Image du slide -->
                             <img class="d-block slide_visuel" src="{{ asset( 'assets/images/slides/slide_noel.jpg' ) }}" alt="Image du slide Promos">
-
-                    <!-- Version Mobile -->
-                    <div class="container text-center position-absolute slogan-title-mobile d-xs-block d-md-none py-5">
-                        <h3 class="slogan-noel-mobile text-success">Notre sélection <span class="text-danger d-block">Spéciale Noël</span></h3>
-                        <p class="title_slide noel">Opte pour un look <span class="noel">original</span> 
-                            <br>pour les fêtes</p>
-                        <!-- BTN Découvrir -->
-                        <div>
-                            <a href="{{ path('promos', {product_type: product_type, genderEN: 'man', color_id: '3', logo_id: '0' }) }}" class="btn-decouvrir btn-noel btn-block rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+        
+        
+                            <!-- Version Mobile -->
+                            <div class="container text-center position-absolute slogan-title-mobile d-xs-block d-md-none py-5">
+                                <h3 class="slogan-noel-mobile text-success">Notre sélection <span class="text-danger d-block">Spéciale Noël</span></h3>
+                                <p class="title_slide noel">Opte pour un look <span class="noel">original</span> 
+                                    <br>pour les fêtes</p>
+                                <!-- BTN Découvrir -->
+                                <div>
+                                    <a href="{{ path('promos', {product_type: product_type, genderEN: 'man', color_id: '3', logo_id: '0' }) }}" class="btn-decouvrir btn-noel btn-block rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                                </div>
+                            </div>
+        
                         </div>
                     </div>
 
@@ -63,36 +58,25 @@
                                 <h5>Porte un T-shirt <span class="slogan_slide d-block">Original</span></h5>
 
                                 <!-- BTN Découvrir -->
-                                <a href="{{ path('gallery', { product_type: 'tshirt', genderEN: 'man', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                                <a href="{{ path('gallery', { product_type: product_type, genderEN: 'man', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">Découvrir ></a>
                             </div>
                             <!-- Shadow -->
                             <div class="container-fluid position-absolute h-100 w-100 shadow_content"></div>
                             <!-- Image du slide -->
                             <img class="d-block slide_visuel" src="{{ asset( 'assets/images/slides/slide_home.jpg' ) }}" alt="Image du slide t-shirt originaux">
 
-                        <!-- BTN Découvrir -->
-                        <a href="{{ path('gallery', { product_type: product_type, genderEN: 'man', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">Découvrir ></a>
-                    </div>
-                    <!-- Shadow -->
-                    <div class="container-fluid position-absolute h-100 w-100 shadow_content"></div>
-                    <!-- Image du slide -->
-                    <img class="d-block slide_visuel" src="{{ asset( 'assets/images/slides/slide_home.jpg' ) }}" alt="Image du slide t-shirt originaux">
 
                             <!-- Version Mobile -->
                             <div class="container text-center position-absolute slogan-title-mobile d-xs-block d-md-none py-5">
                                 <h3>Porte un T-shirt <span class="text-info d-block">Original</span></h3>
                                 <p class="title_slide">Développe un <span class>style unique</span></p>
                                 <!-- BTN Découvrir -->
-                                <a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: 0, logo_id: 0 }) }}" class="btn-decouvrir btn-block rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                                <a href="{{ path('gallery', {product_type: product_type, genderEN: 'man', color_id: 0, logo_id: 0 }) }}" class="btn-decouvrir btn-block rounded-0 mt-4 py-2 px-3">Découvrir ></a>
                             </div>
 
-                    <!-- Version Mobile -->
-                    <div class="container text-center position-absolute slogan-title-mobile d-xs-block d-md-none py-5">
-                        <h3>Porte un T-shirt <span class="text-info d-block">Original</span></h3>
-                        <p class="title_slide">Développe un <span class>style unique</span></p>
-                        <!-- BTN Découvrir -->
-                        <a href="{{ path('gallery', {product_type: product_type, genderEN: 'man', color_id: 0, logo_id: 0 }) }}" class="btn-decouvrir btn-block rounded-0 mt-4 py-2 px-3">Découvrir ></a>
+                        </div>
                     </div>
+                    
 
                 </div>
                 <!-- Les controllers -->
@@ -139,28 +123,29 @@
 
                 </div>
 
-                <!-- Gallerie -->
-                <section class="row mb-4">
+                <!-- Gallery / Random product / Last news -->
+                {% include 'partials/lastnews.html.twig' %}
 
-        <!-- Gallery / Random product / Last news -->
-        {% include 'partials/lastnews.html.twig' %}
+                <!-- btns  -->
+                <div class="row position-absolute btn_motifs d-none d-md-block text-center w-100">
+                    <a href="{{ path('gallery', {product_type: product_type, genderEN: 'man', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
+                        < Nouveautés Homme </a>
+                    <a href="{{ path('gallery', {product_type: product_type, genderEN: 'woman', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
+                        Nouveautés Femme > </a>
+                </div>
+                <!-- Version Mobile -->
+                <div class="flex-direction-column d-xs-block d-md-none w-100">
+                    <div class="col-xs-12">
+                        <a href="{{ path('gallery', {product_type: product_type, genderEN: 'man', color_id: 0 , logo_id: 0}) }}" class="btn-decouvrir btn-block rounded-0 py-3">Nouveautés Homme > </a>
+                    </div>
+                    <div class="col-xs-12">
+                        <a href="{{ path('gallery', {product_type: product_type, genderEN: 'woman', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir btn-block rounded-0 py-3 mt-2">Nouveautés Femme > </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <!-- btns  -->
-        <div class="row position-absolute btn_motifs d-none d-md-block text-center w-100">
-            <a href="{{ path('gallery', {product_type: product_type, genderEN: 'man', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
-                < Nouveautés Homme </a>
-            <a href="{{ path('gallery', {product_type: product_type, genderEN: 'woman', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir rounded-0 mt-4 py-2 px-3">
-                Nouveautés Femme > </a>
-        </div>
-        <!-- Version Mobile -->
-        <div class="flex-direction-column d-xs-block d-md-none w-100">
-            <div class="col-xs-12">
-                <a href="{{ path('gallery', {product_type: product_type, genderEN: 'man', color_id: 0 , logo_id: 0}) }}" class="btn-decouvrir btn-block rounded-0 py-3">Nouveautés Homme > </a>
-            </div>
-            <div class="col-xs-12">
-                <a href="{{ path('gallery', {product_type: product_type, genderEN: 'woman', color_id: 0 , logo_id: 0 }) }}" class="btn-decouvrir btn-block rounded-0 py-3 mt-2">Nouveautés Femme > </a>
-            </div>
-        </div>
+        <!-- //////////////////////// SECTION CONCEPT ////////////////////////// -->
 
         <section class="container-fluid concept_content p-0 position-relative">
             <div class="container pb-2 pt-5">
@@ -288,7 +273,4 @@
         </section>
 
 
-    </div> <!--- ENd contenuScroll--> 
-
 {% endblock %}
-
