@@ -51,7 +51,7 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-
+            
             if (isset($form)) {
                 $username = $form['username']->getData();
             } else {
