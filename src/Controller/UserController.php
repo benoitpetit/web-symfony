@@ -74,8 +74,6 @@ class UserController extends AbstractController
             } else {
                 $phone = 'undefined';
             }
-            
-
 
             $user = $form->getData();
 
