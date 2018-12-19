@@ -105,11 +105,18 @@
     <!-- ////////////////// SOUMISSION DU FORMULAIRE /////////////////////////// -->
                 <div class="row text-center">
                     <div class="col">
-                        {{ form_row ( form.submit ) }}
+
+                        <div class="btn_motifs text-center">
+                            <button type="submit" class="rounded-0 mt-4 py-2 px-5 my-5 btn-envoyer ">
+                                Envoyer
+                            </button>
+                        </div>
+                        {{ form_end ( form ) }} 
+                        
                     </div>
                 </div>
 
-                {{ form_end ( form ) }}
+               
                 
 
             </div>

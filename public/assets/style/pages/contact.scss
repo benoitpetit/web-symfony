@@ -54,26 +54,45 @@
         left:0;
         bottom:0;
         transform: translateX(0)!important;
+
     }
-
-
+    
+    
     /* MAP et Adresse ---------------------------------- */
-
+    
     .map{
         margin: 50px 0;
-
+        
         iframe {
             width: 100%;
         }
     }
-
+    
     .address span{
         color: $blue;
     }
-
+    
 }
 
 .btn-email{
     border: 2px solid #17a2b8;
     color: white;
+}
+
+
+button[type="submit"].btn-envoyer {
+    background: linear-gradient(to right, #00a2a5 100%, #145a6b 50%)!important;
+    background-size: 200% 100%;
+    background-position: left bottom;
+    transition: all 200ms linear;
+    font-size: .9rem;
+    color: #fff;
+    font-family: "Roboto",sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+
 }
