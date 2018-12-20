@@ -9,7 +9,6 @@
 
 <div class="container basket px-4">
        
-        
     <h1 class="pb-2 mt-3 text-center text-md-left">  Mon <span>Panier</span></h1>
 
     <div class="col-xs-12 col-sm-12 d-flex justify-content-center px-0 justify-content-sm-start">                                    
@@ -44,8 +43,11 @@
                     <tr class="row">
                         <td class="col-md-1 delete_item"><a href="#" 
                             {# data-item-id="{{ligne.id}}" #}
-                            ></a><img src="../../public/assets/images/icones/trash.svg" width="20px"></a></td>
+                            ></a><img src="{{ asset( 'assets/images/icones/trash.svg' ) }}" width="20px"></a></td>
                             <td class="col-md-2 cart-item img">
+                                <div id="motif-visuel">
+                                    <img src="{{ path('small', {genderEN: 'man', color_id: 1, logo_id: 3}) }}" class="tshirt-visuel-home">
+                                </div>
                                 {# <a href="{{ path('tshirtdetail', {product_type: product_type, genderEN: genderEN, color_id: product.color_id, logo_id: product.logo_id}) }}" 
                                     class="produit_link position-relative w-100 d-flex align-items-center" style="background-color:{{ product.color_hexa }};"> #}
                                 <img src="../../public/assets/images/homme/tshirt_homme_c_mieux.png" class="img-responsive" width="100px" alt="">
