@@ -69,7 +69,7 @@ class BasketProduct
     $this->gender_id = $gender_id;
 
     return $this;
-    }Id
+    }
     /**
      * Get the value of color_id
      */ 
