@@ -6,26 +6,26 @@
 {% if app.user %}
 <!-- //////////////////////// CONTENU DE LA PAGE ////////////////////////// -->
 <section class="container-fluid px-0 produit_gallery pb-1">
-  
-  <!-- Titre de la page -->
-  <div class="container text-center pt-5 position-relative">
-    <div class="row d-flex justify-content-between">
-     
-        <!-- Titre -->
-        <div class="col-xs-12 col-sm-8 px-0">
-            <div class="col-12 text-center text-md-left">                   
-                <h2>
-                  Modifier <span class="text-bleu">vos informations</span>
-                </h2>
-            </div>
-            <div class="col-xs-12 col-sm-12 d-flex justify-content-center justify-content-sm-start">                                    
-                <div class="separator_gallery mx-0"></div>
-            </div>
-        </div>
 
+    <!-- Titre de la page -->
+    <div class="container text-center pt-5 position-relative">
+        <div class="row d-flex justify-content-between">
+
+            <!-- Titre -->
+            <div class="col-xs-12 col-sm-8 px-0">
+                <div class="col-12 text-center text-md-left">
+                    <h2>
+                        Modifier <span class="text-bleu">vos informations</span>
+                    </h2>
+                </div>
+                <div class="col-xs-12 col-sm-12 d-flex justify-content-center justify-content-sm-start">
+                    <div class="separator_gallery mx-0"></div>
+                </div>
+            </div>
+
+        </div>
     </div>
-  </div>
-  
+
 </section>
 
 
@@ -33,79 +33,82 @@
 <!-- ////////////////// FORMULAIRE de COMPTE /////////////////////////// -->
 <div class="container register pt-0">
     <div class="row">
-        <div class="col-md"> <!-- formulaire -->
+        <div class="col-md">
+            <!-- formulaire -->
 
-                {{ form_start ( form ) }}
+            {{ form_start ( form ) }}
 
-                <!-- ///// COMPTE ///// -->
-                        
-    <!-- ////////////////// FORMULAIRE IDENTITE / ADRESSE /////////////////////////// -->
-            <div class= "champs">Les champs précédés d'une * sont <span>obligatoires</span></div>
-                <hr>
-                <div class="row">
+            <!-- ///// COMPTE ///// -->
 
-                    <!-- ///// IDENTITE ///// -->
-                    <div class="col-ms-12 col-md-6 pb-2 pt-5 text-center">
-                        <h4>
-                            Votre <span class="text-bleu">identité</span>
-                        </h4>
-                        <div class="row">
-                            <div class="col text-left">
-                                {{ form_row ( form.username ) }}
-                                {{ form_row ( form.lastname ) }}
-                                {{ form_row ( form.firstname ) }}
-                                {{ form_row ( form.phone ) }}
-                            </div>
+            <!-- ////////////////// FORMULAIRE IDENTITE / ADRESSE /////////////////////////// -->
+            <div class="champs">Les champs précédés d'une * sont <span>obligatoires</span></div>
+            <hr>
+            <div class="row">
+
+                <!-- ///// IDENTITE ///// -->
+                <div class="col-ms-12 col-md-6 pb-2 pt-5 text-center">
+                    <h4>
+                        Votre <span class="text-bleu">identité</span>
+                    </h4>
+                    <div class="row">
+                        <div class="col text-left">
+                            {{ form_row ( form.username ) }}
+                            {{ form_row ( form.lastname ) }}
+                            {{ form_row ( form.firstname ) }}
+                            {{ form_row ( form.phone ) }}
                         </div>
                     </div>
+                </div>
 
-                    <!-- ///// ADRESSE ///// -->
-                    <div class="col-ms-12 col-md-6 pb-2 pt-5 text-center">
-                        <h4>
-                            Votre <span class="text-bleu">adresse</span>
-                        </h4>
-                        <div class="row">
-                            <div class="col text-left">
-                                {{ form_row ( form.addressBillingId.street ) }}
-                                {{ form_row ( form.addressBillingId.zip_code ) }}
-                                {{ form_row ( form.addressBillingId.city ) }}
-                                {{ form_row ( form.addressBillingId.country ) }}
-                            </div>
+                <!-- ///// ADRESSE ///// -->
+                <div class="col-ms-12 col-md-6 pb-2 pt-5 text-center">
+                    <h4>
+                        Votre <span class="text-bleu">adresse</span>
+                    </h4>
+                    <div class="row">
+                        <div class="col text-left">
+                            {{ form_row ( form.addressBillingId.street ) }}
+                            {{ form_row ( form.addressBillingId.zip_code ) }}
+                            {{ form_row ( form.addressBillingId.city ) }}
+                            {{ form_row ( form.addressBillingId.country ) }}
                         </div>
                     </div>
-
                 </div>
-
-    <!-- ////////////////// SOUMISSION DU FORMULAIRE /////////////////////////// -->
-                <div class="row text-center">
-                    <div class="col">
-                        {{ form_row ( form.submit ) }}
-                    </div>
-                </div>
-                
-
 
             </div>
+
+            <!-- ////////////////// SOUMISSION DU FORMULAIRE /////////////////////////// -->
+            <div class="row text-center">
+                <div class="col">
+                    {{ form_row ( form.submit ) }}
+                </div>
+            </div>
+
+
+
         </div>
-{# else affichage du 404 #}
-{% else %}
-<div class="h-100 d-flex flex-row align-items-center">
-    <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-md-12 text-center error-content">
-                <i class="fab fa-fly display-1 mb-3 text-info"></i>
-                <span class="display-1 d-block"><span class="text-info"><</span> 404 <span class="text-info">/></span></span>
-                <div class="mb-4 lead">La page que vous recherchez n'a pas été trouvé...</div>
-                <a href="{{ path('home') }}" class="btn btn-link retour mb-5">Retour à la page d'Accueil</a>
+    </div>
+    {# else affichage du 404 #}
+    {% else %}
+    <div class="h-100 d-flex flex-row align-items-center">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center error-content">
+                    <i class="fab fa-fly display-1 mb-3 text-info"></i>
+                    <span class="display-1 d-block"><span class="text-info">
+                            <</span> 404 <span class="text-info">/>
+                        </span></span>
+                    <div class="mb-4 lead">La page que vous recherchez n'a pas été trouvé...</div>
+                    <a href="{{ path('home') }}" class="btn btn-link retour mb-5">Retour à la page d'Accueil</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 </div>
 {# fin du if #}
 {% endif %}
-    </div>
+</div>
 </div>
 
 {% endblock %}

@@ -1,127 +1,135 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} {{ controller_name }} | {{ parent() }} {% endblock %}
-{% block header %}<meta name="Page Register"="Inscrivez-vous ici!">{% endblock header %}
+{% block header %}
+<meta name="Page Register"="Inscrivez-vous ici!">{% endblock header %}
 {% block body %}
 
-<!-- //////////////////////// CONTENU DE LA PAGE ////////////////////////// -->
 <section class="container-fluid px-0 produit_gallery pb-1">
-{# condition d'affichage #}    
-{% if app.user %}
-<h3 class="text-danger text-center mt-5 mb-5">vous êtes connecté en tant que <span class="text-secondary"><a href="{{ path('account', {"id": app.user.id }) }}">{{ app.user.username }}</a></span></h3> 
+    {# condition d'affichage #}
+    {% if app.user %}
+    <h3 class="text-danger text-center mt-5 mb-5">vous êtes connecté en tant que <span class="text-secondary"><a href="{{ path('account', {"id": app.user.id }) }}">{{
+                app.user.username }}</a></span></h3>
 
 
-{# else condition d'affichage #}
-{% else %}
-  
-  <!-- Titre de la page -->
-  <div class="container text-center pt-5 pb-2 position-relative">
-    <div class="row d-flex justify-content-between">
-     
-        <!-- Titre -->
-        <div class="col-xs-12 col-sm-8 pb-4 px-0">
-            <div class="col-12 pb-2 text-center text-md-left">                   
-                <h2>
-                  Votre <span class="text-bleu">inscription</span>
-                </h2>
+    {# else condition d'affichage #}
+    {% else %}
+
+    <!-- Titre de la page -->
+    <div class="container text-center pt-5 pb-2 position-relative">
+        <div class="row d-flex justify-content-between">
+
+            <!-- Titre -->
+            <div class="col-xs-12 col-sm-8 pb-4 px-0">
+                <div class="col-12 pb-2 text-center text-md-left">
+                    <h2>
+                        Votre <span class="text-bleu">inscription</span>
+                    </h2>
+                </div>
+                <div class="col-xs-12 col-sm-12 d-flex justify-content-center justify-content-sm-start">
+                    <div class="separator_gallery mx-0"></div>
+                </div>
             </div>
-            <div class="col-xs-12 col-sm-12 d-flex justify-content-center justify-content-sm-start">                                    
-                <div class="separator_gallery mx-0"></div>
-            </div>
+
         </div>
-
     </div>
-  </div>
-  
+
 </section>
 
+            {# ///////////////////////////////////////////////////////////////////////////////////////////// #}
+            {# formulaire compte #}
 
-
-<!-- ////////////////// FORMULAIRE de COMPTE /////////////////////////// -->
 <div class="container register pt-0">
     <div class="row">
-        <div class="col-md-12"> <!-- formulaire -->
-            <div class= "champs">Les champs précédés d'une * sont <span>obligatoires</span></div>
+        <div class="col-md-12">
+            <!-- formulaire -->
+            <div class="champs">Les champs précédés d'une * sont <span>obligatoires</span></div>
 
-                {{ form_start ( form ) }}
+            {{ form_start ( form ) }}
 
-                <!-- ///// COMPTE ///// -->
-                <hr>
-                <div class="col pb-2 text-center">
+            <!-- ///// COMPTE ///// -->
+            <hr>
+            <div class="col pb-2 text-center">
+                <h4>
+                    Votre <span class="text-bleu">compte</span>
+                </h4>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-ms-12 col-md-6">
+                    {{ form_row ( form.username ) }}
+                </div>
+                <div class="col-xs-12 col-ms-12 col-md-6">
+                    {{ form_row ( form.plainpassword ) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <br />
+                <hr><br />
+            </div>
+
+
+            {# ///////////////////////////////////////////////////////////////////////////////////////////// #}
+            {# formulaire identité & address #}
+
+            <hr>
+            <div class="row">
+
+                <!-- ///// IDENTITE ///// -->
+                <div class="col-xs-12 col-ms-12 col-md-6 pb-2 text-center">
                     <h4>
-                        Votre <span class="text-bleu">compte</span>
+                        Votre <span class="text-bleu">identité</span>
                     </h4>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-12 col-ms-12 col-md-6">
-                        {{ form_row ( form.username ) }}
-                    </div>
-                    <div class="col-xs-12 col-ms-12 col-md-6">
-                        {{ form_row ( form.plainpassword ) }}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <br /><hr><br />
-                </div>
-                        
-    <!-- ////////////////// FORMULAIRE IDENTITE / ADRESSE /////////////////////////// -->
-                <hr>
-                <div class="row">
-
-                    <!-- ///// IDENTITE ///// -->
-                    <div class="col-xs-12 col-ms-12 col-md-6 pb-2 text-center">
-                        <h4>
-                            Votre <span class="text-bleu">identité</span>
-                        </h4>
-                        <div class="row">
-                            <div class="col text-left">
-                                {{ form_row ( form.firstname ) }}
-                                {{ form_row ( form.lastname ) }}
-                                {{ form_row ( form.email ) }}
-                                {{ form_row ( form.phone ) }}
-                            </div>
+                    <div class="row">
+                        <div class="col text-left">
+                            {{ form_row ( form.firstname ) }}
+                            {{ form_row ( form.lastname ) }}
+                            {{ form_row ( form.email ) }}
+                            {{ form_row ( form.phone ) }}
                         </div>
                     </div>
-
-                    <!-- ///// ADRESSE ///// -->
-                    <div class="col-xs-12 col-ms-12 col-md-6 pb-2 text-center">
-                        <h4>
-                            Votre <span class="text-bleu">adresse</span>
-                        </h4>
-                        <div class="row">
-                            <div class="col text-left">
-                                {{ form_row ( form.addressBillingId.street ) }}
-                                {{ form_row ( form.addressBillingId.zip_code ) }}
-                                {{ form_row ( form.addressBillingId.city ) }}
-                                {{ form_row ( form.addressBillingId.country ) }}
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
-    <!-- ////////////////// SOUMISSION DU FORMULAIRE /////////////////////////// -->
-                <div class="row text-center">
-                    <div class="col">
-
-                        <div class="btn_motifs text-center">
-                            <button type="submit" class="rounded-0 mt-4 py-2 px-5 my-5 btn-envoyer ">
-                                Envoyer
-                            </button>
+                <!-- ///// ADRESSE ///// -->
+                <div class="col-xs-12 col-ms-12 col-md-6 pb-2 text-center">
+                    <h4>
+                        Votre <span class="text-bleu">adresse</span>
+                    </h4>
+                    <div class="row">
+                        <div class="col text-left">
+                            {{ form_row ( form.addressBillingId.street ) }}
+                            {{ form_row ( form.addressBillingId.zip_code ) }}
+                            {{ form_row ( form.addressBillingId.city ) }}
+                            {{ form_row ( form.addressBillingId.country ) }}
                         </div>
-                        {{ form_end ( form ) }} 
-                        
                     </div>
                 </div>
-
-               
-                
 
             </div>
+
+            {# ///////////////////////////////////////////////////////////////////////////////////////////// #}
+            {# soumission du formulaire #}
+
+            <div class="row text-center">
+                <div class="col">
+
+                    <div class="btn_motifs text-center">
+                        <button type="submit" class="rounded-0 mt-4 py-2 px-5 my-5 btn-envoyer ">
+                            Envoyer
+                        </button>
+                    </div>
+                    {{ form_end ( form ) }}
+
+                </div>
+            </div>
+
+
+
+
         </div>
     </div>
+</div>
 
 {# fin du if condition d'affichage #}
 {% endif %}
