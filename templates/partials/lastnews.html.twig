@@ -7,7 +7,7 @@
                 <a href="{{ path('tshirtdetail', {product_type: productRand.product_typeTR, genderEN: productRand.nameTR, color_id: productRand.color_id, logo_id: productRand.logo_id}) }}" class="produit_link position-relative w-100 d-flex align-items-center" style="background-color:{{ productRand.color_hexa }};">
                     <!-- Visuel Produit -->
                     <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/motifs/' ~ productRand.slug ~ '.png') }}" alt="Image du motif {{productRand.slug}}">
-                    <div class="overlay" style="background-color:{{ productRand.color_hexa }};">
+                    <div class="overlay" style="background-color: {{ productRand.color_hexa }}; ">
                         <img class="card-img-top rounded-0 w-100" src="{{ asset('assets/images/' ~ productRand.nameTR ~ '/' ~ productRand.product_typeTR ~ '_' ~ productRand.nameTR ~ '_' ~ productRand.slug ~ '.png') }}" alt="Image du t-shirt {{productRand.slug}}"/>
                     </div>
                 </a>
