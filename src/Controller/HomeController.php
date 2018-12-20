@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Service\TshirtService;
 use App\Service\TranslateService;
 use App\Service\UserAddressService;
+use App\Service\BasketService;
 
 
 class HomeController extends AbstractController
@@ -28,7 +29,7 @@ class HomeController extends AbstractController
      * 
      * @return render
      */
-    public function index(SessionInterface $session, AuthenticationUtils $authenticationUtils, TshirtService $products)
+    public function index(SessionInterface $session, AuthenticationUtils $authenticationUtils, TshirtService $products, BasketService $basketService)
     {  
         $error = $authenticationUtils->getLastAuthenticationError();
         $auth_checker = $this->get('security.authorization_checker');
@@ -43,6 +44,8 @@ class HomeController extends AbstractController
             'controller_name' => 'Accueil',
             'product_type' => TshirtService::_PRODUCT,
             'productsRand' => $products->getRandomTshirtGender( 'All', 4 )->getRecords(),
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
             // Promos
             'promo' => $promo,
         ]);
@@ -55,10 +58,12 @@ class HomeController extends AbstractController
      * 
      * @return render
      */
-    public function about(){
+    public function about(BasketService $basketService) {
         return $this->render('home/about.html.twig', [
             'controller_name' => 'Designers',
             'aboutNav' => true,
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 
@@ -69,9 +74,11 @@ class HomeController extends AbstractController
      * 
      * @return render
      */
-    public function errorPage(){
+    public function errorPage(BasketService $basketService) {
         return $this->render('404/404.html.twig', [
             'controller_name' => '404',
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 

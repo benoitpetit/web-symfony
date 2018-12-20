@@ -15,6 +15,7 @@ use App\Repository\LogoRepository;
 use App\Entity\BasketProduct;
 use App\Form\BasketProductType;
 
+use App\Service\BasketService;
 
 class TshirtController extends AbstractController
 {
@@ -26,7 +27,7 @@ class TshirtController extends AbstractController
      * @return render
      * 
      */
-    public function displayTshirtGallery( TshirtService $products, TranslateService $translate, $product_type = TshirtService::_PRODUCT, $genderEN , $color_id, $logo_id, $pageNumber = 1 )
+    public function displayTshirtGallery( TshirtService $products, TranslateService $translate, BasketService $basketService, $product_type = TshirtService::_PRODUCT, $genderEN , $color_id, $logo_id, $pageNumber = 1 )
     {
         // A défaut de translate pour le moment ! (manque de temps)
         $genderFR = $translate->translateXXtoYY( $genderEN );
@@ -48,6 +49,8 @@ class TshirtController extends AbstractController
             'pageNumber' => $pageNumber,
             // Promos
             'promo' => $promo,
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
             ]);
         }
 
@@ -59,7 +62,7 @@ class TshirtController extends AbstractController
      * @return render
      * 
      */
-    public function displayPromos(TshirtService $products, TranslateService $translate, $product_type = TshirtService::_PRODUCT, $genderEN, $color_id, $logo_id, $pageNumber = 1 )
+    public function displayPromos(TshirtService $products, TranslateService $translate, BasketService $basketService, $product_type = TshirtService::_PRODUCT, $genderEN, $color_id, $logo_id, $pageNumber = 1 )
     {
         // A défaut de translate pour le moment ! (manque de temps)
         $genderFR = $translate->translateXXtoYY( $genderEN );
@@ -84,6 +87,8 @@ class TshirtController extends AbstractController
             'rubrique' => 'promos',
             'promosNav' => true,
             'promo' => $promo,
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
         
@@ -94,7 +99,7 @@ class TshirtController extends AbstractController
      *
      * @return render
      */
-    public function displayTshirtDetail( TshirtService $products, TranslateService $translate, $product_type = TshirtService::_PRODUCT, $genderEN, $color_id, $logo_id )
+    public function displayTshirtDetail( TshirtService $products, TranslateService $translate, BasketService $basketService, $product_type = TshirtService::_PRODUCT, $genderEN, $color_id, $logo_id )
     {
         // A défaut de translate pour le moment ! (manque de temps)
         $genderFR = $translate->translateXXtoYY( $genderEN );
@@ -111,7 +116,7 @@ class TshirtController extends AbstractController
         $basketProduct->setPriceUnitTtc( $product['price_unit_ttc'] );
         $basketProduct->setPriceUnitHt( $product['price_unit_ht'] );
         // $basketProduct->setPromoUnitHt( $product['product_typeTR'] );
-        $formBasketProduct = $this->createForm( BasketProductType::class, $basketProduct, [ 'action' => $this->generateUrl('basket'), 'method' => 'POST', ] );
+        $formBasketProduct = $this->createForm( BasketProductType::class, $basketProduct, [ 'action' => $this->generateUrl('basketadd'), 'method' => 'POST', ] );
 
         return $this->render( TshirtService::_PRODUCT .'/single_'. $product_type .'.html.twig', [
             'controller_name' => TshirtService::_PRODUCT.$genderFR,
@@ -127,6 +132,7 @@ class TshirtController extends AbstractController
             'productsRand' => $products->getRandomTshirtGender( $genderFR, 4 )->getRecords(),
             //Basket
             'formBasketProduct' => $formBasketProduct->createView(),
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 
@@ -134,7 +140,7 @@ class TshirtController extends AbstractController
     /**
      * @Route("single/{genderEN}/visual/{color_id}/{logo_id}", name="visual")
      */
-    public function visualTshirt( TshirtService $tshirtService, $genderEN, $color_id, $logo_id, ColorRepository $colorRepository, LogoRepository $logoRepository)
+    public function visualTshirt( TshirtService $tshirtService, BasketService $basketService, $genderEN, $color_id, $logo_id, ColorRepository $colorRepository, LogoRepository $logoRepository)
     {
         return new Response( $tshirtService->generateTshirt( $genderEN,
                                                              $colorRepository->findOneById( $color_id )->getColorHexa(),
@@ -149,7 +155,7 @@ class TshirtController extends AbstractController
     /**
      * @Route("small/{genderEN}/visual/{color_id}/{logo_id}", name="small")
      */
-    public function visualSmallTshirt( TshirtService $tshirtService, $genderEN, $color_id, $logo_id, ColorRepository $colorRepository, LogoRepository $logoRepository)
+    public function visualSmallTshirt( TshirtService $tshirtService, BasketService $basketService, $genderEN, $color_id, $logo_id, ColorRepository $colorRepository, LogoRepository $logoRepository)
     {
         return new Response( $tshirtService->generateSmallTshirt( $genderEN,
                                                                   $colorRepository->findOneById( $color_id )->getColorHexa(),
