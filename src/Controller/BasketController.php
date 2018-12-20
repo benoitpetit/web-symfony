@@ -15,7 +15,7 @@ use App\Service\TranslateService;
 use App\Entity\BasketProduct;
 use App\Form\BasketProductType;
 
-
+use App\Service\BasketService;
 
 class BasketController extends AbstractController
 {
@@ -31,9 +31,9 @@ class BasketController extends AbstractController
 
     /** 
      * Ajout d'un article dans le panier 
-     * @Route("/basket", name="basket")
+     * @Route("/basket/add", name="basketadd")
      */ 
-    public function addBasketLine(Request $request)
+    public function addBasket(Request $request, BasketService $basketService)
     { 
         // création d'une nouvelle ligne de commande dans le panier + les catégories à nourrir via les getters de BasketProduct
         $basketProduct = new BasketProduct();
@@ -58,10 +58,29 @@ class BasketController extends AbstractController
         return $this->render ('basket/index.html.twig', [
             'controller_name' => 'Panier',
             'basketProducts' => $_SESSION['basket'],
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
 
     }    
-     
+
+
+    /** 
+     * Affichage du panier
+     * @Route("/basket/list", name="basketlist")
+     */ 
+    public function listBasket(BasketService $basketService)
+    { 
+        return $this->render ('basket/index.html.twig', [
+            'controller_name' => 'Panier',
+            'basketProducts' => $_SESSION['basket'],
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
+        ]);
+    }
+
+
+
     /** 
     * Suppression d'un article du panier 
     * 

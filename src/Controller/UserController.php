@@ -28,6 +28,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
+use App\Service\BasketService;
+
 class UserController extends AbstractController
 {
 
@@ -39,7 +41,7 @@ class UserController extends AbstractController
      * 
      * @Route("/user/register", name="register")
      */
-    public function register(Request $request, UserAddressService $useraddressService, UserPasswordEncoderInterface $passwordEncoder )
+    public function register(Request $request, UserAddressService $useraddressService, UserPasswordEncoderInterface $passwordEncoder, BasketService $basketService)
     {
         // Utilisateur / Address
         $user = new User();
@@ -102,6 +104,8 @@ class UserController extends AbstractController
             'registerNav' => true,
             'form' => $form->createView(),
             'id' => $user->getId(),
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
 
     }
@@ -117,7 +121,7 @@ class UserController extends AbstractController
      * @return render
      * 
      */
-    public function account(Request $request, UserAddressService $useraddressService, string $id, AddressRepository $address, AccountService $accountService)
+    public function account(Request $request, UserAddressService $useraddressService, BasketService $basketService, string $id, AddressRepository $address, AccountService $accountService)
     {
         // render sur la page account{id de l'utilisateur}
         return $this->render('user/account.html.twig', [
@@ -133,6 +137,8 @@ class UserController extends AbstractController
             'orders' => $accountService->getAllOrders( $id ),
             // je récupére les information des commandes par l'id
             'orderLines' => $accountService->getAllOrderLines( $id ),
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 
@@ -146,7 +152,7 @@ class UserController extends AbstractController
      * 
      * @return Response
      */
-    public function edit(User $user, Request $request, ObjectManager $om){
+    public function edit(User $user, Request $request, ObjectManager $om, BasketService $basketService){
 
         // Création du formulaire
         $form = $this->createForm(UserType::class, $user);
@@ -170,7 +176,9 @@ class UserController extends AbstractController
         
         return $this->render('user/edit.html.twig',[
             'form' => $form->createView(),
-            'user' => $user
+            'user' => $user,
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 
@@ -195,7 +203,7 @@ class UserController extends AbstractController
      * 
      * @Route("/forgotten_password", name="app_forgotten_password")
      */
-    public function forgottenPassword(Request $request, UserPasswordEncoderInterface $encoder, \Swift_Mailer $mailer, TokenGeneratorInterface $tokenGenerator)
+    public function forgottenPassword(Request $request, UserPasswordEncoderInterface $encoder, \Swift_Mailer $mailer, TokenGeneratorInterface $tokenGenerator, BasketService $basketService)
     {
         // condition si la methode est 'POST'
         if ($request->isMethod('POST')) {
@@ -253,7 +261,10 @@ class UserController extends AbstractController
             return $this->redirectToRoute('home');
         }
         // render de la page mots de passe oublier
-        return $this->render('user/forgotten_password.html.twig');
+        return $this->render('user/forgotten_password.html.twig', [
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
+        ]);
     }
 
 
@@ -266,7 +277,7 @@ class UserController extends AbstractController
      * 
      * @Route("/reset_password/{token}", name="app_reset_password")
      */
-    public function resetPassword(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder)
+    public function resetPassword(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder, BasketService $basketService)
     {
         // condition si la methode est 'POST'
         if ($request->isMethod('POST')) {
@@ -292,11 +303,13 @@ class UserController extends AbstractController
             return $this->redirectToRoute('home');
             // add flash mot de passe mis a jour
             $this->addFlash('notice', 'Mot de passe mis à jour');
-        }else {
-        // render sur la page resetpassword
+        } else {
+            // render sur la page resetpassword
             return $this->render('user/reset_password.html.twig', [
-                'token' => $token
-                ]);
+                'token' => $token,
+                // Basket
+                'basketCountQuantity' => $basketService->countQuantity(),
+            ]);
         }
 
     }

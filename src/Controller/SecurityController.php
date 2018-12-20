@@ -13,12 +13,14 @@ use App\Entity\User;
 use App\Service\UserAddressService;
 use App\Form\LoginType;
 
+use App\Service\BasketService;
+
 class SecurityController extends AbstractController {
 
     /**
      * @Route("/user/login", name="login")
      */
-    public function login( AuthenticationUtils $authenticationUtils ) {
+    public function login(AuthenticationUtils $authenticationUtils, BasketService $basketService) {
 
         // Affiche un message d'erreur si nécessaire
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -27,11 +29,13 @@ class SecurityController extends AbstractController {
         $lastUsername = $authenticationUtils->getLastUsername();
     
         return $this->render('user/login.html.twig', [
-                    'controller_name' => 'Connexion',
-                    'title' => 'Connexion',
-                    'mainNavLogin' => true,
-                    'last_username' => $lastUsername,
-                    'error' => $error,
+            'controller_name' => 'Connexion',
+            'title' => 'Connexion',
+            'mainNavLogin' => true,
+            'last_username' => $lastUsername,
+            'error' => $error,
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 
@@ -56,11 +60,12 @@ class SecurityController extends AbstractController {
     //         session_start();
 
     // }
-}
-
- // /**
+    
+    // /**
     //  * @Route("/user/admin", name="useradmin")
     //  */
     // public function admin() {
-    //     return $this->redirectToRoute('admin');
-    // }
+        //     return $this->redirectToRoute('admin');
+        // }
+
+}

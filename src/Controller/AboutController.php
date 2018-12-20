@@ -7,6 +7,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
+use App\Service\BasketService;
+
 class AboutController extends AbstractController
 {
 
@@ -17,11 +19,13 @@ class AboutController extends AbstractController
      * 
      * @return render
      */
-    public function about()
+    public function about( BasketService $basketService )
     {
         return $this->render('home/about.html.twig', [
             'controller_name' => 'Designers',
             'aboutNav' => true,
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 }

@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+use App\Service\BasketService;
+
 class InformationController extends AbstractController
 {
     /**
@@ -15,10 +17,12 @@ class InformationController extends AbstractController
      * @return render
      * 
      */
-    public function index()
+    public function index(BasketService $basketService)
     {
         return $this->render('information/cgv.html.twig', [
             'controller_name' => 'CGV / Mentions legales',
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 
@@ -31,10 +35,12 @@ class InformationController extends AbstractController
      * 
      * @return render
      */
-    public function informationPayment()
+    public function informationPayment(BasketService $basketService)
     {
         return $this->render('information/info_payment.html.twig', [
             'controller_name' => 'Info paiement / livraison',
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 
@@ -46,10 +52,12 @@ class InformationController extends AbstractController
      *
      * @return render
      */
-    public function rgpd()
+    public function rgpd(BasketService $basketService)
     {
         return $this->render('information/rgpd.html.twig', [
             'controller_name' => 'Protection des données / RGPD',
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 
@@ -60,9 +68,11 @@ class InformationController extends AbstractController
      *
      * @return render
      */
-    public function faq(){
+    public function faq(BasketService $basketService) {
         return $this->render('information/faq.html.twig', [
             'controller_name' => 'FAQ',
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 }

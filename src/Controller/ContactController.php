@@ -12,6 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+use App\Service\BasketService;
+
 class ContactController extends AbstractController
 {
 
@@ -28,7 +30,7 @@ class ContactController extends AbstractController
      * 
      * @return response
      */
-    public function contact(Request $request, \Swift_Mailer $mailer)
+    public function contact(Request $request, \Swift_Mailer $mailer, BasketService $basketService)
     {
         $form = $this->createForm(ContactType::class);
         // gére les envois de formulaire
@@ -105,6 +107,8 @@ class ContactController extends AbstractController
             'controller_name' => 'Contact',
             'form' => $form->createView(),
             'contactNav' => true,
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 

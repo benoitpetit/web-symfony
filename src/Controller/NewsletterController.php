@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
 
+use App\Service\BasketService;
+
 class NewsletterController extends AbstractController
 {
 
@@ -23,7 +25,7 @@ class NewsletterController extends AbstractController
      * @return render
      * 
      */
-    public function souscribe( Request $request)
+    public function souscribe(Request $request, BasketService $basketService)
     {
         //créer une nouvelle souscription
         $email = new Newsletter();
@@ -57,6 +59,8 @@ class NewsletterController extends AbstractController
         return $this->render('user/newsletter.html.twig', [
             'controller_name' => 'Newsletter',
             'form' => $formView,
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 
