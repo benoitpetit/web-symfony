@@ -70,6 +70,7 @@ class BasketProduct
 
     return $this;
     }
+    
     /**
      * Get the value of color_id
      */ 
