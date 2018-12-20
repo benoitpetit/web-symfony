@@ -16,8 +16,11 @@ class BasketProduct
     private $logo_id;
     private $size_id;
     private $quantity;
+    private $price_unit_ht;
     private $price_unit_ttc;
+    private $promo_unit_ht;
 
+    
     public function getId()
     {
         return $this->product_type;
@@ -27,7 +30,7 @@ class BasketProduct
                 $this->size_id;
                 $this->quantity;
                 $this->price_unit_ttc;
-            }
+    }
 
 
 
@@ -36,7 +39,7 @@ class BasketProduct
      */ 
     public function getProductType()
     {
-    return $this->product_type;
+        return $this->product_type;
     }
 
     /**
@@ -44,11 +47,11 @@ class BasketProduct
      *
      * @return  self
      */ 
-    public function setProductType_type($product_type)
+    public function setProductType($product_type)
     {
-    $this->product_type = $product_type;
+        $this->product_type = $product_type;
 
-    return $this;
+        return $this;
     }
 
     /**
@@ -66,9 +69,9 @@ class BasketProduct
      */ 
     public function setGenderId($gender_id)
     {
-    $this->gender_id = $gender_id;
+        $this->gender_id = $gender_id;
 
-    return $this;
+        return $this;
     }
     
     /**
@@ -76,7 +79,7 @@ class BasketProduct
      */ 
     public function getColorId()
     {
-    return $this->color_id;
+        return $this->color_id;
     }
 
     /**
@@ -86,9 +89,9 @@ class BasketProduct
      */ 
     public function setColorId($color_id)
     {
-    $this->color_id = $color_id;
+        $this->color_id = $color_id;
 
-    return $this;
+        return $this;
     }
 
     /**
@@ -96,7 +99,7 @@ class BasketProduct
      */ 
     public function getLogoId()
     {
-    return $this->logo_id;
+        return $this->logo_id;
     }
 
     /**
@@ -106,9 +109,9 @@ class BasketProduct
      */ 
     public function setLogoId($logo_id)
     {
-    $this->logo_id = $logo_id;
+        $this->logo_id = $logo_id;
 
-    return $this;
+        return $this;
     }
 
     /**
@@ -116,7 +119,7 @@ class BasketProduct
      */ 
     public function getSizeId()
     {
-    return $this->size_id;
+        return $this->size_id;
     }
 
     /**
@@ -126,9 +129,9 @@ class BasketProduct
      */ 
     public function setSizeId($size_id)
     {
-    $this->size_id = $size_id;
+        $this->size_id = $size_id;
 
-    return $this;
+        return $this;
     }
 
     /**
@@ -136,7 +139,7 @@ class BasketProduct
      */ 
     public function getQuantity()
     {
-    return $this->quantity;
+        return $this->quantity;
     }
 
     /**
@@ -146,9 +149,49 @@ class BasketProduct
      */ 
     public function setQuantity($quantity)
     {
-    $this->quantity = $quantity;
+        $this->quantity = $quantity;
 
-    return $this;
+        return $this;
+    }
+
+    /**
+     * Get the value of price unint HT
+     */ 
+    public function getPriceUnitHt()
+    {
+        return $this->price_unit_ht;
+    }
+
+    /**
+     * Set the value of price unit HT
+     *
+     * @return  self
+     */ 
+    public function setPriceUnitHt($price_unit_ht)
+    {
+        $this->price_unit_ht = $price_unit_ht;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of promo price unit HT
+     */ 
+    public function getPromoUnitHt()
+    {
+        return $this->promo_unit_ht;
+    }
+
+    /**
+     * Set the value of promo price unit HT
+     *
+     * @return  self
+     */ 
+    public function setPromoUnitHt($promo_unit_ht)
+    {
+        $this->promo_unit_ht = $promo_unit_ht;
+
+        return $this;
     }
 
     /**
@@ -156,7 +199,7 @@ class BasketProduct
      */ 
     public function getPriceUnitTtc()
     {
-    return $this->price_unit_ttc;
+        return $this->price_unit_ttc;
     }
 
     /**
@@ -166,8 +209,9 @@ class BasketProduct
      */ 
     public function setPriceUnitTtc($price_unit_ttc)
     {
-    $this->price_unit_ttc = $price_unit_ttc;
+        $this->price_unit_ttc = $price_unit_ttc;
 
-    return $this;
+        return $this;
     }
+
 }

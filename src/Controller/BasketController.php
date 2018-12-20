@@ -4,95 +4,90 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 use App\Service\TshirtService;
 use App\Service\TranslateService;
-use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\BasketProduct;
+use App\Form\BasketProductType;
+
 
 
 class BasketController extends AbstractController
 {
-    /**
-     *      
+    public function __construct()
+    {
+        // Démarrage de la session si pas déjà démarrée 
+        if (session_status() == PHP_SESSION_NONE) 
+            {
+                session_start();
+
+                // Initialisation Basket
+                $_SESSION['basket'] = array(); 
+            }
+        }
+
+
+    /** 
+     * Ajout d'un article dans le panier 
      * @Route("/basket", name="basket")
-     */
-    public function index()
-    {
+     */ 
+    public function addBasketLine(Request $request)
+    { 
+        // création d'une nouvelle ligne de commande dans le panier + les catégories à nourrir via les getters de BasketProduct
+        $basketProduct = new BasketProduct();
 
-        return $this->render('basket/index.html.twig', [
+        $formBasketProduct = $this->createForm( BasketProductType::class, $basketProduct );
+
+        $formBasketProduct->handleRequest( $request );
+        if ( $formBasketProduct->isSubmitted() && $formBasketProduct->isValid() ) {
+
+            // Recherche des datas
+            $productBasket = $formBasketProduct->getData();
+
+            // Ajout au panier de l'article sélectionné
+            array_push( $_SESSION['basket'], $productBasket);
+        }
+
+        return $this->render ('basket/index.html.twig', [
             'controller_name' => 'Panier',
+            'basketProducts' => $_SESSION['basket'],
         ]);
-    }
 
-    public function addToBasket(Request $request, $product_type, $gender_id, $color_id, $logo_id, $size_id, $quantity, $price_unit_ttc)
-    {
+    }    
+     
+    /** 
+    * Suppression d'un article du panier 
+    * 
+    * @param String    $basketLine      ligne de commande du panier à supprimer 
+    * @return Boolean  Retourn TRUE si la suppression a bien été effectuée, FALSE sinon 
+    */ 
+    public function removeBasketLine($basketLine) 
+    { 
+    }    
 
-    // On vérifie que le panier existe bien, sinon on le crée (tableau vide)
-        if (!$session->has('basket')) {
-            $session->set('basket', array());
-        }
+    /** 
+    * Calcul du montant total pour chaque ligne de commande du panier (article) 
+    * @return Double 
+    */ 
+    public function basketTotal() 
+    { 
+        // On initialise le montant 
+        $total = 0; 
+        // On  compte les articles du panier 
+        $ProductQuantity = count($basket['product_type']); 
 
-
-
-    // Initialisation du panier       
-        $basket = $session->get('basket');
-
-        $basket = $session->set('basket', array(
-            $product_type= "",
-            $gender_id="",
-            $color_id="",
-            $logo_id="",
-            $size_id="",
-            $quantity="",
-            $price_unit_ttc=""
-        ));    
+        // On calcule le total par article  
+        for($i = 0; $i < $nb_articles; $i++) 
+        { 
+            $total += $basket['quantity'][$i] * $basket['price_unit_ttc'][$i]; 
+        } 
         
-        
-        
-        //     if (array_key_exists($id, $basket)) {
-    //         if ($request->query->get('color_id') != null) {
-    //             $basket[$id] = $request->query->get('color_id');
-    //         }
-                  
-    //         $this->addFlash('success', 'Article ajouté avec succès !');
-    //     }
+        return $total; 
+    } 
 
-    //     $session->set('basket', $basket);
-
-
-    //         return $this->render('basket/index.html.twig', [
-    //             'controller_name' => 'Panier',
-    //             'product' => $product,
-    //             'genderFR' => $genderFR,
-    //             'color_id' => $color_id,
-    //             'logo_id' => $logo_id,
-
-    //         ]);
-       
-    
-    //     public function deleteProductLine(TshirtService $products, $id)
-    //     {
-        //         $basket = $session->get('basket');
-        
-        //         if (array_key_exists($id, $basket))
-        //         {
-            //             unset($basket[$id]);
-            //             $session->set('basket', $basket);
-            //             $this->addFlash('success', 'Article supprimé avec succès !');
-            //         }
-            
-            //         return $this->redirect($this->generateUrl('basket'));
-            //     }
-            
-            
-            
-        }
-
-
-
-
-    }
+}        

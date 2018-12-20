@@ -2,7 +2,10 @@
 
 {% block title %}{{ controller_name }}{% endblock %}
 
+
 {% block body %}
+
+{{ dump(basketProducts) }}
 
 <div class="container basket px-4">
        
@@ -36,34 +39,37 @@
             
             <!-- ///////  Lignes du panier en fonction du nombre d'articles (boucle) /////// -->
                 <tbody>
-                    {# {% for item in basket.items %} #}
+
+                    {% for basketProduct in basketProducts %}
                     <tr class="row">
                         <td class="col-md-1 delete_item"><a href="#" 
                             {# data-item-id="{{ligne.id}}" #}
-                            ><img src="../../public/assets/images/icones/trash.svg" width="20px"></a></td>
-                        <td class="col-md-2 cart-item img">
-                            {# <a href="{{ path('tshirtdetail', {product_type: product_type, genderEN: genderEN, color_id: product.color_id, logo_id: product.logo_id}) }}" 
-                                class="produit_link position-relative w-100 d-flex align-items-center" style="background-color:{{ product.color_hexa }};"> #}
-                            <img src="../../public/assets/images/homme/tshirt_homme_c_mieux.png" class="img-responsive" width="100px" alt="">
-                        </td>
-                        <td class="col-md-3"><div class="font-weight-bold">T-Shirt name </div></a><br>
-                            <div> product.color {# {{color.id.name}} #}</div>
-                            <div> product.size {# {{size.id.size}} #}</div> 
-                        </td>
-                        <td class="col-md-2 pr-4">
-                            <div class="d-md-none"> Prix Unitaire: </div>
-                            <div class="text-right mr-2">15.00€ {# {{product.price_unit_ttc}} € #}</div> 
-                                                    </td>
-                        <td class="col-md-2 pr-4">
-                            <div class="d-md-none">Quantité: </div>
-                            <div class="text-right">3  {# {{qty}} #}</div> 
-                        </td>
-                        <td class="col-md-2 pr-4">
-                            <div class="d-md-none"> Prix Total: </div>
-                            <div class="text-right">45.00€ {# ( {{product.price_unit_ttc}} * {{qty}} ) € #}</div> 
-                        </td>
-                    </tr>
-                    {# {% endfor %} #}
+                            ></a><img src="../../public/assets/images/icones/trash.svg" width="20px"></a></td>
+                            <td class="col-md-2 cart-item img">
+                                {# <a href="{{ path('tshirtdetail', {product_type: product_type, genderEN: genderEN, color_id: product.color_id, logo_id: product.logo_id}) }}" 
+                                    class="produit_link position-relative w-100 d-flex align-items-center" style="background-color:{{ product.color_hexa }};"> #}
+                                <img src="../../public/assets/images/homme/tshirt_homme_c_mieux.png" class="img-responsive" width="100px" alt="">
+                            </td>
+                            <td class="col-md-3"><div class="font-weight-bold">T-Shirt name </div></a><br>
+                                <div>  </div>
+                                <div> product.size {# {{size.id.size}} #}</div> 
+                            </td>
+                            <td class="col-md-2 pr-4">
+                                <div class="d-md-none"> Prix Unitaire: </div>
+                                <div class="text-right mr-2">{{ basketProduct.priceUnitTtc }} €</div> 
+                            </td>
+                            <td class="col-md-2 pr-4">
+                                <div class="d-md-none">Quantité: </div>
+                                <div class="text-right">{{ basketProduct.quantity }}</div> 
+                            </td>
+                            <td class="col-md-2 pr-4">
+                                <div class="d-md-none"> Prix Total: </div>
+                                <div class="text-right">( {{ basketProduct.priceUnitTtc }} * {{ basketProduct.quantity}} ) €</div> 
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
                 </tbody>
             </table>
         </div>
@@ -85,8 +91,8 @@
     <!-- /////////////////// BOUTONS Poursuite Achats / Commande ///////////////// -->
     
         <div class="d-flex justify-content-between button">
-            <button type="button" class="btn btn-warning mb-4"><a href="{{ path('home') }}">Continuer mes achats</a></button>   
-            <button type="button" class="btn btn-success mb-4"><a href="{{ path('login') }}">Passer la commande</a></button> 
+            <button type="button" class="btn btn-warning mb-4"><a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: '0', logo_id:'0' }) }}">Continuer mes achats</a></button>   
+            <button type="button" class="btn btn-success mb-4"><a href="{{ path('delivery') }}">Passer la commande</a></button> 
         </div>
                     
     {# {% endif %} #} <!-- fin de la condition - panier vide ou non -->

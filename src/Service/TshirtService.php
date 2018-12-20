@@ -9,24 +9,22 @@ use App\Repository\ColorRepository;
 use App\Repository\LogoRepository;
 
 
-// include composer autoload
+// composer autoload
 // require 'assets/vendor/intervention/vendor/autoload.php';
 
-// import the Intervention Image Manager Class
+// import Intervention Image Manager Class
 use Doctrine\Common\Persistence\ObjectManager;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Image;
 
-// use App\Entity\Color;
-// use App\Entity\Logo;
 
 class TshirtService {
     
-    // Service & Model for product tshirt
+    // Service & Modele pour product tshirt
     const _PRODUCT = 'tshirt';
     const _PICTURES = 'assets/images';
 
-    // display products per page
+    // Affichage du nombre de produits par page
     const MAX_ITEMS_PER_PAGE = 8;
 
     // Response picture
@@ -57,6 +55,20 @@ class TshirtService {
         
         // Path to pictures
         $image = $manager->canvas( 600, 700, $color );
+        $image->fill( self::_PICTURES .'/'. $gender .'/'. self::_PRODUCT .'_'. $gender .'_'. $logo .'.png' );
+        
+        // Return response
+        return $image->response( 'jpg', 90 );
+    }
+
+    // générer le t-shirt
+    public function generateSmallTshirt( $gender, $color, $logo )
+    {
+        // Generate pictures
+        $manager = new ImageManager();
+        
+        // Path to pictures
+        $image = $manager->canvas( 60, 70, $color );
         $image->fill( self::_PICTURES .'/'. $gender .'/'. self::_PRODUCT .'_'. $gender .'_'. $logo .'.png' );
         
         // Return response
