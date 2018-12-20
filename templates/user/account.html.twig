@@ -7,7 +7,6 @@
 
 
 {# condition #}
-{% if app.user.email == user.email %}
 
 <div class="container bg-light p-5">
     <h1 class="pb-2 mt-3 text-center text-md-left"> MON COMPTE / MES COMMANDES </h1>
@@ -61,7 +60,7 @@
                 <td>{{ order.order_date }}</td>
                 <td>
                 {% for orderLine in orderLines %}
-                    {% if ( order.orders_id == orderLine.order_id ) %}
+                    {% if ( orderLine.order_id == orderLine.order_id ) %}
 
                             <b>Couleur: </b>{{ orderLine.color_name }} / <b>Taille: </b>{{ orderLine.size_name }} /<b> Quantité: </b>{{ orderLine.quantity }}<br>
                             <b>Model: </b>
@@ -83,23 +82,5 @@
 </div>
 </div>
 </div>
-{# else affichage du 404 #}
-{% else %}
-<div class="h-100 d-flex flex-row align-items-center">
-    <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-md-12 text-center error-content">
-                <i class="fab fa-fly display-1 mb-3 text-info"></i>
-                <span class="display-1 d-block"><span class="text-info"><</span> 404 <span class="text-info">/></span></span>
-                <div class="mb-4 lead">La page que vous recherchez n'a pas été trouvé...</div>
-                <a href="{{ path('home') }}" class="btn btn-link retour mb-5">Retour à la page d'Accueil</a>
-            </div>
-        </div>
-    </div>
-</div>
 
-</div>
-
-{# fin du if #}
-{% endif %}
 {% endblock %}

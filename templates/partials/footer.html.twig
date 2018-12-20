@@ -44,7 +44,7 @@
                 <ul>
                     <li><a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: '0' , logo_id: 0 }) }}"> T-Shirts Homme</a></li>
                     <li><a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'woman', color_id: '0' , logo_id: 0 }) }}"> T-Shirts Femme</a></li>
-                    <li><a href="#"> Mon compte </a></li>
+                    <li><a href="{{ path('account', {"id": app.user.id }) }}"> Mon compte </a></li>
                     <li><a href="{{ path('faq') }}"> FAQ </a></li>
                 </ul>
             </div>
