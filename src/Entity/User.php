@@ -92,8 +92,10 @@ class User implements UserInterface
     /**
      * @Assert\NotBlank
      * @Assert\Length(
-     *     min=5, 
+     *     min=5,
+     *     max=10,
      *     minMessage="Le mot de passe doit faire plus de 5 caractères",
+     *     maxMessage="Le numero de telephone ne peut pas faire plus de 10 caratères"
      *     )
      */
     private $plainpassword;
@@ -127,6 +129,7 @@ class User implements UserInterface
     private $createdDate;
 
     /**
+     * @Assert\Valid
      * @ORM\OneToOne(targetEntity="App\Entity\Address", cascade={"persist"})
      * @ORM\JoinColumn(name="address_billing_id_id", referencedColumnName="id")
      */

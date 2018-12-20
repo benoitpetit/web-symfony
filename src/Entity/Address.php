@@ -46,13 +46,6 @@ class Address
     /**
      * @ORM\Column(type="string", length=45)
      * @Assert\NotBlank
-     * @Assert\Regex("/^[0-9]{5}$/")
-     * @Assert\Length(
-     *     min=5, 
-     *     max=5, 
-     *     minMessage="Le prenom doit faire plus de 5 caractères",
-     *     maxMessage="Le prenom ne peut pas faire plus de 5 caratères"
-     *     )
      */
     private $zipCode;
 
