@@ -106,11 +106,12 @@ class TshirtController extends AbstractController
             'genderEN' => $genderEN,
             'color_id' => $color_id,
             'logo_id' => $logo_id,
-            'promo' => $promo,
             'product' => $products->getAllGenderDetail( $genderFR, $color_id, $logo_id )->getRecords(),
             'colors' => $products->getAllTshirtColor()->getRecords(),
             'sizes' => $products->getAllTshirtSize()->getRecords(),
             'productsRand' => $products->getRandomTshirtGender( $genderFR, 4 )->getRecords(),
+            // Promos
+            'promo' => $promo,
         ]);
     }
 

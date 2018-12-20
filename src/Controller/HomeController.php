@@ -36,10 +36,15 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('admin');
         }
 
+        // Promos
+        $promo = 20/100;
+
         return $this->render('home/index.html.twig', [
             'controller_name' => 'Accueil',
             'product_type' => TshirtService::_PRODUCT,
             'productsRand' => $products->getRandomTshirtGender( 'All', 4 )->getRecords(),
+            // Promos
+            'promo' => $promo,
         ]);
     }
 
