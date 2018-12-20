@@ -11,7 +11,7 @@ class AboutController extends AbstractController
 {
 
 /**
-     * Page a propos de nous & nos designer
+     * Page a propos de nous & nos designers
      *
      * @Route("/about", name="about")
      * 

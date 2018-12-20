@@ -5,6 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 class DeliveryController extends AbstractController
 {
 
@@ -12,6 +15,7 @@ class DeliveryController extends AbstractController
      * Livraison
      * 
      * @Route("/basket/delivery", name="delivery")
+     * @IsGranted("ROLE_BUYER")
      * 
      * @return render
      * 

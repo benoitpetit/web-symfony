@@ -92,7 +92,7 @@ class UserController extends AbstractController
             // Flash
             $this->addFlash('success', 'Ton compte a bien été enregistré.');
 
-            // return $this->redirectToRoute('account', [ 'id' => $user->getId() ]);
+           
             return $this->redirectToRoute('login');
         }
 
@@ -106,12 +106,7 @@ class UserController extends AbstractController
 
     }
 
-
-
 /////////////////////////////////////////////////////////////////////////////////////////
-
-
-
 
     /**
      * 
@@ -142,13 +137,10 @@ class UserController extends AbstractController
     }
 
 
-
 /////////////////////////////////////////////////////////////////////////////////////////
 
-
-
     /**
-     * permet d'afficher le formulaire d'edition de compte utilisateur
+     * Permet d'afficher le formulaire d'édition de compte utilisateur
      *
      * @Route("/user/account/{id}/edit", name="user_edit")
      * 
@@ -156,10 +148,10 @@ class UserController extends AbstractController
      */
     public function edit(User $user, Request $request, ObjectManager $om){
 
-        // create form
+        // Création du formulaire
         $form = $this->createForm(UserType::class, $user);
         
-        // gére les envois de formulaire
+        // Gestion des envois de formulaire
         $form->handleRequest($request);
 
         // condition si c'est envoyer si c'est valide
@@ -185,8 +177,6 @@ class UserController extends AbstractController
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
-
-
     /**
      * 
      * Permet à un client/prospect de se déconnecter de son compte
@@ -200,9 +190,8 @@ class UserController extends AbstractController
 /////////////////////////////////////////////////////////////////////////////////////////
 
         
-        
     /**
-     * entre adresse mail pour changement du mots de passe
+     * Adresse mail pour changement du mot de passe
      * 
      * @Route("/forgotten_password", name="app_forgotten_password")
      */
@@ -272,9 +261,8 @@ class UserController extends AbstractController
 /////////////////////////////////////////////////////////////////////////////////////////
 
 
-
     /**
-     * entre le nouveau mots de passe
+     * Nouveau mot de passe
      * 
      * @Route("/reset_password/{token}", name="app_reset_password")
      */
@@ -313,4 +301,4 @@ class UserController extends AbstractController
 
     }
         
-    }
+}

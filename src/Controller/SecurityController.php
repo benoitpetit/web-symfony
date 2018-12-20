@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 use App\Entity\User;
 use App\Service\UserAddressService;
@@ -18,10 +20,10 @@ class SecurityController extends AbstractController {
      */
     public function login( AuthenticationUtils $authenticationUtils ) {
 
-        // get the login error if there is one
+        // Affiche un message d'erreur si nécessaire
         $error = $authenticationUtils->getLastAuthenticationError();
 
-        // last username entered by the user
+        // Garde le nom d'utilisateur affiché en cas d'erreur de mot de passe
         $lastUsername = $authenticationUtils->getLastUsername();
     
         return $this->render('user/login.html.twig', [
@@ -34,21 +36,16 @@ class SecurityController extends AbstractController {
     }
 
    
-    /**
+     /**
      *  Redirection apres connexionBasket
      * @Route("/basket/delivery", name="delivery")
-     * 
+     * @IsGranted("ROLE_BUYER")
      */
     // public function postLoginRedirectAction()
     // {
-    //     // if ($user->hasConnected() == true) {
-    //     //     return $this->redirectToRoute("delivery");
-    //     // } else if ($user->hasCompleteProfile() == false) {
-    //     //     return $this->redirectToRoute("basket");
-    //     // } else {
-    //     //     return $this->redirectToRoute("index");
-    //     // }
-    //     // session_start();
+    //     if (($user->hasBasket() == true) && (!empty($basket)) {
+    //         return $this->redirectToRoute("delivery");
+    //     } 
         
     //     if(!isset($_SESSION['basket'])) {
     //     // header('Location:login.html.twig');
@@ -57,8 +54,6 @@ class SecurityController extends AbstractController {
     //             return $this->redirectToRoute("index");
     //         }
     //         session_start();
-       
-
 
     // }
 }

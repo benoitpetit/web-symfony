@@ -44,7 +44,7 @@ class Rate
      * @ORM\PrePersist
      */
     function onPrePersist() {
-        // set default date
+        // Affiche la date actuelle par défaut
         $this->createdDate = new \DateTime('now',  new \DateTimeZone( 'UTC' ));
     }
 

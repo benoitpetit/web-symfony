@@ -14,7 +14,7 @@ class TranslateService {
 
         $wordYY = '';
 
-        // Gender
+        // Genre (Homme/Femme)
         switch ( $wordXX )
         {
             case 'woman':
@@ -32,7 +32,7 @@ class TranslateService {
         }
 
 
-        // Color
+        // Couleur
         switch ( $wordXX )
         {
             case 'blue':
@@ -65,7 +65,7 @@ class TranslateService {
                 $wordYY = 'purple'; break;
         }
 
-        // Other
+        // Autres
         switch ( $wordXX )
         {
             case 't-shirt':
@@ -78,34 +78,34 @@ class TranslateService {
 
 
     public function arrayPushTanslate( $languageOutput, $arrInput, $arrColumnsXX ) {
-        // var_dump($arrInput);
+        
         $arrOutput = [];
         foreach( $arrInput as $keyInput => $valueInput ) {
 
             $arrColumn = [];
             foreach( $valueInput as $keyColumn => $valueColumn) {
 
-                // Column name
+                // Nom de colonne
                 $arrColumn[$keyColumn] = $valueColumn;
                 
                 foreach( $arrColumnsXX as $keyColumnXX => $columnNameXX ) {
                         
-                        // Declaration of new column
+                        // Declaration d'une nouvelle colonne
                         $columnNameYY = $columnNameXX.$languageOutput;
                         
-                        // Translate
+                        // Traduction
                         $valueXX = $valueInput[$columnNameXX];
                         $valueYY = $this->translateXXtoYY($valueInput[$columnNameXX]);
                         
-                        // Add column
+                        // Ajout d'une nouvelle colonne
                         $arrColumn[$columnNameYY] = $valueYY;
                 }
 
             }
-            // Add array record to main array records
+            // Ajout d'un tableau d'enregistrement au tableau d'enregistrement principal 
             array_push( $arrOutput, $arrColumn );
         }
-        // var_dump($arrOutput);
+        
         return $arrOutput;
     }
 

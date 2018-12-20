@@ -28,7 +28,7 @@ class NewsletterController extends AbstractController
         //créer une nouvelle souscription
         $email = new Newsletter();
 
-        // r&cup&rer le formulaire et on l'associe au nouvel email
+        // récupérer le formulaire et on l'associe au nouvel email
         $form = $this->createForm(NewsletterType::Class, $email); 
 
         // on recupère ce qui va être envoyer lors de la soumission
@@ -41,7 +41,7 @@ class NewsletterController extends AbstractController
             $om = $this->getDoctrine()->getManager();
             // prepare l'envoie
             $om->persist($email);
-            // envoi vers la bas de donner
+            // envoi vers la base de données
             $om->flush();
 
             // Flash
@@ -53,7 +53,7 @@ class NewsletterController extends AbstractController
         // on génére la vue HTML
         $formView = $form->createView();
 
-        // retourner la vue 
+        // on retourne la vue 
         return $this->render('user/newsletter.html.twig', [
             'controller_name' => 'Newsletter',
             'form' => $formView,

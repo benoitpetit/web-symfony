@@ -77,9 +77,9 @@ class Address
      * @ORM\PrePersist
      */
     function onPrePersist() {
-        // set default date
+        // Affiche la date actuelle par défault
         $this->createdDate = new \DateTime('now',  new \DateTimeZone( 'UTC' ));
-        // set default address type
+        // Affiche le type d'adresse par défaut
         $this->addressType = ( ($this->getAddressType() == NULL) OR ($this->getAddressType() != "@DELIVERY") ) ? "@BILLING" : "@DELIVERY";
     }
 
