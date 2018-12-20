@@ -17,7 +17,7 @@ class NewsletterType extends AbstractType
         $builder
             ->add('mail', EmailType::class, array(
                 'label' => false,
-                'required' => true,
+                'required' => false,
         ));
     }
 

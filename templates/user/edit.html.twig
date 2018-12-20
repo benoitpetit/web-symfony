@@ -57,6 +57,7 @@
                             {{ form_row ( form.lastname ) }}
                             {{ form_row ( form.firstname ) }}
                             {{ form_row ( form.phone ) }}
+                            {{ form_row ( form.email ) }}
                         </div>
                     </div>
                 </div>
@@ -69,7 +70,7 @@
                     <div class="row">
                         <div class="col text-left">
                             {{ form_row ( form.addressBillingId.street ) }}
-                            {{ form_row ( form.addressBillingId.zip_code ) }}
+                            {{ form_row ( form.addressBillingId.zipCode ) }}
                             {{ form_row ( form.addressBillingId.city ) }}
                             {{ form_row ( form.addressBillingId.country ) }}
                         </div>
@@ -77,11 +78,22 @@
                 </div>
 
             </div>
+            <hr>
+            <div class="row">
+                    <div class="col-6">
+            <h4 class="text-center mt-4">Votre <span class="text-bleu">mot de passe</span></h4>
+                    {{ form_row ( form.plainpassword ) }}
+                    </div>
+            <div class="col-3"></div>
+                        <div class="col-3"></div>
+
+            </div>
 
             <!-- ////////////////// SOUMISSION DU FORMULAIRE /////////////////////////// -->
             <div class="row text-center">
                 <div class="col">
                     {{ form_row ( form.submit ) }}
+                {{ form_end (form) }}
                 </div>
             </div>
             {% else %}
@@ -100,7 +112,6 @@
                 </div>
             </div>
             {% endif %}
-
 
         </div>
     </div>
