@@ -18,7 +18,7 @@ class Contact
      * @Assert\Length(
      *      min=2, 
      *      max=30, 
-     *      minMessage="Le nom doit faire plus de 3 caractères",
+     *      minMessage="Le nom doit faire plus de 2 caractères",
      *      maxMessage="Le nom ne peut pas faire plus de 30 caratères"
      *      )
      */
@@ -30,7 +30,7 @@ class Contact
      * @Assert\Length(
      *      min=2, 
      *      max=30, 
-     *      minMessage="Le prenom doit faire plus de 3 caractères",
+     *      minMessage="Le prenom doit faire plus de 2 caractères",
      *      maxMessage="Le prenom ne peut pas faire plus de 30 caratères"
      *      )
      */
@@ -62,7 +62,7 @@ class Contact
      * @Assert\Length(
      *      min=20, 
      *      max=250, 
-     *      minMessage="Le message doit faire plus de 30 caractères",
+     *      minMessage="Le message doit faire plus de 20 caractères",
      *      maxMessage="Le message ne peut pas faire plus de 30 caratères"
      *      )
      */
