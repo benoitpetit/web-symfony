@@ -82,10 +82,11 @@ class User implements UserInterface
     /**
      * @Assert\NotBlank
      * @Assert\Length(
-     *     min=5, 
+     *     min=5,
+     *     max=10,
      *     minMessage="Le mot de passe doit faire plus de 5 caractères",
-     *     )     
-     * 
+     *     maxMessage="Le numero de telephone ne peut pas faire plus de 10 caratères"
+     *     )   
      */
     private $password;
 
@@ -103,6 +104,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=45)
      * @Assert\Regex(pattern="/^(0|\+33)[1-9]([-. ]?[0-9]{2}){4}$/", message="{{ value }} n'est pas un numéro de téléphone valide")
+     * @Assert\NotBlank 
      * @Assert\Length(
      *     min=10, 
      *     max=10, 
