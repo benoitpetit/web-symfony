@@ -136,20 +136,20 @@
 
                 {# PAGINATION #}
                 <!-- controllers -->
-                <div class="container d-flex justify-content-end">
+                <div class="container d-flex justify-content-end  px-0">
                    <!-- controllers -->
-                    <div class=" col-xs-12 col-sm-4">   
+                    <div class=" col-xs-12 col-sm-8 d-flex justify-content-center justify-content-sm-start justify-content-lg-end px-0">   
                         <nav aria-label="controller-produit py-0">
                             <ul class="pagination d-flex justify-content-center justify-content-md-end">
 
                                 {# PREVIOUS #}
                                 {% if pageNumber == 1 %}
-                                    <li class="page-item disabled">
-                                        <span class="page-link">&laquo; Précédent</span>
+                                    <li class="page-item disabled d-none">
+                                        <span class="page-link text-black-50">&laquo; Précédent</span>
                                     </li>
                                 {% else %}
                                     <li class="page-item">
-                                        <a class="page-link" href="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id: color_id, logo_id: logo_id, pageNumber: (pageNumber - 1)}) }}" aria-label="Précédent">
+                                        <a class="page-link bg-light" href="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id: color_id, logo_id: logo_id, pageNumber: (pageNumber - 1)}) }}" aria-label="Précédent">
                                             <span aria-hidden="true">&laquo; Précédent</span>
                                             <span class="sr-only">&laquo; Précédent</span>
                                         </a>
@@ -159,11 +159,11 @@
                                 {# PAGINATION #}
                                 {% for i in 1 .. countPageForPagination %}
                                     {% if i == pageNumber %}
-                                        <li class="page-item active">
-                                            <span class="page-link bg-warning">{{ i }}</span>
+                                        <li class="page-item active d-none d-sm-block">
+                                            <span class="page-link bg-info text-white border-primary">{{ i }}</span>
                                         </li>
                                     {% else %}
-                                        <li class="page-item">
+                                        <li class="page-item d-none d-lg-block">
                                             <a class="page-link" href="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id: color_id, logo_id: logo_id, pageNumber: i}) }}" aria-label="Courante">
                                                 <span aria-hidden="true">{{ i }}</span>
                                                 <span class="sr-only">{{ i }}</span>
@@ -174,12 +174,12 @@
 
                                 {# NEXT #}
                                 {% if pageNumber == countPageForPagination %}
-                                    <li class="page-item disabled">
+                                    <li class="page-item disabled d-none">
                                         <span class="page-link">Suivant &raquo;</span>
                                     </li>
                                 {% else %}
                                     <li class="page-item">
-                                        <a class="page-link" href="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id: color_id, logo_id: logo_id, pageNumber: (pageNumber + 1)}) }}" aria-label="Suivant">
+                                        <a class="page-link bg-light" href="{{ path('gallery', {product_type: 'tshirt', genderEN: genderEN, color_id: color_id, logo_id: logo_id, pageNumber: (pageNumber + 1)}) }}" aria-label="Suivant">
                                             <span aria-hidden="true">Suivant &raquo;</span>
                                             <span class="sr-only">Suivant &raquo;</span>
                                         </a>
