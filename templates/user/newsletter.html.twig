@@ -1,12 +1,10 @@
-
-{{ form_start (form, { 'attr': {'class': ' form-inline col-12 justify-content-center justify-content-md-start', 'action': path('newsletter'), 'method': 'GET'}, 'novalidate': 'novalidate' }) }}
+{{ form_start (form, { 'attr': {'class': ' form-inline col-12 justify-content-center justify-content-md-start',
+'action': path('newsletter'), 'method': 'GET'}, 'novalidate': 'novalidate' }) }}
 
 <div class="d-flex justify-content-center justify-content-md-start w-100">
     {{ form_widget (form, { 'attr': {'class': 'mr-sm-2 email'} }) }}
-    
+
     <button type="submit" class="btn btn-outline-info btn-email ml-2">Ok</button>
 </div>
 
 {{ form_end (form) }}
-
-
