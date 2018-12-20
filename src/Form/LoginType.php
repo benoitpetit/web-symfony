@@ -20,7 +20,6 @@ class LoginType extends AbstractType
             ->add('username', TextType::class, array( 'label' => 'Utilisateur' ))
             ->add('password', PasswordType::class, array( 'label' => 'Mot de passe'
                                                 ))
-            // ->add('submit', SubmitType::class, ['label'=>'Se connecter', 'attr'=>['class'=>'btn-primary btn-block']])
             ->getForm()
         ;
     }

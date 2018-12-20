@@ -63,7 +63,7 @@ class Contact
      *      min=20, 
      *      max=250, 
      *      minMessage="Le message doit faire plus de 20 caractères",
-     *      maxMessage="Le message ne peut pas faire plus de 30 caratères"
+     *      maxMessage="Le message ne peut pas faire plus de 255 caratères"
      *      )
      */
     private $message;
