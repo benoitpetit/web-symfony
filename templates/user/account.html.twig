@@ -7,7 +7,6 @@
 
 
 {# condition #}
-
 <div class="container bg-light p-5">
     <h1 class="pb-2 mt-3 text-center text-md-left"> MON COMPTE / MES COMMANDES </h1>
     
@@ -52,16 +51,18 @@
             </tr>
         </thead>
         <tbody>
+        {# boucle sur les commandes #}
             {% for order in orders %}
-
             <tr>
                 <th scope="row">{{ order.order_register }}</th>
                 <td>{{ order.price_ttc }} &euro;</td>
                 <td>{{ order.order_date }}</td>
                 <td>
+                {# boucle des informations des commandes #}
                 {% for orderLine in orderLines %}
+                    {# si orderLine est = à orderLine #}
                     {% if ( orderLine.order_id == orderLine.order_id ) %}
-
+                            {# affichae des informations de la commande #}
                             <b>Couleur: </b>{{ orderLine.color_name }} / <b>Taille: </b>{{ orderLine.size_name }} /<b> Quantité: </b>{{ orderLine.quantity }}<br>
                             <b>Model: </b>
                             <a href="{{ path('tshirtdetail', {product_type: orderLine.product_type, genderEN: orderLine.gender_name, color_id: orderLine.product_color_id, logo_id: orderLine.product_logo_id }) }}">{{ orderLine.logo_name }}</a>
@@ -69,7 +70,6 @@
 
                     {% endif %}
                     
-                    {# {% if not loop.last %} <hr> {% endif %} #}
 
                 {% endfor %}
                 </td>
