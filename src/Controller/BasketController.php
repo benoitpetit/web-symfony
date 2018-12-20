@@ -59,6 +59,9 @@ class BasketController extends AbstractController
 
             // Ajout au panier de l'article sélectionné
             array_push( $_SESSION['basket'], $productBasket);
+
+            // add flash produit -> panier
+            $this->addFlash('notice', 'Votre produit a été ajouté à votre panier.');
         }
 
         return $this->render( TshirtService::_PRODUCT .'/gallery.html.twig', [
