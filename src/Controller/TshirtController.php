@@ -27,7 +27,7 @@ class TshirtController extends AbstractController
      * @return render
      * 
      */
-    public function displayTshirtGallery( TshirtService $products, TranslateService $translate, BasketService $basketService, $product_type = TshirtService::_PRODUCT, $genderEN , $color_id, $logo_id, $pageNumber = 1 )
+    public function displayTshirtGallery(TshirtService $products, TranslateService $translate, BasketService $basketService, $product_type = TshirtService::_PRODUCT, $genderEN , $color_id, $logo_id, $pageNumber = 1)
     {
         // A défaut de translate pour le moment ! (manque de temps)
         $genderFR = $translate->translateXXtoYY( $genderEN );
@@ -116,7 +116,7 @@ class TshirtController extends AbstractController
         $basketProduct->setPriceUnitTtc( $product['price_unit_ttc'] );
         $basketProduct->setPriceUnitHt( $product['price_unit_ht'] );
         // $basketProduct->setPromoUnitHt( $product['product_typeTR'] );
-        $formBasketProduct = $this->createForm( BasketProductType::class, $basketProduct, [ 'action' => $this->generateUrl('basketadd'), 'method' => 'POST', ] );
+        $formBasketProduct = $this->createForm( BasketProductType::class, $basketProduct, [ 'action' => $this->generateUrl('basketadd', ['genderEN' => $genderEN] ), 'method' => 'POST', ] );
 
         return $this->render( TshirtService::_PRODUCT .'/single_'. $product_type .'.html.twig', [
             'controller_name' => TshirtService::_PRODUCT.$genderFR,
