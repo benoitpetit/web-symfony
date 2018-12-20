@@ -80,24 +80,12 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *     min=5,
-     *     max=10,
-     *     minMessage="Le mot de passe doit faire plus de 5 caractères",
-     *     maxMessage="Le numero de telephone ne peut pas faire plus de 10 caratères"
-     *     )   
+     * 
      */
     private $password;
 
     /**
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *     min=5,
-     *     max=10,
-     *     minMessage="Le mot de passe doit faire plus de 5 caractères",
-     *     maxMessage="Le numero de telephone ne peut pas faire plus de 10 caratères"
-     *     )
+     * 
      */
     private $plainpassword;
 

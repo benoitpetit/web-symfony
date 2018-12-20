@@ -20,20 +20,12 @@ class Address
 
     /**
      * @ORM\Column(type="string", length=45)
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *     min=5, 
-     *     max=45, 
-     *     minMessage="doit faire plus de 5 caractères",
-     *     maxMessage="ne peut pas faire plus de 45 caratères"
-     *     )
      */
     private $addressType;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
-     * @Assert\Regex(pattern="/^[a-zA-Z]/", message="{{ value }} n'est pas valide")
      * @Assert\Length(
      *      min=5, 
      *      max=30, 
@@ -46,7 +38,7 @@ class Address
     /**
      * @ORM\Column(type="string", length=45)
      * @Assert\NotBlank
-     * @Assert\Regex(pattern="/^[1-9]/", message="{{ value }} doit contenir uniquement des chiffres")
+     * @Assert\Regex(pattern="/^[0-9]/", message="{{ value }} doit contenir uniquement des chiffres")
      * @Assert\Length(
      *      min=5, 
      *      max=5, 
