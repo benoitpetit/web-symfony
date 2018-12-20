@@ -25,22 +25,46 @@ class Address
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min=5, 
+     *      max=30, 
+     *      minMessage="doit faire plus de 5 caractères",
+     *      maxMessage="ne peut pas faire plus de 30 caratères"
+     *      )
      */
     private $street;
 
     /**
-     * @Assert\Regex("/^[0-9]{5}$/")
      * @ORM\Column(type="string", length=45)
+     * @Assert\NotBlank
+     * @Assert\Regex(pattern="/^[0-9]/", message="{{ value }} doit contenir uniquement des chiffres")
+     * @Assert\Length(
+     *      min=5, 
+     *      max=5, 
+     *      minMessage="doit contenir 5 chiffres",
+     *      maxMessage="ne peut pas faire plus de  30 chiffres"
+     *      )
      */
     private $zipCode;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Regex(pattern="/^[a-zA-Z]/", message="{{ value }} n'est pas un nom de ville valide")
+     * @Assert\Length(
+     *      min=3, 
+     *      max=30, 
+     *      minMessage="La ville doit faire plus de 3 caractères",
+     *      maxMessage="La ville ne peut pas faire plus de 30 caratères"
+     *      )
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Choice({"France", "Belgium"})
      */
     private $country;
 

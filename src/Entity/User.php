@@ -31,44 +31,74 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @Assert\Length(min=3, max=255)
      * @ORM\Column(type="string", length=45, unique=true)
+     * @Assert\NotBlank
+     * @Assert\Regex(pattern="/^[a-zA-Z]/", message="{{ value }} n'est pas un nom d'utilisateur valide")
+     * @Assert\Length(
+     *      min=2, 
+     *      max=30, 
+     *      minMessage="Le nom d'utilisateur doit faire plus de 2 caractères",
+     *      maxMessage="Le nom d'utilisateur ne peut pas faire plus de 30 caratères"
+     *      )
      */
     private $username;
 
     /**
-     * @Assert\Length(min=3, max=255)
      * @ORM\Column(type="string", length=45)
+     * @Assert\NotBlank
+     * @Assert\Regex(pattern="/^[a-zA-Z]/", message="{{ value }} n'est pas un prenom valide")
+     * @Assert\Length(
+     *      min=2, 
+     *      max=30, 
+     *      minMessage="Le prenom doit faire plus de 2 caractères",
+     *      maxMessage="Le prenom ne peut pas faire plus de 30 caratères"
+     *      )
      */
     private $firstname;
 
     /**
-     * @Assert\Length(min=3, max=255)
      * @ORM\Column(type="string", length=45)
+     * @Assert\NotBlank
+     * @Assert\Regex(pattern="/^[a-zA-Z]/", message="{{ value }} n'est pas un nom valide")
+     * @Assert\Length(
+     *      min=2, 
+     *      max=30, 
+     *      minMessage="Le nom doit faire plus de 2 caractères",
+     *      maxMessage="Le nom ne peut pas faire plus de 30 caratères"
+     *      )
      */
     private $lastname;
 
     /**
-     * @Assert\Length(min=3, max=255)
-     * @Assert\Email()
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank
+     * @Assert\Email(
+     *     message = "{{ value }} n'est pas une adresse mail valide",
+     *     checkMX = true
+     *     )
      */
     private $email;
 
     /**
-     * @Assert\Length(min=3)
      * @ORM\Column(type="string", length=255)
      */
     private $password;
 
     /**
-     * 
+     *
      */
     private $plainpassword;
 
     /**
-     * @Assert\Length(min=10, max=45)
      * @ORM\Column(type="string", length=45)
+     * @Assert\Regex(pattern="/^(0|\+33)[1-9]([-. ]?[0-9]{2}){4}$/", message="{{ value }} n'est pas un numéro de téléphone valide")
+     * @Assert\NotBlank 
+     * @Assert\Length(
+     *     min=10, 
+     *     max=10, 
+     *     minMessage="Le numero de telephone doit faire 10 caractères",
+     *     maxMessage="Le numero de telephone ne peut pas faire plus de 10 caratères"
+     *     )
      */
     private $phone;
 
@@ -89,6 +119,7 @@ class User implements UserInterface
     private $createdDate;
 
     /**
+     * @Assert\Valid
      * @ORM\OneToOne(targetEntity="App\Entity\Address", cascade={"persist"})
      * @ORM\JoinColumn(name="address_billing_id_id", referencedColumnName="id")
      */

@@ -45,7 +45,7 @@
             <!-- formulaire -->
             <div class="champs">Les champs précédés d'une * sont <span>obligatoires</span></div>
 
-            {{ form_start ( form ) }}
+            {{ form_start ( form, { attr: { novalidate: 'novalidate' } } ) }}
 
             <!-- ///// COMPTE ///// -->
             <hr>
@@ -99,7 +99,7 @@
                     <div class="row">
                         <div class="col text-left">
                             {{ form_row ( form.addressBillingId.street ) }}
-                            {{ form_row ( form.addressBillingId.zip_code ) }}
+                            {{ form_row ( form.addressBillingId.zipCode ) }}
                             {{ form_row ( form.addressBillingId.city ) }}
                             {{ form_row ( form.addressBillingId.country ) }}
                         </div>
@@ -115,16 +115,15 @@
                 <div class="col">
 
                     <div class="btn_motifs text-center">
-                        <button type="submit" class="rounded-0 mt-4 py-2 px-5 my-5 btn-envoyer ">
+                        {# <button type="submit" class="rounded-0 mt-4 py-2 px-5 my-5 btn-envoyer ">
                             Envoyer
-                        </button>
+                        </button> #}
                     </div>
-                    {{ form_end ( form ) }}
 
                 </div>
             </div>
 
-
+{{ form_end (form) }}
 
 
         </div>

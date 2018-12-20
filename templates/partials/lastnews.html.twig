@@ -15,8 +15,14 @@
             <!-- Infos produit -->
             <div class="card-body">
                 <h3 class="title_produit_gallery">{{productRand.slug}}</h3>
-                <h5 class="price_gallery pt-2">{{productRand.price_unit_ttc}}
-                    €</h5>
+
+                {% if productRand.color_id == '3' or productRand.color_id == '4' %}
+                    <h5 class="price_gallery text-danger">{{ (productRand.price_unit_ttc - ( productRand.price_unit_ttc * promo ))|number_format(2) }} €
+                    <del class="text-info font-weight-light">{{ productRand.price_unit_ttc }} €</del></h5>
+                {% else %}
+                    <h5 class="price_gallery pb-2">{{ productRand.price_unit_ttc }} €</h5>
+                {% endif %}
+
             </div>
         </div>
     {% endfor %}
