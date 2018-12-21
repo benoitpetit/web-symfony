@@ -26,172 +26,37 @@
                         <img src="{{ asset( 'assets/images/panier/cartesbancaires.png' ) }}" height="100" width="200" alt="Image de cartes bancaires">                   
                     </div> 
                 </div>
-                <div class="d-flex flex-row">
-                    <div class="radio p-2 col-md-4">
-                        <label><input type="radio" name="optradio"><span class="font-weight-bold">   PAYPAL </span><br><span class="ml-3 text-success">      Gratuit</span></label>
-                    </div>   
-                    <div class="col-md-8 p-2">      
-                     <img src="{{ asset( 'assets/images/panier/paypalpay.png' ) }}" height="100" width="200" alt="Logo Paypal">                                   
-                    </div>
-                </div>
-                <div class="d-flex flex-row mt-2">
-                    <div class="radio p-2 col-sm-4 mb-3">
-                        <label><input type="radio" name="optradio" checked><span class="font-weight-bold">   CHEQUE BANCAIRE</span><br><span class="ml-3 text-success ">     Gratuit</span></label>
-                    </div>
-
-                    <div class="col-sm-8 p-2s">
-                        <ul> <li> Livraison gratuite proche de chez vous ou de votre travail chez un des 5000 commercants partenaires avec Kiala</li></ul>
-
-                    </div>
-                   
-                </div>
+                
 
 <!-- /////////////////// BOUTONS Poursuite Achats / Commande ///////////////// -->
       
             
                 <div class="d-flex justify-content-between">
                     <button type="button" class="btn btn-warning mb-4"><a href="{{ path('delivery') }}">Retour</a></button>   
-                    <!-- Button trigger modal --><button type="button" class="btn btn-success mb-4" data-toggle="modal"  data-target="#exampleModal"> Payer</button> 
-                    
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
 
-
-
-
-
-
-                        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-
-
-                        <section class="container-fluid px-0 payment pt-5 pb-2 ">
-                                        <div class="container">
-                                            <div class="">
-                                                <!-- You can make it whatever width you want. I'm making it full width
-                                                    on <= small devices and 4/12 page width on >= medium devices -->
-                                                <div class="col-xs-12 col-md-4">
-                                                
-                                                
-                                                    <!-- CREDIT CARD FORM STARTS HERE -->
-                                                    <div class="panel panel-default credit-card-box">
-                                                        <div class="panel-heading display-table" >
-                                                            <div class=" display-tr" >
-                                                                <h3 class="panel-title display-td" >Payment Details</h3>
-                                                                <div class="display-td" >                            
-                                                                    <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
-                                                                </div>
-                                                            </div>                    
-                                                        </div>
-                                                        <div class="panel-body">
-                                                            <form role="form" id="payment-form" method="POST" action="javascript:void(0);">
-                                                                <div class="">
-                                                                    <div class="col-xs-12">
-                                                                        <div class="form-group">
-                                                                            <label for="cardNumber">CARD NUMBER</label>
-                                                                            <div class="input-group">
-                                                                                <input 
-                                                                                    type="tel"
-                                                                                    class="form-control"
-                                                                                    name="cardNumber"
-                                                                                    placeholder="Valid Card Number"
-                                                                                    autocomplete="cc-number"
-                                                                                    required autofocus />
-                                                                                <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-                                                                            </div>
-                                                                        </div>                            
-                                                                    </div>
-                                                                </div>
-                                                                <div class="">
-                                                                    <div class="col-xs-7 col-md-7">
-                                                                        <div class="form-group">
-                                                                            <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
-                                                                            <input 
-                                                                                type="tel" 
-                                                                                class="form-control" 
-                                                                                name="cardExpiry"
-                                                                                placeholder="MM / YY"
-                                                                                autocomplete="cc-exp"
-                                                                                required />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-xs-5 col-md-5 pull-right">
-                                                                        <div class="form-group">
-                                                                            <label for="cardCVC">CV CODE</label>
-                                                                            <input 
-                                                                                type="tel" 
-                                                                                class="form-control"
-                                                                                name="cardCVC"
-                                                                                placeholder="CVC"
-                                                                                autocomplete="cc-csc"
-                                                                                required />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="">
-                                                                    <div class="col-xs-12">
-                                                                        <div class="form-group">
-                                                                            <label for="couponCode">COUPON CODE</label>
-                                                                            <input type="text" class="form-control" name="couponCode" />
-                                                                        </div>
-                                                                    </div>                        
-                                                                </div>
-                                                                <div class="">
-                                                                    <div class="col-xs-12">
-                                                                        <button class="subscribe btn btn-success btn-lg btn-block" type="button">Start Subscription</button>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="" style="display:none;">
-                                                                    <div class="col-xs-12">
-                                                                        <p class="payment-errors"></p>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>            
-                                                    <!-- CREDIT CARD FORM ENDS HERE -->
-                                                    
-                                                    
-                                                </div>            
-                            
-                                            </div>
-                                        </div>
-
-
-                        </section>
-
-
-
-
-
-
-
-                        
-       
-                        </div>
-                        </div>
-                    </div>
-</div>
+                    <form action="your-server-side-code" method="POST">
+                        <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
+                            data-amount="2400"
+                            data-name="devmyshirts.com"
+                            data-description="Paiement en ligne"
+                            data-image="{{ asset( 'assets/images/panier/boutonstripe.png' ) }}"
+                            data-locale="fr"
+                            data-zip-code="true">
+                        </script>
+                    </form>
+                </div>
+    </div>
 
  
 
-                </div>
+            
             
 
                 
         
          </section>
-        
-            
-        {# {% if cart.count <= 0 %} #}
-        <!-- <h3>Il n'y a rien dans ton panier... :(</h3> -->
-        {#{% else %} #}
-
-    <!-- //////////////////////////  PANIER ///////////////////////////////// -->
-
-        {# {% for item in cart.items %} #}
      
 
     

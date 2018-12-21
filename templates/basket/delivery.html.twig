@@ -77,8 +77,8 @@
     <!-- /////////////////// BOUTONS Poursuite Achats / Commande ///////////////// -->
     <div>
         <div class="d-flex justify-content-between">
-            <button type="button" class="btn btn-warning mb-4"><a href="{{ path('basket') }}">Retour</a></button>   
-            <button type="button" class="btn btn-success mb-4"><a href="{{ path('payment') }}">Passer la commande</button> 
+            <button type="button" class="btn btn-warning mb-4"><a href="{{ path('gallery', {product_type: 'tshirt', genderEN: 'man', color_id: '0', logo_id:'0' }) }}">Retour</a></button>   
+            <button type="button" class="btn btn-success mb-4"><a href="{{ path('payment') }}">Passer la commande</a></button> 
         </div>
     </div>
     
