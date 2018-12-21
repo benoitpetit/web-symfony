@@ -7,6 +7,10 @@ class BasketService {
     public function __construct () {}
 
     public function countQuantity() {
-        return count( $_SESSION['basket'] );
+        if ( !isset($_SESSION['basket']) ) {
+            return 0;
+        } else {
+            return count( $_SESSION['basket'] );
+        }
     }
 }

@@ -191,7 +191,12 @@ class UserController extends AbstractController
      * 
      * @Route("/user/logout", name="logout")
      */
-    public function logout() {}
+    public function logout(BasketService $basketService) {
+        return $this->render('user/logout.html.twig',[
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
+        ]);
+    }
 
 
 
