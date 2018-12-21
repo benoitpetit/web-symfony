@@ -62,20 +62,21 @@
                         <td>
                             {# boucle des informations des commandes #}
                             {% for orderLine in orderLines %}
-                            {# si orderLine est = à orderLine #}
-                            {% if ( orderLine.order_id == orderLine.order_id ) %}
-                            {# affichae des informations de la commande #}
-                            <b>Couleur: </b>{{ orderLine.color_name }} / <b>Taille: </b>{{ orderLine.size_name }} /<b>
-                                Quantité: </b>{{ orderLine.quantity }}<br>
-                            <b>Model: </b>
-                            <a href="{{ path('tshirtdetail', {product_type: orderLine.product_type, genderEN: orderLine.gender_name, color_id: orderLine.product_color_id, logo_id: orderLine.product_logo_id }) }}">{{
-                                orderLine.logo_name }}</a>
-                            <br /><br />
 
-                            {% endif %}
+                                {# si orderLine est = à orderLine #}
+                                {% if ( order.id == orderLine.order_id ) %}
 
+                                    {# affichage des informations de la commande #}
+                                    <b>Couleur: </b>{{ orderLine.color_name }} / <b>Taille: </b>{{ orderLine.size_name }} /<b>
+                                        Quantité: </b>{{ orderLine.quantity }}<br>
+                                    <b>Model: </b>
+                                    <a href="{{ path('tshirtdetail', {product_type: orderLine.product_type, genderEN: orderLine.gender_name, color_id: orderLine.product_color_id, logo_id: orderLine.product_logo_id }) }}">{{ orderLine.logo_name }}</a>
+                                    <br /><br />
+
+                                {% endif %}
 
                             {% endfor %}
+
                         </td>
                     </tr>
 
