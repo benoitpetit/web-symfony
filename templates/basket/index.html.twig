@@ -5,7 +5,7 @@
 
 {% block body %}
 
-{{ dump(basketProducts) }}
+{# {{ dump(basketProducts) }} #}
 
 <div class="container basket px-4">
        
@@ -40,21 +40,21 @@
                 <tbody>
 
                     {% for basketProduct in basketProducts %}
-                    <tr class="row">
-                        <td class="col-md-1 delete_item"><a href="#" 
-                            {# data-item-id="{{ligne.id}}" #}
-                            ></a><img src="{{ asset( 'assets/images/icones/trash.svg' ) }}" width="20px"></a></td>
-                            <td class="col-md-2 cart-item img">
-                                <div id="motif-visuel">
-                                    <img src="{{ path('small', {genderEN: 'man', color_id: 1, logo_id: 3}) }}" class="tshirt-visuel-home">
-                                </div>
-                                {# <a href="{{ path('tshirtdetail', {product_type: product_type, genderEN: genderEN, color_id: product.color_id, logo_id: product.logo_id}) }}" 
-                                    class="produit_link position-relative w-100 d-flex align-items-center" style="background-color:{{ product.color_hexa }};"> #}
-                                <img src="../../public/assets/images/homme/tshirt_homme_c_mieux.png" class="img-responsive" width="100px" alt="">
+
+                        <tr class="row">
+                            <td class="col-md-1 delete_item">
+                                <a href="{{ path('basketremove', {basketid: loop.index}) }}">
+                                    <img src="{{ asset( 'assets/images/icones/trash.svg' ) }}" width="20px">
+                                </a>
                             </td>
-                            <td class="col-md-3"><div class="font-weight-bold">T-Shirt name </div></a><br>
-                                <div>  </div>
-                                <div> product.size {# {{size.id.size}} #}</div> 
+                            <td class="col-md-2 cart-item img">
+                                <a href="{{ path('tshirtdetail', {product_type: 'tshirt', genderEN: 'man', color_id: 1, logo_id: 3 }) }}" 
+                                    class="produit_link position-relative w-100 d-flex align-items-center" {# style="background-color:{{ basketProduct.color_hexa }};"#}>
+                                <img src="{{ path('small', {genderEN: 'man', color_id: 1, logo_id: 3}) }}" class="img-responsive" width="100px" alt="">
+                            </td>
+                            <td class="col-md-3"><div class="font-weight-bold">{{ basketProduct.logoId }}</div></a><br>
+                                <div></div>
+                                <span>{{ basketProduct.genderId }} / {{ basketProduct.sizeId }} / {{ basketProduct.colorId }}</span>
                             </td>
                             <td class="col-md-2 pr-4">
                                 <div class="d-md-none"> Prix Unitaire: </div>

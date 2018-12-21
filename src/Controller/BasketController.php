@@ -99,35 +99,39 @@ class BasketController extends AbstractController
     }
 
 
-
     /** 
     * Suppression d'un article du panier 
-    * 
-    * @param String    $basketLine      ligne de commande du panier à supprimer 
-    * @return Boolean  Retourn TRUE si la suppression a bien été effectuée, FALSE sinon 
+     * @Route("/basket/remove/{basketid}", name="basketremove")
     */ 
-    public function removeBasketLine($basketLine) 
-    { 
-    }    
+    public function removeBasket(BasketService $basketService, $basketid) 
+    {
+
+        return $this->render ('basket/index.html.twig', [
+            'controller_name' => 'Panier',
+            'basketProducts' => $_SESSION['basket'],
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
+        ]);
+    }
+
 
     /** 
-    * Calcul du montant total pour chaque ligne de commande du panier (article) 
-    * @return Double 
+    * Suppression du panier complet
+     * @Route("/basket/remove/all", name="basketremoveall")
     */ 
-    public function basketTotal() 
-    { 
-        // On initialise le montant 
-        $total = 0; 
-        // On  compte les articles du panier 
-        $ProductQuantity = count($basket['product_type']); 
+    public function removeAllBasket(BasketService $basketService) 
+    {
+        if ( isset($_SESSION['basket']) ) {
+            // Suppresion du panier
+            unset($_SESSION['basket']);
+        }
 
-        // On calcule le total par article  
-        for($i = 0; $i < $nb_articles; $i++) 
-        { 
-            $total += $basket['quantity'][$i] * $basket['price_unit_ttc'][$i]; 
-        } 
-        
-        return $total; 
-    } 
+        return $this->render ('basket/index.html.twig', [
+            'controller_name' => 'Panier',
+            'basketProducts' => [],
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
+        ]);
+    }
 
 }        

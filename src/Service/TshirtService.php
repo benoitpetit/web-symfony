@@ -267,6 +267,15 @@ class TshirtService {
         return $colorsFR;
     }
 
+//     // Recherche des descriptions pour le panier
+//     public function addDescription( $product ) {
+//         array_push( $product, $this->colorRepo->findById( $product['color_id'] ) );
+//         array_push( $product, $this->logoRepo->findById( $product['logo_id'] ) );
+// var_dump($product);
+//         return $product;
+//     }
+
+
     // Count records
     public function count() {
         return count( $this->records );

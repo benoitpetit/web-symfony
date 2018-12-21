@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+use App\Repository\ColorRepository;
+use App\Repository\LogoRepository;
 
 class BasketProduct 
 {
@@ -20,10 +22,16 @@ class BasketProduct
     private $price_unit_ttc;
     private $promo_unit_ht;
 
-    
+    private $gender_name;
+    private $color_name;
+    private $logo_name;
+
+    public function __construct() {
+    }
+
     public function getId()
     {
-        return $this->product_type;
+        return  $this->product_type;
                 $this->gender_id;
                 $this->color_id;
                 $this->logo_id;
@@ -31,7 +39,6 @@ class BasketProduct
                 $this->quantity;
                 $this->price_unit_ttc;
     }
-
 
 
     /**
@@ -214,4 +221,18 @@ class BasketProduct
         return $this;
     }
 
+
+    /**
+     * Get the name of logo
+     *
+     * @return  self
+     */ 
+    public function getLogoName()
+    {
+        $logoRepository = new LogoRepository();
+        return $logoRepository->findById( $this->getLogoId() );
+    }
+
+
+    
 }
