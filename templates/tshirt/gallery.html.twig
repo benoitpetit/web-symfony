@@ -104,7 +104,7 @@
 
                     <!-- Produit xx -->
                     <div class="card col-12 col-sm-6 col-md-4 col-lg-3 rounded-0 border-0 ">
-                        <div class="encart_visuel position-relative bg-dark d-flex justify-content-center p-0 visu-image">
+                        <div class="encart_visuel position-relative bg-dark d-flex justify-content-center p-0 w-100">
                             <a href="{{ path('tshirtdetail', {product_type: product_type, genderEN: genderEN, color_id: product.color_id, logo_id: product.logo_id }) }}" class="produit_link position-relative d-flex hidden-visuel align-items-center" style="background-color:{{ product.color_hexa }};">
                                 <!-- Visuel Produit -->
                                 <img class="card-img-top rounded-0 " src="{{ asset('assets/images/motifs/' ~ product.slug ~ '.png') }}"
@@ -116,7 +116,7 @@
                             </a>
                         </div>
                         <!-- Infos produit -->
-                        <div class="card-body visu-image px-0">
+                        <div class="card-body w-100 px-0">
                             <h3 class="title_produit_gallery">{{ product.logo_name }}</h3>
 
                             {% if product.color_id == '3' or product.color_id == '4' %}
