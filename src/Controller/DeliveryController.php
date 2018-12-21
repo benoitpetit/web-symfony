@@ -8,6 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
+use App\Service\BasketService;
+
 class DeliveryController extends AbstractController
 {
 
@@ -20,11 +22,12 @@ class DeliveryController extends AbstractController
      * @return render
      * 
      */
-    public function delivery()
+    public function delivery(BasketService $basketService)
     {
         return $this->render('basket/delivery.html.twig', [
             'controller_name' => 'Livraison',
-            
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 
@@ -38,11 +41,12 @@ class DeliveryController extends AbstractController
      * @return render
      * 
      */
-    public function mondialrelay()
+    public function mondialrelay(BasketService $basketService)
     {
         return $this->render('basket/mondialrelay.html.twig', [
             'controller_name' => 'mondialrelay',
-            
+            // Basket
+            'basketCountQuantity' => $basketService->countQuantity(),
         ]);
     }
 }

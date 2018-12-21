@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }} Déconnexion | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+<div class="h-100 d-flex flex-row align-items-center">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center error-content">
+                <i class="fab fa-fly display-1 mb-3 text-info"></i>
+                <span class="display-1 d-block"><span class="text-info">
+                        <</span> 404 <span class="text-info">/>
+                    </span></span>
+                <div class="mb-4 lead">Vous êtes déconnecté... Votre panier resté sauvegardé quelques jours. A bientôt !</div>
+                <a href="{{ path('home') }}" class="btn btn-link retour mb-5">Retour à la page d'Accueil</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
