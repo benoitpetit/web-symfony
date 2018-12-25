@@ -19,16 +19,6 @@ use App\Service\BasketService;
 
 class BasketController extends AbstractController
 {
-    public function __construct()
-    {
-        // Démarrage de la session si pas déjà démarrée 
-        if (session_status() == PHP_SESSION_NONE) {
-                session_start();
-
-        }
-    }
-
-
     /** 
      * Ajout d'un article dans le panier 
      * @Route("/basket/add/{genderEN}", name="basketadd")
@@ -51,17 +41,9 @@ class BasketController extends AbstractController
 
             // Recherche des datas
             $productBasket = $formBasketProduct->getData();
-
-            // Initialisation du panier si non fait
-            if ( !isset( $_SESSION['basket'] )) {
-                $_SESSION['basket'] = [];
-            }
-
+var_dump($productBasket);
             // Ajout au panier de l'article sélectionné
-            array_push( $_SESSION['basket'], $productBasket);
-
-            // add flash produit -> panier
-            $this->addFlash('notice', 'Votre produit a été ajouté à votre panier.');
+            $basketService->addProduct( $productBasket );
         }
 
         return $this->render( TshirtService::_PRODUCT .'/gallery.html.twig', [
@@ -92,7 +74,7 @@ class BasketController extends AbstractController
     { 
         return $this->render ('basket/index.html.twig', [
             'controller_name' => 'Panier',
-            'basketProducts' => $_SESSION['basket'],
+            'basketProducts' => $basketService->getProducts(),
             // Basket
             'basketCountQuantity' => $basketService->countQuantity(),
         ]);

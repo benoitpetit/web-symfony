@@ -2,16 +2,41 @@
 
 namespace App\Service;
 
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 class BasketService {
 
-    public function __construct () {}
+    private $session;
+
+    public function __construct ( SessionInterface $session ) {
+        if ( $session->get('basket') == null )
+            $session->set( 'basket', [] );
+        $this->session = $session;
+    }
+
+    public function getProducts() {
+        return $this->session->get( 'basket' );
+    }
+
+    public function addProduct( $product) {
+        $products = $this->session->get( 'basket' );
+
+        // Add product in products temp's basket
+        array_push( $products, $product );
+
+        // Add order line at basket temp (session)
+        $this->session->set( 'basket', $products );
+
+        // add flash produit -> panier
+        $this->session->getFlashBag()->add('notice', 'Votre produit a été ajouté à votre panier.');
+    }
+
+    public function clearProducts() {
+        $session->set( 'basket', [] );
+    }
 
     public function countQuantity() {
-        if ( !isset($_SESSION['basket']) ) {
-            return 0;
-        } else {
-            return count( $_SESSION['basket'] );
-        }
+            return count( $this->session->get('basket') );
     }
 
 

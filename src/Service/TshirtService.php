@@ -42,11 +42,6 @@ class TshirtService {
     }
 
 
-    public function getRecords() {
-        return $this->records;
-    }
-
-
     // générer le t-shirt
     public function generateTshirt( $gender, $color, $logo )
     {
@@ -56,12 +51,11 @@ class TshirtService {
         // Path to pictures
         $image = $manager->canvas( 600, 700, $color );
         $image->fill( self::_PICTURES .'/'. $gender .'/'. self::_PRODUCT .'_'. $gender .'_'. $logo .'.png' );
-        
+
         // Return response
         return $image->response( 'jpg', 90 );
     }
-
-    // générer le t-shirt
+    
     public function generateSmallTshirt( $gender, $color, $logo )
     {
         // Generate pictures
@@ -75,7 +69,13 @@ class TshirtService {
         return $image->response( 'jpg', 90 );
     }
     
+    
+    public function getRecords() {
+        return $this->records;
+    }
 
+
+    // générer le t-shirt
     // $product est le type de produit qui est intégré dans le nom de la vue sur la base de données
     public function getAll()
     {
